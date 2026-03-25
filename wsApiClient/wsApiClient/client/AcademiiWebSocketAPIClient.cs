@@ -31,7 +31,7 @@ namespace Academii.WebSocket.Client
   private bool _disposed;
 
   // Server URLs
-  public const string PRODUCTION_URL = "wss://api.academii.com";
+  public const string PRODUCTION_URL = "wss://dev.academii.com";
   public const string DEVELOPMENT_URL = "ws://localhost:3000";
 
   // Generated event handlers
@@ -74,9 +74,13 @@ namespace Academii.WebSocket.Client
    if (_connections.ContainsKey(endpointKey))
     throw new InvalidOperationException($"Already connected to {endpointKey} endpoint");
 
-   var webSocket = new WebSocket(fullUrl);
+   var webSocket = new WebSocket(fullUrl, $"auth.{_authToken}");
    webSocket.OnOpen += () => OnConnectionStateChanged?.Invoke(this, $"{endpointKey}: Connected");
-   webSocket.OnMessage += (bytes) => ProcessIncomingMessage(endpointKey, System.Text.Encoding.UTF8.GetString(bytes)).ConfigureAwait(false);
+   webSocket.OnMessage += (bytes) =>
+   {
+    var message = System.Text.Encoding.UTF8.GetString(bytes);
+    _ = ProcessIncomingMessage(endpointKey, message);
+   };  
    webSocket.OnError += (error) => OnError?.Invoke(this, new WebSocketErrorEventArgs(new Exception(error), endpointKey));
    webSocket.OnClose += (code) => OnConnectionStateChanged?.Invoke(this, $"{endpointKey}: Closed");
 
@@ -258,7 +262,7 @@ namespace Academii.WebSocket.Client
     var settings = new JsonSerializerSettings
     {
      ContractResolver = new Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver()
-    };;
+    }
 
     var payload = JsonConvert.DeserializeObject<T>(jsonMessage, settings);
     if (payload != null)

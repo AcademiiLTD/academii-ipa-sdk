@@ -813,6 +813,10 @@ namespace YourSdk
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.6.3.0 (NJsonSchema v11.5.2.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class Client : IClient
     {
+        #pragma warning disable 8618
+        private string _baseUrl;
+        #pragma warning restore 8618
+
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(CreateSerializerSettings, true);
         private Newtonsoft.Json.JsonSerializerSettings _instanceSettings;
@@ -821,6 +825,7 @@ namespace YourSdk
         public Client(System.Net.Http.HttpClient httpClient)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
+            BaseUrl = "https://dev.academii.com";
             _httpClient = httpClient;
             Initialize();
         }
@@ -830,6 +835,17 @@ namespace YourSdk
             var settings = new Newtonsoft.Json.JsonSerializerSettings();
             UpdateJsonSerializerSettings(settings);
             return settings;
+        }
+
+        public string BaseUrl
+        {
+            get { return _baseUrl; }
+            set
+            {
+                _baseUrl = value;
+                if (!string.IsNullOrEmpty(_baseUrl) && !_baseUrl.EndsWith("/"))
+                    _baseUrl += '/';
+            }
         }
 
         protected Newtonsoft.Json.JsonSerializerSettings JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
@@ -857,7 +873,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/auth/register"
                     urlBuilder_.Append("api/v1/auth/register");
 
@@ -923,7 +939,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/auth/login"
                     urlBuilder_.Append("api/v1/auth/login");
 
@@ -989,7 +1005,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/auth/verify-token"
                     urlBuilder_.Append("api/v1/auth/verify-token");
 
@@ -1055,7 +1071,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/auth/request-password-reset"
                     urlBuilder_.Append("api/v1/auth/request-password-reset");
 
@@ -1121,7 +1137,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/auth/verify-reset-token"
                     urlBuilder_.Append("api/v1/auth/verify-reset-token");
 
@@ -1187,7 +1203,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/auth/confirm-password-reset"
                     urlBuilder_.Append("api/v1/auth/confirm-password-reset");
 
@@ -1253,7 +1269,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/auth/confirm-force-password-reset"
                     urlBuilder_.Append("api/v1/auth/confirm-force-password-reset");
 
@@ -1319,7 +1335,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/auth/verify-invite-token"
                     urlBuilder_.Append("api/v1/auth/verify-invite-token");
 
@@ -1384,7 +1400,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/auth/me"
                     urlBuilder_.Append("api/v1/auth/me");
 
@@ -1450,7 +1466,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/auth/invite"
                     urlBuilder_.Append("api/v1/auth/invite");
 
@@ -1515,7 +1531,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/characters/"
                     urlBuilder_.Append("api/v1/characters/");
 
@@ -1581,7 +1597,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/characters/"
                     urlBuilder_.Append("api/v1/characters/");
 
@@ -1649,7 +1665,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/characters/{id}"
                     urlBuilder_.Append("api/v1/characters/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
@@ -1719,7 +1735,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("PUT");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/characters/{id}"
                     urlBuilder_.Append("api/v1/characters/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
@@ -1788,7 +1804,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("DELETE");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/characters/{id}"
                     urlBuilder_.Append("api/v1/characters/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
@@ -1857,7 +1873,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/characters/{id}/mesh-links"
                     urlBuilder_.Append("api/v1/characters/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
@@ -1928,7 +1944,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("PUT");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/characters/{id}/mesh-links"
                     urlBuilder_.Append("api/v1/characters/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
@@ -1998,7 +2014,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/characters/{id}/knowledge/folders"
                     urlBuilder_.Append("api/v1/characters/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
@@ -2069,7 +2085,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("PUT");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/characters/{id}/knowledge/folders"
                     urlBuilder_.Append("api/v1/characters/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
@@ -2139,7 +2155,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/characters/{id}/knowledge/files"
                     urlBuilder_.Append("api/v1/characters/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
@@ -2209,7 +2225,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/characters/{id}/knowledge/handbook-items"
                     urlBuilder_.Append("api/v1/characters/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
@@ -2280,7 +2296,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/characters/{id}/knowledge/handbook-items/attach"
                     urlBuilder_.Append("api/v1/characters/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
@@ -2351,7 +2367,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/characters/{id}/knowledge/handbook-items/detach"
                     urlBuilder_.Append("api/v1/characters/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
@@ -2424,7 +2440,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("DELETE");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/characters/{id}/mesh-links/{linkId}"
                     urlBuilder_.Append("api/v1/characters/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
@@ -2495,7 +2511,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/chats/{id}"
                     urlBuilder_.Append("api/v1/chats/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
@@ -2564,7 +2580,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("DELETE");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/chats/{id}"
                     urlBuilder_.Append("api/v1/chats/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
@@ -2634,7 +2650,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/chats/characters/{characterId}/chats"
                     urlBuilder_.Append("api/v1/chats/characters/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(characterId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -2704,7 +2720,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/chats/characters/{characterId}/chats"
                     urlBuilder_.Append("api/v1/chats/characters/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(characterId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -2775,7 +2791,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/chats/{id}/messages"
                     urlBuilder_.Append("api/v1/chats/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
@@ -2843,7 +2859,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/files/upload"
                     urlBuilder_.Append("api/v1/files/upload");
 
@@ -2909,7 +2925,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/files/upload/single"
                     urlBuilder_.Append("api/v1/files/upload/single");
 
@@ -2974,7 +2990,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/files/"
                     urlBuilder_.Append("api/v1/files/");
 
@@ -3039,7 +3055,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/files/presigned-url"
                     urlBuilder_.Append("api/v1/files/presigned-url");
 
@@ -3105,7 +3121,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/files/bulk-delete"
                     urlBuilder_.Append("api/v1/files/bulk-delete");
 
@@ -3173,7 +3189,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/files/{id}"
                     urlBuilder_.Append("api/v1/files/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
@@ -3243,7 +3259,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("PATCH");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/files/{id}"
                     urlBuilder_.Append("api/v1/files/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
@@ -3312,7 +3328,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("DELETE");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/files/{id}"
                     urlBuilder_.Append("api/v1/files/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
@@ -3379,7 +3395,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/users/register"
                     urlBuilder_.Append("api/v1/users/register");
 
@@ -3445,7 +3461,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/users/login"
                     urlBuilder_.Append("api/v1/users/login");
 
@@ -3511,7 +3527,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/users/profile-picture"
                     urlBuilder_.Append("api/v1/users/profile-picture");
 
@@ -3576,7 +3592,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("DELETE");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/users/profile-picture"
                     urlBuilder_.Append("api/v1/users/profile-picture");
 
@@ -3648,7 +3664,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/vector-store/{characterId}/files/{fileId}"
                     urlBuilder_.Append("api/v1/vector-store/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(characterId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -3722,7 +3738,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("DELETE");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/vector-store/{characterId}/files/{fileId}"
                     urlBuilder_.Append("api/v1/vector-store/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(characterId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -3794,7 +3810,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("PATCH");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/admin/users/{uid}/role"
                     urlBuilder_.Append("api/v1/admin/users/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(uid, System.Globalization.CultureInfo.InvariantCulture)));
@@ -3861,7 +3877,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/admin/users/superadmins"
                     urlBuilder_.Append("api/v1/admin/users/superadmins");
 
@@ -3929,7 +3945,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("DELETE");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/admin/users/{uid}"
                     urlBuilder_.Append("api/v1/admin/users/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(uid, System.Globalization.CultureInfo.InvariantCulture)));
@@ -3999,7 +4015,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/admin/users/{uid}"
                     urlBuilder_.Append("api/v1/admin/users/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(uid, System.Globalization.CultureInfo.InvariantCulture)));
@@ -4069,7 +4085,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/admin/users/{uid}/reset-password"
                     urlBuilder_.Append("api/v1/admin/users/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(uid, System.Globalization.CultureInfo.InvariantCulture)));
@@ -4137,7 +4153,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/admin/user"
                     urlBuilder_.Append("api/v1/admin/user");
 
@@ -4202,7 +4218,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/admin/handbooks/all"
                     urlBuilder_.Append("api/v1/admin/handbooks/all");
 
@@ -4267,7 +4283,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/admin/organizations"
                     urlBuilder_.Append("api/v1/admin/organizations");
 
@@ -4332,7 +4348,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/voice/tts/voices"
                     urlBuilder_.Append("api/v1/voice/tts/voices");
 
@@ -4398,7 +4414,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/voice/tts/synthesize"
                     urlBuilder_.Append("api/v1/voice/tts/synthesize");
 
@@ -4463,7 +4479,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/voice/stt/languages"
                     urlBuilder_.Append("api/v1/voice/stt/languages");
 
@@ -4529,7 +4545,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/voice/stt/transcribe"
                     urlBuilder_.Append("api/v1/voice/stt/transcribe");
 
@@ -4595,7 +4611,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/moderation/logs"
                     urlBuilder_.Append("api/v1/moderation/logs");
 
@@ -4660,7 +4676,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("DELETE");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/moderation/logs"
                     urlBuilder_.Append("api/v1/moderation/logs");
 
@@ -4726,7 +4742,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/moderation/stats"
                     urlBuilder_.Append("api/v1/moderation/stats");
 
@@ -4792,7 +4808,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/moderation/context"
                     urlBuilder_.Append("api/v1/moderation/context");
 
@@ -4858,7 +4874,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/analytics/chats"
                     urlBuilder_.Append("api/v1/analytics/chats");
 
@@ -4924,7 +4940,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/analytics/citations"
                     urlBuilder_.Append("api/v1/analytics/citations");
 
@@ -4990,7 +5006,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/analytics/citations/compare"
                     urlBuilder_.Append("api/v1/analytics/citations/compare");
 
@@ -5056,7 +5072,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/analytics/files/usage-extremes"
                     urlBuilder_.Append("api/v1/analytics/files/usage-extremes");
 
@@ -5122,7 +5138,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/analytics/files/uncited"
                     urlBuilder_.Append("api/v1/analytics/files/uncited");
 
@@ -5188,7 +5204,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/analytics/usage"
                     urlBuilder_.Append("api/v1/analytics/usage");
 
@@ -5254,7 +5270,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/analytics/usage/compare"
                     urlBuilder_.Append("api/v1/analytics/usage/compare");
 
@@ -5320,7 +5336,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/analytics/users/active-series"
                     urlBuilder_.Append("api/v1/analytics/users/active-series");
 
@@ -5386,7 +5402,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/analytics/agents/usage"
                     urlBuilder_.Append("api/v1/analytics/agents/usage");
 
@@ -5452,7 +5468,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/analytics/users/chats"
                     urlBuilder_.Append("api/v1/analytics/users/chats");
 
@@ -5518,7 +5534,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/analytics/users/inactive"
                     urlBuilder_.Append("api/v1/analytics/users/inactive");
 
@@ -5584,7 +5600,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/analytics/latency"
                     urlBuilder_.Append("api/v1/analytics/latency");
 
@@ -5650,7 +5666,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/analytics/overview/trends"
                     urlBuilder_.Append("api/v1/analytics/overview/trends");
 
@@ -5716,7 +5732,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/analytics/topics"
                     urlBuilder_.Append("api/v1/analytics/topics");
 
@@ -5782,7 +5798,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/analytics/questions/topics"
                     urlBuilder_.Append("api/v1/analytics/questions/topics");
 
@@ -5848,7 +5864,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/analytics/feedback"
                     urlBuilder_.Append("api/v1/analytics/feedback");
 
@@ -5914,7 +5930,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/analytics/feedback/session"
                     urlBuilder_.Append("api/v1/analytics/feedback/session");
 
@@ -5979,7 +5995,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/groups"
                     urlBuilder_.Append("api/v1/groups");
 
@@ -6045,7 +6061,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/groups"
                     urlBuilder_.Append("api/v1/groups");
 
@@ -6111,7 +6127,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/groups/bulk-add-users"
                     urlBuilder_.Append("api/v1/groups/bulk-add-users");
 
@@ -6180,7 +6196,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("PATCH");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/groups/{groupId}"
                     urlBuilder_.Append("api/v1/groups/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(groupId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -6249,7 +6265,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("DELETE");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/groups/{groupId}"
                     urlBuilder_.Append("api/v1/groups/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(groupId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -6318,7 +6334,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/groups/users/{userId}"
                     urlBuilder_.Append("api/v1/groups/users/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(userId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -6387,7 +6403,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/groups/{groupId}/users"
                     urlBuilder_.Append("api/v1/groups/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(groupId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -6458,7 +6474,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("PUT");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/groups/{groupId}/users"
                     urlBuilder_.Append("api/v1/groups/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(groupId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -6529,7 +6545,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/groups/{groupId}/users"
                     urlBuilder_.Append("api/v1/groups/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(groupId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -6602,7 +6618,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("DELETE");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/groups/{groupId}/users/{userId}"
                     urlBuilder_.Append("api/v1/groups/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(groupId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -6670,7 +6686,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/handbooks"
                     urlBuilder_.Append("api/v1/handbooks");
 
@@ -6736,7 +6752,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/handbooks"
                     urlBuilder_.Append("api/v1/handbooks");
 
@@ -6805,7 +6821,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("PATCH");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/handbooks/{handbookId}"
                     urlBuilder_.Append("api/v1/handbooks/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(handbookId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -6874,7 +6890,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("DELETE");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/handbooks/{handbookId}"
                     urlBuilder_.Append("api/v1/handbooks/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(handbookId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -6940,7 +6956,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/handbook"
                     urlBuilder_.Append("api/v1/handbook");
 
@@ -7006,7 +7022,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/handbook"
                     urlBuilder_.Append("api/v1/handbook");
 
@@ -7075,7 +7091,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("PATCH");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/handbook/{itemId}"
                     urlBuilder_.Append("api/v1/handbook/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(itemId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -7144,7 +7160,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("DELETE");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/handbook/{itemId}"
                     urlBuilder_.Append("api/v1/handbook/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(itemId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -7214,7 +7230,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/handbook/attach/{characterId}"
                     urlBuilder_.Append("api/v1/handbook/attach/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(characterId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -7284,7 +7300,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/handbook/detach/{characterId}"
                     urlBuilder_.Append("api/v1/handbook/detach/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(characterId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -7353,7 +7369,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/handbook/attached/{characterId}"
                     urlBuilder_.Append("api/v1/handbook/attached/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(characterId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -7420,7 +7436,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/logs/client"
                     urlBuilder_.Append("api/v1/logs/client");
 
@@ -7485,7 +7501,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/knowledge-folders"
                     urlBuilder_.Append("api/v1/knowledge-folders");
 
@@ -7551,7 +7567,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/knowledge-folders"
                     urlBuilder_.Append("api/v1/knowledge-folders");
 
@@ -7620,7 +7636,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("PATCH");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/knowledge-folders/{folderId}"
                     urlBuilder_.Append("api/v1/knowledge-folders/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(folderId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -7689,7 +7705,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("DELETE");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/knowledge-folders/{folderId}"
                     urlBuilder_.Append("api/v1/knowledge-folders/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(folderId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -7759,7 +7775,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/knowledge-folders/{folderId}/move-files"
                     urlBuilder_.Append("api/v1/knowledge-folders/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(folderId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -7830,7 +7846,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/knowledge-folders/{folderId}/copy-files"
                     urlBuilder_.Append("api/v1/knowledge-folders/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(folderId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -7897,7 +7913,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/topics"
                     urlBuilder_.Append("api/v1/topics");
 
@@ -7963,7 +7979,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/topics"
                     urlBuilder_.Append("api/v1/topics");
 
@@ -8032,7 +8048,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("PATCH");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/topics/{topicId}"
                     urlBuilder_.Append("api/v1/topics/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(topicId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -8101,7 +8117,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("DELETE");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/topics/{topicId}"
                     urlBuilder_.Append("api/v1/topics/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(topicId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -8171,7 +8187,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("PUT");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/topics/{topicId}/organizations"
                     urlBuilder_.Append("api/v1/topics/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(topicId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -8242,7 +8258,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("PUT");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/topics/{topicId}/course-order"
                     urlBuilder_.Append("api/v1/topics/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(topicId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -8309,7 +8325,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/courses"
                     urlBuilder_.Append("api/v1/courses");
 
@@ -8375,7 +8391,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/courses"
                     urlBuilder_.Append("api/v1/courses");
 
@@ -8443,7 +8459,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/courses/{courseId}"
                     urlBuilder_.Append("api/v1/courses/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(courseId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -8513,7 +8529,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("PATCH");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/courses/{courseId}"
                     urlBuilder_.Append("api/v1/courses/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(courseId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -8582,7 +8598,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("DELETE");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/courses/{courseId}"
                     urlBuilder_.Append("api/v1/courses/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(courseId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -8652,7 +8668,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/courses/{courseId}/assign"
                     urlBuilder_.Append("api/v1/courses/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(courseId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -8723,7 +8739,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/courses/{courseId}/de-enroll"
                     urlBuilder_.Append("api/v1/courses/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(courseId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -8793,7 +8809,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/courses/{courseId}/users"
                     urlBuilder_.Append("api/v1/courses/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(courseId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -8863,7 +8879,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/courses/{courseId}/analytics"
                     urlBuilder_.Append("api/v1/courses/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(courseId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -8934,7 +8950,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/courses/{courseId}/modules"
                     urlBuilder_.Append("api/v1/courses/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(courseId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -9004,7 +9020,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/courses/{courseId}/modules"
                     urlBuilder_.Append("api/v1/courses/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(courseId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -9071,7 +9087,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/modules"
                     urlBuilder_.Append("api/v1/modules");
 
@@ -9139,7 +9155,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/modules/{moduleId}"
                     urlBuilder_.Append("api/v1/modules/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(moduleId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -9209,7 +9225,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("PATCH");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/modules/{moduleId}"
                     urlBuilder_.Append("api/v1/modules/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(moduleId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -9278,7 +9294,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("DELETE");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/modules/{moduleId}"
                     urlBuilder_.Append("api/v1/modules/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(moduleId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -9348,7 +9364,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/modules/{moduleId}/upload"
                     urlBuilder_.Append("api/v1/modules/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(moduleId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -9418,7 +9434,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("DELETE");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/modules/{moduleId}/content"
                     urlBuilder_.Append("api/v1/modules/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(moduleId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -9488,7 +9504,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/modules/{moduleId}/content"
                     urlBuilder_.Append("api/v1/modules/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(moduleId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -9558,7 +9574,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/modules/{moduleId}/analytics"
                     urlBuilder_.Append("api/v1/modules/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(moduleId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -9628,7 +9644,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/modules/{moduleId}/launch"
                     urlBuilder_.Append("api/v1/modules/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(moduleId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -9698,7 +9714,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/modules/{moduleId}/player"
                     urlBuilder_.Append("api/v1/modules/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(moduleId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -9771,7 +9787,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/modules/{moduleId}/content/{*}"
                     urlBuilder_.Append("api/v1/modules/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(moduleId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -9842,7 +9858,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/modules/{moduleId}/xapi/about"
                     urlBuilder_.Append("api/v1/modules/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(moduleId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -9912,7 +9928,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/modules/{moduleId}/xapi/statements"
                     urlBuilder_.Append("api/v1/modules/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(moduleId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -9983,7 +9999,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/modules/{moduleId}/xapi/statements"
                     urlBuilder_.Append("api/v1/modules/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(moduleId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -10054,7 +10070,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("PUT");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/modules/{moduleId}/xapi/statements"
                     urlBuilder_.Append("api/v1/modules/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(moduleId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -10124,7 +10140,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/modules/{moduleId}/xapi/activities/state"
                     urlBuilder_.Append("api/v1/modules/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(moduleId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -10195,7 +10211,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("PUT");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/modules/{moduleId}/xapi/activities/state"
                     urlBuilder_.Append("api/v1/modules/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(moduleId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -10266,7 +10282,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/modules/{moduleId}/xapi/activities/state"
                     urlBuilder_.Append("api/v1/modules/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(moduleId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -10336,7 +10352,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("DELETE");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/modules/{moduleId}/xapi/activities/state"
                     urlBuilder_.Append("api/v1/modules/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(moduleId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -10406,7 +10422,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/modules/{moduleId}/xapi/state"
                     urlBuilder_.Append("api/v1/modules/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(moduleId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -10477,7 +10493,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("PUT");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/modules/{moduleId}/xapi/state"
                     urlBuilder_.Append("api/v1/modules/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(moduleId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -10548,7 +10564,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/modules/{moduleId}/xapi/state"
                     urlBuilder_.Append("api/v1/modules/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(moduleId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -10618,7 +10634,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("DELETE");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/modules/{moduleId}/xapi/state"
                     urlBuilder_.Append("api/v1/modules/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(moduleId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -10688,7 +10704,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/modules/{moduleId}/xapi/activities/profile"
                     urlBuilder_.Append("api/v1/modules/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(moduleId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -10759,7 +10775,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("PUT");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/modules/{moduleId}/xapi/activities/profile"
                     urlBuilder_.Append("api/v1/modules/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(moduleId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -10830,7 +10846,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/modules/{moduleId}/xapi/activities/profile"
                     urlBuilder_.Append("api/v1/modules/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(moduleId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -10900,7 +10916,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("DELETE");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/modules/{moduleId}/xapi/activities/profile"
                     urlBuilder_.Append("api/v1/modules/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(moduleId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -10970,7 +10986,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/modules/{moduleId}/xapi/agents/profile"
                     urlBuilder_.Append("api/v1/modules/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(moduleId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -11041,7 +11057,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("PUT");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/modules/{moduleId}/xapi/agents/profile"
                     urlBuilder_.Append("api/v1/modules/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(moduleId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -11112,7 +11128,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/modules/{moduleId}/xapi/agents/profile"
                     urlBuilder_.Append("api/v1/modules/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(moduleId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -11182,7 +11198,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("DELETE");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/modules/{moduleId}/xapi/agents/profile"
                     urlBuilder_.Append("api/v1/modules/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(moduleId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -11253,7 +11269,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("POST");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/modules/{moduleId}/statements"
                     urlBuilder_.Append("api/v1/modules/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(moduleId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -11323,7 +11339,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/modules/{moduleId}/scorm/runtime"
                     urlBuilder_.Append("api/v1/modules/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(moduleId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -11394,7 +11410,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("PUT");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/modules/{moduleId}/scorm/runtime"
                     urlBuilder_.Append("api/v1/modules/");
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(moduleId, System.Globalization.CultureInfo.InvariantCulture)));
@@ -11461,7 +11477,7 @@ namespace YourSdk
                     request_.Method = new System.Net.Http.HttpMethod("GET");
 
                     var urlBuilder_ = new System.Text.StringBuilder();
-                
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
                     // Operation Path: "api/v1/training/topics"
                     urlBuilder_.Append("api/v1/training/topics");
 
