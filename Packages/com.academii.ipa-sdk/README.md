@@ -19,6 +19,24 @@ Add the package to your Unity project's `Packages/manifest.json`:
 }
 ```
 
+Important:
+
+- Do not use the repository URL by itself.
+- This repository is not a package at the repo root.
+- The Unity package lives in `Packages/com.academii.ipa-sdk`, so the Git URL must include `?path=/Packages/com.academii.ipa-sdk`.
+
+This will fail:
+
+```text
+https://github.com/AcademiiLTD/academii-ipa-sdk.git
+```
+
+This is the correct form:
+
+```text
+https://github.com/AcademiiLTD/academii-ipa-sdk.git?path=/Packages/com.academii.ipa-sdk#main
+```
+
 For production use, replace `#main` with a release tag or pinned commit.
 
 Recommended pinned form:
