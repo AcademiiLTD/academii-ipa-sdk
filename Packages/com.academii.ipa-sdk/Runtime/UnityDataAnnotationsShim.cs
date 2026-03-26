@@ -12,11 +12,6 @@ namespace System.ComponentModel.DataAnnotations
     }
 
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter)]
-    public sealed class Required : RequiredAttribute
-    {
-    }
-
-    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter)]
     public class StringLengthAttribute : Attribute
     {
         public StringLengthAttribute(int maximumLength)
@@ -27,15 +22,6 @@ namespace System.ComponentModel.DataAnnotations
         public int MaximumLength { get; }
 
         public int MinimumLength { get; set; }
-    }
-
-    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter)]
-    public sealed class StringLength : StringLengthAttribute
-    {
-        public StringLength(int maximumLength)
-            : base(maximumLength)
-        {
-        }
     }
 
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter)]
@@ -59,20 +45,6 @@ namespace System.ComponentModel.DataAnnotations
     }
 
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter)]
-    public sealed class Range : RangeAttribute
-    {
-        public Range(int minimum, int maximum)
-            : base(minimum, maximum)
-        {
-        }
-
-        public Range(double minimum, double maximum)
-            : base(minimum, maximum)
-        {
-        }
-    }
-
-    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter)]
     public class MinLengthAttribute : Attribute
     {
         public MinLengthAttribute(int length)
@@ -84,15 +56,6 @@ namespace System.ComponentModel.DataAnnotations
     }
 
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter)]
-    public sealed class MinLength : MinLengthAttribute
-    {
-        public MinLength(int length)
-            : base(length)
-        {
-        }
-    }
-
-    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter)]
     public class MaxLengthAttribute : Attribute
     {
         public MaxLengthAttribute(int length)
@@ -101,14 +64,5 @@ namespace System.ComponentModel.DataAnnotations
         }
 
         public int Length { get; }
-    }
-
-    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter)]
-    public sealed class MaxLength : MaxLengthAttribute
-    {
-        public MaxLength(int length)
-            : base(length)
-        {
-        }
     }
 }
