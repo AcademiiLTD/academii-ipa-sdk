@@ -8,16 +8,15 @@
  */
 
 
+using Xunit;
+
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
-using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
-using Newtonsoft.Json;
-using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -47,7 +46,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of AnalyticsFileUsageExtremesResponseMostUsedInner
         /// </summary>
-        [Test]
+        [Fact]
         public void AnalyticsFileUsageExtremesResponseMostUsedInnerInstanceTest()
         {
             // TODO uncomment below to test "IsType" AnalyticsFileUsageExtremesResponseMostUsedInner
@@ -57,26 +56,28 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'FileId'
         /// </summary>
-        [Test]
+        [Fact]
         public void FileIdTest()
         {
             // TODO unit test for the property 'FileId'
         }
-        /// <summary>
-        /// Test the property 'FileName'
-        /// </summary>
-        [Test]
-        public void FileNameTest()
-        {
-            // TODO unit test for the property 'FileName'
-        }
+
         /// <summary>
         /// Test the property 'UsageCount'
         /// </summary>
-        [Test]
+        [Fact]
         public void UsageCountTest()
         {
             // TODO unit test for the property 'UsageCount'
+        }
+
+        /// <summary>
+        /// Test the property 'FileName'
+        /// </summary>
+        [Fact]
+        public void FileNameTest()
+        {
+            // TODO unit test for the property 'FileName'
         }
     }
 }

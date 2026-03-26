@@ -8,16 +8,15 @@
  */
 
 
+using Xunit;
+
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
-using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
-using Newtonsoft.Json;
-using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -47,7 +46,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of AnalyticsAgentUsageResponseInput
         /// </summary>
-        [Test]
+        [Fact]
         public void AnalyticsAgentUsageResponseInputInstanceTest()
         {
             // TODO uncomment below to test "IsType" AnalyticsAgentUsageResponseInput
@@ -57,31 +56,34 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'TotalAgents'
         /// </summary>
-        [Test]
+        [Fact]
         public void TotalAgentsTest()
         {
             // TODO unit test for the property 'TotalAgents'
         }
+
         /// <summary>
         /// Test the property 'ActiveAgents'
         /// </summary>
-        [Test]
+        [Fact]
         public void ActiveAgentsTest()
         {
             // TODO unit test for the property 'ActiveAgents'
         }
+
         /// <summary>
         /// Test the property 'ActiveAgentPercent'
         /// </summary>
-        [Test]
+        [Fact]
         public void ActiveAgentPercentTest()
         {
             // TODO unit test for the property 'ActiveAgentPercent'
         }
+
         /// <summary>
         /// Test the property 'Agents'
         /// </summary>
-        [Test]
+        [Fact]
         public void AgentsTest()
         {
             // TODO unit test for the property 'Agents'

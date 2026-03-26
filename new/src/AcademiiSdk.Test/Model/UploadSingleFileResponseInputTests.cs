@@ -8,16 +8,15 @@
  */
 
 
+using Xunit;
+
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
-using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
-using Newtonsoft.Json;
-using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -47,7 +46,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of UploadSingleFileResponseInput
         /// </summary>
-        [Test]
+        [Fact]
         public void UploadSingleFileResponseInputInstanceTest()
         {
             // TODO uncomment below to test "IsType" UploadSingleFileResponseInput
@@ -57,31 +56,34 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Success'
         /// </summary>
-        [Test]
+        [Fact]
         public void SuccessTest()
         {
             // TODO unit test for the property 'Success'
         }
+
         /// <summary>
         /// Test the property 'File'
         /// </summary>
-        [Test]
+        [Fact]
         public void FileTest()
         {
             // TODO unit test for the property 'File'
         }
+
         /// <summary>
         /// Test the property 'UploadedFileIds'
         /// </summary>
-        [Test]
+        [Fact]
         public void UploadedFileIdsTest()
         {
             // TODO unit test for the property 'UploadedFileIds'
         }
+
         /// <summary>
         /// Test the property 'Data'
         /// </summary>
-        [Test]
+        [Fact]
         public void DataTest()
         {
             // TODO unit test for the property 'Data'

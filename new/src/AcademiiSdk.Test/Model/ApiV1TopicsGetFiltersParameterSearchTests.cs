@@ -8,16 +8,15 @@
  */
 
 
+using Xunit;
+
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
-using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
-using Newtonsoft.Json;
-using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -47,7 +46,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of ApiV1TopicsGetFiltersParameterSearch
         /// </summary>
-        [Test]
+        [Fact]
         public void ApiV1TopicsGetFiltersParameterSearchInstanceTest()
         {
             // TODO uncomment below to test "IsType" ApiV1TopicsGetFiltersParameterSearch
@@ -57,7 +56,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Containsi'
         /// </summary>
-        [Test]
+        [Fact]
         public void ContainsiTest()
         {
             // TODO unit test for the property 'Containsi'

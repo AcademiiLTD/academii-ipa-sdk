@@ -8,16 +8,15 @@
  */
 
 
+using Xunit;
+
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
-using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
-using Newtonsoft.Json;
-using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -47,7 +46,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of ApiV1ModerationLogsDeleteRequest
         /// </summary>
-        [Test]
+        [Fact]
         public void ApiV1ModerationLogsDeleteRequestInstanceTest()
         {
             // TODO uncomment below to test "IsType" ApiV1ModerationLogsDeleteRequest
@@ -57,31 +56,34 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Ids'
         /// </summary>
-        [Test]
+        [Fact]
         public void IdsTest()
         {
             // TODO unit test for the property 'Ids'
         }
+
         /// <summary>
         /// Test the property 'All'
         /// </summary>
-        [Test]
+        [Fact]
         public void AllTest()
         {
             // TODO unit test for the property 'All'
         }
+
         /// <summary>
         /// Test the property 'UserId'
         /// </summary>
-        [Test]
+        [Fact]
         public void UserIdTest()
         {
             // TODO unit test for the property 'UserId'
         }
+
         /// <summary>
         /// Test the property 'CharacterId'
         /// </summary>
-        [Test]
+        [Fact]
         public void CharacterIdTest()
         {
             // TODO unit test for the property 'CharacterId'

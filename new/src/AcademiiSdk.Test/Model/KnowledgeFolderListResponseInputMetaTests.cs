@@ -8,16 +8,15 @@
  */
 
 
+using Xunit;
+
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
-using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
-using Newtonsoft.Json;
-using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -47,7 +46,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of KnowledgeFolderListResponseInputMeta
         /// </summary>
-        [Test]
+        [Fact]
         public void KnowledgeFolderListResponseInputMetaInstanceTest()
         {
             // TODO uncomment below to test "IsType" KnowledgeFolderListResponseInputMeta
@@ -57,31 +56,34 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Page'
         /// </summary>
-        [Test]
+        [Fact]
         public void PageTest()
         {
             // TODO unit test for the property 'Page'
         }
+
         /// <summary>
         /// Test the property 'Limit'
         /// </summary>
-        [Test]
+        [Fact]
         public void LimitTest()
         {
             // TODO unit test for the property 'Limit'
         }
+
         /// <summary>
         /// Test the property 'Total'
         /// </summary>
-        [Test]
+        [Fact]
         public void TotalTest()
         {
             // TODO unit test for the property 'Total'
         }
+
         /// <summary>
         /// Test the property 'TotalPages'
         /// </summary>
-        [Test]
+        [Fact]
         public void TotalPagesTest()
         {
             // TODO unit test for the property 'TotalPages'

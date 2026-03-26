@@ -8,16 +8,15 @@
  */
 
 
+using Xunit;
+
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
-using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
-using Newtonsoft.Json;
-using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -47,7 +46,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of KnowledgeFolderDeleteResponseData
         /// </summary>
-        [Test]
+        [Fact]
         public void KnowledgeFolderDeleteResponseDataInstanceTest()
         {
             // TODO uncomment below to test "IsType" KnowledgeFolderDeleteResponseData
@@ -57,39 +56,43 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'DeletedFolderId'
         /// </summary>
-        [Test]
+        [Fact]
         public void DeletedFolderIdTest()
         {
             // TODO unit test for the property 'DeletedFolderId'
         }
+
         /// <summary>
         /// Test the property 'ReassignedToDefaultFolderId'
         /// </summary>
-        [Test]
+        [Fact]
         public void ReassignedToDefaultFolderIdTest()
         {
             // TODO unit test for the property 'ReassignedToDefaultFolderId'
         }
+
         /// <summary>
         /// Test the property 'MovedFiles'
         /// </summary>
-        [Test]
+        [Fact]
         public void MovedFilesTest()
         {
             // TODO unit test for the property 'MovedFiles'
         }
+
         /// <summary>
         /// Test the property 'MovedHandbooks'
         /// </summary>
-        [Test]
+        [Fact]
         public void MovedHandbooksTest()
         {
             // TODO unit test for the property 'MovedHandbooks'
         }
+
         /// <summary>
         /// Test the property 'RemovedCharacterAssignments'
         /// </summary>
-        [Test]
+        [Fact]
         public void RemovedCharacterAssignmentsTest()
         {
             // TODO unit test for the property 'RemovedCharacterAssignments'

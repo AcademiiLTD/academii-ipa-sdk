@@ -8,16 +8,15 @@
  */
 
 
+using Xunit;
+
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
-using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
-using Newtonsoft.Json;
-using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -47,7 +46,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of AnalyticsCitationsResponseInputFilesInner
         /// </summary>
-        [Test]
+        [Fact]
         public void AnalyticsCitationsResponseInputFilesInnerInstanceTest()
         {
             // TODO uncomment below to test "IsType" AnalyticsCitationsResponseInputFilesInner
@@ -57,39 +56,43 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'FileId'
         /// </summary>
-        [Test]
+        [Fact]
         public void FileIdTest()
         {
             // TODO unit test for the property 'FileId'
         }
-        /// <summary>
-        /// Test the property 'FileName'
-        /// </summary>
-        [Test]
-        public void FileNameTest()
-        {
-            // TODO unit test for the property 'FileName'
-        }
+
         /// <summary>
         /// Test the property 'CitationCount'
         /// </summary>
-        [Test]
+        [Fact]
         public void CitationCountTest()
         {
             // TODO unit test for the property 'CitationCount'
         }
+
+        /// <summary>
+        /// Test the property 'FileName'
+        /// </summary>
+        [Fact]
+        public void FileNameTest()
+        {
+            // TODO unit test for the property 'FileName'
+        }
+
         /// <summary>
         /// Test the property 'LastCitedAt'
         /// </summary>
-        [Test]
+        [Fact]
         public void LastCitedAtTest()
         {
             // TODO unit test for the property 'LastCitedAt'
         }
+
         /// <summary>
         /// Test the property 'RecentConversations'
         /// </summary>
-        [Test]
+        [Fact]
         public void RecentConversationsTest()
         {
             // TODO unit test for the property 'RecentConversations'

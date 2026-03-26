@@ -8,16 +8,15 @@
  */
 
 
+using Xunit;
+
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
-using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
-using Newtonsoft.Json;
-using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -47,7 +46,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of ListMyTrainingResponseInputTopicsInnerCoursesInner
         /// </summary>
-        [Test]
+        [Fact]
         public void ListMyTrainingResponseInputTopicsInnerCoursesInnerInstanceTest()
         {
             // TODO uncomment below to test "IsType" ListMyTrainingResponseInputTopicsInnerCoursesInner
@@ -57,178 +56,199 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'CourseId'
         /// </summary>
-        [Test]
+        [Fact]
         public void CourseIdTest()
         {
             // TODO unit test for the property 'CourseId'
         }
+
         /// <summary>
         /// Test the property 'TopicId'
         /// </summary>
-        [Test]
+        [Fact]
         public void TopicIdTest()
         {
             // TODO unit test for the property 'TopicId'
         }
+
         /// <summary>
         /// Test the property 'TopicName'
         /// </summary>
-        [Test]
+        [Fact]
         public void TopicNameTest()
         {
             // TODO unit test for the property 'TopicName'
         }
+
         /// <summary>
         /// Test the property 'OrganizationId'
         /// </summary>
-        [Test]
+        [Fact]
         public void OrganizationIdTest()
         {
             // TODO unit test for the property 'OrganizationId'
         }
+
         /// <summary>
         /// Test the property 'Name'
         /// </summary>
-        [Test]
+        [Fact]
         public void NameTest()
         {
             // TODO unit test for the property 'Name'
         }
+
         /// <summary>
         /// Test the property 'Code'
         /// </summary>
-        [Test]
+        [Fact]
         public void CodeTest()
         {
             // TODO unit test for the property 'Code'
         }
-        /// <summary>
-        /// Test the property 'Description'
-        /// </summary>
-        [Test]
-        public void DescriptionTest()
-        {
-            // TODO unit test for the property 'Description'
-        }
+
         /// <summary>
         /// Test the property 'SortOrder'
         /// </summary>
-        [Test]
+        [Fact]
         public void SortOrderTest()
         {
             // TODO unit test for the property 'SortOrder'
         }
-        /// <summary>
-        /// Test the property 'EnforceModuleOrder'
-        /// </summary>
-        [Test]
-        public void EnforceModuleOrderTest()
-        {
-            // TODO unit test for the property 'EnforceModuleOrder'
-        }
+
         /// <summary>
         /// Test the property 'CourseStatus'
         /// </summary>
-        [Test]
+        [Fact]
         public void CourseStatusTest()
         {
             // TODO unit test for the property 'CourseStatus'
         }
+
         /// <summary>
         /// Test the property 'IsActive'
         /// </summary>
-        [Test]
+        [Fact]
         public void IsActiveTest()
         {
             // TODO unit test for the property 'IsActive'
         }
+
         /// <summary>
         /// Test the property 'EnrollmentRole'
         /// </summary>
-        [Test]
+        [Fact]
         public void EnrollmentRoleTest()
         {
             // TODO unit test for the property 'EnrollmentRole'
         }
+
         /// <summary>
         /// Test the property 'EnrollmentStatus'
         /// </summary>
-        [Test]
+        [Fact]
         public void EnrollmentStatusTest()
         {
             // TODO unit test for the property 'EnrollmentStatus'
         }
+
         /// <summary>
         /// Test the property 'ProgressPercent'
         /// </summary>
-        [Test]
+        [Fact]
         public void ProgressPercentTest()
         {
             // TODO unit test for the property 'ProgressPercent'
         }
+
         /// <summary>
         /// Test the property 'CompletionStatus'
         /// </summary>
-        [Test]
+        [Fact]
         public void CompletionStatusTest()
         {
             // TODO unit test for the property 'CompletionStatus'
         }
+
         /// <summary>
         /// Test the property 'SuccessStatus'
         /// </summary>
-        [Test]
+        [Fact]
         public void SuccessStatusTest()
         {
             // TODO unit test for the property 'SuccessStatus'
         }
+
         /// <summary>
         /// Test the property 'ProgressState'
         /// </summary>
-        [Test]
+        [Fact]
         public void ProgressStateTest()
         {
             // TODO unit test for the property 'ProgressState'
         }
+
+        /// <summary>
+        /// Test the property 'Modules'
+        /// </summary>
+        [Fact]
+        public void ModulesTest()
+        {
+            // TODO unit test for the property 'Modules'
+        }
+
+        /// <summary>
+        /// Test the property 'Description'
+        /// </summary>
+        [Fact]
+        public void DescriptionTest()
+        {
+            // TODO unit test for the property 'Description'
+        }
+
+        /// <summary>
+        /// Test the property 'EnforceModuleOrder'
+        /// </summary>
+        [Fact]
+        public void EnforceModuleOrderTest()
+        {
+            // TODO unit test for the property 'EnforceModuleOrder'
+        }
+
         /// <summary>
         /// Test the property 'AssignedAt'
         /// </summary>
-        [Test]
+        [Fact]
         public void AssignedAtTest()
         {
             // TODO unit test for the property 'AssignedAt'
         }
+
         /// <summary>
         /// Test the property 'StartedAt'
         /// </summary>
-        [Test]
+        [Fact]
         public void StartedAtTest()
         {
             // TODO unit test for the property 'StartedAt'
         }
+
         /// <summary>
         /// Test the property 'LastActivityAt'
         /// </summary>
-        [Test]
+        [Fact]
         public void LastActivityAtTest()
         {
             // TODO unit test for the property 'LastActivityAt'
         }
+
         /// <summary>
         /// Test the property 'CompletedAt'
         /// </summary>
-        [Test]
+        [Fact]
         public void CompletedAtTest()
         {
             // TODO unit test for the property 'CompletedAt'
-        }
-        /// <summary>
-        /// Test the property 'Modules'
-        /// </summary>
-        [Test]
-        public void ModulesTest()
-        {
-            // TODO unit test for the property 'Modules'
         }
     }
 }

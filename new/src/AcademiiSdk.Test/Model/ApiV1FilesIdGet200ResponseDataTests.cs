@@ -8,16 +8,15 @@
  */
 
 
+using Xunit;
+
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
-using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
-using Newtonsoft.Json;
-using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -47,7 +46,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of ApiV1FilesIdGet200ResponseData
         /// </summary>
-        [Test]
+        [Fact]
         public void ApiV1FilesIdGet200ResponseDataInstanceTest()
         {
             // TODO uncomment below to test "IsType" ApiV1FilesIdGet200ResponseData
@@ -57,127 +56,142 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Id'
         /// </summary>
-        [Test]
+        [Fact]
         public void IdTest()
         {
             // TODO unit test for the property 'Id'
         }
+
         /// <summary>
         /// Test the property 'Filename'
         /// </summary>
-        [Test]
+        [Fact]
         public void FilenameTest()
         {
             // TODO unit test for the property 'Filename'
         }
-        /// <summary>
-        /// Test the property 'OriginalName'
-        /// </summary>
-        [Test]
-        public void OriginalNameTest()
-        {
-            // TODO unit test for the property 'OriginalName'
-        }
-        /// <summary>
-        /// Test the property 'MimeType'
-        /// </summary>
-        [Test]
-        public void MimeTypeTest()
-        {
-            // TODO unit test for the property 'MimeType'
-        }
-        /// <summary>
-        /// Test the property 'FileSize'
-        /// </summary>
-        [Test]
-        public void FileSizeTest()
-        {
-            // TODO unit test for the property 'FileSize'
-        }
-        /// <summary>
-        /// Test the property 'FileType'
-        /// </summary>
-        [Test]
-        public void FileTypeTest()
-        {
-            // TODO unit test for the property 'FileType'
-        }
-        /// <summary>
-        /// Test the property 'Status'
-        /// </summary>
-        [Test]
-        public void StatusTest()
-        {
-            // TODO unit test for the property 'Status'
-        }
-        /// <summary>
-        /// Test the property 'S3Key'
-        /// </summary>
-        [Test]
-        public void S3KeyTest()
-        {
-            // TODO unit test for the property 'S3Key'
-        }
-        /// <summary>
-        /// Test the property 'Url'
-        /// </summary>
-        [Test]
-        public void UrlTest()
-        {
-            // TODO unit test for the property 'Url'
-        }
-        /// <summary>
-        /// Test the property 'OpenaiFileId'
-        /// </summary>
-        [Test]
-        public void OpenaiFileIdTest()
-        {
-            // TODO unit test for the property 'OpenaiFileId'
-        }
-        /// <summary>
-        /// Test the property 'UsageType'
-        /// </summary>
-        [Test]
-        public void UsageTypeTest()
-        {
-            // TODO unit test for the property 'UsageType'
-        }
+
         /// <summary>
         /// Test the property 'UserId'
         /// </summary>
-        [Test]
+        [Fact]
         public void UserIdTest()
         {
             // TODO unit test for the property 'UserId'
         }
+
+        /// <summary>
+        /// Test the property 'OriginalName'
+        /// </summary>
+        [Fact]
+        public void OriginalNameTest()
+        {
+            // TODO unit test for the property 'OriginalName'
+        }
+
+        /// <summary>
+        /// Test the property 'MimeType'
+        /// </summary>
+        [Fact]
+        public void MimeTypeTest()
+        {
+            // TODO unit test for the property 'MimeType'
+        }
+
+        /// <summary>
+        /// Test the property 'FileSize'
+        /// </summary>
+        [Fact]
+        public void FileSizeTest()
+        {
+            // TODO unit test for the property 'FileSize'
+        }
+
+        /// <summary>
+        /// Test the property 'FileType'
+        /// </summary>
+        [Fact]
+        public void FileTypeTest()
+        {
+            // TODO unit test for the property 'FileType'
+        }
+
+        /// <summary>
+        /// Test the property 'Status'
+        /// </summary>
+        [Fact]
+        public void StatusTest()
+        {
+            // TODO unit test for the property 'Status'
+        }
+
+        /// <summary>
+        /// Test the property 'S3Key'
+        /// </summary>
+        [Fact]
+        public void S3KeyTest()
+        {
+            // TODO unit test for the property 'S3Key'
+        }
+
+        /// <summary>
+        /// Test the property 'Url'
+        /// </summary>
+        [Fact]
+        public void UrlTest()
+        {
+            // TODO unit test for the property 'Url'
+        }
+
+        /// <summary>
+        /// Test the property 'OpenaiFileId'
+        /// </summary>
+        [Fact]
+        public void OpenaiFileIdTest()
+        {
+            // TODO unit test for the property 'OpenaiFileId'
+        }
+
+        /// <summary>
+        /// Test the property 'UsageType'
+        /// </summary>
+        [Fact]
+        public void UsageTypeTest()
+        {
+            // TODO unit test for the property 'UsageType'
+        }
+
         /// <summary>
         /// Test the property 'CharacterId'
         /// </summary>
-        [Test]
+        [Fact]
         public void CharacterIdTest()
         {
             // TODO unit test for the property 'CharacterId'
         }
+
         /// <summary>
         /// Test the property 'OrganizationId'
         /// </summary>
-        [Test]
+        [Fact]
         public void OrganizationIdTest()
         {
             // TODO unit test for the property 'OrganizationId'
         }
+
         /// <summary>
         /// Test the property 'FolderId'
         /// </summary>
-        [Test]
+        [Fact]
         public void FolderIdTest()
         {
             // TODO unit test for the property 'FolderId'
         }
+
         /// <summary>
         /// Test the property 'CreatedAt'
         /// </summary>
-        [Test]
+        [Fact]
         public void CreatedAtTest()
         {
             // TODO unit test for the property 'CreatedAt'

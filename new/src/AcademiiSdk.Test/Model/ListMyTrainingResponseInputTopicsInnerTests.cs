@@ -8,16 +8,15 @@
  */
 
 
+using Xunit;
+
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
-using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
-using Newtonsoft.Json;
-using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -47,7 +46,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of ListMyTrainingResponseInputTopicsInner
         /// </summary>
-        [Test]
+        [Fact]
         public void ListMyTrainingResponseInputTopicsInnerInstanceTest()
         {
             // TODO uncomment below to test "IsType" ListMyTrainingResponseInputTopicsInner
@@ -57,58 +56,64 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'TopicId'
         /// </summary>
-        [Test]
+        [Fact]
         public void TopicIdTest()
         {
             // TODO unit test for the property 'TopicId'
         }
+
         /// <summary>
         /// Test the property 'OrganizationId'
         /// </summary>
-        [Test]
+        [Fact]
         public void OrganizationIdTest()
         {
             // TODO unit test for the property 'OrganizationId'
         }
+
         /// <summary>
         /// Test the property 'Name'
         /// </summary>
-        [Test]
+        [Fact]
         public void NameTest()
         {
             // TODO unit test for the property 'Name'
         }
-        /// <summary>
-        /// Test the property 'Description'
-        /// </summary>
-        [Test]
-        public void DescriptionTest()
-        {
-            // TODO unit test for the property 'Description'
-        }
+
         /// <summary>
         /// Test the property 'SortOrder'
         /// </summary>
-        [Test]
+        [Fact]
         public void SortOrderTest()
         {
             // TODO unit test for the property 'SortOrder'
         }
-        /// <summary>
-        /// Test the property 'EnforceCourseOrder'
-        /// </summary>
-        [Test]
-        public void EnforceCourseOrderTest()
-        {
-            // TODO unit test for the property 'EnforceCourseOrder'
-        }
+
         /// <summary>
         /// Test the property 'Courses'
         /// </summary>
-        [Test]
+        [Fact]
         public void CoursesTest()
         {
             // TODO unit test for the property 'Courses'
+        }
+
+        /// <summary>
+        /// Test the property 'Description'
+        /// </summary>
+        [Fact]
+        public void DescriptionTest()
+        {
+            // TODO unit test for the property 'Description'
+        }
+
+        /// <summary>
+        /// Test the property 'EnforceCourseOrder'
+        /// </summary>
+        [Fact]
+        public void EnforceCourseOrderTest()
+        {
+            // TODO unit test for the property 'EnforceCourseOrder'
         }
     }
 }

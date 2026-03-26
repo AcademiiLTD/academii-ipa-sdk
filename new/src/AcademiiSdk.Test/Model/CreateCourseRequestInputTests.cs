@@ -8,16 +8,15 @@
  */
 
 
+using Xunit;
+
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
-using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
-using Newtonsoft.Json;
-using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -47,7 +46,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of CreateCourseRequestInput
         /// </summary>
-        [Test]
+        [Fact]
         public void CreateCourseRequestInputInstanceTest()
         {
             // TODO uncomment below to test "IsType" CreateCourseRequestInput
@@ -57,55 +56,61 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'TopicId'
         /// </summary>
-        [Test]
+        [Fact]
         public void TopicIdTest()
         {
             // TODO unit test for the property 'TopicId'
         }
+
         /// <summary>
         /// Test the property 'Name'
         /// </summary>
-        [Test]
+        [Fact]
         public void NameTest()
         {
             // TODO unit test for the property 'Name'
         }
+
         /// <summary>
         /// Test the property 'Code'
         /// </summary>
-        [Test]
+        [Fact]
         public void CodeTest()
         {
             // TODO unit test for the property 'Code'
         }
+
         /// <summary>
         /// Test the property 'Description'
         /// </summary>
-        [Test]
+        [Fact]
         public void DescriptionTest()
         {
             // TODO unit test for the property 'Description'
         }
-        /// <summary>
-        /// Test the property 'SortOrder'
-        /// </summary>
-        [Test]
-        public void SortOrderTest()
-        {
-            // TODO unit test for the property 'SortOrder'
-        }
+
         /// <summary>
         /// Test the property 'EnforceModuleOrder'
         /// </summary>
-        [Test]
+        [Fact]
         public void EnforceModuleOrderTest()
         {
             // TODO unit test for the property 'EnforceModuleOrder'
         }
+
+        /// <summary>
+        /// Test the property 'SortOrder'
+        /// </summary>
+        [Fact]
+        public void SortOrderTest()
+        {
+            // TODO unit test for the property 'SortOrder'
+        }
+
         /// <summary>
         /// Test the property 'OrganizationId'
         /// </summary>
-        [Test]
+        [Fact]
         public void OrganizationIdTest()
         {
             // TODO unit test for the property 'OrganizationId'

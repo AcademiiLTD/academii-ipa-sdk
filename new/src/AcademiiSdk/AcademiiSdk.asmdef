@@ -1,7 +1,0 @@
-{
-    "name": "AcademiiSdk",
-    "overrideReferences": true,
-    "precompiledReferences": [
-        "Newtonsoft.Json.dll"
-    ]
-}

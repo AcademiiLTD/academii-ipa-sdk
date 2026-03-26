@@ -8,16 +8,15 @@
  */
 
 
+using Xunit;
+
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
-using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
-using Newtonsoft.Json;
-using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -47,7 +46,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of OrganizationGroupRemoveUserResponseData
         /// </summary>
-        [Test]
+        [Fact]
         public void OrganizationGroupRemoveUserResponseDataInstanceTest()
         {
             // TODO uncomment below to test "IsType" OrganizationGroupRemoveUserResponseData
@@ -57,15 +56,16 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'GroupId'
         /// </summary>
-        [Test]
+        [Fact]
         public void GroupIdTest()
         {
             // TODO unit test for the property 'GroupId'
         }
+
         /// <summary>
         /// Test the property 'RemovedUserId'
         /// </summary>
-        [Test]
+        [Fact]
         public void RemovedUserIdTest()
         {
             // TODO unit test for the property 'RemovedUserId'

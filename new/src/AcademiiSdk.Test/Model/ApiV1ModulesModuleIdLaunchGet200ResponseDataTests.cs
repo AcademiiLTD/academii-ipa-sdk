@@ -8,16 +8,15 @@
  */
 
 
+using Xunit;
+
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
-using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
-using Newtonsoft.Json;
-using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -47,7 +46,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of ApiV1ModulesModuleIdLaunchGet200ResponseData
         /// </summary>
-        [Test]
+        [Fact]
         public void ApiV1ModulesModuleIdLaunchGet200ResponseDataInstanceTest()
         {
             // TODO uncomment below to test "IsType" ApiV1ModulesModuleIdLaunchGet200ResponseData
@@ -57,114 +56,127 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'ModuleId'
         /// </summary>
-        [Test]
+        [Fact]
         public void ModuleIdTest()
         {
             // TODO unit test for the property 'ModuleId'
         }
+
         /// <summary>
         /// Test the property 'CourseId'
         /// </summary>
-        [Test]
+        [Fact]
         public void CourseIdTest()
         {
             // TODO unit test for the property 'CourseId'
         }
+
         /// <summary>
         /// Test the property 'OrganizationId'
         /// </summary>
-        [Test]
+        [Fact]
         public void OrganizationIdTest()
         {
             // TODO unit test for the property 'OrganizationId'
         }
+
         /// <summary>
         /// Test the property 'PackageType'
         /// </summary>
-        [Test]
+        [Fact]
         public void PackageTypeTest()
         {
             // TODO unit test for the property 'PackageType'
         }
+
+        /// <summary>
+        /// Test the property 'IsActive'
+        /// </summary>
+        [Fact]
+        public void IsActiveTest()
+        {
+            // TODO unit test for the property 'IsActive'
+        }
+
         /// <summary>
         /// Test the property 'LaunchPath'
         /// </summary>
-        [Test]
+        [Fact]
         public void LaunchPathTest()
         {
             // TODO unit test for the property 'LaunchPath'
         }
+
         /// <summary>
         /// Test the property 'LaunchUrl'
         /// </summary>
-        [Test]
+        [Fact]
         public void LaunchUrlTest()
         {
             // TODO unit test for the property 'LaunchUrl'
         }
+
         /// <summary>
         /// Test the property 'ManifestPath'
         /// </summary>
-        [Test]
+        [Fact]
         public void ManifestPathTest()
         {
             // TODO unit test for the property 'ManifestPath'
         }
+
         /// <summary>
         /// Test the property 'ScormVersion'
         /// </summary>
-        [Test]
+        [Fact]
         public void ScormVersionTest()
         {
             // TODO unit test for the property 'ScormVersion'
         }
+
         /// <summary>
         /// Test the property 'ActivityId'
         /// </summary>
-        [Test]
+        [Fact]
         public void ActivityIdTest()
         {
             // TODO unit test for the property 'ActivityId'
         }
+
         /// <summary>
         /// Test the property 'XapiActivityTotal'
         /// </summary>
-        [Test]
+        [Fact]
         public void XapiActivityTotalTest()
         {
             // TODO unit test for the property 'XapiActivityTotal'
         }
+
         /// <summary>
         /// Test the property 'XapiActivityIds'
         /// </summary>
-        [Test]
+        [Fact]
         public void XapiActivityIdsTest()
         {
             // TODO unit test for the property 'XapiActivityIds'
         }
+
         /// <summary>
         /// Test the property 'ContentBaseKey'
         /// </summary>
-        [Test]
+        [Fact]
         public void ContentBaseKeyTest()
         {
             // TODO unit test for the property 'ContentBaseKey'
         }
+
         /// <summary>
         /// Test the property 'PackageS3Key'
         /// </summary>
-        [Test]
+        [Fact]
         public void PackageS3KeyTest()
         {
             // TODO unit test for the property 'PackageS3Key'
-        }
-        /// <summary>
-        /// Test the property 'IsActive'
-        /// </summary>
-        [Test]
-        public void IsActiveTest()
-        {
-            // TODO unit test for the property 'IsActive'
         }
     }
 }

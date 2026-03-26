@@ -8,16 +8,15 @@
  */
 
 
+using Xunit;
+
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
-using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
-using Newtonsoft.Json;
-using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -47,7 +46,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of CourseListResponseInputDataInnerModulesInner
         /// </summary>
-        [Test]
+        [Fact]
         public void CourseListResponseInputDataInnerModulesInnerInstanceTest()
         {
             // TODO uncomment below to test "IsType" CourseListResponseInputDataInnerModulesInner
@@ -57,143 +56,160 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Id'
         /// </summary>
-        [Test]
+        [Fact]
         public void IdTest()
         {
             // TODO unit test for the property 'Id'
         }
+
         /// <summary>
         /// Test the property 'CourseId'
         /// </summary>
-        [Test]
+        [Fact]
         public void CourseIdTest()
         {
             // TODO unit test for the property 'CourseId'
         }
+
         /// <summary>
         /// Test the property 'Name'
         /// </summary>
-        [Test]
+        [Fact]
         public void NameTest()
         {
             // TODO unit test for the property 'Name'
         }
-        /// <summary>
-        /// Test the property 'Description'
-        /// </summary>
-        [Test]
-        public void DescriptionTest()
-        {
-            // TODO unit test for the property 'Description'
-        }
+
         /// <summary>
         /// Test the property 'SortOrder'
         /// </summary>
-        [Test]
+        [Fact]
         public void SortOrderTest()
         {
             // TODO unit test for the property 'SortOrder'
         }
-        /// <summary>
-        /// Test the property 'ThumbnailUrl'
-        /// </summary>
-        [Test]
-        public void ThumbnailUrlTest()
-        {
-            // TODO unit test for the property 'ThumbnailUrl'
-        }
+
         /// <summary>
         /// Test the property 'PackageType'
         /// </summary>
-        [Test]
+        [Fact]
         public void PackageTypeTest()
         {
             // TODO unit test for the property 'PackageType'
         }
-        /// <summary>
-        /// Test the property 'PackageS3Key'
-        /// </summary>
-        [Test]
-        public void PackageS3KeyTest()
-        {
-            // TODO unit test for the property 'PackageS3Key'
-        }
-        /// <summary>
-        /// Test the property 'LaunchPath'
-        /// </summary>
-        [Test]
-        public void LaunchPathTest()
-        {
-            // TODO unit test for the property 'LaunchPath'
-        }
-        /// <summary>
-        /// Test the property 'ManifestPath'
-        /// </summary>
-        [Test]
-        public void ManifestPathTest()
-        {
-            // TODO unit test for the property 'ManifestPath'
-        }
-        /// <summary>
-        /// Test the property 'ScormVersion'
-        /// </summary>
-        [Test]
-        public void ScormVersionTest()
-        {
-            // TODO unit test for the property 'ScormVersion'
-        }
-        /// <summary>
-        /// Test the property 'ActivityId'
-        /// </summary>
-        [Test]
-        public void ActivityIdTest()
-        {
-            // TODO unit test for the property 'ActivityId'
-        }
-        /// <summary>
-        /// Test the property 'XapiActivityTotal'
-        /// </summary>
-        [Test]
-        public void XapiActivityTotalTest()
-        {
-            // TODO unit test for the property 'XapiActivityTotal'
-        }
-        /// <summary>
-        /// Test the property 'XapiActivityIds'
-        /// </summary>
-        [Test]
-        public void XapiActivityIdsTest()
-        {
-            // TODO unit test for the property 'XapiActivityIds'
-        }
+
         /// <summary>
         /// Test the property 'IsActive'
         /// </summary>
-        [Test]
+        [Fact]
         public void IsActiveTest()
         {
             // TODO unit test for the property 'IsActive'
         }
+
+        /// <summary>
+        /// Test the property 'Description'
+        /// </summary>
+        [Fact]
+        public void DescriptionTest()
+        {
+            // TODO unit test for the property 'Description'
+        }
+
+        /// <summary>
+        /// Test the property 'ThumbnailUrl'
+        /// </summary>
+        [Fact]
+        public void ThumbnailUrlTest()
+        {
+            // TODO unit test for the property 'ThumbnailUrl'
+        }
+
+        /// <summary>
+        /// Test the property 'PackageS3Key'
+        /// </summary>
+        [Fact]
+        public void PackageS3KeyTest()
+        {
+            // TODO unit test for the property 'PackageS3Key'
+        }
+
+        /// <summary>
+        /// Test the property 'LaunchPath'
+        /// </summary>
+        [Fact]
+        public void LaunchPathTest()
+        {
+            // TODO unit test for the property 'LaunchPath'
+        }
+
+        /// <summary>
+        /// Test the property 'ManifestPath'
+        /// </summary>
+        [Fact]
+        public void ManifestPathTest()
+        {
+            // TODO unit test for the property 'ManifestPath'
+        }
+
+        /// <summary>
+        /// Test the property 'ScormVersion'
+        /// </summary>
+        [Fact]
+        public void ScormVersionTest()
+        {
+            // TODO unit test for the property 'ScormVersion'
+        }
+
+        /// <summary>
+        /// Test the property 'ActivityId'
+        /// </summary>
+        [Fact]
+        public void ActivityIdTest()
+        {
+            // TODO unit test for the property 'ActivityId'
+        }
+
+        /// <summary>
+        /// Test the property 'XapiActivityTotal'
+        /// </summary>
+        [Fact]
+        public void XapiActivityTotalTest()
+        {
+            // TODO unit test for the property 'XapiActivityTotal'
+        }
+
+        /// <summary>
+        /// Test the property 'XapiActivityIds'
+        /// </summary>
+        [Fact]
+        public void XapiActivityIdsTest()
+        {
+            // TODO unit test for the property 'XapiActivityIds'
+        }
+
         /// <summary>
         /// Test the property 'CreatedBy'
         /// </summary>
-        [Test]
+        [Fact]
         public void CreatedByTest()
         {
             // TODO unit test for the property 'CreatedBy'
         }
+
         /// <summary>
         /// Test the property 'CreatedAt'
         /// </summary>
-        [Test]
+        [Fact]
         public void CreatedAtTest()
         {
             // TODO unit test for the property 'CreatedAt'
         }
+
         /// <summary>
         /// Test the property 'UpdatedAt'
         /// </summary>
-        [Test]
+        [Fact]
         public void UpdatedAtTest()
         {
             // TODO unit test for the property 'UpdatedAt'

@@ -8,16 +8,15 @@
  */
 
 
+using Xunit;
+
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
-using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
-using Newtonsoft.Json;
-using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -47,7 +46,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of GetVoicesResponseVoicesInner
         /// </summary>
-        [Test]
+        [Fact]
         public void GetVoicesResponseVoicesInnerInstanceTest()
         {
             // TODO uncomment below to test "IsType" GetVoicesResponseVoicesInner
@@ -57,87 +56,97 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Id'
         /// </summary>
-        [Test]
+        [Fact]
         public void IdTest()
         {
             // TODO unit test for the property 'Id'
         }
+
         /// <summary>
         /// Test the property 'Name'
         /// </summary>
-        [Test]
+        [Fact]
         public void NameTest()
         {
             // TODO unit test for the property 'Name'
         }
+
         /// <summary>
         /// Test the property 'Service'
         /// </summary>
-        [Test]
+        [Fact]
         public void ServiceTest()
         {
             // TODO unit test for the property 'Service'
         }
+
         /// <summary>
         /// Test the property 'Gender'
         /// </summary>
-        [Test]
+        [Fact]
         public void GenderTest()
         {
             // TODO unit test for the property 'Gender'
         }
+
         /// <summary>
         /// Test the property 'Language'
         /// </summary>
-        [Test]
+        [Fact]
         public void LanguageTest()
         {
             // TODO unit test for the property 'Language'
         }
+
         /// <summary>
         /// Test the property 'Accent'
         /// </summary>
-        [Test]
+        [Fact]
         public void AccentTest()
         {
             // TODO unit test for the property 'Accent'
         }
+
         /// <summary>
         /// Test the property 'Age'
         /// </summary>
-        [Test]
+        [Fact]
         public void AgeTest()
         {
             // TODO unit test for the property 'Age'
         }
+
         /// <summary>
         /// Test the property 'Category'
         /// </summary>
-        [Test]
+        [Fact]
         public void CategoryTest()
         {
             // TODO unit test for the property 'Category'
         }
+
         /// <summary>
         /// Test the property 'Description'
         /// </summary>
-        [Test]
+        [Fact]
         public void DescriptionTest()
         {
             // TODO unit test for the property 'Description'
         }
+
         /// <summary>
         /// Test the property 'PreviewUrl'
         /// </summary>
-        [Test]
+        [Fact]
         public void PreviewUrlTest()
         {
             // TODO unit test for the property 'PreviewUrl'
         }
+
         /// <summary>
         /// Test the property 'Settings'
         /// </summary>
-        [Test]
+        [Fact]
         public void SettingsTest()
         {
             // TODO unit test for the property 'Settings'

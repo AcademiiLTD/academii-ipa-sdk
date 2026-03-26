@@ -8,16 +8,15 @@
  */
 
 
+using Xunit;
+
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
-using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
-using Newtonsoft.Json;
-using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -47,7 +46,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of GetModerationLogsResponseLogsInner
         /// </summary>
-        [Test]
+        [Fact]
         public void GetModerationLogsResponseLogsInnerInstanceTest()
         {
             // TODO uncomment below to test "IsType" GetModerationLogsResponseLogsInner
@@ -57,79 +56,88 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Id'
         /// </summary>
-        [Test]
+        [Fact]
         public void IdTest()
         {
             // TODO unit test for the property 'Id'
         }
-        /// <summary>
-        /// Test the property 'UserId'
-        /// </summary>
-        [Test]
-        public void UserIdTest()
-        {
-            // TODO unit test for the property 'UserId'
-        }
-        /// <summary>
-        /// Test the property 'CharacterId'
-        /// </summary>
-        [Test]
-        public void CharacterIdTest()
-        {
-            // TODO unit test for the property 'CharacterId'
-        }
-        /// <summary>
-        /// Test the property 'ChatId'
-        /// </summary>
-        [Test]
-        public void ChatIdTest()
-        {
-            // TODO unit test for the property 'ChatId'
-        }
+
         /// <summary>
         /// Test the property 'Flagged'
         /// </summary>
-        [Test]
+        [Fact]
         public void FlaggedTest()
         {
             // TODO unit test for the property 'Flagged'
         }
+
+        /// <summary>
+        /// Test the property 'UserId'
+        /// </summary>
+        [Fact]
+        public void UserIdTest()
+        {
+            // TODO unit test for the property 'UserId'
+        }
+
+        /// <summary>
+        /// Test the property 'CharacterId'
+        /// </summary>
+        [Fact]
+        public void CharacterIdTest()
+        {
+            // TODO unit test for the property 'CharacterId'
+        }
+
+        /// <summary>
+        /// Test the property 'ChatId'
+        /// </summary>
+        [Fact]
+        public void ChatIdTest()
+        {
+            // TODO unit test for the property 'ChatId'
+        }
+
         /// <summary>
         /// Test the property 'Categories'
         /// </summary>
-        [Test]
+        [Fact]
         public void CategoriesTest()
         {
             // TODO unit test for the property 'Categories'
         }
+
         /// <summary>
         /// Test the property 'CategoryScores'
         /// </summary>
-        [Test]
+        [Fact]
         public void CategoryScoresTest()
         {
             // TODO unit test for the property 'CategoryScores'
         }
+
         /// <summary>
         /// Test the property 'Reason'
         /// </summary>
-        [Test]
+        [Fact]
         public void ReasonTest()
         {
             // TODO unit test for the property 'Reason'
         }
+
         /// <summary>
         /// Test the property 'OriginalMessage'
         /// </summary>
-        [Test]
+        [Fact]
         public void OriginalMessageTest()
         {
             // TODO unit test for the property 'OriginalMessage'
         }
+
         /// <summary>
         /// Test the property 'CreatedAt'
         /// </summary>
-        [Test]
+        [Fact]
         public void CreatedAtTest()
         {
             // TODO unit test for the property 'CreatedAt'

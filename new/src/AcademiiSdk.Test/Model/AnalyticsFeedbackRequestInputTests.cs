@@ -8,16 +8,15 @@
  */
 
 
+using Xunit;
+
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
-using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
-using Newtonsoft.Json;
-using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -47,7 +46,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of AnalyticsFeedbackRequestInput
         /// </summary>
-        [Test]
+        [Fact]
         public void AnalyticsFeedbackRequestInputInstanceTest()
         {
             // TODO uncomment below to test "IsType" AnalyticsFeedbackRequestInput
@@ -57,39 +56,43 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'OrganizationId'
         /// </summary>
-        [Test]
+        [Fact]
         public void OrganizationIdTest()
         {
             // TODO unit test for the property 'OrganizationId'
         }
+
         /// <summary>
         /// Test the property 'StartDate'
         /// </summary>
-        [Test]
+        [Fact]
         public void StartDateTest()
         {
             // TODO unit test for the property 'StartDate'
         }
+
         /// <summary>
         /// Test the property 'EndDate'
         /// </summary>
-        [Test]
+        [Fact]
         public void EndDateTest()
         {
             // TODO unit test for the property 'EndDate'
         }
+
         /// <summary>
         /// Test the property 'IncludeArchived'
         /// </summary>
-        [Test]
+        [Fact]
         public void IncludeArchivedTest()
         {
             // TODO unit test for the property 'IncludeArchived'
         }
+
         /// <summary>
         /// Test the property 'Limit'
         /// </summary>
-        [Test]
+        [Fact]
         public void LimitTest()
         {
             // TODO unit test for the property 'Limit'

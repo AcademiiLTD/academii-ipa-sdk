@@ -8,16 +8,15 @@
  */
 
 
+using Xunit;
+
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
-using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
-using Newtonsoft.Json;
-using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -47,7 +46,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of AnalyticsLatencyResponseData
         /// </summary>
-        [Test]
+        [Fact]
         public void AnalyticsLatencyResponseDataInstanceTest()
         {
             // TODO uncomment below to test "IsType" AnalyticsLatencyResponseData
@@ -57,42 +56,46 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'LatencyUnit'
         /// </summary>
-        [Test]
+        [Fact]
         public void LatencyUnitTest()
         {
             // TODO unit test for the property 'LatencyUnit'
         }
-        /// <summary>
-        /// Test the property 'OverallAverageLatency'
-        /// </summary>
-        [Test]
-        public void OverallAverageLatencyTest()
-        {
-            // TODO unit test for the property 'OverallAverageLatency'
-        }
+
         /// <summary>
         /// Test the property 'SessionAverages'
         /// </summary>
-        [Test]
+        [Fact]
         public void SessionAveragesTest()
         {
             // TODO unit test for the property 'SessionAverages'
         }
+
         /// <summary>
         /// Test the property 'Sessions'
         /// </summary>
-        [Test]
+        [Fact]
         public void SessionsTest()
         {
             // TODO unit test for the property 'Sessions'
         }
+
         /// <summary>
         /// Test the property 'MissingSessionIds'
         /// </summary>
-        [Test]
+        [Fact]
         public void MissingSessionIdsTest()
         {
             // TODO unit test for the property 'MissingSessionIds'
+        }
+
+        /// <summary>
+        /// Test the property 'OverallAverageLatency'
+        /// </summary>
+        [Fact]
+        public void OverallAverageLatencyTest()
+        {
+            // TODO unit test for the property 'OverallAverageLatency'
         }
     }
 }

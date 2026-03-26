@@ -8,16 +8,15 @@
  */
 
 
+using Xunit;
+
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
-using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
-using Newtonsoft.Json;
-using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -47,7 +46,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of UploadFileResponseInput
         /// </summary>
-        [Test]
+        [Fact]
         public void UploadFileResponseInputInstanceTest()
         {
             // TODO uncomment below to test "IsType" UploadFileResponseInput
@@ -57,63 +56,70 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Success'
         /// </summary>
-        [Test]
+        [Fact]
         public void SuccessTest()
         {
             // TODO unit test for the property 'Success'
         }
+
         /// <summary>
         /// Test the property 'Files'
         /// </summary>
-        [Test]
+        [Fact]
         public void FilesTest()
         {
             // TODO unit test for the property 'Files'
         }
+
         /// <summary>
         /// Test the property 'TotalUploaded'
         /// </summary>
-        [Test]
+        [Fact]
         public void TotalUploadedTest()
         {
             // TODO unit test for the property 'TotalUploaded'
         }
+
         /// <summary>
         /// Test the property 'Data'
         /// </summary>
-        [Test]
+        [Fact]
         public void DataTest()
         {
             // TODO unit test for the property 'Data'
         }
+
         /// <summary>
         /// Test the property 'UploadedFileIds'
         /// </summary>
-        [Test]
+        [Fact]
         public void UploadedFileIdsTest()
         {
             // TODO unit test for the property 'UploadedFileIds'
         }
+
         /// <summary>
         /// Test the property 'StorageInfo'
         /// </summary>
-        [Test]
+        [Fact]
         public void StorageInfoTest()
         {
             // TODO unit test for the property 'StorageInfo'
         }
+
         /// <summary>
         /// Test the property 'Errors'
         /// </summary>
-        [Test]
+        [Fact]
         public void ErrorsTest()
         {
             // TODO unit test for the property 'Errors'
         }
+
         /// <summary>
         /// Test the property 'PartialSuccess'
         /// </summary>
-        [Test]
+        [Fact]
         public void PartialSuccessTest()
         {
             // TODO unit test for the property 'PartialSuccess'

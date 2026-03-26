@@ -8,16 +8,15 @@
  */
 
 
+using Xunit;
+
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
-using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
-using Newtonsoft.Json;
-using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -47,7 +46,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of ListMyTrainingResponse
         /// </summary>
-        [Test]
+        [Fact]
         public void ListMyTrainingResponseInstanceTest()
         {
             // TODO uncomment below to test "IsType" ListMyTrainingResponse
@@ -57,47 +56,52 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Topics'
         /// </summary>
-        [Test]
+        [Fact]
         public void TopicsTest()
         {
             // TODO unit test for the property 'Topics'
         }
+
         /// <summary>
         /// Test the property 'Total'
         /// </summary>
-        [Test]
+        [Fact]
         public void TotalTest()
         {
             // TODO unit test for the property 'Total'
         }
+
         /// <summary>
         /// Test the property 'Limit'
         /// </summary>
-        [Test]
+        [Fact]
         public void LimitTest()
         {
             // TODO unit test for the property 'Limit'
         }
+
         /// <summary>
         /// Test the property 'Offset'
         /// </summary>
-        [Test]
+        [Fact]
         public void OffsetTest()
         {
             // TODO unit test for the property 'Offset'
         }
+
         /// <summary>
         /// Test the property 'NextCursor'
         /// </summary>
-        [Test]
+        [Fact]
         public void NextCursorTest()
         {
             // TODO unit test for the property 'NextCursor'
         }
+
         /// <summary>
         /// Test the property 'HasNextPage'
         /// </summary>
-        [Test]
+        [Fact]
         public void HasNextPageTest()
         {
             // TODO unit test for the property 'HasNextPage'

@@ -8,16 +8,15 @@
  */
 
 
+using Xunit;
+
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
-using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
-using Newtonsoft.Json;
-using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -47,108 +46,11 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of ApiV1TopicsTopicIdDelete200ResponseData
         /// </summary>
-        [Test]
+        [Fact]
         public void ApiV1TopicsTopicIdDelete200ResponseDataInstanceTest()
         {
             // TODO uncomment below to test "IsType" ApiV1TopicsTopicIdDelete200ResponseData
             //Assert.IsType<ApiV1TopicsTopicIdDelete200ResponseData>(instance);
-        }
-
-        /// <summary>
-        /// Test the property 'Id'
-        /// </summary>
-        [Test]
-        public void IdTest()
-        {
-            // TODO unit test for the property 'Id'
-        }
-        /// <summary>
-        /// Test the property 'OrganizationId'
-        /// </summary>
-        [Test]
-        public void OrganizationIdTest()
-        {
-            // TODO unit test for the property 'OrganizationId'
-        }
-        /// <summary>
-        /// Test the property 'OrganizationIds'
-        /// </summary>
-        [Test]
-        public void OrganizationIdsTest()
-        {
-            // TODO unit test for the property 'OrganizationIds'
-        }
-        /// <summary>
-        /// Test the property 'Name'
-        /// </summary>
-        [Test]
-        public void NameTest()
-        {
-            // TODO unit test for the property 'Name'
-        }
-        /// <summary>
-        /// Test the property 'Description'
-        /// </summary>
-        [Test]
-        public void DescriptionTest()
-        {
-            // TODO unit test for the property 'Description'
-        }
-        /// <summary>
-        /// Test the property 'SortOrder'
-        /// </summary>
-        [Test]
-        public void SortOrderTest()
-        {
-            // TODO unit test for the property 'SortOrder'
-        }
-        /// <summary>
-        /// Test the property 'EnforceCourseOrder'
-        /// </summary>
-        [Test]
-        public void EnforceCourseOrderTest()
-        {
-            // TODO unit test for the property 'EnforceCourseOrder'
-        }
-        /// <summary>
-        /// Test the property 'CourseCount'
-        /// </summary>
-        [Test]
-        public void CourseCountTest()
-        {
-            // TODO unit test for the property 'CourseCount'
-        }
-        /// <summary>
-        /// Test the property 'IsActive'
-        /// </summary>
-        [Test]
-        public void IsActiveTest()
-        {
-            // TODO unit test for the property 'IsActive'
-        }
-        /// <summary>
-        /// Test the property 'CreatedBy'
-        /// </summary>
-        [Test]
-        public void CreatedByTest()
-        {
-            // TODO unit test for the property 'CreatedBy'
-        }
-        /// <summary>
-        /// Test the property 'CreatedAt'
-        /// </summary>
-        [Test]
-        public void CreatedAtTest()
-        {
-            // TODO unit test for the property 'CreatedAt'
-        }
-        /// <summary>
-        /// Test the property 'UpdatedAt'
-        /// </summary>
-        [Test]
-        public void UpdatedAtTest()
-        {
-            // TODO unit test for the property 'UpdatedAt'
         }
     }
 }

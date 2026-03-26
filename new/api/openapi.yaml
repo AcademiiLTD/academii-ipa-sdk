@@ -8,6 +8,8 @@ servers:
   url: https://dev.academii.com
 - description: Local development server
   url: http://localhost:3001
+security:
+- bearerAuth: []
 paths:
   /api/v1/auth/register:
     post:
@@ -829,7 +831,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/_api_v1_characters__post_200_response"
+                $ref: "#/components/schemas/_api_v1_characters__id__get_200_response"
           description: Default Response
         "400":
           content:
@@ -1755,11 +1757,18 @@ paths:
       parameters:
       - explode: false
         in: path
-        name: characterId
+        name: id
         required: true
         schema:
           format: uuid
           pattern: "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: linkId
+        required: true
+        schema:
           type: string
         style: simple
       responses:
@@ -2317,6 +2326,7 @@ paths:
         schema:
           exclusiveMinimum: true
           maximum: 9007199254740991
+          minimum: 0
           type: integer
         style: form
       responses:
@@ -2449,12 +2459,6 @@ paths:
           pattern: "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
           type: string
         style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/_api_v1_files__id__delete_request"
-        required: true
       responses:
         "400":
           content:
@@ -3681,54 +3685,13 @@ paths:
               $ref: "#/components/schemas/TTSSynthesizeRequestInput"
         required: true
       responses:
-        "400":
+        "200":
           content:
-            application/json:
+            application/octet-stream:
               schema:
-                $ref: "#/components/schemas/BadRequestError"
-          description: Default Response
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UnauthorizedError"
-          description: Default Response
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ForbiddenError"
-          description: Default Response
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/NotFoundError"
-          description: Default Response
-        "409":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ConflictError"
-          description: Default Response
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TooManyRequestsError"
-          description: Default Response
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/InternalServerError"
-          description: Default Response
-        "503":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ServiceUnavailableError"
-          description: Default Response
+                format: binary
+                type: string
+          description: Audio file
   /api/v1/voice/stt/languages:
     get:
       responses:
@@ -10247,7 +10210,7 @@ paths:
         schema:
           additionalProperties:
             additionalProperties:
-              $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/QueryOperatorValue
+              $ref: "#/components/schemas/QueryOperatorValueInput"
             properties: {}
             type: object
           default: {}
@@ -10672,9 +10635,6 @@ components:
           - admin
           - learner
           type: string
-        organization_id:
-          nullable: true
-          type: string
         organization:
           nullable: true
           type: string
@@ -10899,9 +10859,6 @@ components:
           - superadmin
           - admin
           - learner
-          type: string
-        organization_id:
-          nullable: true
           type: string
         organization:
           nullable: true
@@ -12636,6 +12593,7 @@ components:
       required:
       - services
       type: object
+    BinaryResponseInput: {}
     QueryOperatorValue:
       anyOf:
       - $ref: "#/components/schemas/QueryOperatorValueInput_anyOf"
@@ -12868,6 +12826,21 @@ components:
       type: object
     LoginResponse:
       additionalProperties: false
+      example:
+        session: session
+        challengeParameters:
+          key: challengeParameters
+        destination: destination
+        challengeName: challengeName
+        user:
+          organizationId: organizationId
+          photoURL: photoURL
+          role: superadmin
+          displayName: displayName
+          id: id
+          email: email
+        email: email
+        token: token
       properties:
         user:
           $ref: "#/components/schemas/LoginResponse_user"
@@ -12888,6 +12861,15 @@ components:
       type: object
     RegisterResponse:
       additionalProperties: false
+      example:
+        user:
+          organizationId: organizationId
+          photoURL: photoURL
+          role: superadmin
+          displayName: displayName
+          id: id
+          email: email
+        token: token
       properties:
         user:
           $ref: "#/components/schemas/LoginResponse_user"
@@ -12899,6 +12881,34 @@ components:
       type: object
     VerifyTokenResponse:
       additionalProperties: false
+      example:
+        user:
+          uid: uid
+          photoURL: photoURL
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          role: learner
+          cognitoSub: cognitoSub
+          displayName: displayName
+          organization: organization
+          name: name
+          groups:
+          - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            userCount: 2147483647
+            name: name
+            description: description
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            userCount: 2147483647
+            name: name
+            description: description
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          email: email
+          updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         user:
           $ref: "#/components/schemas/UpdateUserResponse"
@@ -12925,6 +12935,8 @@ components:
       type: object
     VerifyResetTokenResponse:
       additionalProperties: false
+      example:
+        email: email
       properties:
         email:
           type: string
@@ -12941,6 +12953,15 @@ components:
       type: object
     ForceResetPasswordResponse:
       additionalProperties: false
+      example:
+        user:
+          organizationId: organizationId
+          photoURL: photoURL
+          role: superadmin
+          displayName: displayName
+          id: id
+          email: email
+        token: token
       properties:
         user:
           $ref: "#/components/schemas/LoginResponse_user"
@@ -12949,6 +12970,10 @@ components:
       type: object
     VerifyInviteTokenResponse:
       additionalProperties: false
+      example:
+        organizationId: organizationId
+        role: role
+        email: email
       properties:
         email:
           type: string
@@ -12985,9 +13010,6 @@ components:
           - superadmin
           - admin
           - learner
-          type: string
-        organization_id:
-          nullable: true
           type: string
         organization:
           nullable: true
@@ -13032,6 +13054,17 @@ components:
       type: object
     UserRegisterResponse:
       additionalProperties: false
+      example:
+        data:
+          organizationId: organizationId
+          createdAt: createdAt
+          role: role
+          displayName: displayName
+          name: name
+          id: id
+          email: email
+          updatedAt: updatedAt
+        status: status
       properties:
         status:
           type: string
@@ -13043,6 +13076,11 @@ components:
       type: object
     UserLoginResponse:
       additionalProperties: false
+      example:
+        data:
+          info: info
+        message: message
+        status: status
       properties:
         status:
           type: string
@@ -13057,6 +13095,8 @@ components:
       type: object
     UploadProfilePictureResponse:
       additionalProperties: false
+      example:
+        photoURL: photoURL
       properties:
         photoURL:
           type: string
@@ -13146,6 +13186,59 @@ components:
       type: object
     AdminListUsersResponse:
       additionalProperties: false
+      example:
+        total: 0.8008281904610115
+        offset: 1.4658129805029452
+        limit: 6.027456183070403
+        users:
+        - organizationId: organizationId
+          createdAt: null
+          role: superadmin
+          displayName: displayName
+          name: name
+          groups:
+          - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            userCount: 2147483647
+            name: name
+            description: description
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            userCount: 2147483647
+            name: name
+            description: description
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          created_at: AdminListUsersResponse_users_inner_created_at
+          id: id
+          email: email
+          updatedAt: null
+        - organizationId: organizationId
+          createdAt: null
+          role: superadmin
+          displayName: displayName
+          name: name
+          groups:
+          - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            userCount: 2147483647
+            name: name
+            description: description
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            userCount: 2147483647
+            name: name
+            description: description
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          created_at: AdminListUsersResponse_users_inner_created_at
+          id: id
+          email: email
+          updatedAt: null
       properties:
         users:
           items:
@@ -13165,6 +13258,13 @@ components:
       type: object
     CreateUserResponse:
       additionalProperties: false
+      example:
+        organizationId: organizationId
+        uid: uid
+        role: superadmin
+        displayName: displayName
+        name: name
+        email: email
       properties:
         uid:
           type: string
@@ -13192,8 +13292,14 @@ components:
     UpdateUserResponse:
       additionalProperties: false
       example:
+        uid: uid
+        photoURL: photoURL
+        createdAt: 2000-01-23T04:56:07.000+00:00
         role: learner
+        cognitoSub: cognitoSub
         displayName: displayName
+        organization: organization
+        name: name
         groups:
         - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           createdAt: 2000-01-23T04:56:07.000+00:00
@@ -13209,13 +13315,6 @@ components:
           description: description
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           updatedAt: 2000-01-23T04:56:07.000+00:00
-        uid: uid
-        photoURL: photoURL
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        cognitoSub: cognitoSub
-        organization_id: organization_id
-        organization: organization
-        name: name
         id: id
         email: email
         updatedAt: 2000-01-23T04:56:07.000+00:00
@@ -13241,9 +13340,6 @@ components:
           - superadmin
           - admin
           - learner
-          type: string
-        organization_id:
-          nullable: true
           type: string
         organization:
           nullable: true
@@ -13381,6 +13477,79 @@ components:
       type: array
     CharacterResponse:
       additionalProperties: false
+      example:
+        backstory: backstory
+        greeting: greeting
+        description: description
+        voiceSettings:
+          speakerBoost: true
+          voiceId: voiceId
+          voiceName: voiceName
+          service: elevenlabs
+          similarityBoost: 0.7061401241503109
+          style: 0.9301444243932576
+          stability: 0.23021358869347652
+        moderationSettings:
+          customRules:
+          - customRules
+          - customRules
+          level: moderate
+          enabled: true
+        organizationId: organizationId
+        environmentPreset: environmentPreset
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        voiceId: voiceId
+        avatarSettings:
+          idleAnimation: idleAnimation
+          avatarUrl: avatarUrl
+          talkingAnimation: talkingAnimation
+          modelUrl: modelUrl
+          thumbnailUrl: thumbnailUrl
+        previewTallVideoUrl: https://openapi-generator.tech
+        id: id
+        cameraRotation:
+        - null
+        - null
+        - null
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+        persona:
+          backstory: backstory
+          speakingStyle: speakingStyle
+          personality: personality
+          topics:
+          - topics
+          - topics
+          restrictions:
+          - restrictions
+          - restrictions
+        avatarRotation:
+        - null
+        - null
+        - null
+        openaiVectorStoreId: openaiVectorStoreId
+        assetsVersion: 2147483647
+        userId: userId
+        openaiAssistantId: openaiAssistantId
+        systemPrompt: systemPrompt
+        cameraFov: 4.145608029883936
+        previewImageUrl: https://openapi-generator.tech
+        organization: organization
+        modelSettings:
+          presencePenalty: 0.25495066265333133
+          temperature: 0.1601656380922023
+          maxTokens: 77151.83639768286
+          model: gpt-4o-mini
+          topP: 0.14658129805029452
+          frequencyPenalty: 0.38485356667327286
+        name: name
+        files:
+        - files
+        - files
+        cameraPosition:
+        - 2.027123023002322
+        - 2.027123023002322
+        - 2.027123023002322
+        previewVideoUrl: https://openapi-generator.tech
       properties:
         id:
           type: string
@@ -13481,6 +13650,14 @@ components:
       type: array
     UpsertCharacterMeshLinkResponse:
       additionalProperties: false
+      example:
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        meshName: meshName
+        description: description
+        id: id
+        characterId: characterId
+        url: url
+        updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         id:
           type: string
@@ -13699,6 +13876,50 @@ components:
       type: object
     SendMessageResponse:
       additionalProperties: false
+      example:
+        messages:
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          metadata:
+            key: ""
+          role: user
+          citations:
+          - path: path
+            quote: quote
+            title: title
+            usageType: internal
+            fileId: fileId
+          - path: path
+            quote: quote
+            title: title
+            usageType: internal
+            fileId: fileId
+          chatId: chatId
+          citationsLoading: true
+          tokenCount: 0.8008281904610115
+          id: id
+          content: content
+          timestamp: 2000-01-23T04:56:07.000+00:00
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          metadata:
+            key: ""
+          role: user
+          citations:
+          - path: path
+            quote: quote
+            title: title
+            usageType: internal
+            fileId: fileId
+          - path: path
+            quote: quote
+            title: title
+            usageType: internal
+            fileId: fileId
+          chatId: chatId
+          citationsLoading: true
+          tokenCount: 0.8008281904610115
+          id: id
+          content: content
+          timestamp: 2000-01-23T04:56:07.000+00:00
       properties:
         messages:
           items:
@@ -13721,10 +13942,58 @@ components:
       type: object
     GetUserFilesResponse:
       additionalProperties: false
+      example:
+        meta:
+          total: 2.027123023002322
+          limit: 3.616076749251911
+          totalPages: 4.145608029883936
+          hasMore: true
+          page: 9.301444243932576
+        files:
+        - mimeType: mimeType
+          openaiFileId: openaiFileId
+          userId: userId
+          url: url
+          folderId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          originalName: originalName
+          organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          filename: filename
+          s3Key: s3Key
+          fileSize: 0.8008281904610115
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          characterId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          fileType: document
+          status: pending
+          usageType: internal
+        - mimeType: mimeType
+          openaiFileId: openaiFileId
+          userId: userId
+          url: url
+          folderId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          originalName: originalName
+          organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          filename: filename
+          s3Key: s3Key
+          fileSize: 0.8008281904610115
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          characterId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          fileType: document
+          status: pending
+          usageType: internal
+        storageInfo:
+          total: 1.4658129805029452
+          available: 5.962133916683182
+          used: 6.027456183070403
+          limits:
+            maxBatchSize: 2.3021358869347655
+            maxFileSize: 5.637376656633329
+            userLimit: 7.061401241503109
       properties:
         files:
           items:
-            $ref: "#/components/schemas/GetUserFilesResponse_files_inner"
+            $ref: "#/components/schemas/_api_v1_files__id__get_200_response_data"
           type: array
         storageInfo:
           $ref: "#/components/schemas/GetUserFilesResponse_storageInfo"
@@ -13741,13 +14010,13 @@ components:
           type: boolean
         files:
           items:
-            $ref: "#/components/schemas/GetUserFilesResponse_files_inner"
+            $ref: "#/components/schemas/_api_v1_files__id__get_200_response_data"
           type: array
         totalUploaded:
           type: number
         data:
           items:
-            $ref: "#/components/schemas/GetUserFilesResponse_files_inner"
+            $ref: "#/components/schemas/_api_v1_files__id__get_200_response_data"
           type: array
         uploadedFileIds:
           items:
@@ -13775,7 +14044,7 @@ components:
         success:
           type: boolean
         file:
-          $ref: "#/components/schemas/GetUserFilesResponse_files_inner"
+          $ref: "#/components/schemas/_api_v1_files__id__get_200_response_data"
         uploadedFileIds:
           items:
             type: string
@@ -13788,6 +14057,23 @@ components:
       type: object
     FileBulkDeleteResponse:
       additionalProperties: false
+      example:
+        failures:
+        - reason: reason
+          fileId: fileId
+        - reason: reason
+          fileId: fileId
+        deletedFileIds:
+        - deletedFileIds
+        - deletedFileIds
+        storageInfo:
+          total: 1.4658129805029452
+          available: 5.962133916683182
+          used: 6.027456183070403
+          limits:
+            maxBatchSize: 2.3021358869347655
+            maxFileSize: 5.637376656633329
+            userLimit: 7.061401241503109
       properties:
         deletedFileIds:
           items:
@@ -13806,6 +14092,8 @@ components:
       type: object
     GetPresignedUrlResponse:
       additionalProperties: false
+      example:
+        url: url
       properties:
         url:
           type: string
@@ -13818,7 +14106,7 @@ components:
         success:
           type: boolean
         file:
-          $ref: "#/components/schemas/GetUserFilesResponse_files_inner"
+          $ref: "#/components/schemas/_api_v1_files__id__get_200_response_data"
         uploadedFileIds:
           items:
             type: string
@@ -14215,6 +14503,11 @@ components:
       type: object
     HandbookMutationResponse:
       additionalProperties: false
+      example:
+        organizationId: organizationId
+        name: name
+        description: description
+        id: id
       properties:
         id:
           type: string
@@ -14232,6 +14525,9 @@ components:
       type: object
     HandbookAttachResponse:
       additionalProperties: false
+      example:
+        total: 6.027456183070403
+        attached: 0.8008281904610115
       properties:
         attached:
           type: number
@@ -14243,6 +14539,9 @@ components:
       type: object
     HandbookDetachResponse:
       additionalProperties: false
+      example:
+        detached: 0.8008281904610115
+        total: 6.027456183070403
       properties:
         detached:
           type: number
@@ -14258,6 +14557,21 @@ components:
       type: array
     HandbookItemMutationResponse:
       additionalProperties: false
+      example:
+        organizationName: organizationName
+        description: description
+        handbookId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        title: title
+        url: url
+        backingFileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        contentHash: contentHash
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        isDeleted: true
+        handbookName: handbookName
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        syncStatus: synced
+        updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         id:
           format: uuid
@@ -14401,6 +14715,38 @@ components:
       type: object
     KnowledgeFolderListResponse:
       additionalProperties: false
+      example:
+        data:
+        - organizationId: organizationId
+          createdAt: createdAt
+          isDefault: true
+          createdBy: createdBy
+          counts:
+            handbooks: 6.027456183070403
+            characters: 1.4658129805029452
+            files: 0.8008281904610115
+          name: name
+          description: description
+          id: id
+          updatedAt: updatedAt
+        - organizationId: organizationId
+          createdAt: createdAt
+          isDefault: true
+          createdBy: createdBy
+          counts:
+            handbooks: 6.027456183070403
+            characters: 1.4658129805029452
+            files: 0.8008281904610115
+          name: name
+          description: description
+          id: id
+          updatedAt: updatedAt
+        meta:
+          total: 2.3021358869347655
+          limit: 5.637376656633329
+          totalPages: 7.061401241503109
+          page: 5.962133916683182
+        status: status
       properties:
         status:
           type: string
@@ -14417,6 +14763,21 @@ components:
       type: object
     KnowledgeFolderMutationResponse:
       additionalProperties: false
+      example:
+        data:
+          organizationId: organizationId
+          createdAt: createdAt
+          isDefault: true
+          createdBy: createdBy
+          counts:
+            handbooks: 6.027456183070403
+            characters: 1.4658129805029452
+            files: 0.8008281904610115
+          name: name
+          description: description
+          id: id
+          updatedAt: updatedAt
+        status: status
       properties:
         status:
           type: string
@@ -14428,6 +14789,14 @@ components:
       type: object
     KnowledgeFolderDeleteResponse:
       additionalProperties: false
+      example:
+        data:
+          movedHandbooks: 6.027456183070403
+          removedCharacterAssignments: 1.4658129805029452
+          movedFiles: 0.8008281904610115
+          deletedFolderId: deletedFolderId
+          reassignedToDefaultFolderId: reassignedToDefaultFolderId
+        status: status
       properties:
         status:
           type: string
@@ -14439,6 +14808,14 @@ components:
       type: object
     KnowledgeFolderMoveFilesResponse:
       additionalProperties: false
+      example:
+        data:
+          movedCount: 0.8008281904610115
+          movedFileIds:
+          - movedFileIds
+          - movedFileIds
+          targetFolderId: targetFolderId
+        status: status
       properties:
         status:
           type: string
@@ -14450,6 +14827,14 @@ components:
       type: object
     KnowledgeFolderCopyFilesResponse:
       additionalProperties: false
+      example:
+        data:
+          copiedCount: 0.8008281904610115
+          targetFolderId: targetFolderId
+          copiedFileIds:
+          - copiedFileIds
+          - copiedFileIds
+        status: status
       properties:
         status:
           type: string
@@ -14508,6 +14893,13 @@ components:
       type: object
     GetModerationStatsResponse:
       additionalProperties: false
+      example:
+        flagsByCategory:
+          key: 6.027456183070403
+        totalFlags: 0.8008281904610115
+        reasonBreakdown:
+          key: 1.4658129805029452
+        recentFlags: 5.962133916683182
       properties:
         totalFlags:
           type: number
@@ -14528,6 +14920,63 @@ components:
       type: object
     GetModerationContextResponse:
       additionalProperties: false
+      example:
+        messages:
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          metadata:
+            key: ""
+          role: user
+          citations:
+          - path: path
+            quote: quote
+            title: title
+            usageType: internal
+            fileId: fileId
+          - path: path
+            quote: quote
+            title: title
+            usageType: internal
+            fileId: fileId
+          chatId: chatId
+          citationsLoading: true
+          tokenCount: 0.8008281904610115
+          id: id
+          content: content
+          timestamp: 2000-01-23T04:56:07.000+00:00
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          metadata:
+            key: ""
+          role: user
+          citations:
+          - path: path
+            quote: quote
+            title: title
+            usageType: internal
+            fileId: fileId
+          - path: path
+            quote: quote
+            title: title
+            usageType: internal
+            fileId: fileId
+          chatId: chatId
+          citationsLoading: true
+          tokenCount: 0.8008281904610115
+          id: id
+          content: content
+          timestamp: 2000-01-23T04:56:07.000+00:00
+        flaggedMessageId: flaggedMessageId
+        chatInfo:
+          createdAt: createdAt
+          character:
+            organizationId: organizationId
+            name: name
+            id: id
+          id: id
+          title: title
+          user:
+            name: name
+            id: id
+            email: email
       properties:
         messages:
           items:
@@ -14543,6 +14992,8 @@ components:
       type: object
     DeleteModerationLogsResponse:
       additionalProperties: false
+      example:
+        deleted: 0.8008281904610115
       properties:
         deleted:
           type: number
@@ -14717,6 +15168,21 @@ components:
       type: object
     AnalyticsFileUsageExtremesResponse:
       additionalProperties: false
+      example:
+        mostUsed:
+        - fileName: fileName
+          usageCount: 0.8008281904610115
+          fileId: fileId
+        - fileName: fileName
+          usageCount: 0.8008281904610115
+          fileId: fileId
+        leastUsed:
+        - fileName: fileName
+          usageCount: 0.8008281904610115
+          fileId: fileId
+        - fileName: fileName
+          usageCount: 0.8008281904610115
+          fileId: fileId
       properties:
         mostUsed:
           items:
@@ -14732,6 +15198,16 @@ components:
       type: object
     AnalyticsUncitedFilesResponse:
       additionalProperties: false
+      example:
+        files:
+        - fileName: fileName
+          usageCount: 0.8008281904610115
+          fileId: fileId
+        - fileName: fileName
+          usageCount: 0.8008281904610115
+          fileId: fileId
+        totalFiles: 0.8008281904610115
+        citedFiles: 6.027456183070403
       properties:
         files:
           items:
@@ -14748,6 +15224,34 @@ components:
       type: object
     AnalyticsCitationsResponse:
       additionalProperties: false
+      example:
+        files:
+        - citationCount: 0.8008281904610115
+          fileName: fileName
+          recentConversations:
+          - agentName: agentName
+            userEmail: userEmail
+            userName: userName
+            lastCitedAt: lastCitedAt
+          - agentName: agentName
+            userEmail: userEmail
+            userName: userName
+            lastCitedAt: lastCitedAt
+          fileId: fileId
+          lastCitedAt: lastCitedAt
+        - citationCount: 0.8008281904610115
+          fileName: fileName
+          recentConversations:
+          - agentName: agentName
+            userEmail: userEmail
+            userName: userName
+            lastCitedAt: lastCitedAt
+          - agentName: agentName
+            userEmail: userEmail
+            userName: userName
+            lastCitedAt: lastCitedAt
+          fileId: fileId
+          lastCitedAt: lastCitedAt
       properties:
         files:
           items:
@@ -14758,6 +15262,63 @@ components:
       type: object
     AnalyticsCitationsCompareResponse:
       additionalProperties: false
+      example:
+        current:
+          files:
+          - citationCount: 0.8008281904610115
+            fileName: fileName
+            recentConversations:
+            - agentName: agentName
+              userEmail: userEmail
+              userName: userName
+              lastCitedAt: lastCitedAt
+            - agentName: agentName
+              userEmail: userEmail
+              userName: userName
+              lastCitedAt: lastCitedAt
+            fileId: fileId
+            lastCitedAt: lastCitedAt
+          - citationCount: 0.8008281904610115
+            fileName: fileName
+            recentConversations:
+            - agentName: agentName
+              userEmail: userEmail
+              userName: userName
+              lastCitedAt: lastCitedAt
+            - agentName: agentName
+              userEmail: userEmail
+              userName: userName
+              lastCitedAt: lastCitedAt
+            fileId: fileId
+            lastCitedAt: lastCitedAt
+        previous:
+          files:
+          - citationCount: 0.8008281904610115
+            fileName: fileName
+            recentConversations:
+            - agentName: agentName
+              userEmail: userEmail
+              userName: userName
+              lastCitedAt: lastCitedAt
+            - agentName: agentName
+              userEmail: userEmail
+              userName: userName
+              lastCitedAt: lastCitedAt
+            fileId: fileId
+            lastCitedAt: lastCitedAt
+          - citationCount: 0.8008281904610115
+            fileName: fileName
+            recentConversations:
+            - agentName: agentName
+              userEmail: userEmail
+              userName: userName
+              lastCitedAt: lastCitedAt
+            - agentName: agentName
+              userEmail: userEmail
+              userName: userName
+              lastCitedAt: lastCitedAt
+            fileId: fileId
+            lastCitedAt: lastCitedAt
       properties:
         current:
           $ref: "#/components/schemas/AnalyticsCitationsResponse"
@@ -14769,6 +15330,25 @@ components:
       type: object
     AnalyticsUsageCompareResponse:
       additionalProperties: false
+      example:
+        current:
+          numberOfActiveChats: 5.962133916683182
+          activeInteractions: 9.301444243932576
+          chatCount: 6.027456183070403
+          avgResponseLatencyMs: 1.4658129805029452
+          totalUserCount: 2.3021358869347655
+          activeUserCount: 5.637376656633329
+          sessionCount: 0.8008281904610115
+          totalEngagements: 7.061401241503109
+        previous:
+          numberOfActiveChats: 5.962133916683182
+          activeInteractions: 9.301444243932576
+          chatCount: 6.027456183070403
+          avgResponseLatencyMs: 1.4658129805029452
+          totalUserCount: 2.3021358869347655
+          activeUserCount: 5.637376656633329
+          sessionCount: 0.8008281904610115
+          totalEngagements: 7.061401241503109
       properties:
         current:
           $ref: "#/components/schemas/AnalyticsUserUsage"
@@ -14780,6 +15360,12 @@ components:
       type: object
     AnalyticsActiveUsersSeriesResponse:
       additionalProperties: false
+      example:
+        points:
+        - date: date
+          activeUsers: 0.8008281904610115
+        - date: date
+          activeUsers: 0.8008281904610115
       properties:
         points:
           items:
@@ -14790,6 +15376,17 @@ components:
       type: object
     AnalyticsAgentUsageResponse:
       additionalProperties: false
+      example:
+        activeAgentPercent: 1.4658129805029452
+        totalAgents: 0.8008281904610115
+        activeAgents: 6.027456183070403
+        agents:
+        - name: name
+          id: id
+          activeChatCount: 5.962133916683182
+        - name: name
+          id: id
+          activeChatCount: 5.962133916683182
       properties:
         totalAgents:
           type: number
@@ -14809,6 +15406,40 @@ components:
       type: object
     AnalyticsUserChatsResponse:
       additionalProperties: false
+      example:
+        users:
+        - name: name
+          chats:
+          - citationCount: 0.8008281904610115
+            lastMessageAt: lastMessageAt
+            characterName: characterName
+            id: id
+            title: title
+            characterId: characterId
+          - citationCount: 0.8008281904610115
+            lastMessageAt: lastMessageAt
+            characterName: characterName
+            id: id
+            title: title
+            characterId: characterId
+          id: id
+          email: email
+        - name: name
+          chats:
+          - citationCount: 0.8008281904610115
+            lastMessageAt: lastMessageAt
+            characterName: characterName
+            id: id
+            title: title
+            characterId: characterId
+          - citationCount: 0.8008281904610115
+            lastMessageAt: lastMessageAt
+            characterName: characterName
+            id: id
+            title: title
+            characterId: characterId
+          id: id
+          email: email
       properties:
         users:
           items:
@@ -14819,6 +15450,16 @@ components:
       type: object
     AnalyticsInactiveUsersResponse:
       additionalProperties: false
+      example:
+        users:
+        - lastSeenAt: lastSeenAt
+          name: name
+          id: id
+          email: email
+        - lastSeenAt: lastSeenAt
+          name: name
+          id: id
+          email: email
       properties:
         users:
           items:
@@ -14829,6 +15470,16 @@ components:
       type: object
     AnalyticsOverviewTrendResponse:
       additionalProperties: false
+      example:
+        points:
+        - date: date
+          activeInteractions: 6.027456183070403
+          activeUsers: 0.8008281904610115
+          totalCitations: 1.4658129805029452
+        - date: date
+          activeInteractions: 6.027456183070403
+          activeUsers: 0.8008281904610115
+          totalCitations: 1.4658129805029452
       properties:
         points:
           items:
@@ -14839,6 +15490,10 @@ components:
       type: object
     AnalyticsTopicsResponse:
       additionalProperties: false
+      example:
+        topics:
+        - ""
+        - ""
       properties:
         topics:
           items: {}
@@ -14848,6 +15503,13 @@ components:
       type: object
     AnalyticsQuestionTopicsResponse:
       additionalProperties: false
+      example:
+        summary: summary
+        topics:
+        - count: 0.8008281904610115
+          topic: topic
+        - count: 0.8008281904610115
+          topic: topic
       properties:
         summary:
           type: string
@@ -14861,6 +15523,22 @@ components:
       type: object
     AnalyticsFeedbackResponse:
       additionalProperties: false
+      example:
+        feedback:
+        - comments:
+          - comments
+          - comments
+          targetId: targetId
+          count: 0.8008281904610115
+          targetType: file
+          averageScore: 6.027456183070403
+        - comments:
+          - comments
+          - comments
+          targetId: targetId
+          count: 0.8008281904610115
+          targetType: file
+          averageScore: 6.027456183070403
       properties:
         feedback:
           items:
@@ -14871,6 +15549,15 @@ components:
       type: object
     AnalyticsUserUsage:
       additionalProperties: false
+      example:
+        numberOfActiveChats: 5.962133916683182
+        activeInteractions: 9.301444243932576
+        chatCount: 6.027456183070403
+        avgResponseLatencyMs: 1.4658129805029452
+        totalUserCount: 2.3021358869347655
+        activeUserCount: 5.637376656633329
+        sessionCount: 0.8008281904610115
+        totalEngagements: 7.061401241503109
       properties:
         sessionCount:
           type: number
@@ -15287,8 +15974,14 @@ components:
       example:
         data:
           users:
-          - role: learner
+          - uid: uid
+            photoURL: photoURL
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            role: learner
+            cognitoSub: cognitoSub
             displayName: displayName
+            organization: organization
+            name: name
             groups:
             - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               createdAt: 2000-01-23T04:56:07.000+00:00
@@ -15304,18 +15997,17 @@ components:
               description: description
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               updatedAt: 2000-01-23T04:56:07.000+00:00
-            uid: uid
-            photoURL: photoURL
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            cognitoSub: cognitoSub
-            organization_id: organization_id
-            organization: organization
-            name: name
             id: id
             email: email
             updatedAt: 2000-01-23T04:56:07.000+00:00
-          - role: learner
+          - uid: uid
+            photoURL: photoURL
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            role: learner
+            cognitoSub: cognitoSub
             displayName: displayName
+            organization: organization
+            name: name
             groups:
             - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               createdAt: 2000-01-23T04:56:07.000+00:00
@@ -15331,13 +16023,6 @@ components:
               description: description
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               updatedAt: 2000-01-23T04:56:07.000+00:00
-            uid: uid
-            photoURL: photoURL
-            createdAt: 2000-01-23T04:56:07.000+00:00
-            cognitoSub: cognitoSub
-            organization_id: organization_id
-            organization: organization
-            name: name
             id: id
             email: email
             updatedAt: 2000-01-23T04:56:07.000+00:00
@@ -15371,6 +16056,227 @@ components:
       type: object
     ListMyTrainingResponse:
       additionalProperties: false
+      example:
+        nextCursor: nextCursor
+        total: 2147483647
+        offset: 2147483647
+        hasNextPage: true
+        topics:
+        - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          courses:
+          - enforceModuleOrder: true
+            progressState: progressState
+            completedAt: 2000-01-23T04:56:07.000+00:00
+            code: code
+            assignedAt: 2000-01-23T04:56:07.000+00:00
+            description: description
+            startedAt: 2000-01-23T04:56:07.000+00:00
+            lastActivityAt: 2000-01-23T04:56:07.000+00:00
+            isActive: true
+            modules:
+            - progressState: progressState
+              completedAt: 2000-01-23T04:56:07.000+00:00
+              description: description
+              startedAt: 2000-01-23T04:56:07.000+00:00
+              lastActivityAt: 2000-01-23T04:56:07.000+00:00
+              isActive: true
+              packageType: scorm
+              sortOrder: 2147483647
+              name: name
+              progressPercent: 0.5637376656633328
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              completionStatus: completionStatus
+              courseId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              thumbnailUrl: https://openapi-generator.tech
+            - progressState: progressState
+              completedAt: 2000-01-23T04:56:07.000+00:00
+              description: description
+              startedAt: 2000-01-23T04:56:07.000+00:00
+              lastActivityAt: 2000-01-23T04:56:07.000+00:00
+              isActive: true
+              packageType: scorm
+              sortOrder: 2147483647
+              name: name
+              progressPercent: 0.5637376656633328
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              completionStatus: completionStatus
+              courseId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              thumbnailUrl: https://openapi-generator.tech
+            organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            topicId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            enrollmentStatus: enrollmentStatus
+            sortOrder: 2147483647
+            name: name
+            courseStatus: courseStatus
+            topicName: topicName
+            progressPercent: 1.4658129805029452
+            enrollmentRole: enrollmentRole
+            completionStatus: completionStatus
+            courseId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            successStatus: successStatus
+          - enforceModuleOrder: true
+            progressState: progressState
+            completedAt: 2000-01-23T04:56:07.000+00:00
+            code: code
+            assignedAt: 2000-01-23T04:56:07.000+00:00
+            description: description
+            startedAt: 2000-01-23T04:56:07.000+00:00
+            lastActivityAt: 2000-01-23T04:56:07.000+00:00
+            isActive: true
+            modules:
+            - progressState: progressState
+              completedAt: 2000-01-23T04:56:07.000+00:00
+              description: description
+              startedAt: 2000-01-23T04:56:07.000+00:00
+              lastActivityAt: 2000-01-23T04:56:07.000+00:00
+              isActive: true
+              packageType: scorm
+              sortOrder: 2147483647
+              name: name
+              progressPercent: 0.5637376656633328
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              completionStatus: completionStatus
+              courseId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              thumbnailUrl: https://openapi-generator.tech
+            - progressState: progressState
+              completedAt: 2000-01-23T04:56:07.000+00:00
+              description: description
+              startedAt: 2000-01-23T04:56:07.000+00:00
+              lastActivityAt: 2000-01-23T04:56:07.000+00:00
+              isActive: true
+              packageType: scorm
+              sortOrder: 2147483647
+              name: name
+              progressPercent: 0.5637376656633328
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              completionStatus: completionStatus
+              courseId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              thumbnailUrl: https://openapi-generator.tech
+            organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            topicId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            enrollmentStatus: enrollmentStatus
+            sortOrder: 2147483647
+            name: name
+            courseStatus: courseStatus
+            topicName: topicName
+            progressPercent: 1.4658129805029452
+            enrollmentRole: enrollmentRole
+            completionStatus: completionStatus
+            courseId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            successStatus: successStatus
+          topicId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          sortOrder: 2147483647
+          enforceCourseOrder: false
+          name: name
+          description: description
+        - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          courses:
+          - enforceModuleOrder: true
+            progressState: progressState
+            completedAt: 2000-01-23T04:56:07.000+00:00
+            code: code
+            assignedAt: 2000-01-23T04:56:07.000+00:00
+            description: description
+            startedAt: 2000-01-23T04:56:07.000+00:00
+            lastActivityAt: 2000-01-23T04:56:07.000+00:00
+            isActive: true
+            modules:
+            - progressState: progressState
+              completedAt: 2000-01-23T04:56:07.000+00:00
+              description: description
+              startedAt: 2000-01-23T04:56:07.000+00:00
+              lastActivityAt: 2000-01-23T04:56:07.000+00:00
+              isActive: true
+              packageType: scorm
+              sortOrder: 2147483647
+              name: name
+              progressPercent: 0.5637376656633328
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              completionStatus: completionStatus
+              courseId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              thumbnailUrl: https://openapi-generator.tech
+            - progressState: progressState
+              completedAt: 2000-01-23T04:56:07.000+00:00
+              description: description
+              startedAt: 2000-01-23T04:56:07.000+00:00
+              lastActivityAt: 2000-01-23T04:56:07.000+00:00
+              isActive: true
+              packageType: scorm
+              sortOrder: 2147483647
+              name: name
+              progressPercent: 0.5637376656633328
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              completionStatus: completionStatus
+              courseId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              thumbnailUrl: https://openapi-generator.tech
+            organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            topicId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            enrollmentStatus: enrollmentStatus
+            sortOrder: 2147483647
+            name: name
+            courseStatus: courseStatus
+            topicName: topicName
+            progressPercent: 1.4658129805029452
+            enrollmentRole: enrollmentRole
+            completionStatus: completionStatus
+            courseId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            successStatus: successStatus
+          - enforceModuleOrder: true
+            progressState: progressState
+            completedAt: 2000-01-23T04:56:07.000+00:00
+            code: code
+            assignedAt: 2000-01-23T04:56:07.000+00:00
+            description: description
+            startedAt: 2000-01-23T04:56:07.000+00:00
+            lastActivityAt: 2000-01-23T04:56:07.000+00:00
+            isActive: true
+            modules:
+            - progressState: progressState
+              completedAt: 2000-01-23T04:56:07.000+00:00
+              description: description
+              startedAt: 2000-01-23T04:56:07.000+00:00
+              lastActivityAt: 2000-01-23T04:56:07.000+00:00
+              isActive: true
+              packageType: scorm
+              sortOrder: 2147483647
+              name: name
+              progressPercent: 0.5637376656633328
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              completionStatus: completionStatus
+              courseId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              thumbnailUrl: https://openapi-generator.tech
+            - progressState: progressState
+              completedAt: 2000-01-23T04:56:07.000+00:00
+              description: description
+              startedAt: 2000-01-23T04:56:07.000+00:00
+              lastActivityAt: 2000-01-23T04:56:07.000+00:00
+              isActive: true
+              packageType: scorm
+              sortOrder: 2147483647
+              name: name
+              progressPercent: 0.5637376656633328
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              completionStatus: completionStatus
+              courseId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              thumbnailUrl: https://openapi-generator.tech
+            organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            topicId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            enrollmentStatus: enrollmentStatus
+            sortOrder: 2147483647
+            name: name
+            courseStatus: courseStatus
+            topicName: topicName
+            progressPercent: 1.4658129805029452
+            enrollmentRole: enrollmentRole
+            completionStatus: completionStatus
+            courseId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            successStatus: successStatus
+          topicId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          sortOrder: 2147483647
+          enforceCourseOrder: false
+          name: name
+          description: description
+        limit: 2147483647
       properties:
         topics:
           items:
@@ -15418,6 +16324,38 @@ components:
       type: object
     GetVoicesResponse:
       additionalProperties: false
+      example:
+        voices:
+        - settings:
+            speakerBoost: true
+            similarityBoost: 0.6027456183070403
+            style: 0.14658129805029452
+            stability: 0.08008281904610115
+          previewUrl: previewUrl
+          gender: male
+          service: elevenlabs
+          name: name
+          description: description
+          language: language
+          id: id
+          category: category
+          accent: accent
+          age: young
+        - settings:
+            speakerBoost: true
+            similarityBoost: 0.6027456183070403
+            style: 0.14658129805029452
+            stability: 0.08008281904610115
+          previewUrl: previewUrl
+          gender: male
+          service: elevenlabs
+          name: name
+          description: description
+          language: language
+          id: id
+          category: category
+          accent: accent
+          age: young
       properties:
         voices:
           items:
@@ -15436,6 +16374,12 @@ components:
       type: object
     GetSTTLanguagesResponse:
       additionalProperties: false
+      example:
+        languages:
+        - code: code
+          name: name
+        - code: code
+          name: name
       properties:
         languages:
           items:
@@ -15454,10 +16398,19 @@ components:
       required:
       - services
       type: object
+    BinaryResponse: {}
     _api_v1_auth_register_post_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          user:
+            organizationId: organizationId
+            photoURL: photoURL
+            role: superadmin
+            displayName: displayName
+            id: id
+            email: email
+          token: token
         status: success
       properties:
         status:
@@ -15465,7 +16418,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/RegisterResponse
+          $ref: "#/components/schemas/RegisterResponse"
       required:
       - data
       - status
@@ -15473,7 +16426,21 @@ components:
     _api_v1_auth_login_post_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          session: session
+          challengeParameters:
+            key: challengeParameters
+          destination: destination
+          challengeName: challengeName
+          user:
+            organizationId: organizationId
+            photoURL: photoURL
+            role: superadmin
+            displayName: displayName
+            id: id
+            email: email
+          email: email
+          token: token
         status: success
       properties:
         status:
@@ -15481,7 +16448,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/LoginResponse
+          $ref: "#/components/schemas/LoginResponse"
       required:
       - data
       - status
@@ -15489,7 +16456,34 @@ components:
     _api_v1_auth_verify_token_post_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          user:
+            uid: uid
+            photoURL: photoURL
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            role: learner
+            cognitoSub: cognitoSub
+            displayName: displayName
+            organization: organization
+            name: name
+            groups:
+            - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              createdAt: 2000-01-23T04:56:07.000+00:00
+              userCount: 2147483647
+              name: name
+              description: description
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              updatedAt: 2000-01-23T04:56:07.000+00:00
+            - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              createdAt: 2000-01-23T04:56:07.000+00:00
+              userCount: 2147483647
+              name: name
+              description: description
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              updatedAt: 2000-01-23T04:56:07.000+00:00
+            id: id
+            email: email
+            updatedAt: 2000-01-23T04:56:07.000+00:00
         status: success
       properties:
         status:
@@ -15497,7 +16491,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/VerifyTokenResponse
+          $ref: "#/components/schemas/VerifyTokenResponse"
       required:
       - data
       - status
@@ -15522,7 +16516,8 @@ components:
     _api_v1_auth_verify_reset_token_post_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          email: email
         status: success
       properties:
         status:
@@ -15530,7 +16525,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/VerifyResetTokenResponse
+          $ref: "#/components/schemas/VerifyResetTokenResponse"
       required:
       - data
       - status
@@ -15538,7 +16533,15 @@ components:
     _api_v1_auth_confirm_force_password_reset_post_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          user:
+            organizationId: organizationId
+            photoURL: photoURL
+            role: superadmin
+            displayName: displayName
+            id: id
+            email: email
+          token: token
         status: success
       properties:
         status:
@@ -15546,7 +16549,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/ForceResetPasswordResponse
+          $ref: "#/components/schemas/ForceResetPasswordResponse"
       required:
       - data
       - status
@@ -15554,7 +16557,10 @@ components:
     _api_v1_auth_verify_invite_token_post_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          organizationId: organizationId
+          role: role
+          email: email
         status: success
       properties:
         status:
@@ -15562,7 +16568,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/VerifyInviteTokenResponse
+          $ref: "#/components/schemas/VerifyInviteTokenResponse"
       required:
       - data
       - status
@@ -15632,7 +16638,151 @@ components:
     _api_v1_characters__get_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+        - backstory: backstory
+          greeting: greeting
+          description: description
+          voiceSettings:
+            speakerBoost: true
+            voiceId: voiceId
+            voiceName: voiceName
+            service: elevenlabs
+            similarityBoost: 0.7061401241503109
+            style: 0.9301444243932576
+            stability: 0.23021358869347652
+          moderationSettings:
+            customRules:
+            - customRules
+            - customRules
+            level: moderate
+            enabled: true
+          organizationId: organizationId
+          environmentPreset: environmentPreset
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          voiceId: voiceId
+          avatarSettings:
+            idleAnimation: idleAnimation
+            avatarUrl: avatarUrl
+            talkingAnimation: talkingAnimation
+            modelUrl: modelUrl
+            thumbnailUrl: thumbnailUrl
+          previewTallVideoUrl: https://openapi-generator.tech
+          id: id
+          cameraRotation:
+          - null
+          - null
+          - null
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+          persona:
+            backstory: backstory
+            speakingStyle: speakingStyle
+            personality: personality
+            topics:
+            - topics
+            - topics
+            restrictions:
+            - restrictions
+            - restrictions
+          avatarRotation:
+          - null
+          - null
+          - null
+          openaiVectorStoreId: openaiVectorStoreId
+          assetsVersion: 2147483647
+          userId: userId
+          openaiAssistantId: openaiAssistantId
+          systemPrompt: systemPrompt
+          cameraFov: 4.145608029883936
+          previewImageUrl: https://openapi-generator.tech
+          organization: organization
+          modelSettings:
+            presencePenalty: 0.25495066265333133
+            temperature: 0.1601656380922023
+            maxTokens: 77151.83639768286
+            model: gpt-4o-mini
+            topP: 0.14658129805029452
+            frequencyPenalty: 0.38485356667327286
+          name: name
+          files:
+          - files
+          - files
+          cameraPosition:
+          - 2.027123023002322
+          - 2.027123023002322
+          - 2.027123023002322
+          previewVideoUrl: https://openapi-generator.tech
+        - backstory: backstory
+          greeting: greeting
+          description: description
+          voiceSettings:
+            speakerBoost: true
+            voiceId: voiceId
+            voiceName: voiceName
+            service: elevenlabs
+            similarityBoost: 0.7061401241503109
+            style: 0.9301444243932576
+            stability: 0.23021358869347652
+          moderationSettings:
+            customRules:
+            - customRules
+            - customRules
+            level: moderate
+            enabled: true
+          organizationId: organizationId
+          environmentPreset: environmentPreset
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          voiceId: voiceId
+          avatarSettings:
+            idleAnimation: idleAnimation
+            avatarUrl: avatarUrl
+            talkingAnimation: talkingAnimation
+            modelUrl: modelUrl
+            thumbnailUrl: thumbnailUrl
+          previewTallVideoUrl: https://openapi-generator.tech
+          id: id
+          cameraRotation:
+          - null
+          - null
+          - null
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+          persona:
+            backstory: backstory
+            speakingStyle: speakingStyle
+            personality: personality
+            topics:
+            - topics
+            - topics
+            restrictions:
+            - restrictions
+            - restrictions
+          avatarRotation:
+          - null
+          - null
+          - null
+          openaiVectorStoreId: openaiVectorStoreId
+          assetsVersion: 2147483647
+          userId: userId
+          openaiAssistantId: openaiAssistantId
+          systemPrompt: systemPrompt
+          cameraFov: 4.145608029883936
+          previewImageUrl: https://openapi-generator.tech
+          organization: organization
+          modelSettings:
+            presencePenalty: 0.25495066265333133
+            temperature: 0.1601656380922023
+            maxTokens: 77151.83639768286
+            model: gpt-4o-mini
+            topP: 0.14658129805029452
+            frequencyPenalty: 0.38485356667327286
+          name: name
+          files:
+          - files
+          - files
+          cameraPosition:
+          - 2.027123023002322
+          - 2.027123023002322
+          - 2.027123023002322
+          previewVideoUrl: https://openapi-generator.tech
         status: success
       properties:
         status:
@@ -15640,7 +16790,9 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/GetCharactersResponse
+          items:
+            $ref: "#/components/schemas/CharacterResponse"
+          type: array
       required:
       - data
       - status
@@ -15648,7 +16800,79 @@ components:
     _api_v1_characters__post_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          backstory: backstory
+          greeting: greeting
+          description: description
+          voiceSettings:
+            speakerBoost: true
+            voiceId: voiceId
+            voiceName: voiceName
+            service: elevenlabs
+            similarityBoost: 0.7061401241503109
+            style: 0.9301444243932576
+            stability: 0.23021358869347652
+          moderationSettings:
+            customRules:
+            - customRules
+            - customRules
+            level: moderate
+            enabled: true
+          organizationId: organizationId
+          environmentPreset: environmentPreset
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          voiceId: voiceId
+          avatarSettings:
+            idleAnimation: idleAnimation
+            avatarUrl: avatarUrl
+            talkingAnimation: talkingAnimation
+            modelUrl: modelUrl
+            thumbnailUrl: thumbnailUrl
+          previewTallVideoUrl: https://openapi-generator.tech
+          id: id
+          cameraRotation:
+          - null
+          - null
+          - null
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+          persona:
+            backstory: backstory
+            speakingStyle: speakingStyle
+            personality: personality
+            topics:
+            - topics
+            - topics
+            restrictions:
+            - restrictions
+            - restrictions
+          avatarRotation:
+          - null
+          - null
+          - null
+          openaiVectorStoreId: openaiVectorStoreId
+          assetsVersion: 2147483647
+          userId: userId
+          openaiAssistantId: openaiAssistantId
+          systemPrompt: systemPrompt
+          cameraFov: 4.145608029883936
+          previewImageUrl: https://openapi-generator.tech
+          organization: organization
+          modelSettings:
+            presencePenalty: 0.25495066265333133
+            temperature: 0.1601656380922023
+            maxTokens: 77151.83639768286
+            model: gpt-4o-mini
+            topP: 0.14658129805029452
+            frequencyPenalty: 0.38485356667327286
+          name: name
+          files:
+          - files
+          - files
+          cameraPosition:
+          - 2.027123023002322
+          - 2.027123023002322
+          - 2.027123023002322
+          previewVideoUrl: https://openapi-generator.tech
         status: success
       properties:
         status:
@@ -15656,7 +16880,385 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/CharacterResponse
+          $ref: "#/components/schemas/CharacterResponse"
+      required:
+      - data
+      - status
+      type: object
+    _api_v1_characters__id__get_200_response_data:
+      additionalProperties: false
+      example:
+        character:
+          backstory: backstory
+          greeting: greeting
+          description: description
+          voiceSettings:
+            speakerBoost: true
+            voiceId: voiceId
+            voiceName: voiceName
+            service: elevenlabs
+            similarityBoost: 0.7061401241503109
+            style: 0.9301444243932576
+            stability: 0.23021358869347652
+          moderationSettings:
+            customRules:
+            - customRules
+            - customRules
+            level: moderate
+            enabled: true
+          organizationId: organizationId
+          environmentPreset: environmentPreset
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          voiceId: voiceId
+          avatarSettings:
+            idleAnimation: idleAnimation
+            avatarUrl: avatarUrl
+            talkingAnimation: talkingAnimation
+            modelUrl: modelUrl
+            thumbnailUrl: thumbnailUrl
+          previewTallVideoUrl: https://openapi-generator.tech
+          id: id
+          cameraRotation:
+          - null
+          - null
+          - null
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+          persona:
+            backstory: backstory
+            speakingStyle: speakingStyle
+            personality: personality
+            topics:
+            - topics
+            - topics
+            restrictions:
+            - restrictions
+            - restrictions
+          avatarRotation:
+          - null
+          - null
+          - null
+          openaiVectorStoreId: openaiVectorStoreId
+          assetsVersion: 2147483647
+          userId: userId
+          openaiAssistantId: openaiAssistantId
+          systemPrompt: systemPrompt
+          cameraFov: 4.145608029883936
+          previewImageUrl: https://openapi-generator.tech
+          organization: organization
+          modelSettings:
+            presencePenalty: 0.25495066265333133
+            temperature: 0.1601656380922023
+            maxTokens: 77151.83639768286
+            model: gpt-4o-mini
+            topP: 0.14658129805029452
+            frequencyPenalty: 0.38485356667327286
+          name: name
+          files:
+          - files
+          - files
+          cameraPosition:
+          - 2.027123023002322
+          - 2.027123023002322
+          - 2.027123023002322
+          previewVideoUrl: https://openapi-generator.tech
+        chats:
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          messages:
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            metadata:
+              key: ""
+            role: user
+            citations:
+            - path: path
+              quote: quote
+              title: title
+              usageType: internal
+              fileId: fileId
+            - path: path
+              quote: quote
+              title: title
+              usageType: internal
+              fileId: fileId
+            chatId: chatId
+            citationsLoading: true
+            tokenCount: 0.8008281904610115
+            id: id
+            content: content
+            timestamp: 2000-01-23T04:56:07.000+00:00
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            metadata:
+              key: ""
+            role: user
+            citations:
+            - path: path
+              quote: quote
+              title: title
+              usageType: internal
+              fileId: fileId
+            - path: path
+              quote: quote
+              title: title
+              usageType: internal
+              fileId: fileId
+            chatId: chatId
+            citationsLoading: true
+            tokenCount: 0.8008281904610115
+            id: id
+            content: content
+            timestamp: 2000-01-23T04:56:07.000+00:00
+          openaiThreadId: openaiThreadId
+          id: id
+          title: title
+          characterId: characterId
+          userId: userId
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          messages:
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            metadata:
+              key: ""
+            role: user
+            citations:
+            - path: path
+              quote: quote
+              title: title
+              usageType: internal
+              fileId: fileId
+            - path: path
+              quote: quote
+              title: title
+              usageType: internal
+              fileId: fileId
+            chatId: chatId
+            citationsLoading: true
+            tokenCount: 0.8008281904610115
+            id: id
+            content: content
+            timestamp: 2000-01-23T04:56:07.000+00:00
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            metadata:
+              key: ""
+            role: user
+            citations:
+            - path: path
+              quote: quote
+              title: title
+              usageType: internal
+              fileId: fileId
+            - path: path
+              quote: quote
+              title: title
+              usageType: internal
+              fileId: fileId
+            chatId: chatId
+            citationsLoading: true
+            tokenCount: 0.8008281904610115
+            id: id
+            content: content
+            timestamp: 2000-01-23T04:56:07.000+00:00
+          openaiThreadId: openaiThreadId
+          id: id
+          title: title
+          characterId: characterId
+          userId: userId
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        character:
+          $ref: "#/components/schemas/CharacterResponse"
+        chats:
+          items:
+            $ref: "#/components/schemas/CreateChatResponse"
+          type: array
+      required:
+      - character
+      - chats
+      type: object
+    _api_v1_characters__id__get_200_response:
+      additionalProperties: false
+      example:
+        data:
+          character:
+            backstory: backstory
+            greeting: greeting
+            description: description
+            voiceSettings:
+              speakerBoost: true
+              voiceId: voiceId
+              voiceName: voiceName
+              service: elevenlabs
+              similarityBoost: 0.7061401241503109
+              style: 0.9301444243932576
+              stability: 0.23021358869347652
+            moderationSettings:
+              customRules:
+              - customRules
+              - customRules
+              level: moderate
+              enabled: true
+            organizationId: organizationId
+            environmentPreset: environmentPreset
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            voiceId: voiceId
+            avatarSettings:
+              idleAnimation: idleAnimation
+              avatarUrl: avatarUrl
+              talkingAnimation: talkingAnimation
+              modelUrl: modelUrl
+              thumbnailUrl: thumbnailUrl
+            previewTallVideoUrl: https://openapi-generator.tech
+            id: id
+            cameraRotation:
+            - null
+            - null
+            - null
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+            persona:
+              backstory: backstory
+              speakingStyle: speakingStyle
+              personality: personality
+              topics:
+              - topics
+              - topics
+              restrictions:
+              - restrictions
+              - restrictions
+            avatarRotation:
+            - null
+            - null
+            - null
+            openaiVectorStoreId: openaiVectorStoreId
+            assetsVersion: 2147483647
+            userId: userId
+            openaiAssistantId: openaiAssistantId
+            systemPrompt: systemPrompt
+            cameraFov: 4.145608029883936
+            previewImageUrl: https://openapi-generator.tech
+            organization: organization
+            modelSettings:
+              presencePenalty: 0.25495066265333133
+              temperature: 0.1601656380922023
+              maxTokens: 77151.83639768286
+              model: gpt-4o-mini
+              topP: 0.14658129805029452
+              frequencyPenalty: 0.38485356667327286
+            name: name
+            files:
+            - files
+            - files
+            cameraPosition:
+            - 2.027123023002322
+            - 2.027123023002322
+            - 2.027123023002322
+            previewVideoUrl: https://openapi-generator.tech
+          chats:
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            messages:
+            - createdAt: 2000-01-23T04:56:07.000+00:00
+              metadata:
+                key: ""
+              role: user
+              citations:
+              - path: path
+                quote: quote
+                title: title
+                usageType: internal
+                fileId: fileId
+              - path: path
+                quote: quote
+                title: title
+                usageType: internal
+                fileId: fileId
+              chatId: chatId
+              citationsLoading: true
+              tokenCount: 0.8008281904610115
+              id: id
+              content: content
+              timestamp: 2000-01-23T04:56:07.000+00:00
+            - createdAt: 2000-01-23T04:56:07.000+00:00
+              metadata:
+                key: ""
+              role: user
+              citations:
+              - path: path
+                quote: quote
+                title: title
+                usageType: internal
+                fileId: fileId
+              - path: path
+                quote: quote
+                title: title
+                usageType: internal
+                fileId: fileId
+              chatId: chatId
+              citationsLoading: true
+              tokenCount: 0.8008281904610115
+              id: id
+              content: content
+              timestamp: 2000-01-23T04:56:07.000+00:00
+            openaiThreadId: openaiThreadId
+            id: id
+            title: title
+            characterId: characterId
+            userId: userId
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            messages:
+            - createdAt: 2000-01-23T04:56:07.000+00:00
+              metadata:
+                key: ""
+              role: user
+              citations:
+              - path: path
+                quote: quote
+                title: title
+                usageType: internal
+                fileId: fileId
+              - path: path
+                quote: quote
+                title: title
+                usageType: internal
+                fileId: fileId
+              chatId: chatId
+              citationsLoading: true
+              tokenCount: 0.8008281904610115
+              id: id
+              content: content
+              timestamp: 2000-01-23T04:56:07.000+00:00
+            - createdAt: 2000-01-23T04:56:07.000+00:00
+              metadata:
+                key: ""
+              role: user
+              citations:
+              - path: path
+                quote: quote
+                title: title
+                usageType: internal
+                fileId: fileId
+              - path: path
+                quote: quote
+                title: title
+                usageType: internal
+                fileId: fileId
+              chatId: chatId
+              citationsLoading: true
+              tokenCount: 0.8008281904610115
+              id: id
+              content: content
+              timestamp: 2000-01-23T04:56:07.000+00:00
+            openaiThreadId: openaiThreadId
+            id: id
+            title: title
+            characterId: characterId
+            userId: userId
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+        status: success
+      properties:
+        status:
+          enum:
+          - success
+          type: string
+        data:
+          $ref: "#/components/schemas/_api_v1_characters__id__get_200_response_data"
       required:
       - data
       - status
@@ -15664,7 +17266,21 @@ components:
     _api_v1_characters__id__mesh_links_get_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          meshName: meshName
+          description: description
+          id: id
+          characterId: characterId
+          url: url
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          meshName: meshName
+          description: description
+          id: id
+          characterId: characterId
+          url: url
+          updatedAt: 2000-01-23T04:56:07.000+00:00
         status: success
       properties:
         status:
@@ -15672,7 +17288,9 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/GetCharacterMeshLinksResponse
+          items:
+            $ref: "#/components/schemas/UpsertCharacterMeshLinkResponse"
+          type: array
       required:
       - data
       - status
@@ -15680,7 +17298,14 @@ components:
     _api_v1_characters__id__mesh_links_put_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          meshName: meshName
+          description: description
+          id: id
+          characterId: characterId
+          url: url
+          updatedAt: 2000-01-23T04:56:07.000+00:00
         status: success
       properties:
         status:
@@ -15688,7 +17313,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/UpsertCharacterMeshLinkResponse
+          $ref: "#/components/schemas/UpsertCharacterMeshLinkResponse"
       required:
       - data
       - status
@@ -15708,7 +17333,57 @@ components:
     _api_v1_chats__id__get_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          messages:
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            metadata:
+              key: ""
+            role: user
+            citations:
+            - path: path
+              quote: quote
+              title: title
+              usageType: internal
+              fileId: fileId
+            - path: path
+              quote: quote
+              title: title
+              usageType: internal
+              fileId: fileId
+            chatId: chatId
+            citationsLoading: true
+            tokenCount: 0.8008281904610115
+            id: id
+            content: content
+            timestamp: 2000-01-23T04:56:07.000+00:00
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            metadata:
+              key: ""
+            role: user
+            citations:
+            - path: path
+              quote: quote
+              title: title
+              usageType: internal
+              fileId: fileId
+            - path: path
+              quote: quote
+              title: title
+              usageType: internal
+              fileId: fileId
+            chatId: chatId
+            citationsLoading: true
+            tokenCount: 0.8008281904610115
+            id: id
+            content: content
+            timestamp: 2000-01-23T04:56:07.000+00:00
+          openaiThreadId: openaiThreadId
+          id: id
+          title: title
+          characterId: characterId
+          userId: userId
+          updatedAt: 2000-01-23T04:56:07.000+00:00
         status: success
       properties:
         status:
@@ -15716,7 +17391,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/CreateChatResponse
+          $ref: "#/components/schemas/CreateChatResponse"
       required:
       - data
       - status
@@ -15724,7 +17399,107 @@ components:
     _api_v1_chats_characters__characterId__chats_get_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          messages:
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            metadata:
+              key: ""
+            role: user
+            citations:
+            - path: path
+              quote: quote
+              title: title
+              usageType: internal
+              fileId: fileId
+            - path: path
+              quote: quote
+              title: title
+              usageType: internal
+              fileId: fileId
+            chatId: chatId
+            citationsLoading: true
+            tokenCount: 0.8008281904610115
+            id: id
+            content: content
+            timestamp: 2000-01-23T04:56:07.000+00:00
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            metadata:
+              key: ""
+            role: user
+            citations:
+            - path: path
+              quote: quote
+              title: title
+              usageType: internal
+              fileId: fileId
+            - path: path
+              quote: quote
+              title: title
+              usageType: internal
+              fileId: fileId
+            chatId: chatId
+            citationsLoading: true
+            tokenCount: 0.8008281904610115
+            id: id
+            content: content
+            timestamp: 2000-01-23T04:56:07.000+00:00
+          openaiThreadId: openaiThreadId
+          id: id
+          title: title
+          characterId: characterId
+          userId: userId
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          messages:
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            metadata:
+              key: ""
+            role: user
+            citations:
+            - path: path
+              quote: quote
+              title: title
+              usageType: internal
+              fileId: fileId
+            - path: path
+              quote: quote
+              title: title
+              usageType: internal
+              fileId: fileId
+            chatId: chatId
+            citationsLoading: true
+            tokenCount: 0.8008281904610115
+            id: id
+            content: content
+            timestamp: 2000-01-23T04:56:07.000+00:00
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            metadata:
+              key: ""
+            role: user
+            citations:
+            - path: path
+              quote: quote
+              title: title
+              usageType: internal
+              fileId: fileId
+            - path: path
+              quote: quote
+              title: title
+              usageType: internal
+              fileId: fileId
+            chatId: chatId
+            citationsLoading: true
+            tokenCount: 0.8008281904610115
+            id: id
+            content: content
+            timestamp: 2000-01-23T04:56:07.000+00:00
+          openaiThreadId: openaiThreadId
+          id: id
+          title: title
+          characterId: characterId
+          userId: userId
+          updatedAt: 2000-01-23T04:56:07.000+00:00
         status: success
       properties:
         status:
@@ -15732,7 +17507,9 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/GetCharacterChatsResponse
+          items:
+            $ref: "#/components/schemas/CreateChatResponse"
+          type: array
       required:
       - data
       - status
@@ -15740,7 +17517,50 @@ components:
     _api_v1_chats__id__messages_post_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          messages:
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            metadata:
+              key: ""
+            role: user
+            citations:
+            - path: path
+              quote: quote
+              title: title
+              usageType: internal
+              fileId: fileId
+            - path: path
+              quote: quote
+              title: title
+              usageType: internal
+              fileId: fileId
+            chatId: chatId
+            citationsLoading: true
+            tokenCount: 0.8008281904610115
+            id: id
+            content: content
+            timestamp: 2000-01-23T04:56:07.000+00:00
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            metadata:
+              key: ""
+            role: user
+            citations:
+            - path: path
+              quote: quote
+              title: title
+              usageType: internal
+              fileId: fileId
+            - path: path
+              quote: quote
+              title: title
+              usageType: internal
+              fileId: fileId
+            chatId: chatId
+            citationsLoading: true
+            tokenCount: 0.8008281904610115
+            id: id
+            content: content
+            timestamp: 2000-01-23T04:56:07.000+00:00
         status: success
       properties:
         status:
@@ -15748,7 +17568,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/SendMessageResponse
+          $ref: "#/components/schemas/SendMessageResponse"
       required:
       - data
       - status
@@ -15756,7 +17576,54 @@ components:
     _api_v1_files__get_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          meta:
+            total: 2.027123023002322
+            limit: 3.616076749251911
+            totalPages: 4.145608029883936
+            hasMore: true
+            page: 9.301444243932576
+          files:
+          - mimeType: mimeType
+            openaiFileId: openaiFileId
+            userId: userId
+            url: url
+            folderId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            originalName: originalName
+            organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            filename: filename
+            s3Key: s3Key
+            fileSize: 0.8008281904610115
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            characterId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            fileType: document
+            status: pending
+            usageType: internal
+          - mimeType: mimeType
+            openaiFileId: openaiFileId
+            userId: userId
+            url: url
+            folderId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            originalName: originalName
+            organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            filename: filename
+            s3Key: s3Key
+            fileSize: 0.8008281904610115
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            characterId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            fileType: document
+            status: pending
+            usageType: internal
+          storageInfo:
+            total: 1.4658129805029452
+            available: 5.962133916683182
+            used: 6.027456183070403
+            limits:
+              maxBatchSize: 2.3021358869347655
+              maxFileSize: 5.637376656633329
+              userLimit: 7.061401241503109
         status: success
       properties:
         status:
@@ -15764,7 +17631,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/GetUserFilesResponse
+          $ref: "#/components/schemas/GetUserFilesResponse"
       required:
       - data
       - status
@@ -15772,7 +17639,8 @@ components:
     _api_v1_files_presigned_url_get_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          url: url
         status: success
       properties:
         status:
@@ -15780,7 +17648,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/GetPresignedUrlResponse
+          $ref: "#/components/schemas/GetPresignedUrlResponse"
       required:
       - data
       - status
@@ -15804,7 +17672,23 @@ components:
     _api_v1_files_bulk_delete_post_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          failures:
+          - reason: reason
+            fileId: fileId
+          - reason: reason
+            fileId: fileId
+          deletedFileIds:
+          - deletedFileIds
+          - deletedFileIds
+          storageInfo:
+            total: 1.4658129805029452
+            available: 5.962133916683182
+            used: 6.027456183070403
+            limits:
+              maxBatchSize: 2.3021358869347655
+              maxFileSize: 5.637376656633329
+              userLimit: 7.061401241503109
         status: success
       properties:
         status:
@@ -15812,7 +17696,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/FileBulkDeleteResponse
+          $ref: "#/components/schemas/FileBulkDeleteResponse"
       required:
       - data
       - status
@@ -15878,7 +17762,7 @@ components:
           - internal
           - quotable
           - public
-          nullable: true
+          - null
           type: string
         userId:
           type: string
@@ -15937,13 +17821,6 @@ components:
       - data
       - status
       type: object
-    _api_v1_files__id__delete_request:
-      properties:
-        organizationId:
-          format: uuid
-          pattern: "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-          type: string
-      type: object
     _api_v1_files__id__patch_request:
       properties:
         usageType:
@@ -15958,7 +17835,17 @@ components:
     _api_v1_users_register_post_201_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          data:
+            organizationId: organizationId
+            createdAt: createdAt
+            role: role
+            displayName: displayName
+            name: name
+            id: id
+            email: email
+            updatedAt: updatedAt
+          status: status
         status: success
       properties:
         status:
@@ -15966,7 +17853,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/UserRegisterResponse
+          $ref: "#/components/schemas/UserRegisterResponse"
       required:
       - data
       - status
@@ -15974,7 +17861,11 @@ components:
     _api_v1_users_login_post_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          data:
+            info: info
+          message: message
+          status: status
         status: success
       properties:
         status:
@@ -15982,7 +17873,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/UserLoginResponse
+          $ref: "#/components/schemas/UserLoginResponse"
       required:
       - data
       - status
@@ -15990,7 +17881,8 @@ components:
     _api_v1_users_profile_picture_post_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          photoURL: photoURL
         status: success
       properties:
         status:
@@ -15998,7 +17890,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/UploadProfilePictureResponse
+          $ref: "#/components/schemas/UploadProfilePictureResponse"
       required:
       - data
       - status
@@ -16017,7 +17909,33 @@ components:
     _api_v1_admin_users__uid__role_patch_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          uid: uid
+          photoURL: photoURL
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          role: learner
+          cognitoSub: cognitoSub
+          displayName: displayName
+          organization: organization
+          name: name
+          groups:
+          - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            userCount: 2147483647
+            name: name
+            description: description
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            userCount: 2147483647
+            name: name
+            description: description
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          id: id
+          email: email
+          updatedAt: 2000-01-23T04:56:07.000+00:00
         status: success
       properties:
         status:
@@ -16025,7 +17943,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/UpdateUserResponse
+          $ref: "#/components/schemas/UpdateUserResponse"
       required:
       - data
       - status
@@ -16033,7 +17951,59 @@ components:
     _api_v1_admin_users_superadmins_get_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          total: 0.8008281904610115
+          offset: 1.4658129805029452
+          limit: 6.027456183070403
+          users:
+          - organizationId: organizationId
+            createdAt: null
+            role: superadmin
+            displayName: displayName
+            name: name
+            groups:
+            - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              createdAt: 2000-01-23T04:56:07.000+00:00
+              userCount: 2147483647
+              name: name
+              description: description
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              updatedAt: 2000-01-23T04:56:07.000+00:00
+            - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              createdAt: 2000-01-23T04:56:07.000+00:00
+              userCount: 2147483647
+              name: name
+              description: description
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              updatedAt: 2000-01-23T04:56:07.000+00:00
+            created_at: AdminListUsersResponse_users_inner_created_at
+            id: id
+            email: email
+            updatedAt: null
+          - organizationId: organizationId
+            createdAt: null
+            role: superadmin
+            displayName: displayName
+            name: name
+            groups:
+            - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              createdAt: 2000-01-23T04:56:07.000+00:00
+              userCount: 2147483647
+              name: name
+              description: description
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              updatedAt: 2000-01-23T04:56:07.000+00:00
+            - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              createdAt: 2000-01-23T04:56:07.000+00:00
+              userCount: 2147483647
+              name: name
+              description: description
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              updatedAt: 2000-01-23T04:56:07.000+00:00
+            created_at: AdminListUsersResponse_users_inner_created_at
+            id: id
+            email: email
+            updatedAt: null
         status: success
       properties:
         status:
@@ -16041,7 +18011,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/AdminListUsersResponse
+          $ref: "#/components/schemas/AdminListUsersResponse"
       required:
       - data
       - status
@@ -16049,7 +18019,13 @@ components:
     _api_v1_admin_user_post_201_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          organizationId: organizationId
+          uid: uid
+          role: superadmin
+          displayName: displayName
+          name: name
+          email: email
         status: success
       properties:
         status:
@@ -16057,7 +18033,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/CreateUserResponse
+          $ref: "#/components/schemas/CreateUserResponse"
       required:
       - data
       - status
@@ -16065,7 +18041,75 @@ components:
     _api_v1_admin_handbooks_all_get_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+        - organizationId: organizationId
+          organizationName: organizationName
+          name: name
+          description: description
+          id: id
+          items:
+          - organizationName: organizationName
+            description: description
+            handbookId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            title: title
+            url: url
+            backingFileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            contentHash: contentHash
+            organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            isDeleted: true
+            handbookName: handbookName
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            syncStatus: synced
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - organizationName: organizationName
+            description: description
+            handbookId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            title: title
+            url: url
+            backingFileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            contentHash: contentHash
+            organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            isDeleted: true
+            handbookName: handbookName
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            syncStatus: synced
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+        - organizationId: organizationId
+          organizationName: organizationName
+          name: name
+          description: description
+          id: id
+          items:
+          - organizationName: organizationName
+            description: description
+            handbookId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            title: title
+            url: url
+            backingFileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            contentHash: contentHash
+            organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            isDeleted: true
+            handbookName: handbookName
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            syncStatus: synced
+            updatedAt: 2000-01-23T04:56:07.000+00:00
+          - organizationName: organizationName
+            description: description
+            handbookId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            title: title
+            url: url
+            backingFileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            contentHash: contentHash
+            organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            createdAt: 2000-01-23T04:56:07.000+00:00
+            isDeleted: true
+            handbookName: handbookName
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            syncStatus: synced
+            updatedAt: 2000-01-23T04:56:07.000+00:00
         status: success
       properties:
         status:
@@ -16073,7 +18117,9 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/GetAllHandbooksWithItemsResponse
+          items:
+            $ref: "#/components/schemas/GetAllHandbooksWithItemsResponse_inner"
+          type: array
       required:
       - data
       - status
@@ -16081,7 +18127,11 @@ components:
     _api_v1_admin_organizations_get_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+        - name: name
+          id: id
+        - name: name
+          id: id
         status: success
       properties:
         status:
@@ -16089,7 +18139,9 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/GetAllOrganizationsResponse
+          items:
+            $ref: "#/components/schemas/GetAllOrganizationsResponse_inner"
+          type: array
       required:
       - data
       - status
@@ -16097,7 +18149,38 @@ components:
     _api_v1_voice_tts_voices_get_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          voices:
+          - settings:
+              speakerBoost: true
+              similarityBoost: 0.6027456183070403
+              style: 0.14658129805029452
+              stability: 0.08008281904610115
+            previewUrl: previewUrl
+            gender: male
+            service: elevenlabs
+            name: name
+            description: description
+            language: language
+            id: id
+            category: category
+            accent: accent
+            age: young
+          - settings:
+              speakerBoost: true
+              similarityBoost: 0.6027456183070403
+              style: 0.14658129805029452
+              stability: 0.08008281904610115
+            previewUrl: previewUrl
+            gender: male
+            service: elevenlabs
+            name: name
+            description: description
+            language: language
+            id: id
+            category: category
+            accent: accent
+            age: young
         status: success
       properties:
         status:
@@ -16105,7 +18188,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/GetVoicesResponse
+          $ref: "#/components/schemas/GetVoicesResponse"
       required:
       - data
       - status
@@ -16113,7 +18196,12 @@ components:
     _api_v1_voice_stt_languages_get_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          languages:
+          - code: code
+            name: name
+          - code: code
+            name: name
         status: success
       properties:
         status:
@@ -16121,7 +18209,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/GetSTTLanguagesResponse
+          $ref: "#/components/schemas/GetSTTLanguagesResponse"
       required:
       - data
       - status
@@ -16145,7 +18233,8 @@ components:
     _api_v1_moderation_logs_delete_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          deleted: 0.8008281904610115
         status: success
       properties:
         status:
@@ -16153,7 +18242,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/DeleteModerationLogsResponse
+          $ref: "#/components/schemas/DeleteModerationLogsResponse"
       required:
       - data
       - status
@@ -16161,7 +18250,13 @@ components:
     _api_v1_moderation_stats_post_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          flagsByCategory:
+            key: 6.027456183070403
+          totalFlags: 0.8008281904610115
+          reasonBreakdown:
+            key: 1.4658129805029452
+          recentFlags: 5.962133916683182
         status: success
       properties:
         status:
@@ -16169,7 +18264,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/GetModerationStatsResponse
+          $ref: "#/components/schemas/GetModerationStatsResponse"
       required:
       - data
       - status
@@ -16193,7 +18288,63 @@ components:
     _api_v1_moderation_context_post_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          messages:
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            metadata:
+              key: ""
+            role: user
+            citations:
+            - path: path
+              quote: quote
+              title: title
+              usageType: internal
+              fileId: fileId
+            - path: path
+              quote: quote
+              title: title
+              usageType: internal
+              fileId: fileId
+            chatId: chatId
+            citationsLoading: true
+            tokenCount: 0.8008281904610115
+            id: id
+            content: content
+            timestamp: 2000-01-23T04:56:07.000+00:00
+          - createdAt: 2000-01-23T04:56:07.000+00:00
+            metadata:
+              key: ""
+            role: user
+            citations:
+            - path: path
+              quote: quote
+              title: title
+              usageType: internal
+              fileId: fileId
+            - path: path
+              quote: quote
+              title: title
+              usageType: internal
+              fileId: fileId
+            chatId: chatId
+            citationsLoading: true
+            tokenCount: 0.8008281904610115
+            id: id
+            content: content
+            timestamp: 2000-01-23T04:56:07.000+00:00
+          flaggedMessageId: flaggedMessageId
+          chatInfo:
+            createdAt: createdAt
+            character:
+              organizationId: organizationId
+              name: name
+              id: id
+            id: id
+            title: title
+            user:
+              name: name
+              id: id
+              email: email
         status: success
       properties:
         status:
@@ -16201,7 +18352,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/GetModerationContextResponse
+          $ref: "#/components/schemas/GetModerationContextResponse"
       required:
       - data
       - status
@@ -16209,7 +18360,34 @@ components:
     _api_v1_analytics_citations_post_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          files:
+          - citationCount: 0.8008281904610115
+            fileName: fileName
+            recentConversations:
+            - agentName: agentName
+              userEmail: userEmail
+              userName: userName
+              lastCitedAt: lastCitedAt
+            - agentName: agentName
+              userEmail: userEmail
+              userName: userName
+              lastCitedAt: lastCitedAt
+            fileId: fileId
+            lastCitedAt: lastCitedAt
+          - citationCount: 0.8008281904610115
+            fileName: fileName
+            recentConversations:
+            - agentName: agentName
+              userEmail: userEmail
+              userName: userName
+              lastCitedAt: lastCitedAt
+            - agentName: agentName
+              userEmail: userEmail
+              userName: userName
+              lastCitedAt: lastCitedAt
+            fileId: fileId
+            lastCitedAt: lastCitedAt
         status: success
       properties:
         status:
@@ -16217,7 +18395,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/AnalyticsCitationsResponse
+          $ref: "#/components/schemas/AnalyticsCitationsResponse"
       required:
       - data
       - status
@@ -16225,7 +18403,63 @@ components:
     _api_v1_analytics_citations_compare_post_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          current:
+            files:
+            - citationCount: 0.8008281904610115
+              fileName: fileName
+              recentConversations:
+              - agentName: agentName
+                userEmail: userEmail
+                userName: userName
+                lastCitedAt: lastCitedAt
+              - agentName: agentName
+                userEmail: userEmail
+                userName: userName
+                lastCitedAt: lastCitedAt
+              fileId: fileId
+              lastCitedAt: lastCitedAt
+            - citationCount: 0.8008281904610115
+              fileName: fileName
+              recentConversations:
+              - agentName: agentName
+                userEmail: userEmail
+                userName: userName
+                lastCitedAt: lastCitedAt
+              - agentName: agentName
+                userEmail: userEmail
+                userName: userName
+                lastCitedAt: lastCitedAt
+              fileId: fileId
+              lastCitedAt: lastCitedAt
+          previous:
+            files:
+            - citationCount: 0.8008281904610115
+              fileName: fileName
+              recentConversations:
+              - agentName: agentName
+                userEmail: userEmail
+                userName: userName
+                lastCitedAt: lastCitedAt
+              - agentName: agentName
+                userEmail: userEmail
+                userName: userName
+                lastCitedAt: lastCitedAt
+              fileId: fileId
+              lastCitedAt: lastCitedAt
+            - citationCount: 0.8008281904610115
+              fileName: fileName
+              recentConversations:
+              - agentName: agentName
+                userEmail: userEmail
+                userName: userName
+                lastCitedAt: lastCitedAt
+              - agentName: agentName
+                userEmail: userEmail
+                userName: userName
+                lastCitedAt: lastCitedAt
+              fileId: fileId
+              lastCitedAt: lastCitedAt
         status: success
       properties:
         status:
@@ -16233,7 +18467,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/AnalyticsCitationsCompareResponse
+          $ref: "#/components/schemas/AnalyticsCitationsCompareResponse"
       required:
       - data
       - status
@@ -16241,7 +18475,21 @@ components:
     _api_v1_analytics_files_usage_extremes_post_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          mostUsed:
+          - fileName: fileName
+            usageCount: 0.8008281904610115
+            fileId: fileId
+          - fileName: fileName
+            usageCount: 0.8008281904610115
+            fileId: fileId
+          leastUsed:
+          - fileName: fileName
+            usageCount: 0.8008281904610115
+            fileId: fileId
+          - fileName: fileName
+            usageCount: 0.8008281904610115
+            fileId: fileId
         status: success
       properties:
         status:
@@ -16249,7 +18497,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/AnalyticsFileUsageExtremesResponse
+          $ref: "#/components/schemas/AnalyticsFileUsageExtremesResponse"
       required:
       - data
       - status
@@ -16257,7 +18505,16 @@ components:
     _api_v1_analytics_files_uncited_post_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          files:
+          - fileName: fileName
+            usageCount: 0.8008281904610115
+            fileId: fileId
+          - fileName: fileName
+            usageCount: 0.8008281904610115
+            fileId: fileId
+          totalFiles: 0.8008281904610115
+          citedFiles: 6.027456183070403
         status: success
       properties:
         status:
@@ -16265,7 +18522,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/AnalyticsUncitedFilesResponse
+          $ref: "#/components/schemas/AnalyticsUncitedFilesResponse"
       required:
       - data
       - status
@@ -16273,7 +18530,15 @@ components:
     _api_v1_analytics_usage_post_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          numberOfActiveChats: 5.962133916683182
+          activeInteractions: 9.301444243932576
+          chatCount: 6.027456183070403
+          avgResponseLatencyMs: 1.4658129805029452
+          totalUserCount: 2.3021358869347655
+          activeUserCount: 5.637376656633329
+          sessionCount: 0.8008281904610115
+          totalEngagements: 7.061401241503109
         status: success
       properties:
         status:
@@ -16281,7 +18546,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/AnalyticsUserUsage
+          $ref: "#/components/schemas/AnalyticsUserUsage"
       required:
       - data
       - status
@@ -16289,7 +18554,25 @@ components:
     _api_v1_analytics_usage_compare_post_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          current:
+            numberOfActiveChats: 5.962133916683182
+            activeInteractions: 9.301444243932576
+            chatCount: 6.027456183070403
+            avgResponseLatencyMs: 1.4658129805029452
+            totalUserCount: 2.3021358869347655
+            activeUserCount: 5.637376656633329
+            sessionCount: 0.8008281904610115
+            totalEngagements: 7.061401241503109
+          previous:
+            numberOfActiveChats: 5.962133916683182
+            activeInteractions: 9.301444243932576
+            chatCount: 6.027456183070403
+            avgResponseLatencyMs: 1.4658129805029452
+            totalUserCount: 2.3021358869347655
+            activeUserCount: 5.637376656633329
+            sessionCount: 0.8008281904610115
+            totalEngagements: 7.061401241503109
         status: success
       properties:
         status:
@@ -16297,7 +18580,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/AnalyticsUsageCompareResponse
+          $ref: "#/components/schemas/AnalyticsUsageCompareResponse"
       required:
       - data
       - status
@@ -16305,7 +18588,12 @@ components:
     _api_v1_analytics_users_active_series_post_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          points:
+          - date: date
+            activeUsers: 0.8008281904610115
+          - date: date
+            activeUsers: 0.8008281904610115
         status: success
       properties:
         status:
@@ -16313,7 +18601,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/AnalyticsActiveUsersSeriesResponse
+          $ref: "#/components/schemas/AnalyticsActiveUsersSeriesResponse"
       required:
       - data
       - status
@@ -16321,7 +18609,17 @@ components:
     _api_v1_analytics_agents_usage_post_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          activeAgentPercent: 1.4658129805029452
+          totalAgents: 0.8008281904610115
+          activeAgents: 6.027456183070403
+          agents:
+          - name: name
+            id: id
+            activeChatCount: 5.962133916683182
+          - name: name
+            id: id
+            activeChatCount: 5.962133916683182
         status: success
       properties:
         status:
@@ -16329,7 +18627,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/AnalyticsAgentUsageResponse
+          $ref: "#/components/schemas/AnalyticsAgentUsageResponse"
       required:
       - data
       - status
@@ -16337,7 +18635,40 @@ components:
     _api_v1_analytics_users_chats_post_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          users:
+          - name: name
+            chats:
+            - citationCount: 0.8008281904610115
+              lastMessageAt: lastMessageAt
+              characterName: characterName
+              id: id
+              title: title
+              characterId: characterId
+            - citationCount: 0.8008281904610115
+              lastMessageAt: lastMessageAt
+              characterName: characterName
+              id: id
+              title: title
+              characterId: characterId
+            id: id
+            email: email
+          - name: name
+            chats:
+            - citationCount: 0.8008281904610115
+              lastMessageAt: lastMessageAt
+              characterName: characterName
+              id: id
+              title: title
+              characterId: characterId
+            - citationCount: 0.8008281904610115
+              lastMessageAt: lastMessageAt
+              characterName: characterName
+              id: id
+              title: title
+              characterId: characterId
+            id: id
+            email: email
         status: success
       properties:
         status:
@@ -16345,7 +18676,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/AnalyticsUserChatsResponse
+          $ref: "#/components/schemas/AnalyticsUserChatsResponse"
       required:
       - data
       - status
@@ -16353,7 +18684,16 @@ components:
     _api_v1_analytics_users_inactive_post_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          users:
+          - lastSeenAt: lastSeenAt
+            name: name
+            id: id
+            email: email
+          - lastSeenAt: lastSeenAt
+            name: name
+            id: id
+            email: email
         status: success
       properties:
         status:
@@ -16361,7 +18701,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/AnalyticsInactiveUsersResponse
+          $ref: "#/components/schemas/AnalyticsInactiveUsersResponse"
       required:
       - data
       - status
@@ -16369,7 +18709,16 @@ components:
     _api_v1_analytics_overview_trends_post_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          points:
+          - date: date
+            activeInteractions: 6.027456183070403
+            activeUsers: 0.8008281904610115
+            totalCitations: 1.4658129805029452
+          - date: date
+            activeInteractions: 6.027456183070403
+            activeUsers: 0.8008281904610115
+            totalCitations: 1.4658129805029452
         status: success
       properties:
         status:
@@ -16377,7 +18726,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/AnalyticsOverviewTrendResponse
+          $ref: "#/components/schemas/AnalyticsOverviewTrendResponse"
       required:
       - data
       - status
@@ -16385,7 +18734,10 @@ components:
     _api_v1_analytics_topics_post_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          topics:
+          - ""
+          - ""
         status: success
       properties:
         status:
@@ -16393,7 +18745,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/AnalyticsTopicsResponse
+          $ref: "#/components/schemas/AnalyticsTopicsResponse"
       required:
       - data
       - status
@@ -16401,7 +18753,13 @@ components:
     _api_v1_analytics_questions_topics_post_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          summary: summary
+          topics:
+          - count: 0.8008281904610115
+            topic: topic
+          - count: 0.8008281904610115
+            topic: topic
         status: success
       properties:
         status:
@@ -16409,7 +18767,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/AnalyticsQuestionTopicsResponse
+          $ref: "#/components/schemas/AnalyticsQuestionTopicsResponse"
       required:
       - data
       - status
@@ -16417,7 +18775,22 @@ components:
     _api_v1_analytics_feedback_post_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          feedback:
+          - comments:
+            - comments
+            - comments
+            targetId: targetId
+            count: 0.8008281904610115
+            targetType: file
+            averageScore: 6.027456183070403
+          - comments:
+            - comments
+            - comments
+            targetId: targetId
+            count: 0.8008281904610115
+            targetType: file
+            averageScore: 6.027456183070403
         status: success
       properties:
         status:
@@ -16425,7 +18798,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/AnalyticsFeedbackResponse
+          $ref: "#/components/schemas/AnalyticsFeedbackResponse"
       required:
       - data
       - status
@@ -16448,7 +18821,11 @@ components:
     _api_v1_handbooks_post_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          organizationId: organizationId
+          name: name
+          description: description
+          id: id
         status: success
       properties:
         status:
@@ -16456,7 +18833,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/HandbookMutationResponse
+          $ref: "#/components/schemas/HandbookMutationResponse"
       required:
       - data
       - status
@@ -16464,7 +18841,35 @@ components:
     _api_v1_handbook_get_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+        - organizationName: organizationName
+          description: description
+          handbookId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          title: title
+          url: url
+          backingFileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          contentHash: contentHash
+          organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          isDeleted: true
+          handbookName: handbookName
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          syncStatus: synced
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - organizationName: organizationName
+          description: description
+          handbookId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          title: title
+          url: url
+          backingFileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          contentHash: contentHash
+          organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          isDeleted: true
+          handbookName: handbookName
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          syncStatus: synced
+          updatedAt: 2000-01-23T04:56:07.000+00:00
         status: success
       properties:
         status:
@@ -16472,7 +18877,9 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/HandbookListResponse
+          items:
+            $ref: "#/components/schemas/HandbookItemMutationResponse"
+          type: array
       required:
       - data
       - status
@@ -16502,7 +18909,21 @@ components:
     _api_v1_handbook_post_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          organizationName: organizationName
+          description: description
+          handbookId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          title: title
+          url: url
+          backingFileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          contentHash: contentHash
+          organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          isDeleted: true
+          handbookName: handbookName
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          syncStatus: synced
+          updatedAt: 2000-01-23T04:56:07.000+00:00
         status: success
       properties:
         status:
@@ -16510,7 +18931,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/HandbookItemMutationResponse
+          $ref: "#/components/schemas/HandbookItemMutationResponse"
       required:
       - data
       - status
@@ -16540,7 +18961,9 @@ components:
     _api_v1_handbook_attach__characterId__post_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          total: 6.027456183070403
+          attached: 0.8008281904610115
         status: success
       properties:
         status:
@@ -16548,7 +18971,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/HandbookAttachResponse
+          $ref: "#/components/schemas/HandbookAttachResponse"
       required:
       - data
       - status
@@ -16556,7 +18979,9 @@ components:
     _api_v1_handbook_detach__characterId__post_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          detached: 0.8008281904610115
+          total: 6.027456183070403
         status: success
       properties:
         status:
@@ -16564,7 +18989,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/HandbookDetachResponse
+          $ref: "#/components/schemas/HandbookDetachResponse"
       required:
       - data
       - status
@@ -16572,7 +18997,9 @@ components:
     _api_v1_handbook_attached__characterId__get_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         status: success
       properties:
         status:
@@ -16580,7 +19007,11 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/HandbookAttachedItemsResponse
+          items:
+            format: uuid
+            pattern: "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+            type: string
+          type: array
       required:
       - data
       - status
@@ -16620,7 +19051,38 @@ components:
     _api_v1_knowledge_folders_get_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          data:
+          - organizationId: organizationId
+            createdAt: createdAt
+            isDefault: true
+            createdBy: createdBy
+            counts:
+              handbooks: 6.027456183070403
+              characters: 1.4658129805029452
+              files: 0.8008281904610115
+            name: name
+            description: description
+            id: id
+            updatedAt: updatedAt
+          - organizationId: organizationId
+            createdAt: createdAt
+            isDefault: true
+            createdBy: createdBy
+            counts:
+              handbooks: 6.027456183070403
+              characters: 1.4658129805029452
+              files: 0.8008281904610115
+            name: name
+            description: description
+            id: id
+            updatedAt: updatedAt
+          meta:
+            total: 2.3021358869347655
+            limit: 5.637376656633329
+            totalPages: 7.061401241503109
+            page: 5.962133916683182
+          status: status
         status: success
       properties:
         status:
@@ -16628,7 +19090,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/KnowledgeFolderListResponse
+          $ref: "#/components/schemas/KnowledgeFolderListResponse"
       required:
       - data
       - status
@@ -16636,7 +19098,21 @@ components:
     _api_v1_knowledge_folders_post_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          data:
+            organizationId: organizationId
+            createdAt: createdAt
+            isDefault: true
+            createdBy: createdBy
+            counts:
+              handbooks: 6.027456183070403
+              characters: 1.4658129805029452
+              files: 0.8008281904610115
+            name: name
+            description: description
+            id: id
+            updatedAt: updatedAt
+          status: status
         status: success
       properties:
         status:
@@ -16644,7 +19120,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/KnowledgeFolderMutationResponse
+          $ref: "#/components/schemas/KnowledgeFolderMutationResponse"
       required:
       - data
       - status
@@ -16652,7 +19128,14 @@ components:
     _api_v1_knowledge_folders__folderId__delete_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          data:
+            movedHandbooks: 6.027456183070403
+            removedCharacterAssignments: 1.4658129805029452
+            movedFiles: 0.8008281904610115
+            deletedFolderId: deletedFolderId
+            reassignedToDefaultFolderId: reassignedToDefaultFolderId
+          status: status
         status: success
       properties:
         status:
@@ -16660,7 +19143,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/KnowledgeFolderDeleteResponse
+          $ref: "#/components/schemas/KnowledgeFolderDeleteResponse"
       required:
       - data
       - status
@@ -16668,7 +19151,14 @@ components:
     _api_v1_knowledge_folders__folderId__move_files_post_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          data:
+            movedCount: 0.8008281904610115
+            movedFileIds:
+            - movedFileIds
+            - movedFileIds
+            targetFolderId: targetFolderId
+          status: status
         status: success
       properties:
         status:
@@ -16676,7 +19166,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/KnowledgeFolderMoveFilesResponse
+          $ref: "#/components/schemas/KnowledgeFolderMoveFilesResponse"
       required:
       - data
       - status
@@ -16684,7 +19174,14 @@ components:
     _api_v1_knowledge_folders__folderId__copy_files_post_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          data:
+            copiedCount: 0.8008281904610115
+            targetFolderId: targetFolderId
+            copiedFileIds:
+            - copiedFileIds
+            - copiedFileIds
+          status: status
         status: success
       properties:
         status:
@@ -16692,7 +19189,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/KnowledgeFolderCopyFilesResponse
+          $ref: "#/components/schemas/KnowledgeFolderCopyFilesResponse"
       required:
       - data
       - status
@@ -17622,7 +20119,227 @@ components:
     _api_v1_training_topics_get_200_response:
       additionalProperties: false
       example:
-        data: "{}"
+        data:
+          nextCursor: nextCursor
+          total: 2147483647
+          offset: 2147483647
+          hasNextPage: true
+          topics:
+          - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            courses:
+            - enforceModuleOrder: true
+              progressState: progressState
+              completedAt: 2000-01-23T04:56:07.000+00:00
+              code: code
+              assignedAt: 2000-01-23T04:56:07.000+00:00
+              description: description
+              startedAt: 2000-01-23T04:56:07.000+00:00
+              lastActivityAt: 2000-01-23T04:56:07.000+00:00
+              isActive: true
+              modules:
+              - progressState: progressState
+                completedAt: 2000-01-23T04:56:07.000+00:00
+                description: description
+                startedAt: 2000-01-23T04:56:07.000+00:00
+                lastActivityAt: 2000-01-23T04:56:07.000+00:00
+                isActive: true
+                packageType: scorm
+                sortOrder: 2147483647
+                name: name
+                progressPercent: 0.5637376656633328
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                completionStatus: completionStatus
+                courseId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                thumbnailUrl: https://openapi-generator.tech
+              - progressState: progressState
+                completedAt: 2000-01-23T04:56:07.000+00:00
+                description: description
+                startedAt: 2000-01-23T04:56:07.000+00:00
+                lastActivityAt: 2000-01-23T04:56:07.000+00:00
+                isActive: true
+                packageType: scorm
+                sortOrder: 2147483647
+                name: name
+                progressPercent: 0.5637376656633328
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                completionStatus: completionStatus
+                courseId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                thumbnailUrl: https://openapi-generator.tech
+              organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              topicId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              enrollmentStatus: enrollmentStatus
+              sortOrder: 2147483647
+              name: name
+              courseStatus: courseStatus
+              topicName: topicName
+              progressPercent: 1.4658129805029452
+              enrollmentRole: enrollmentRole
+              completionStatus: completionStatus
+              courseId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              successStatus: successStatus
+            - enforceModuleOrder: true
+              progressState: progressState
+              completedAt: 2000-01-23T04:56:07.000+00:00
+              code: code
+              assignedAt: 2000-01-23T04:56:07.000+00:00
+              description: description
+              startedAt: 2000-01-23T04:56:07.000+00:00
+              lastActivityAt: 2000-01-23T04:56:07.000+00:00
+              isActive: true
+              modules:
+              - progressState: progressState
+                completedAt: 2000-01-23T04:56:07.000+00:00
+                description: description
+                startedAt: 2000-01-23T04:56:07.000+00:00
+                lastActivityAt: 2000-01-23T04:56:07.000+00:00
+                isActive: true
+                packageType: scorm
+                sortOrder: 2147483647
+                name: name
+                progressPercent: 0.5637376656633328
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                completionStatus: completionStatus
+                courseId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                thumbnailUrl: https://openapi-generator.tech
+              - progressState: progressState
+                completedAt: 2000-01-23T04:56:07.000+00:00
+                description: description
+                startedAt: 2000-01-23T04:56:07.000+00:00
+                lastActivityAt: 2000-01-23T04:56:07.000+00:00
+                isActive: true
+                packageType: scorm
+                sortOrder: 2147483647
+                name: name
+                progressPercent: 0.5637376656633328
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                completionStatus: completionStatus
+                courseId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                thumbnailUrl: https://openapi-generator.tech
+              organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              topicId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              enrollmentStatus: enrollmentStatus
+              sortOrder: 2147483647
+              name: name
+              courseStatus: courseStatus
+              topicName: topicName
+              progressPercent: 1.4658129805029452
+              enrollmentRole: enrollmentRole
+              completionStatus: completionStatus
+              courseId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              successStatus: successStatus
+            topicId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            sortOrder: 2147483647
+            enforceCourseOrder: false
+            name: name
+            description: description
+          - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            courses:
+            - enforceModuleOrder: true
+              progressState: progressState
+              completedAt: 2000-01-23T04:56:07.000+00:00
+              code: code
+              assignedAt: 2000-01-23T04:56:07.000+00:00
+              description: description
+              startedAt: 2000-01-23T04:56:07.000+00:00
+              lastActivityAt: 2000-01-23T04:56:07.000+00:00
+              isActive: true
+              modules:
+              - progressState: progressState
+                completedAt: 2000-01-23T04:56:07.000+00:00
+                description: description
+                startedAt: 2000-01-23T04:56:07.000+00:00
+                lastActivityAt: 2000-01-23T04:56:07.000+00:00
+                isActive: true
+                packageType: scorm
+                sortOrder: 2147483647
+                name: name
+                progressPercent: 0.5637376656633328
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                completionStatus: completionStatus
+                courseId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                thumbnailUrl: https://openapi-generator.tech
+              - progressState: progressState
+                completedAt: 2000-01-23T04:56:07.000+00:00
+                description: description
+                startedAt: 2000-01-23T04:56:07.000+00:00
+                lastActivityAt: 2000-01-23T04:56:07.000+00:00
+                isActive: true
+                packageType: scorm
+                sortOrder: 2147483647
+                name: name
+                progressPercent: 0.5637376656633328
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                completionStatus: completionStatus
+                courseId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                thumbnailUrl: https://openapi-generator.tech
+              organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              topicId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              enrollmentStatus: enrollmentStatus
+              sortOrder: 2147483647
+              name: name
+              courseStatus: courseStatus
+              topicName: topicName
+              progressPercent: 1.4658129805029452
+              enrollmentRole: enrollmentRole
+              completionStatus: completionStatus
+              courseId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              successStatus: successStatus
+            - enforceModuleOrder: true
+              progressState: progressState
+              completedAt: 2000-01-23T04:56:07.000+00:00
+              code: code
+              assignedAt: 2000-01-23T04:56:07.000+00:00
+              description: description
+              startedAt: 2000-01-23T04:56:07.000+00:00
+              lastActivityAt: 2000-01-23T04:56:07.000+00:00
+              isActive: true
+              modules:
+              - progressState: progressState
+                completedAt: 2000-01-23T04:56:07.000+00:00
+                description: description
+                startedAt: 2000-01-23T04:56:07.000+00:00
+                lastActivityAt: 2000-01-23T04:56:07.000+00:00
+                isActive: true
+                packageType: scorm
+                sortOrder: 2147483647
+                name: name
+                progressPercent: 0.5637376656633328
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                completionStatus: completionStatus
+                courseId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                thumbnailUrl: https://openapi-generator.tech
+              - progressState: progressState
+                completedAt: 2000-01-23T04:56:07.000+00:00
+                description: description
+                startedAt: 2000-01-23T04:56:07.000+00:00
+                lastActivityAt: 2000-01-23T04:56:07.000+00:00
+                isActive: true
+                packageType: scorm
+                sortOrder: 2147483647
+                name: name
+                progressPercent: 0.5637376656633328
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                completionStatus: completionStatus
+                courseId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                thumbnailUrl: https://openapi-generator.tech
+              organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              topicId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              enrollmentStatus: enrollmentStatus
+              sortOrder: 2147483647
+              name: name
+              courseStatus: courseStatus
+              topicName: topicName
+              progressPercent: 1.4658129805029452
+              enrollmentRole: enrollmentRole
+              completionStatus: completionStatus
+              courseId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              successStatus: successStatus
+            topicId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            sortOrder: 2147483647
+            enforceCourseOrder: false
+            name: name
+            description: description
+          limit: 2147483647
         status: success
       properties:
         status:
@@ -17630,7 +20347,7 @@ components:
           - success
           type: string
         data:
-          $ref: __SCHEMA__PLACEHOLDER__#/components/schemas/ListMyTrainingResponse
+          $ref: "#/components/schemas/ListMyTrainingResponse"
       required:
       - data
       - status
@@ -17794,13 +20511,7 @@ components:
         name:
           nullable: true
           type: string
-        display_name:
-          nullable: true
-          type: string
         displayName:
-          nullable: true
-          type: string
-        organization_id:
           nullable: true
           type: string
         organizationId:
@@ -17813,8 +20524,6 @@ components:
         created_at:
           type: string
         createdAt:
-          type: string
-        updated_at:
           type: string
         updatedAt:
           type: string
@@ -19244,6 +21953,13 @@ components:
       type: object
     LoginResponse_user:
       additionalProperties: false
+      example:
+        organizationId: organizationId
+        photoURL: photoURL
+        role: superadmin
+        displayName: displayName
+        id: id
+        email: email
       properties:
         id:
           type: string
@@ -19319,6 +22035,15 @@ components:
       type: object
     UserRegisterResponse_data:
       additionalProperties: false
+      example:
+        organizationId: organizationId
+        createdAt: createdAt
+        role: role
+        displayName: displayName
+        name: name
+        id: id
+        email: email
+        updatedAt: updatedAt
       properties:
         id:
           type: string
@@ -19349,6 +22074,8 @@ components:
       type: object
     UserLoginResponse_data:
       additionalProperties: false
+      example:
+        info: info
       properties:
         info:
           type: string
@@ -19357,6 +22084,41 @@ components:
       type: object
     GetAllHandbooksWithItemsResponse_inner:
       additionalProperties: false
+      example:
+        organizationId: organizationId
+        organizationName: organizationName
+        name: name
+        description: description
+        id: id
+        items:
+        - organizationName: organizationName
+          description: description
+          handbookId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          title: title
+          url: url
+          backingFileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          contentHash: contentHash
+          organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          isDeleted: true
+          handbookName: handbookName
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          syncStatus: synced
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - organizationName: organizationName
+          description: description
+          handbookId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          title: title
+          url: url
+          backingFileId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          contentHash: contentHash
+          organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          isDeleted: true
+          handbookName: handbookName
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          syncStatus: synced
+          updatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         id:
           type: string
@@ -19382,6 +22144,9 @@ components:
       type: object
     GetAllOrganizationsResponse_inner:
       additionalProperties: false
+      example:
+        name: name
+        id: id
       properties:
         id:
           type: string
@@ -19398,6 +22163,31 @@ components:
         type: string
     AdminListUsersResponse_users_inner:
       additionalProperties: {}
+      example:
+        organizationId: organizationId
+        createdAt: null
+        role: superadmin
+        displayName: displayName
+        name: name
+        groups:
+        - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          userCount: 2147483647
+          name: name
+          description: description
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          userCount: 2147483647
+          name: name
+          description: description
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          updatedAt: 2000-01-23T04:56:07.000+00:00
+        created_at: AdminListUsersResponse_users_inner_created_at
+        id: id
+        email: email
+        updatedAt: null
       properties:
         id:
           type: string
@@ -19415,13 +22205,7 @@ components:
         name:
           nullable: true
           type: string
-        display_name:
-          nullable: true
-          type: string
         displayName:
-          nullable: true
-          type: string
-        organization_id:
           nullable: true
           type: string
         organizationId:
@@ -19435,8 +22219,6 @@ components:
           $ref: "#/components/schemas/AdminListUsersResponse_users_inner_created_at"
         createdAt:
           $ref: "#/components/schemas/AdminListUsersResponse_users_inner_created_at"
-        updated_at:
-          $ref: "#/components/schemas/AdminListUsersResponse_users_inner_created_at"
         updatedAt:
           $ref: "#/components/schemas/AdminListUsersResponse_users_inner_created_at"
       required:
@@ -19445,6 +22227,16 @@ components:
       type: object
     CharacterResponse_persona:
       additionalProperties: false
+      example:
+        backstory: backstory
+        speakingStyle: speakingStyle
+        personality: personality
+        topics:
+        - topics
+        - topics
+        restrictions:
+        - restrictions
+        - restrictions
       nullable: true
       properties:
         personality:
@@ -19464,6 +22256,13 @@ components:
       type: object
     CharacterResponse_modelSettings:
       additionalProperties: false
+      example:
+        presencePenalty: 0.25495066265333133
+        temperature: 0.1601656380922023
+        maxTokens: 77151.83639768286
+        model: gpt-4o-mini
+        topP: 0.14658129805029452
+        frequencyPenalty: 0.38485356667327286
       nullable: true
       properties:
         model:
@@ -19498,6 +22297,14 @@ components:
       type: object
     CharacterResponse_voiceSettings:
       additionalProperties: false
+      example:
+        speakerBoost: true
+        voiceId: voiceId
+        voiceName: voiceName
+        service: elevenlabs
+        similarityBoost: 0.7061401241503109
+        style: 0.9301444243932576
+        stability: 0.23021358869347652
       nullable: true
       properties:
         voiceId:
@@ -19528,6 +22335,12 @@ components:
       type: object
     CharacterResponse_avatarSettings:
       additionalProperties: false
+      example:
+        idleAnimation: idleAnimation
+        avatarUrl: avatarUrl
+        talkingAnimation: talkingAnimation
+        modelUrl: modelUrl
+        thumbnailUrl: thumbnailUrl
       nullable: true
       properties:
         avatarUrl:
@@ -19543,6 +22356,12 @@ components:
       type: object
     CharacterResponse_moderationSettings:
       additionalProperties: false
+      example:
+        customRules:
+        - customRules
+        - customRules
+        level: moderate
+        enabled: true
       nullable: true
       properties:
         enabled:
@@ -19652,79 +22471,12 @@ components:
       - id
       - role
       type: object
-    GetUserFilesResponse_files_inner:
-      additionalProperties: false
-      properties:
-        id:
-          format: uuid
-          pattern: "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-          type: string
-        filename:
-          type: string
-        originalName:
-          type: string
-        mimeType:
-          type: string
-        fileSize:
-          type: number
-        fileType:
-          enum:
-          - document
-          - image
-          - audio
-          - video
-          - avatar
-          - model
-          - other
-          type: string
-        status:
-          enum:
-          - pending
-          - processing
-          - completed
-          - failed
-          type: string
-        s3Key:
-          type: string
-        url:
-          type: string
-        openaiFileId:
-          nullable: true
-          type: string
-        usageType:
-          enum:
-          - internal
-          - quotable
-          - public
-          - null
-          type: string
-        userId:
-          type: string
-        characterId:
-          format: uuid
-          nullable: true
-          pattern: "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-          type: string
-        organizationId:
-          format: uuid
-          nullable: true
-          pattern: "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-          type: string
-        folderId:
-          format: uuid
-          nullable: true
-          pattern: "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-      required:
-      - filename
-      - id
-      - userId
-      type: object
     GetUserFilesResponse_storageInfo_limits:
       additionalProperties: false
+      example:
+        maxBatchSize: 2.3021358869347655
+        maxFileSize: 5.637376656633329
+        userLimit: 7.061401241503109
       properties:
         maxFileSize:
           type: number
@@ -19739,6 +22491,14 @@ components:
       type: object
     GetUserFilesResponse_storageInfo:
       additionalProperties: false
+      example:
+        total: 1.4658129805029452
+        available: 5.962133916683182
+        used: 6.027456183070403
+        limits:
+          maxBatchSize: 2.3021358869347655
+          maxFileSize: 5.637376656633329
+          userLimit: 7.061401241503109
       properties:
         used:
           type: number
@@ -19755,6 +22515,12 @@ components:
       type: object
     GetUserFilesResponse_meta:
       additionalProperties: false
+      example:
+        total: 2.027123023002322
+        limit: 3.616076749251911
+        totalPages: 4.145608029883936
+        hasMore: true
+        page: 9.301444243932576
       properties:
         page:
           type: number
@@ -19783,6 +22549,9 @@ components:
       type: object
     FileBulkDeleteResponse_failures_inner:
       additionalProperties: false
+      example:
+        reason: reason
+        fileId: fileId
       properties:
         fileId:
           type: string
@@ -19996,6 +22765,10 @@ components:
       type: object
     KnowledgeFolderListResponse_data_inner_counts:
       additionalProperties: false
+      example:
+        handbooks: 6.027456183070403
+        characters: 1.4658129805029452
+        files: 0.8008281904610115
       properties:
         files:
           type: number
@@ -20010,6 +22783,19 @@ components:
       type: object
     KnowledgeFolderListResponse_data_inner:
       additionalProperties: false
+      example:
+        organizationId: organizationId
+        createdAt: createdAt
+        isDefault: true
+        createdBy: createdBy
+        counts:
+          handbooks: 6.027456183070403
+          characters: 1.4658129805029452
+          files: 0.8008281904610115
+        name: name
+        description: description
+        id: id
+        updatedAt: updatedAt
       properties:
         id:
           type: string
@@ -20040,6 +22826,11 @@ components:
       type: object
     KnowledgeFolderListResponse_meta:
       additionalProperties: false
+      example:
+        total: 2.3021358869347655
+        limit: 5.637376656633329
+        totalPages: 7.061401241503109
+        page: 5.962133916683182
       properties:
         page:
           type: number
@@ -20057,6 +22848,12 @@ components:
       type: object
     KnowledgeFolderDeleteResponse_data:
       additionalProperties: false
+      example:
+        movedHandbooks: 6.027456183070403
+        removedCharacterAssignments: 1.4658129805029452
+        movedFiles: 0.8008281904610115
+        deletedFolderId: deletedFolderId
+        reassignedToDefaultFolderId: reassignedToDefaultFolderId
       properties:
         deletedFolderId:
           type: string
@@ -20077,6 +22874,12 @@ components:
       type: object
     KnowledgeFolderMoveFilesResponse_data:
       additionalProperties: false
+      example:
+        movedCount: 0.8008281904610115
+        movedFileIds:
+        - movedFileIds
+        - movedFileIds
+        targetFolderId: targetFolderId
       properties:
         movedCount:
           type: number
@@ -20093,6 +22896,12 @@ components:
       type: object
     KnowledgeFolderCopyFilesResponse_data:
       additionalProperties: false
+      example:
+        copiedCount: 0.8008281904610115
+        targetFolderId: targetFolderId
+        copiedFileIds:
+        - copiedFileIds
+        - copiedFileIds
       properties:
         copiedCount:
           type: number
@@ -20156,6 +22965,10 @@ components:
       type: object
     GetModerationContextResponse_chatInfo_user:
       additionalProperties: false
+      example:
+        name: name
+        id: id
+        email: email
       properties:
         id:
           type: string
@@ -20171,6 +22984,10 @@ components:
       type: object
     GetModerationContextResponse_chatInfo_character:
       additionalProperties: false
+      example:
+        organizationId: organizationId
+        name: name
+        id: id
       properties:
         id:
           type: string
@@ -20186,6 +23003,18 @@ components:
       type: object
     GetModerationContextResponse_chatInfo:
       additionalProperties: false
+      example:
+        createdAt: createdAt
+        character:
+          organizationId: organizationId
+          name: name
+          id: id
+        id: id
+        title: title
+        user:
+          name: name
+          id: id
+          email: email
       nullable: true
       properties:
         id:
@@ -20209,6 +23038,10 @@ components:
       type: object
     AnalyticsFileUsageExtremesResponse_mostUsed_inner:
       additionalProperties: false
+      example:
+        fileName: fileName
+        usageCount: 0.8008281904610115
+        fileId: fileId
       properties:
         fileId:
           type: string
@@ -20222,6 +23055,11 @@ components:
       type: object
     AnalyticsCitationsResponse_files_inner_recentConversations_inner:
       additionalProperties: false
+      example:
+        agentName: agentName
+        userEmail: userEmail
+        userName: userName
+        lastCitedAt: lastCitedAt
       properties:
         agentName:
           nullable: true
@@ -20238,6 +23076,20 @@ components:
       type: object
     AnalyticsCitationsResponse_files_inner:
       additionalProperties: false
+      example:
+        citationCount: 0.8008281904610115
+        fileName: fileName
+        recentConversations:
+        - agentName: agentName
+          userEmail: userEmail
+          userName: userName
+          lastCitedAt: lastCitedAt
+        - agentName: agentName
+          userEmail: userEmail
+          userName: userName
+          lastCitedAt: lastCitedAt
+        fileId: fileId
+        lastCitedAt: lastCitedAt
       properties:
         fileId:
           type: string
@@ -20257,6 +23109,9 @@ components:
       type: object
     AnalyticsActiveUsersSeriesResponse_points_inner:
       additionalProperties: false
+      example:
+        date: date
+        activeUsers: 0.8008281904610115
       properties:
         date:
           type: string
@@ -20268,6 +23123,10 @@ components:
       type: object
     AnalyticsAgentUsageResponse_agents_inner:
       additionalProperties: false
+      example:
+        name: name
+        id: id
+        activeChatCount: 5.962133916683182
       properties:
         id:
           type: string
@@ -20282,6 +23141,13 @@ components:
       type: object
     AnalyticsUserChatsResponse_users_inner_chats_inner:
       additionalProperties: false
+      example:
+        citationCount: 0.8008281904610115
+        lastMessageAt: lastMessageAt
+        characterName: characterName
+        id: id
+        title: title
+        characterId: characterId
       properties:
         id:
           type: string
@@ -20305,6 +23171,23 @@ components:
       type: object
     AnalyticsUserChatsResponse_users_inner:
       additionalProperties: false
+      example:
+        name: name
+        chats:
+        - citationCount: 0.8008281904610115
+          lastMessageAt: lastMessageAt
+          characterName: characterName
+          id: id
+          title: title
+          characterId: characterId
+        - citationCount: 0.8008281904610115
+          lastMessageAt: lastMessageAt
+          characterName: characterName
+          id: id
+          title: title
+          characterId: characterId
+        id: id
+        email: email
       properties:
         id:
           type: string
@@ -20324,6 +23207,11 @@ components:
       type: object
     AnalyticsInactiveUsersResponse_users_inner:
       additionalProperties: false
+      example:
+        lastSeenAt: lastSeenAt
+        name: name
+        id: id
+        email: email
       properties:
         id:
           type: string
@@ -20341,6 +23229,11 @@ components:
       type: object
     AnalyticsOverviewTrendResponse_points_inner:
       additionalProperties: false
+      example:
+        date: date
+        activeInteractions: 6.027456183070403
+        activeUsers: 0.8008281904610115
+        totalCitations: 1.4658129805029452
       properties:
         date:
           type: string
@@ -20358,6 +23251,9 @@ components:
       type: object
     AnalyticsQuestionTopicsResponse_topics_inner:
       additionalProperties: false
+      example:
+        count: 0.8008281904610115
+        topic: topic
       properties:
         topic:
           type: string
@@ -20369,6 +23265,14 @@ components:
       type: object
     AnalyticsFeedbackResponse_feedback_inner:
       additionalProperties: false
+      example:
+        comments:
+        - comments
+        - comments
+        targetId: targetId
+        count: 0.8008281904610115
+        targetType: file
+        averageScore: 6.027456183070403
       properties:
         targetId:
           type: string
@@ -20656,8 +23560,14 @@ components:
       additionalProperties: false
       example:
         users:
-        - role: learner
+        - uid: uid
+          photoURL: photoURL
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          role: learner
+          cognitoSub: cognitoSub
           displayName: displayName
+          organization: organization
+          name: name
           groups:
           - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             createdAt: 2000-01-23T04:56:07.000+00:00
@@ -20673,18 +23583,17 @@ components:
             description: description
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             updatedAt: 2000-01-23T04:56:07.000+00:00
-          uid: uid
-          photoURL: photoURL
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          cognitoSub: cognitoSub
-          organization_id: organization_id
-          organization: organization
-          name: name
           id: id
           email: email
           updatedAt: 2000-01-23T04:56:07.000+00:00
-        - role: learner
+        - uid: uid
+          photoURL: photoURL
+          createdAt: 2000-01-23T04:56:07.000+00:00
+          role: learner
+          cognitoSub: cognitoSub
           displayName: displayName
+          organization: organization
+          name: name
           groups:
           - organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             createdAt: 2000-01-23T04:56:07.000+00:00
@@ -20700,13 +23609,6 @@ components:
             description: description
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             updatedAt: 2000-01-23T04:56:07.000+00:00
-          uid: uid
-          photoURL: photoURL
-          createdAt: 2000-01-23T04:56:07.000+00:00
-          cognitoSub: cognitoSub
-          organization_id: organization_id
-          organization: organization
-          name: name
           id: id
           email: email
           updatedAt: 2000-01-23T04:56:07.000+00:00
@@ -20767,6 +23669,21 @@ components:
       type: object
     ListMyTrainingResponse_topics_inner_courses_inner_modules_inner:
       additionalProperties: false
+      example:
+        progressState: progressState
+        completedAt: 2000-01-23T04:56:07.000+00:00
+        description: description
+        startedAt: 2000-01-23T04:56:07.000+00:00
+        lastActivityAt: 2000-01-23T04:56:07.000+00:00
+        isActive: true
+        packageType: scorm
+        sortOrder: 2147483647
+        name: name
+        progressPercent: 0.5637376656633328
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        completionStatus: completionStatus
+        courseId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        thumbnailUrl: https://openapi-generator.tech
       properties:
         id:
           format: uuid
@@ -20840,6 +23757,57 @@ components:
       type: object
     ListMyTrainingResponse_topics_inner_courses_inner:
       additionalProperties: false
+      example:
+        enforceModuleOrder: true
+        progressState: progressState
+        completedAt: 2000-01-23T04:56:07.000+00:00
+        code: code
+        assignedAt: 2000-01-23T04:56:07.000+00:00
+        description: description
+        startedAt: 2000-01-23T04:56:07.000+00:00
+        lastActivityAt: 2000-01-23T04:56:07.000+00:00
+        isActive: true
+        modules:
+        - progressState: progressState
+          completedAt: 2000-01-23T04:56:07.000+00:00
+          description: description
+          startedAt: 2000-01-23T04:56:07.000+00:00
+          lastActivityAt: 2000-01-23T04:56:07.000+00:00
+          isActive: true
+          packageType: scorm
+          sortOrder: 2147483647
+          name: name
+          progressPercent: 0.5637376656633328
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          completionStatus: completionStatus
+          courseId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          thumbnailUrl: https://openapi-generator.tech
+        - progressState: progressState
+          completedAt: 2000-01-23T04:56:07.000+00:00
+          description: description
+          startedAt: 2000-01-23T04:56:07.000+00:00
+          lastActivityAt: 2000-01-23T04:56:07.000+00:00
+          isActive: true
+          packageType: scorm
+          sortOrder: 2147483647
+          name: name
+          progressPercent: 0.5637376656633328
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          completionStatus: completionStatus
+          courseId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          thumbnailUrl: https://openapi-generator.tech
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        topicId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        enrollmentStatus: enrollmentStatus
+        sortOrder: 2147483647
+        name: name
+        courseStatus: courseStatus
+        topicName: topicName
+        progressPercent: 1.4658129805029452
+        enrollmentRole: enrollmentRole
+        completionStatus: completionStatus
+        courseId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        successStatus: successStatus
       properties:
         courseId:
           format: uuid
@@ -20942,6 +23910,114 @@ components:
       type: object
     ListMyTrainingResponse_topics_inner:
       additionalProperties: false
+      example:
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        courses:
+        - enforceModuleOrder: true
+          progressState: progressState
+          completedAt: 2000-01-23T04:56:07.000+00:00
+          code: code
+          assignedAt: 2000-01-23T04:56:07.000+00:00
+          description: description
+          startedAt: 2000-01-23T04:56:07.000+00:00
+          lastActivityAt: 2000-01-23T04:56:07.000+00:00
+          isActive: true
+          modules:
+          - progressState: progressState
+            completedAt: 2000-01-23T04:56:07.000+00:00
+            description: description
+            startedAt: 2000-01-23T04:56:07.000+00:00
+            lastActivityAt: 2000-01-23T04:56:07.000+00:00
+            isActive: true
+            packageType: scorm
+            sortOrder: 2147483647
+            name: name
+            progressPercent: 0.5637376656633328
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            completionStatus: completionStatus
+            courseId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            thumbnailUrl: https://openapi-generator.tech
+          - progressState: progressState
+            completedAt: 2000-01-23T04:56:07.000+00:00
+            description: description
+            startedAt: 2000-01-23T04:56:07.000+00:00
+            lastActivityAt: 2000-01-23T04:56:07.000+00:00
+            isActive: true
+            packageType: scorm
+            sortOrder: 2147483647
+            name: name
+            progressPercent: 0.5637376656633328
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            completionStatus: completionStatus
+            courseId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            thumbnailUrl: https://openapi-generator.tech
+          organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          topicId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          enrollmentStatus: enrollmentStatus
+          sortOrder: 2147483647
+          name: name
+          courseStatus: courseStatus
+          topicName: topicName
+          progressPercent: 1.4658129805029452
+          enrollmentRole: enrollmentRole
+          completionStatus: completionStatus
+          courseId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          successStatus: successStatus
+        - enforceModuleOrder: true
+          progressState: progressState
+          completedAt: 2000-01-23T04:56:07.000+00:00
+          code: code
+          assignedAt: 2000-01-23T04:56:07.000+00:00
+          description: description
+          startedAt: 2000-01-23T04:56:07.000+00:00
+          lastActivityAt: 2000-01-23T04:56:07.000+00:00
+          isActive: true
+          modules:
+          - progressState: progressState
+            completedAt: 2000-01-23T04:56:07.000+00:00
+            description: description
+            startedAt: 2000-01-23T04:56:07.000+00:00
+            lastActivityAt: 2000-01-23T04:56:07.000+00:00
+            isActive: true
+            packageType: scorm
+            sortOrder: 2147483647
+            name: name
+            progressPercent: 0.5637376656633328
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            completionStatus: completionStatus
+            courseId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            thumbnailUrl: https://openapi-generator.tech
+          - progressState: progressState
+            completedAt: 2000-01-23T04:56:07.000+00:00
+            description: description
+            startedAt: 2000-01-23T04:56:07.000+00:00
+            lastActivityAt: 2000-01-23T04:56:07.000+00:00
+            isActive: true
+            packageType: scorm
+            sortOrder: 2147483647
+            name: name
+            progressPercent: 0.5637376656633328
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            completionStatus: completionStatus
+            courseId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            thumbnailUrl: https://openapi-generator.tech
+          organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          topicId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          enrollmentStatus: enrollmentStatus
+          sortOrder: 2147483647
+          name: name
+          courseStatus: courseStatus
+          topicName: topicName
+          progressPercent: 1.4658129805029452
+          enrollmentRole: enrollmentRole
+          completionStatus: completionStatus
+          courseId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          successStatus: successStatus
+        topicId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        sortOrder: 2147483647
+        enforceCourseOrder: false
+        name: name
+        description: description
       properties:
         topicId:
           format: uuid
@@ -20977,6 +24053,11 @@ components:
       type: object
     GetVoicesResponse_voices_inner_settings:
       additionalProperties: false
+      example:
+        speakerBoost: true
+        similarityBoost: 0.6027456183070403
+        style: 0.14658129805029452
+        stability: 0.08008281904610115
       properties:
         stability:
           maximum: 1
@@ -20995,6 +24076,22 @@ components:
       type: object
     GetVoicesResponse_voices_inner:
       additionalProperties: false
+      example:
+        settings:
+          speakerBoost: true
+          similarityBoost: 0.6027456183070403
+          style: 0.14658129805029452
+          stability: 0.08008281904610115
+        previewUrl: previewUrl
+        gender: male
+        service: elevenlabs
+        name: name
+        description: description
+        language: language
+        id: id
+        category: category
+        accent: accent
+        age: young
       properties:
         id:
           type: string
@@ -21034,6 +24131,9 @@ components:
       type: object
     GetSTTLanguagesResponse_languages_inner:
       additionalProperties: false
+      example:
+        code: code
+        name: name
       properties:
         code:
           type: string
@@ -21043,4 +24143,9 @@ components:
       - code
       - name
       type: object
+  securitySchemes:
+    bearerAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http
 

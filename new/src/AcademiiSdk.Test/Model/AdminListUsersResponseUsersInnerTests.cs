@@ -8,16 +8,15 @@
  */
 
 
+using Xunit;
+
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
-using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
-using Newtonsoft.Json;
-using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -47,7 +46,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of AdminListUsersResponseUsersInner
         /// </summary>
-        [Test]
+        [Fact]
         public void AdminListUsersResponseUsersInnerInstanceTest()
         {
             // TODO uncomment below to test "IsType" AdminListUsersResponseUsersInner
@@ -57,103 +56,88 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Id'
         /// </summary>
-        [Test]
+        [Fact]
         public void IdTest()
         {
             // TODO unit test for the property 'Id'
         }
+
         /// <summary>
         /// Test the property 'Email'
         /// </summary>
-        [Test]
+        [Fact]
         public void EmailTest()
         {
             // TODO unit test for the property 'Email'
         }
+
         /// <summary>
         /// Test the property 'Role'
         /// </summary>
-        [Test]
+        [Fact]
         public void RoleTest()
         {
             // TODO unit test for the property 'Role'
         }
+
         /// <summary>
         /// Test the property 'Name'
         /// </summary>
-        [Test]
+        [Fact]
         public void NameTest()
         {
             // TODO unit test for the property 'Name'
         }
-        /// <summary>
-        /// Test the property 'DisplayName2'
-        /// </summary>
-        [Test]
-        public void DisplayName2Test()
-        {
-            // TODO unit test for the property 'DisplayName2'
-        }
+
         /// <summary>
         /// Test the property 'DisplayName'
         /// </summary>
-        [Test]
+        [Fact]
         public void DisplayNameTest()
         {
             // TODO unit test for the property 'DisplayName'
         }
-        /// <summary>
-        /// Test the property 'OrganizationId2'
-        /// </summary>
-        [Test]
-        public void OrganizationId2Test()
-        {
-            // TODO unit test for the property 'OrganizationId2'
-        }
+
         /// <summary>
         /// Test the property 'OrganizationId'
         /// </summary>
-        [Test]
+        [Fact]
         public void OrganizationIdTest()
         {
             // TODO unit test for the property 'OrganizationId'
         }
+
         /// <summary>
         /// Test the property 'Groups'
         /// </summary>
-        [Test]
+        [Fact]
         public void GroupsTest()
         {
             // TODO unit test for the property 'Groups'
         }
+
         /// <summary>
         /// Test the property 'CreatedAt2'
         /// </summary>
-        [Test]
+        [Fact]
         public void CreatedAt2Test()
         {
             // TODO unit test for the property 'CreatedAt2'
         }
+
         /// <summary>
         /// Test the property 'CreatedAt'
         /// </summary>
-        [Test]
+        [Fact]
         public void CreatedAtTest()
         {
             // TODO unit test for the property 'CreatedAt'
         }
-        /// <summary>
-        /// Test the property 'UpdatedAt2'
-        /// </summary>
-        [Test]
-        public void UpdatedAt2Test()
-        {
-            // TODO unit test for the property 'UpdatedAt2'
-        }
+
         /// <summary>
         /// Test the property 'UpdatedAt'
         /// </summary>
-        [Test]
+        [Fact]
         public void UpdatedAtTest()
         {
             // TODO unit test for the property 'UpdatedAt'

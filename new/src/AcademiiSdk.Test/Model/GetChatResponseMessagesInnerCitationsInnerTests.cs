@@ -8,16 +8,15 @@
  */
 
 
+using Xunit;
+
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
-using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
-using Newtonsoft.Json;
-using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -47,7 +46,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of GetChatResponseMessagesInnerCitationsInner
         /// </summary>
-        [Test]
+        [Fact]
         public void GetChatResponseMessagesInnerCitationsInnerInstanceTest()
         {
             // TODO uncomment below to test "IsType" GetChatResponseMessagesInnerCitationsInner
@@ -57,39 +56,43 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Title'
         /// </summary>
-        [Test]
+        [Fact]
         public void TitleTest()
         {
             // TODO unit test for the property 'Title'
         }
+
         /// <summary>
         /// Test the property 'Quote'
         /// </summary>
-        [Test]
+        [Fact]
         public void QuoteTest()
         {
             // TODO unit test for the property 'Quote'
         }
+
         /// <summary>
         /// Test the property 'UsageType'
         /// </summary>
-        [Test]
+        [Fact]
         public void UsageTypeTest()
         {
             // TODO unit test for the property 'UsageType'
         }
+
         /// <summary>
         /// Test the property 'FileId'
         /// </summary>
-        [Test]
+        [Fact]
         public void FileIdTest()
         {
             // TODO unit test for the property 'FileId'
         }
+
         /// <summary>
         /// Test the property 'Path'
         /// </summary>
-        [Test]
+        [Fact]
         public void PathTest()
         {
             // TODO unit test for the property 'Path'

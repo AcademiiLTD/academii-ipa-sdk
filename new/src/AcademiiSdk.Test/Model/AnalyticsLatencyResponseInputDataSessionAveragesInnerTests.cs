@@ -8,16 +8,15 @@
  */
 
 
+using Xunit;
+
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
-using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
-using Newtonsoft.Json;
-using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -47,7 +46,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of AnalyticsLatencyResponseInputDataSessionAveragesInner
         /// </summary>
-        [Test]
+        [Fact]
         public void AnalyticsLatencyResponseInputDataSessionAveragesInnerInstanceTest()
         {
             // TODO uncomment below to test "IsType" AnalyticsLatencyResponseInputDataSessionAveragesInner
@@ -57,26 +56,28 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'SessionId'
         /// </summary>
-        [Test]
+        [Fact]
         public void SessionIdTest()
         {
             // TODO unit test for the property 'SessionId'
         }
-        /// <summary>
-        /// Test the property 'AverageLatency'
-        /// </summary>
-        [Test]
-        public void AverageLatencyTest()
-        {
-            // TODO unit test for the property 'AverageLatency'
-        }
+
         /// <summary>
         /// Test the property 'TraceCount'
         /// </summary>
-        [Test]
+        [Fact]
         public void TraceCountTest()
         {
             // TODO unit test for the property 'TraceCount'
+        }
+
+        /// <summary>
+        /// Test the property 'AverageLatency'
+        /// </summary>
+        [Fact]
+        public void AverageLatencyTest()
+        {
+            // TODO unit test for the property 'AverageLatency'
         }
     }
 }

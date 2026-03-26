@@ -8,16 +8,15 @@
  */
 
 
+using Xunit;
+
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
-using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
-using Newtonsoft.Json;
-using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -47,7 +46,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of AnalyticsUncitedFilesResponseInput
         /// </summary>
-        [Test]
+        [Fact]
         public void AnalyticsUncitedFilesResponseInputInstanceTest()
         {
             // TODO uncomment below to test "IsType" AnalyticsUncitedFilesResponseInput
@@ -57,23 +56,25 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Files'
         /// </summary>
-        [Test]
+        [Fact]
         public void FilesTest()
         {
             // TODO unit test for the property 'Files'
         }
+
         /// <summary>
         /// Test the property 'TotalFiles'
         /// </summary>
-        [Test]
+        [Fact]
         public void TotalFilesTest()
         {
             // TODO unit test for the property 'TotalFiles'
         }
+
         /// <summary>
         /// Test the property 'CitedFiles'
         /// </summary>
-        [Test]
+        [Fact]
         public void CitedFilesTest()
         {
             // TODO unit test for the property 'CitedFiles'

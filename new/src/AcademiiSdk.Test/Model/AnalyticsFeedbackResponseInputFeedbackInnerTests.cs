@@ -8,16 +8,15 @@
  */
 
 
+using Xunit;
+
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
-using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
-using Newtonsoft.Json;
-using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -47,7 +46,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of AnalyticsFeedbackResponseInputFeedbackInner
         /// </summary>
-        [Test]
+        [Fact]
         public void AnalyticsFeedbackResponseInputFeedbackInnerInstanceTest()
         {
             // TODO uncomment below to test "IsType" AnalyticsFeedbackResponseInputFeedbackInner
@@ -57,39 +56,43 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'TargetId'
         /// </summary>
-        [Test]
+        [Fact]
         public void TargetIdTest()
         {
             // TODO unit test for the property 'TargetId'
         }
-        /// <summary>
-        /// Test the property 'TargetType'
-        /// </summary>
-        [Test]
-        public void TargetTypeTest()
-        {
-            // TODO unit test for the property 'TargetType'
-        }
+
         /// <summary>
         /// Test the property 'Count'
         /// </summary>
-        [Test]
+        [Fact]
         public void CountTest()
         {
             // TODO unit test for the property 'Count'
         }
+
+        /// <summary>
+        /// Test the property 'TargetType'
+        /// </summary>
+        [Fact]
+        public void TargetTypeTest()
+        {
+            // TODO unit test for the property 'TargetType'
+        }
+
         /// <summary>
         /// Test the property 'AverageScore'
         /// </summary>
-        [Test]
+        [Fact]
         public void AverageScoreTest()
         {
             // TODO unit test for the property 'AverageScore'
         }
+
         /// <summary>
         /// Test the property 'Comments'
         /// </summary>
-        [Test]
+        [Fact]
         public void CommentsTest()
         {
             // TODO unit test for the property 'Comments'

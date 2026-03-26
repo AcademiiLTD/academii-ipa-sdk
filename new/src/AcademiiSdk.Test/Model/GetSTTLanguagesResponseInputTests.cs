@@ -8,16 +8,15 @@
  */
 
 
+using Xunit;
+
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
-using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
-using Newtonsoft.Json;
-using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -47,7 +46,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of GetSTTLanguagesResponseInput
         /// </summary>
-        [Test]
+        [Fact]
         public void GetSTTLanguagesResponseInputInstanceTest()
         {
             // TODO uncomment below to test "IsType" GetSTTLanguagesResponseInput
@@ -57,7 +56,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Languages'
         /// </summary>
-        [Test]
+        [Fact]
         public void LanguagesTest()
         {
             // TODO unit test for the property 'Languages'
