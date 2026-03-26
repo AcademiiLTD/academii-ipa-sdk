@@ -91,6 +91,8 @@ Important:
   `Task<Response2>` or `Task<BackendResponse>`.
 - File download endpoints return `Task<FileResponse>`.
 - Some no-content endpoints return `Task` only.
+- The package also includes a generated WebSocket client in
+  `Academii.WebSocket.Client`.
 
 ## Unity MonoBehaviour Example
 
@@ -261,6 +263,87 @@ catch (ApiException ex)
     Debug.LogError(ex.Response);
 }
 ```
+
+## WebSocket SDK
+
+The package also includes a generated WebSocket client for the real-time routes:
+
+- `/ws/microphone`
+- `/ws/response/{id}`
+- `/ws/analytics`
+
+Namespaces:
+
+- `Academii.WebSocket.Client`
+- `Academii.WebSocket.Models`
+
+Authentication flow:
+
+- Call `LoginAsync(...)` over HTTP first.
+- Extract the token from `login.Data.Token`.
+- Use that same token for:
+  `HttpClient.DefaultRequestHeaders.Authorization`
+  on later HTTP requests, and
+  `new AcademiiWebSocketAPIClient(token)` for WebSocket connections.
+
+End-to-end example:
+
+```csharp
+using System.Net.Http;
+using System.Net.Http.Headers;
+using Academii.WebSocket.Client;
+using UnityEngine;
+
+var httpClient = new HttpClient();
+var client = new Client(httpClient)
+{
+    BaseUrl = "https://dev.academii.com/"
+};
+
+var login = await client.LoginAsync(new LoginPayload
+{
+    Email = "user@example.com",
+    Password = "correct horse battery staple"
+});
+
+var token = login.Data.Token;
+
+httpClient.DefaultRequestHeaders.Authorization =
+    new AuthenticationHeaderValue("Bearer", token);
+
+var wsClient = new AcademiiWebSocketAPIClient(token);
+
+wsClient.ContentDelta += (_, payload) =>
+{
+    Debug.Log(payload.Delta);
+};
+
+await wsClient.ConnectToResponseAsync(chatId);
+await wsClient.SendChatMessageAsync("Hello there", generateAudio: false);
+```
+
+For analytics streaming:
+
+```csharp
+wsClient.AnalyticsResponse += (_, payload) =>
+{
+    Debug.Log(payload.Data.Answer);
+};
+
+await wsClient.ConnectToAnalyticsAsync();
+await wsClient.SendAnalyticsQueryAsync("How many active users did we have this week?");
+```
+
+If the user logs out or you refresh the token, create a new
+`AcademiiWebSocketAPIClient` with the new token and reconnect. The WebSocket
+client does not automatically re-authenticate itself.
+
+Current caveat:
+
+- The package ships a small `NativeWebSocket` compatibility layer backed by
+  `ClientWebSocket`.
+- This is suitable for the .NET/Unity runtime paths we tested here, but WebGL
+  support is not guaranteed.
 
 If the endpoint has a typed error contract, you can catch the generic version:
 

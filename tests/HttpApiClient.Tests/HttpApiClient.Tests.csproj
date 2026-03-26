@@ -16,5 +16,8 @@
   <ItemGroup>
     <Compile Include="../../httpApiClient/httpApiClient.cs" Link="httpApiClient.cs" />
     <None Include="../../httpApiClient/httpApiClient.cs" CopyToOutputDirectory="PreserveNewest" />
+    <Compile Include="../../Packages/com.academii.ipa-sdk/Runtime/WebSocket/Client/*.cs" LinkBase="WebSocket/Client" />
+    <Compile Include="../../Packages/com.academii.ipa-sdk/Runtime/WebSocket/Models/*.cs" LinkBase="WebSocket/Models" />
+    <Compile Include="../../Packages/com.academii.ipa-sdk/Runtime/WebSocket/NativeWebSocketShim.cs" Link="WebSocket/NativeWebSocketShim.cs" />
   </ItemGroup>
 </Project>

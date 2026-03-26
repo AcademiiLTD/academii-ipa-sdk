@@ -75,6 +75,54 @@ Failed requests throw `ApiException` or `ApiException<TError>`, exposing:
 - `Response`
 - `Headers`
 
+## WebSocket SDK
+
+The package also includes a generated WebSocket client for:
+
+- `/ws/microphone`
+- `/ws/response/{id}`
+- `/ws/analytics`
+
+Namespaces:
+
+- `Academii.WebSocket.Client`
+- `Academii.WebSocket.Models`
+
+Authentication flow:
+
+- Call `LoginAsync(...)` first.
+- Read the token from `login.Data.Token`.
+- Use that token both for authenticated HTTP requests and for
+  `AcademiiWebSocketAPIClient`.
+
+Example:
+
+```csharp
+using System.Net.Http.Headers;
+using Academii.WebSocket.Client;
+
+var login = await client.LoginAsync(new LoginPayload
+{
+    Email = "user@example.com",
+    Password = "correct horse battery staple"
+});
+
+var token = login.Data.Token;
+
+httpClient.DefaultRequestHeaders.Authorization =
+    new AuthenticationHeaderValue("Bearer", token);
+
+var wsClient = new AcademiiWebSocketAPIClient(token);
+await wsClient.ConnectToResponseAsync(chatId);
+await wsClient.SendChatMessageAsync("Hello");
+```
+
+If the token changes, construct a new `AcademiiWebSocketAPIClient` with the
+new token and reconnect.
+
+The packaged compatibility layer uses `ClientWebSocket` under the hood, so
+WebGL support is not guaranteed.
+
 ## Recommended Pattern
 
 - Reuse one `HttpClient` instance.
