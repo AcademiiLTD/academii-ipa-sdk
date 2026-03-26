@@ -277,13 +277,41 @@ Namespaces:
 - `Academii.WebSocket.Client`
 - `Academii.WebSocket.Models`
 
-Example:
+Authentication flow:
+
+- Call `LoginAsync(...)` over HTTP first.
+- Extract the token from `login.Data.Token`.
+- Use that same token for:
+  `HttpClient.DefaultRequestHeaders.Authorization`
+  on later HTTP requests, and
+  `new AcademiiWebSocketAPIClient(token)` for WebSocket connections.
+
+End-to-end example:
 
 ```csharp
+using System.Net.Http;
+using System.Net.Http.Headers;
 using Academii.WebSocket.Client;
 using UnityEngine;
 
-var wsClient = new AcademiiWebSocketAPIClient(idToken);
+var httpClient = new HttpClient();
+var client = new Client(httpClient)
+{
+    BaseUrl = "https://dev.academii.com/"
+};
+
+var login = await client.LoginAsync(new LoginPayload
+{
+    Email = "user@example.com",
+    Password = "correct horse battery staple"
+});
+
+var token = login.Data.Token;
+
+httpClient.DefaultRequestHeaders.Authorization =
+    new AuthenticationHeaderValue("Bearer", token);
+
+var wsClient = new AcademiiWebSocketAPIClient(token);
 
 wsClient.ContentDelta += (_, payload) =>
 {
@@ -305,6 +333,10 @@ wsClient.AnalyticsResponse += (_, payload) =>
 await wsClient.ConnectToAnalyticsAsync();
 await wsClient.SendAnalyticsQueryAsync("How many active users did we have this week?");
 ```
+
+If the user logs out or you refresh the token, create a new
+`AcademiiWebSocketAPIClient` with the new token and reconnect. The WebSocket
+client does not automatically re-authenticate itself.
 
 Current caveat:
 
