@@ -75,6 +75,32 @@ Failed requests throw `ApiException` or `ApiException<TError>`, exposing:
 - `Response`
 - `Headers`
 
+## WebSocket SDK
+
+The package also includes a generated WebSocket client for:
+
+- `/ws/microphone`
+- `/ws/response/{id}`
+- `/ws/analytics`
+
+Namespaces:
+
+- `Academii.WebSocket.Client`
+- `Academii.WebSocket.Models`
+
+Example:
+
+```csharp
+using Academii.WebSocket.Client;
+
+var wsClient = new AcademiiWebSocketAPIClient(idToken);
+await wsClient.ConnectToResponseAsync(chatId);
+await wsClient.SendChatMessageAsync("Hello");
+```
+
+The packaged compatibility layer uses `ClientWebSocket` under the hood, so
+WebGL support is not guaranteed.
+
 ## Recommended Pattern
 
 - Reuse one `HttpClient` instance.

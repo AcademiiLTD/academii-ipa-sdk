@@ -91,6 +91,8 @@ Important:
   `Task<Response2>` or `Task<BackendResponse>`.
 - File download endpoints return `Task<FileResponse>`.
 - Some no-content endpoints return `Task` only.
+- The package also includes a generated WebSocket client in
+  `Academii.WebSocket.Client`.
 
 ## Unity MonoBehaviour Example
 
@@ -261,6 +263,55 @@ catch (ApiException ex)
     Debug.LogError(ex.Response);
 }
 ```
+
+## WebSocket SDK
+
+The package also includes a generated WebSocket client for the real-time routes:
+
+- `/ws/microphone`
+- `/ws/response/{id}`
+- `/ws/analytics`
+
+Namespaces:
+
+- `Academii.WebSocket.Client`
+- `Academii.WebSocket.Models`
+
+Example:
+
+```csharp
+using Academii.WebSocket.Client;
+using UnityEngine;
+
+var wsClient = new AcademiiWebSocketAPIClient(idToken);
+
+wsClient.ContentDelta += (_, payload) =>
+{
+    Debug.Log(payload.Delta);
+};
+
+await wsClient.ConnectToResponseAsync(chatId);
+await wsClient.SendChatMessageAsync("Hello there", generateAudio: false);
+```
+
+For analytics streaming:
+
+```csharp
+wsClient.AnalyticsResponse += (_, payload) =>
+{
+    Debug.Log(payload.Data.Answer);
+};
+
+await wsClient.ConnectToAnalyticsAsync();
+await wsClient.SendAnalyticsQueryAsync("How many active users did we have this week?");
+```
+
+Current caveat:
+
+- The package ships a small `NativeWebSocket` compatibility layer backed by
+  `ClientWebSocket`.
+- This is suitable for the .NET/Unity runtime paths we tested here, but WebGL
+  support is not guaranteed.
 
 If the endpoint has a typed error contract, you can catch the generic version:
 
