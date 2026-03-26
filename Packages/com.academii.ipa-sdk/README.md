@@ -87,8 +87,10 @@ Important:
 - `Client.BaseUrl` defaults to `https://dev.academii.com`, so set it explicitly for
   staging or production.
 - `BaseUrl` is normalized to include a trailing slash.
-- Most methods are `async` and return `Task<SwaggerResponse>` or
-  `Task<SwaggerResponse<T>>`.
+- Most methods are `async` and return direct generated response models such as
+  `Task<Response2>` or `Task<BackendResponse>`.
+- File download endpoints return `Task<FileResponse>`.
+- Some no-content endpoints return `Task` only.
 
 ## Unity MonoBehaviour Example
 
@@ -129,12 +131,12 @@ public sealed class AcademiiSdkExample : MonoBehaviour
             Password = "correct horse battery staple"
         });
 
-        var bearerToken = login.Result.Token;
+        var bearerToken = login.Data.Token;
         _httpClient.DefaultRequestHeaders.Authorization =
             new AuthenticationHeaderValue("Bearer", bearerToken);
 
         var me = await _client.MeAsync();
-        Debug.Log($"Logged in as {me.Result.Email}");
+        Debug.Log($"Logged in as {me.Data.User.Email}");
     }
 
     private void OnDestroy()
@@ -158,9 +160,9 @@ var login = await client.LoginAsync(new LoginPayload
     Password = "correct horse battery staple"
 });
 
-Debug.Log(login.StatusCode);
-Debug.Log(login.Result.Token);
-Debug.Log(login.Result.User.Email);
+Debug.Log(login.Status);
+Debug.Log(login.Data.Token);
+Debug.Log(login.Data.User.Email);
 ```
 
 This is the JSON shape the SDK sends:
@@ -176,7 +178,7 @@ If login succeeds, store the returned token and attach it to the shared
 `HttpClient` for later authenticated calls:
 
 ```csharp
-var accessToken = login.Result.Token;
+var accessToken = login.Data.Token;
 
 httpClient.DefaultRequestHeaders.Authorization =
     new AuthenticationHeaderValue("Bearer", accessToken);
@@ -190,7 +192,7 @@ var response = await client.VerifyTokenAsync(new VerifyTokenPayload
     IdToken = idToken
 });
 
-Debug.Log(response.Result.User.Email);
+Debug.Log(response.Data.User.Email);
 ```
 
 ### Authenticated GET
@@ -200,35 +202,45 @@ httpClient.DefaultRequestHeaders.Authorization =
     new AuthenticationHeaderValue("Bearer", accessToken);
 
 var me = await client.MeAsync();
-Debug.Log(me.Result.DisplayName);
+Debug.Log(me.Data.User.DisplayName);
 ```
 
 ## Response Shapes
 
-The generated client uses two success patterns.
+The generated client uses three success patterns.
 
 ### Typed success responses
 
-Methods that deserialize JSON return `SwaggerResponse<T>`:
+Most JSON endpoints return a generated response model that derives from
+`BackendResponse`:
 
 ```csharp
-SwaggerResponse<LoginResponse> login = await client.LoginAsync(payload);
-var token = login.Result.Token;
-var statusCode = login.StatusCode;
+var login = await client.LoginAsync(payload);
+var token = login.Data.Token;
+var apiStatus = login.Status;
 ```
 
-### Bodyless success responses
+These models usually expose:
 
-Methods with no typed body return `SwaggerResponse` only:
+- `Status`
+- `Data`
+- sometimes `Message` or `Error`
+
+### BackendResponse success responses
+
+Some success endpoints return `BackendResponse` directly:
 
 ```csharp
-SwaggerResponse response = await client.CharactersDELETEAsync(characterId);
-Debug.Log(response.StatusCode); // often 200 or 204
+var response = await client.CharactersDELETEAsync(characterId);
+Debug.Log(response.Status);
 ```
 
-For `204 No Content`, the expected result is still a non-null `SwaggerResponse`.
-The body is empty, but the method call itself should succeed and expose the
-status code.
+### File responses and no-content endpoints
+
+- Binary endpoints return `FileResponse`.
+- Some `204 No Content` endpoints complete as `Task` with no result object.
+- Check the generated method signature for the exact pattern on a given
+  endpoint.
 
 ## Error Handling
 

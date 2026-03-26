@@ -37,7 +37,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>User registered successfully.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response>> RegisterAsync(RegisterPayload body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response> RegisterAsync(RegisterPayload body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -48,7 +48,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Login successful or challenge returned.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response2>> LoginAsync(LoginPayload body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response2> LoginAsync(LoginPayload body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -59,7 +59,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Token valid – user record returned.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response3>> VerifyTokenAsync(Body body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response3> VerifyTokenAsync(Body body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -70,7 +70,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Reset email sent (or silently accepted if email unknown).</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<BackendResponse>> RequestPasswordResetAsync(Body2 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BackendResponse> RequestPasswordResetAsync(Body2 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -81,7 +81,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Token is valid.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<BackendResponse>> VerifyResetTokenAsync(Body3 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BackendResponse> VerifyResetTokenAsync(Body3 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -92,7 +92,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Password reset successfully.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<BackendResponse>> ConfirmPasswordResetAsync(Body4 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BackendResponse> ConfirmPasswordResetAsync(Body4 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -103,7 +103,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Password updated; user token returned.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response4>> ConfirmForcePasswordResetAsync(Body5 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response4> ConfirmForcePasswordResetAsync(Body5 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -114,7 +114,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Invite token valid.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response5>> VerifyInviteTokenAsync(Body6 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response5> VerifyInviteTokenAsync(Body6 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -125,7 +125,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Authenticated user record.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response6>> MeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response6> MeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -136,7 +136,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Invite sent.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response7>> InviteAsync(Body7 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response7> InviteAsync(Body7 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -148,7 +148,7 @@ namespace YourSdk
         /// <param name="file">Image file (JPEG, PNG, WebP – max 5 MB).</param>
         /// <returns>Profile picture uploaded successfully.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response8>> ProfilePicturePOSTAsync(FileParameter file = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response8> ProfilePicturePOSTAsync(FileParameter file = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -159,7 +159,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Profile picture removed.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<BackendResponse>> ProfilePictureDELETEAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BackendResponse> ProfilePictureDELETEAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -171,7 +171,7 @@ namespace YourSdk
         /// <param name="uid">The user's ID.</param>
         /// <returns>Role updated.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response9>> RoleAsync(System.Guid uid, Body8 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response9> RoleAsync(System.Guid uid, Body8 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -184,7 +184,7 @@ namespace YourSdk
         /// <param name="search">Free-text search on name/email.</param>
         /// <returns>List of users.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response10>> SuperadminsAsync(System.Guid? organizationId = null, UserRole? role = null, string search = null, int? limit = null, int? offset = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response10> SuperadminsAsync(System.Guid? organizationId = null, UserRole? role = null, string search = null, int? limit = null, int? offset = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -195,7 +195,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>User deleted.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<BackendResponse>> UsersDELETEAsync(System.Guid uid, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BackendResponse> UsersDELETEAsync(System.Guid uid, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -206,7 +206,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>User updated.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response11>> UsersPOSTAsync(System.Guid uid, Body9 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response11> UsersPOSTAsync(System.Guid uid, Body9 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -217,7 +217,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Password reset initiated.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<BackendResponse>> ResetPasswordAsync(System.Guid uid, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BackendResponse> ResetPasswordAsync(System.Guid uid, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -228,7 +228,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>User created.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response12>> UserAsync(Body10 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response12> UserAsync(Body10 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -239,7 +239,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>All handbooks.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response13>> AllAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response13> AllAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -250,7 +250,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Organisations with characters.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response14>> OrganizationsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response14> OrganizationsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -263,7 +263,7 @@ namespace YourSdk
         /// <param name="search">Free-text search against group names.</param>
         /// <returns>Group list returned successfully.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response15>> GroupsGETAsync(System.Guid? organizationId = null, string search = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response15> GroupsGETAsync(System.Guid? organizationId = null, string search = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -274,7 +274,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Group created successfully.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response16>> GroupsPOSTAsync(CreateOrganizationGroupRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response16> GroupsPOSTAsync(CreateOrganizationGroupRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -286,7 +286,7 @@ namespace YourSdk
         /// <param name="groupId">The group ID.</param>
         /// <returns>Group updated successfully.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response17>> GroupsPATCHAsync(System.Guid groupId, UpdateOrganizationGroupRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response17> GroupsPATCHAsync(System.Guid groupId, UpdateOrganizationGroupRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -298,7 +298,7 @@ namespace YourSdk
         /// <param name="groupId">The group ID.</param>
         /// <returns>Group deleted successfully.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response18>> GroupsDELETEAsync(System.Guid groupId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response18> GroupsDELETEAsync(System.Guid groupId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -310,7 +310,7 @@ namespace YourSdk
         /// <param name="userId">The user ID.</param>
         /// <returns>User group memberships returned successfully.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response19>> UsersGETAsync(System.Guid userId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response19> UsersGETAsync(System.Guid userId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -322,7 +322,7 @@ namespace YourSdk
         /// <param name="groupId">The group ID.</param>
         /// <returns>Group users returned successfully.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response20>> UsersGET2Async(System.Guid groupId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response20> UsersGET2Async(System.Guid groupId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -334,7 +334,7 @@ namespace YourSdk
         /// <param name="groupId">The group ID.</param>
         /// <returns>Group users replaced successfully.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response21>> UsersPUTAsync(System.Guid groupId, ReplaceOrganizationGroupUsersRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response21> UsersPUTAsync(System.Guid groupId, ReplaceOrganizationGroupUsersRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -347,7 +347,7 @@ namespace YourSdk
         /// <param name="userId">The user ID.</param>
         /// <returns>User removed from group successfully.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response22>> UsersDELETE2Async(System.Guid groupId, System.Guid userId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response22> UsersDELETE2Async(System.Guid groupId, System.Guid userId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -358,7 +358,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>List of characters.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response23>> CharactersGETAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response23> CharactersGETAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -369,7 +369,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Character created.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response24>> CharactersPOSTAsync(Body11 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response24> CharactersPOSTAsync(Body11 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -377,7 +377,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Character record.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response25>> CharactersGET2Async(System.Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response25> CharactersGET2Async(System.Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -388,7 +388,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Character updated.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response26>> CharactersPUTAsync(System.Guid id, Body12 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response26> CharactersPUTAsync(System.Guid id, Body12 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -396,7 +396,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Character deleted.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<BackendResponse>> CharactersDELETEAsync(System.Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BackendResponse> CharactersDELETEAsync(System.Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -407,7 +407,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>List of mesh links.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response27>> MeshLinksGETAsync(System.Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response27> MeshLinksGETAsync(System.Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -418,7 +418,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Mesh link upserted.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response28>> MeshLinksPUTAsync(System.Guid id, Body13 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response28> MeshLinksPUTAsync(System.Guid id, Body13 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -426,7 +426,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Mesh link deleted.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<BackendResponse>> MeshLinksDELETEAsync(System.Guid id, System.Guid linkId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BackendResponse> MeshLinksDELETEAsync(System.Guid id, System.Guid linkId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -434,7 +434,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Knowledge folders attached to the character.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response29>> FoldersGETAsync(System.Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response29> FoldersGETAsync(System.Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -445,7 +445,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Folders updated.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<BackendResponse>> FoldersPUTAsync(System.Guid id, Body14 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BackendResponse> FoldersPUTAsync(System.Guid id, Body14 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -453,7 +453,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Knowledge files for the character.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response30>> FilesGETAsync(System.Guid id, AttachState? attachState = null, System.Guid? folderId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response30> FilesGETAsync(System.Guid id, AttachState? attachState = null, System.Guid? folderId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -461,7 +461,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Attached handbook items.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response31>> HandbookItemsAsync(System.Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response31> HandbookItemsAsync(System.Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -472,7 +472,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Items attached.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<BackendResponse>> AttachAsync(System.Guid id, Body15 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BackendResponse> AttachAsync(System.Guid id, Body15 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -483,7 +483,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Items detached.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<BackendResponse>> DetachAsync(System.Guid id, Body16 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BackendResponse> DetachAsync(System.Guid id, Body16 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -494,7 +494,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>List of chat sessions.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response32>> ChatsGETAsync(System.Guid characterId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response32> ChatsGETAsync(System.Guid characterId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -505,7 +505,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Chat session created.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response33>> ChatsPOSTAsync(System.Guid characterId, Body17 body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response33> ChatsPOSTAsync(System.Guid characterId, Body17 body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -513,7 +513,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Chat session with messages.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response34>> ChatsGET2Async(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response34> ChatsGET2Async(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -521,7 +521,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Chat archived.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<BackendResponse>> ChatsDELETEAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BackendResponse> ChatsDELETEAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -533,7 +533,7 @@ namespace YourSdk
         /// <param name="id">Chat session ID.</param>
         /// <returns>Message sent; AI response included.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response35>> MessagesAsync(string id, Body18 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response35> MessagesAsync(string id, Body18 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -558,7 +558,7 @@ namespace YourSdk
         /// </remarks>
         /// <param name="sec_WebSocket_Protocol">WebSocket sub-protocol carrying the Cognito ID token. Value must be `auth.&lt;idToken&gt;`.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> WsMicrophoneAsync(string sec_WebSocket_Protocol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task WsMicrophoneAsync(string sec_WebSocket_Protocol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -584,7 +584,7 @@ namespace YourSdk
         /// <param name="id">Chat session ID (`chatId`).</param>
         /// <param name="sec_WebSocket_Protocol">WebSocket sub-protocol carrying the Cognito ID token. Value must be `auth.&lt;idToken&gt;`.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> WsResponseAsync(System.Guid id, string sec_WebSocket_Protocol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task WsResponseAsync(System.Guid id, string sec_WebSocket_Protocol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -598,7 +598,7 @@ namespace YourSdk
         /// <param name="folderId">Optionally place files in a knowledge folder.</param>
         /// <returns>Files uploaded.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response36>> UploadAsync(System.Collections.Generic.IEnumerable<FileParameter> files = null, System.Guid? characterId = null, System.Guid? folderId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response36> UploadAsync(System.Collections.Generic.IEnumerable<FileParameter> files = null, System.Guid? characterId = null, System.Guid? folderId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -609,7 +609,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>File uploaded.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response37>> SingleAsync(FileParameter file = null, System.Guid? characterId = null, System.Guid? folderId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response37> SingleAsync(FileParameter file = null, System.Guid? characterId = null, System.Guid? folderId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -621,7 +621,7 @@ namespace YourSdk
         /// <param name="folderId">Filter by knowledge folder.</param>
         /// <returns>Files list with storage metadata.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response38>> FilesGET2Async(SortBy? sortBy = null, SortOrder? sortOrder = null, System.Guid? folderId = null, string search = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response38> FilesGET2Async(SortBy? sortBy = null, SortOrder? sortOrder = null, System.Guid? folderId = null, string search = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -632,7 +632,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Presigned URL.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response39>> PresignedUrlAsync(System.Guid fileId, int? expiresIn = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response39> PresignedUrlAsync(System.Guid fileId, int? expiresIn = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -643,7 +643,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Files deleted.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response40>> BulkDeleteAsync(Body19 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response40> BulkDeleteAsync(Body19 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -651,7 +651,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>File record.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response41>> FilesGET3Async(System.Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response41> FilesGET3Async(System.Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -662,7 +662,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Usage type updated.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response42>> FilesPATCHAsync(System.Guid id, Body20 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response42> FilesPATCHAsync(System.Guid id, Body20 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -670,7 +670,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>File deleted.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<BackendResponse>> FilesDELETEAsync(System.Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BackendResponse> FilesDELETEAsync(System.Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -678,7 +678,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Handbooks list.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response43>> HandbooksGETAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response43> HandbooksGETAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -686,7 +686,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Handbook created.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response44>> HandbooksPOSTAsync(Body21 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response44> HandbooksPOSTAsync(Body21 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -694,7 +694,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Handbook updated.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response45>> HandbooksPATCHAsync(System.Guid handbookId, Body22 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response45> HandbooksPATCHAsync(System.Guid handbookId, Body22 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -702,7 +702,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Handbook deleted.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<BackendResponse>> HandbooksDELETEAsync(System.Guid handbookId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BackendResponse> HandbooksDELETEAsync(System.Guid handbookId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -710,7 +710,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Handbook items.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response46>> HandbookGETAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response46> HandbookGETAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -718,7 +718,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Handbook item created.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response47>> HandbookPOSTAsync(Body23 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response47> HandbookPOSTAsync(Body23 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -726,7 +726,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Item updated.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response48>> HandbookPATCHAsync(System.Guid itemId, Body24 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response48> HandbookPATCHAsync(System.Guid itemId, Body24 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -734,7 +734,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Item deleted.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<BackendResponse>> HandbookDELETEAsync(System.Guid itemId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BackendResponse> HandbookDELETEAsync(System.Guid itemId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -742,7 +742,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Items attached.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<BackendResponse>> Attach2Async(System.Guid characterId, Body25 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BackendResponse> Attach2Async(System.Guid characterId, Body25 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -750,7 +750,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Items detached.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<BackendResponse>> Detach2Async(System.Guid characterId, Body26 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BackendResponse> Detach2Async(System.Guid characterId, Body26 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -758,7 +758,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Attached handbook items.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response49>> AttachedAsync(System.Guid characterId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response49> AttachedAsync(System.Guid characterId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -769,7 +769,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>List of knowledge folders.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response50>> KnowledgeFoldersGETAsync(Mode? mode = null, SortOrder2? sortOrder = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response50> KnowledgeFoldersGETAsync(Mode? mode = null, SortOrder2? sortOrder = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -780,7 +780,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Folder created.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response51>> KnowledgeFoldersPOSTAsync(Body27 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response51> KnowledgeFoldersPOSTAsync(Body27 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -791,7 +791,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Folder updated.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response52>> KnowledgeFoldersPATCHAsync(System.Guid folderId, Body28 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response52> KnowledgeFoldersPATCHAsync(System.Guid folderId, Body28 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -802,7 +802,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Folder deleted.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<BackendResponse>> KnowledgeFoldersDELETEAsync(System.Guid folderId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BackendResponse> KnowledgeFoldersDELETEAsync(System.Guid folderId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -813,7 +813,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Files moved.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<BackendResponse>> MoveFilesAsync(System.Guid folderId, Body29 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BackendResponse> MoveFilesAsync(System.Guid folderId, Body29 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -824,7 +824,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Files copied.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<BackendResponse>> CopyFilesAsync(System.Guid folderId, Body30 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BackendResponse> CopyFilesAsync(System.Guid folderId, Body30 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -835,7 +835,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>List of available voices.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response53>> VoicesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response53> VoicesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -857,7 +857,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Supported STT languages.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response54>> LanguagesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response54> LanguagesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -872,7 +872,7 @@ namespace YourSdk
         /// <param name="sampleRateHertz">Sample rate hint in Hz.</param>
         /// <returns>Transcript.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response55>> TranscribeAsync(FileParameter audio = null, string languageCode = null, string encoding = null, int? sampleRateHertz = null, bool? enableAutomaticPunctuation = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response55> TranscribeAsync(FileParameter audio = null, string languageCode = null, string encoding = null, int? sampleRateHertz = null, bool? enableAutomaticPunctuation = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -883,7 +883,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Paginated moderation logs.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response56>> LogsPOSTAsync(Body32 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response56> LogsPOSTAsync(Body32 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -894,7 +894,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Logs deleted.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response57>> LogsDELETEAsync(Body33 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response57> LogsDELETEAsync(Body33 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -905,7 +905,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Moderation statistics.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response58>> StatsAsync(Body34 body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response58> StatsAsync(Body34 body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -916,7 +916,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Moderation context.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response59>> ContextAsync(Body35 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response59> ContextAsync(Body35 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -927,7 +927,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Chat analytics data</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response60>> GetAnalyticsChatsAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response60> GetAnalyticsChatsAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -938,7 +938,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Citation analytics</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response61>> GetAnalyticsCitationsAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response61> GetAnalyticsCitationsAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -949,7 +949,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Current and previous period citation data</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response62>> GetAnalyticsCitationsCompareAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response62> GetAnalyticsCitationsCompareAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -960,7 +960,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>File usage extremes</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response63>> GetAnalyticsFileUsageExtremesAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response63> GetAnalyticsFileUsageExtremesAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -971,7 +971,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Uncited files summary</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response64>> GetAnalyticsUncitedFilesAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response64> GetAnalyticsUncitedFilesAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -982,7 +982,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Usage metrics</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response65>> GetAnalyticsUsageAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response65> GetAnalyticsUsageAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -993,7 +993,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Current and previous usage metrics</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response66>> GetAnalyticsUsageCompareAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response66> GetAnalyticsUsageCompareAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1004,7 +1004,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Active users series</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response67>> GetAnalyticsActiveUsersSeriesAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response67> GetAnalyticsActiveUsersSeriesAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1015,7 +1015,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Agent usage summary</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response68>> GetAnalyticsAgentUsageAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response68> GetAnalyticsAgentUsageAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1026,7 +1026,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Per-user chat summaries</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response69>> GetAnalyticsUserChatsAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response69> GetAnalyticsUserChatsAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1037,7 +1037,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Inactive users list</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response70>> GetAnalyticsInactiveUsersAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response70> GetAnalyticsInactiveUsersAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1048,7 +1048,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Latency statistics</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response71>> GetAnalyticsLatencyAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response71> GetAnalyticsLatencyAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1059,7 +1059,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Overview trend series</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response72>> GetAnalyticsOverviewTrendsAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response72> GetAnalyticsOverviewTrendsAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1070,7 +1070,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Key topics</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response73>> GetAnalyticsTopicsAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response73> GetAnalyticsTopicsAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1081,7 +1081,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Question topics summary</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response74>> GetAnalyticsQuestionTopicsAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response74> GetAnalyticsQuestionTopicsAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1092,7 +1092,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Feedback items</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response75>> GetAnalyticsFeedbackAsync(Body36 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response75> GetAnalyticsFeedbackAsync(Body36 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1103,7 +1103,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Feedback recorded</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> SubmitSessionFeedbackAsync(AnalyticsSessionFeedbackRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task SubmitSessionFeedbackAsync(AnalyticsSessionFeedbackRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1133,7 +1133,7 @@ namespace YourSdk
         /// </remarks>
         /// <param name="sec_WebSocket_Protocol">WebSocket sub-protocol carrying the Cognito ID token. Value must be `auth.&lt;idToken&gt;`.  The authenticated user must have role `admin` or `superadmin`.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> WsAnalyticsAsync(string sec_WebSocket_Protocol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task WsAnalyticsAsync(string sec_WebSocket_Protocol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1147,7 +1147,7 @@ namespace YourSdk
         /// <param name="filterssearchcontainsi">Case-insensitive name search</param>
         /// <returns>Paginated list of topics</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response76>> ListTopicsAsync(System.Guid? filtersorganizationIdeq = null, bool? filtersisActiveeq = null, string filterssearchcontainsi = null, int? paginationoffset = null, int? paginationlimit = null, string sort0field = null, SortOf_0OfDirection? sort0direction = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response76> ListTopicsAsync(System.Guid? filtersorganizationIdeq = null, bool? filtersisActiveeq = null, string filterssearchcontainsi = null, int? paginationoffset = null, int? paginationlimit = null, string sort0field = null, SortOf_0OfDirection? sort0direction = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1158,7 +1158,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Topic created</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response77>> CreateTopicAsync(CreateTopicRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response77> CreateTopicAsync(CreateTopicRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1169,7 +1169,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Updated topic</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response78>> UpdateTopicAsync(System.Guid topicId, UpdateTopicRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response78> UpdateTopicAsync(System.Guid topicId, UpdateTopicRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1180,7 +1180,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Topic deleted</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> DeleteTopicAsync(System.Guid topicId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task DeleteTopicAsync(System.Guid topicId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1191,7 +1191,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Organisation assignment updated</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> AssignTopicOrganizationsAsync(System.Guid topicId, Body37 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task AssignTopicOrganizationsAsync(System.Guid topicId, Body37 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1206,7 +1206,7 @@ namespace YourSdk
         /// <param name="filterssearchcontainsi">Case-insensitive search</param>
         /// <returns>Paginated list of courses</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response79>> ListCoursesAsync(System.Guid? filtersorganizationIdeq = null, System.Guid? filterstopicIdeq = null, string filtersstatuseq = null, string filterssearchcontainsi = null, int? paginationoffset = null, int? paginationlimit = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response79> ListCoursesAsync(System.Guid? filtersorganizationIdeq = null, System.Guid? filterstopicIdeq = null, string filtersstatuseq = null, string filterssearchcontainsi = null, int? paginationoffset = null, int? paginationlimit = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1219,7 +1219,7 @@ namespace YourSdk
         /// <param name="thumbnail">Optional course thumbnail image</param>
         /// <returns>Course created</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response80>> CreateCourseAsync(System.Guid? topicId = null, string name = null, string code = null, string description = null, int? sortOrder = null, System.Guid? organizationId = null, FileParameter thumbnail = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response80> CreateCourseAsync(System.Guid? topicId = null, string name = null, string code = null, string description = null, int? sortOrder = null, System.Guid? organizationId = null, FileParameter thumbnail = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1227,7 +1227,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Course record</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response81>> GetCourseAsync(System.Guid courseId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response81> GetCourseAsync(System.Guid courseId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1238,7 +1238,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Updated course</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response82>> UpdateCourseAsync(System.Guid courseId, System.Guid? topicId = null, string name = null, string code = null, string description = null, int? sortOrder = null, string status = null, bool? isActive = null, FileParameter thumbnail = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response82> UpdateCourseAsync(System.Guid courseId, System.Guid? topicId = null, string name = null, string code = null, string description = null, int? sortOrder = null, string status = null, bool? isActive = null, FileParameter thumbnail = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1249,7 +1249,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Course deleted</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> DeleteCourseAsync(System.Guid courseId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task DeleteCourseAsync(System.Guid courseId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1261,7 +1261,7 @@ namespace YourSdk
         /// <param name="organizationId">Viewing org context (superadmin only)</param>
         /// <returns>Users assigned</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> AssignUsersToCourseAsync(System.Guid courseId, Body38 body, System.Guid? organizationId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task AssignUsersToCourseAsync(System.Guid courseId, Body38 body, System.Guid? organizationId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1273,7 +1273,7 @@ namespace YourSdk
         /// <param name="organizationId">Viewing org context (superadmin only)</param>
         /// <returns>Enrolled users</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ListCourseUsersAsync(System.Guid courseId, System.Guid? organizationId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task ListCourseUsersAsync(System.Guid courseId, System.Guid? organizationId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1285,7 +1285,7 @@ namespace YourSdk
         /// <param name="organizationId">Viewing org context (superadmin only)</param>
         /// <returns>Course analytics overview</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response83>> GetCourseAnalyticsAsync(System.Guid courseId, System.Guid? organizationId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response83> GetCourseAnalyticsAsync(System.Guid courseId, System.Guid? organizationId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1293,7 +1293,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Module created</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response84>> CreateModuleAsync(System.Guid courseId, CreateModuleRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response84> CreateModuleAsync(System.Guid courseId, CreateModuleRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1304,7 +1304,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Paginated module list</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response85>> ListModulesForCourseAsync(System.Guid courseId, string filterssearchcontainsi = null, int? paginationoffset = null, int? paginationlimit = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response85> ListModulesForCourseAsync(System.Guid courseId, string filterssearchcontainsi = null, int? paginationoffset = null, int? paginationlimit = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1315,7 +1315,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Paginated list of modules</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response86>> ListModulesAsync(System.Guid? filterscourseIdeq = null, System.Guid? filtersorganizationIdeq = null, string filterssearchcontainsi = null, int? paginationoffset = null, int? paginationlimit = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response86> ListModulesAsync(System.Guid? filterscourseIdeq = null, System.Guid? filtersorganizationIdeq = null, string filterssearchcontainsi = null, int? paginationoffset = null, int? paginationlimit = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1323,7 +1323,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Module record</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response87>> GetModuleAsync(System.Guid moduleId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response87> GetModuleAsync(System.Guid moduleId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1331,7 +1331,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Updated module</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response88>> UpdateModuleAsync(System.Guid moduleId, UpdateModuleRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response88> UpdateModuleAsync(System.Guid moduleId, UpdateModuleRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1339,7 +1339,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Module deleted</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> DeleteModuleAsync(System.Guid moduleId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task DeleteModuleAsync(System.Guid moduleId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1351,7 +1351,7 @@ namespace YourSdk
         /// <param name="file">SCORM (.zip) or xAPI (.zip) package</param>
         /// <returns>Package uploaded and module updated</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> UploadModulePackageAsync(System.Guid moduleId, FileParameter file = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task UploadModulePackageAsync(System.Guid moduleId, FileParameter file = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1362,7 +1362,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Module content removed</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> RemoveModuleContentAsync(System.Guid moduleId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task RemoveModuleContentAsync(System.Guid moduleId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1374,7 +1374,7 @@ namespace YourSdk
         /// <param name="token">JWT bearer token (alternative to Authorization header for iframe contexts)</param>
         /// <returns>Asset bytes with appropriate Content-Type</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse> ServeModuleContentAsync(System.Guid moduleId, string token = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task ServeModuleContentAsync(System.Guid moduleId, string token = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1385,7 +1385,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Module analytics summary</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response89>> GetModuleAnalyticsAsync(System.Guid moduleId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response89> GetModuleAnalyticsAsync(System.Guid moduleId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1396,7 +1396,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Module launch info</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response90>> GetModuleLaunchInfoAsync(System.Guid moduleId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response90> GetModuleLaunchInfoAsync(System.Guid moduleId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1409,7 +1409,7 @@ namespace YourSdk
         /// <param name="token">JWT bearer token (alternative to Authorization header)</param>
         /// <returns>HTML player page</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<string>> ServeModulePlayerAsync(System.Guid moduleId, bool? preview = null, string token = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<string> ServeModulePlayerAsync(System.Guid moduleId, bool? preview = null, string token = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1422,7 +1422,7 @@ namespace YourSdk
         /// <param name="fileId">UUID of the file to attach.</param>
         /// <returns>File successfully attached to the vector store.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response91>> AttachFileToVectorStoreAsync(System.Guid characterId, System.Guid fileId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response91> AttachFileToVectorStoreAsync(System.Guid characterId, System.Guid fileId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>
@@ -1435,7 +1435,7 @@ namespace YourSdk
         /// <param name="fileId">UUID of the file to detach.</param>
         /// <returns>File successfully detached from the vector store.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<SwaggerResponse<Response92>> DetachFileFromVectorStoreAsync(System.Guid characterId, System.Guid fileId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Response92> DetachFileFromVectorStoreAsync(System.Guid characterId, System.Guid fileId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 
@@ -1496,7 +1496,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>User registered successfully.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response>> RegisterAsync(RegisterPayload body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response> RegisterAsync(RegisterPayload body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -1549,7 +1549,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 409)
@@ -1600,7 +1600,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Login successful or challenge returned.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response2>> LoginAsync(LoginPayload body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response2> LoginAsync(LoginPayload body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -1653,7 +1653,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response2>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -1704,7 +1704,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Token valid – user record returned.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response3>> VerifyTokenAsync(Body body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response3> VerifyTokenAsync(Body body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -1757,7 +1757,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response3>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -1798,7 +1798,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Reset email sent (or silently accepted if email unknown).</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<BackendResponse>> RequestPasswordResetAsync(Body2 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<BackendResponse> RequestPasswordResetAsync(Body2 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -1851,7 +1851,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<BackendResponse>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 429)
@@ -1892,7 +1892,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Token is valid.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<BackendResponse>> VerifyResetTokenAsync(Body3 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<BackendResponse> VerifyResetTokenAsync(Body3 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -1945,7 +1945,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<BackendResponse>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 400)
@@ -1986,7 +1986,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Password reset successfully.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<BackendResponse>> ConfirmPasswordResetAsync(Body4 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<BackendResponse> ConfirmPasswordResetAsync(Body4 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -2039,7 +2039,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<BackendResponse>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 400)
@@ -2080,7 +2080,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Password updated; user token returned.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response4>> ConfirmForcePasswordResetAsync(Body5 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response4> ConfirmForcePasswordResetAsync(Body5 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -2133,7 +2133,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response4>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 400)
@@ -2174,7 +2174,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Invite token valid.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response5>> VerifyInviteTokenAsync(Body6 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response5> VerifyInviteTokenAsync(Body6 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -2227,7 +2227,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response5>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 400)
@@ -2268,7 +2268,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Authenticated user record.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response6>> MeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response6> MeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -2314,7 +2314,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response6>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -2355,7 +2355,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Invite sent.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response7>> InviteAsync(Body7 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response7> InviteAsync(Body7 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -2408,7 +2408,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response7>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -2470,7 +2470,7 @@ namespace YourSdk
         /// <param name="file">Image file (JPEG, PNG, WebP – max 5 MB).</param>
         /// <returns>Profile picture uploaded successfully.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response8>> ProfilePicturePOSTAsync(FileParameter file = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response8> ProfilePicturePOSTAsync(FileParameter file = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -2531,7 +2531,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response8>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 400)
@@ -2582,7 +2582,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Profile picture removed.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<BackendResponse>> ProfilePictureDELETEAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<BackendResponse> ProfilePictureDELETEAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -2628,7 +2628,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<BackendResponse>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -2670,7 +2670,7 @@ namespace YourSdk
         /// <param name="uid">The user's ID.</param>
         /// <returns>Role updated.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response9>> RoleAsync(System.Guid uid, Body8 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response9> RoleAsync(System.Guid uid, Body8 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (uid == null)
                 throw new System.ArgumentNullException("uid");
@@ -2728,7 +2728,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response9>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -2791,7 +2791,7 @@ namespace YourSdk
         /// <param name="search">Free-text search on name/email.</param>
         /// <returns>List of users.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response10>> SuperadminsAsync(System.Guid? organizationId = null, UserRole? role = null, string search = null, int? limit = null, int? offset = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response10> SuperadminsAsync(System.Guid? organizationId = null, UserRole? role = null, string search = null, int? limit = null, int? offset = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -2859,7 +2859,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response10>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -2910,7 +2910,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>User deleted.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<BackendResponse>> UsersDELETEAsync(System.Guid uid, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<BackendResponse> UsersDELETEAsync(System.Guid uid, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (uid == null)
                 throw new System.ArgumentNullException("uid");
@@ -2960,7 +2960,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<BackendResponse>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -3021,7 +3021,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>User updated.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response11>> UsersPOSTAsync(System.Guid uid, Body9 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response11> UsersPOSTAsync(System.Guid uid, Body9 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (uid == null)
                 throw new System.ArgumentNullException("uid");
@@ -3078,7 +3078,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response11>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -3139,7 +3139,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Password reset initiated.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<BackendResponse>> ResetPasswordAsync(System.Guid uid, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<BackendResponse> ResetPasswordAsync(System.Guid uid, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (uid == null)
                 throw new System.ArgumentNullException("uid");
@@ -3191,7 +3191,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<BackendResponse>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -3242,7 +3242,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>User created.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response12>> UserAsync(Body10 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response12> UserAsync(Body10 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -3295,7 +3295,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response12>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -3346,7 +3346,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>All handbooks.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response13>> AllAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response13> AllAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -3392,7 +3392,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response13>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -3443,7 +3443,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Organisations with characters.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response14>> OrganizationsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response14> OrganizationsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -3489,7 +3489,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response14>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -3542,7 +3542,7 @@ namespace YourSdk
         /// <param name="search">Free-text search against group names.</param>
         /// <returns>Group list returned successfully.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response15>> GroupsGETAsync(System.Guid? organizationId = null, string search = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response15> GroupsGETAsync(System.Guid? organizationId = null, string search = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -3598,7 +3598,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response15>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 400)
@@ -3659,7 +3659,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Group created successfully.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response16>> GroupsPOSTAsync(CreateOrganizationGroupRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response16> GroupsPOSTAsync(CreateOrganizationGroupRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -3712,7 +3712,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response16>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 400)
@@ -3774,7 +3774,7 @@ namespace YourSdk
         /// <param name="groupId">The group ID.</param>
         /// <returns>Group updated successfully.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response17>> GroupsPATCHAsync(System.Guid groupId, UpdateOrganizationGroupRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response17> GroupsPATCHAsync(System.Guid groupId, UpdateOrganizationGroupRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (groupId == null)
                 throw new System.ArgumentNullException("groupId");
@@ -3831,7 +3831,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response17>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 400)
@@ -3903,7 +3903,7 @@ namespace YourSdk
         /// <param name="groupId">The group ID.</param>
         /// <returns>Group deleted successfully.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response18>> GroupsDELETEAsync(System.Guid groupId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response18> GroupsDELETEAsync(System.Guid groupId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (groupId == null)
                 throw new System.ArgumentNullException("groupId");
@@ -3953,7 +3953,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response18>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 400)
@@ -4025,7 +4025,7 @@ namespace YourSdk
         /// <param name="userId">The user ID.</param>
         /// <returns>User group memberships returned successfully.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response19>> UsersGETAsync(System.Guid userId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response19> UsersGETAsync(System.Guid userId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (userId == null)
                 throw new System.ArgumentNullException("userId");
@@ -4075,7 +4075,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response19>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 400)
@@ -4147,7 +4147,7 @@ namespace YourSdk
         /// <param name="groupId">The group ID.</param>
         /// <returns>Group users returned successfully.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response20>> UsersGET2Async(System.Guid groupId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response20> UsersGET2Async(System.Guid groupId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (groupId == null)
                 throw new System.ArgumentNullException("groupId");
@@ -4198,7 +4198,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response20>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 400)
@@ -4270,7 +4270,7 @@ namespace YourSdk
         /// <param name="groupId">The group ID.</param>
         /// <returns>Group users replaced successfully.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response21>> UsersPUTAsync(System.Guid groupId, ReplaceOrganizationGroupUsersRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response21> UsersPUTAsync(System.Guid groupId, ReplaceOrganizationGroupUsersRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (groupId == null)
                 throw new System.ArgumentNullException("groupId");
@@ -4328,7 +4328,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response21>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 400)
@@ -4401,7 +4401,7 @@ namespace YourSdk
         /// <param name="userId">The user ID.</param>
         /// <returns>User removed from group successfully.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response22>> UsersDELETE2Async(System.Guid groupId, System.Guid userId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response22> UsersDELETE2Async(System.Guid groupId, System.Guid userId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (groupId == null)
                 throw new System.ArgumentNullException("groupId");
@@ -4456,7 +4456,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response22>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 400)
@@ -4527,7 +4527,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>List of characters.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response23>> CharactersGETAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response23> CharactersGETAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -4573,7 +4573,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response23>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -4614,7 +4614,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Character created.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response24>> CharactersPOSTAsync(Body11 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response24> CharactersPOSTAsync(Body11 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -4667,7 +4667,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response24>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -4715,7 +4715,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Character record.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response25>> CharactersGET2Async(System.Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response25> CharactersGET2Async(System.Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -4765,7 +4765,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response25>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -4816,7 +4816,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Character updated.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response26>> CharactersPUTAsync(System.Guid id, Body12 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response26> CharactersPUTAsync(System.Guid id, Body12 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -4873,7 +4873,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response26>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -4921,7 +4921,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Character deleted.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<BackendResponse>> CharactersDELETEAsync(System.Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<BackendResponse> CharactersDELETEAsync(System.Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -4971,7 +4971,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<BackendResponse>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -5022,7 +5022,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>List of mesh links.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response27>> MeshLinksGETAsync(System.Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response27> MeshLinksGETAsync(System.Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -5073,7 +5073,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response27>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -5124,7 +5124,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Mesh link upserted.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response28>> MeshLinksPUTAsync(System.Guid id, Body13 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response28> MeshLinksPUTAsync(System.Guid id, Body13 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -5182,7 +5182,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response28>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -5220,7 +5220,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Mesh link deleted.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<BackendResponse>> MeshLinksDELETEAsync(System.Guid id, System.Guid linkId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<BackendResponse> MeshLinksDELETEAsync(System.Guid id, System.Guid linkId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -5275,7 +5275,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<BackendResponse>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -5323,7 +5323,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Knowledge folders attached to the character.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response29>> FoldersGETAsync(System.Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response29> FoldersGETAsync(System.Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -5374,7 +5374,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response29>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -5415,7 +5415,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Folders updated.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<BackendResponse>> FoldersPUTAsync(System.Guid id, Body14 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<BackendResponse> FoldersPUTAsync(System.Guid id, Body14 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -5473,7 +5473,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<BackendResponse>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -5521,7 +5521,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Knowledge files for the character.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response30>> FilesGETAsync(System.Guid id, AttachState? attachState = null, System.Guid? folderId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response30> FilesGETAsync(System.Guid id, AttachState? attachState = null, System.Guid? folderId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -5582,7 +5582,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response30>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -5620,7 +5620,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Attached handbook items.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response31>> HandbookItemsAsync(System.Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response31> HandbookItemsAsync(System.Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -5671,7 +5671,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response31>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -5712,7 +5712,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Items attached.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<BackendResponse>> AttachAsync(System.Guid id, Body15 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<BackendResponse> AttachAsync(System.Guid id, Body15 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -5770,7 +5770,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<BackendResponse>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -5821,7 +5821,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Items detached.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<BackendResponse>> DetachAsync(System.Guid id, Body16 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<BackendResponse> DetachAsync(System.Guid id, Body16 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -5879,7 +5879,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<BackendResponse>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -5930,7 +5930,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>List of chat sessions.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response32>> ChatsGETAsync(System.Guid characterId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response32> ChatsGETAsync(System.Guid characterId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (characterId == null)
                 throw new System.ArgumentNullException("characterId");
@@ -5981,7 +5981,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response32>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -6022,7 +6022,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Chat session created.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response33>> ChatsPOSTAsync(System.Guid characterId, Body17 body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response33> ChatsPOSTAsync(System.Guid characterId, Body17 body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (characterId == null)
                 throw new System.ArgumentNullException("characterId");
@@ -6077,7 +6077,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response33>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -6125,7 +6125,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Chat session with messages.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response34>> ChatsGET2Async(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response34> ChatsGET2Async(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -6175,7 +6175,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response34>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -6223,7 +6223,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Chat archived.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<BackendResponse>> ChatsDELETEAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<BackendResponse> ChatsDELETEAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -6273,7 +6273,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<BackendResponse>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -6325,7 +6325,7 @@ namespace YourSdk
         /// <param name="id">Chat session ID.</param>
         /// <returns>Message sent; AI response included.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response35>> MessagesAsync(string id, Body18 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response35> MessagesAsync(string id, Body18 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -6383,7 +6383,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response35>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -6448,7 +6448,7 @@ namespace YourSdk
         /// </remarks>
         /// <param name="sec_WebSocket_Protocol">WebSocket sub-protocol carrying the Cognito ID token. Value must be `auth.&lt;idToken&gt;`.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse> WsMicrophoneAsync(string sec_WebSocket_Protocol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task WsMicrophoneAsync(string sec_WebSocket_Protocol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -6509,7 +6509,8 @@ namespace YourSdk
 
                         if (status_ == 200 || status_ == 204)
                         {
-                            return new SwaggerResponse(status_, headers_);
+
+                            return;
                         }
                         else
                         {
@@ -6555,7 +6556,7 @@ namespace YourSdk
         /// <param name="id">Chat session ID (`chatId`).</param>
         /// <param name="sec_WebSocket_Protocol">WebSocket sub-protocol carrying the Cognito ID token. Value must be `auth.&lt;idToken&gt;`.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse> WsResponseAsync(System.Guid id, string sec_WebSocket_Protocol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task WsResponseAsync(System.Guid id, string sec_WebSocket_Protocol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -6620,7 +6621,8 @@ namespace YourSdk
 
                         if (status_ == 200 || status_ == 204)
                         {
-                            return new SwaggerResponse(status_, headers_);
+
+                            return;
                         }
                         else
                         {
@@ -6654,7 +6656,7 @@ namespace YourSdk
         /// <param name="folderId">Optionally place files in a knowledge folder.</param>
         /// <returns>Files uploaded.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response36>> UploadAsync(System.Collections.Generic.IEnumerable<FileParameter> files = null, System.Guid? characterId = null, System.Guid? folderId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response36> UploadAsync(System.Collections.Generic.IEnumerable<FileParameter> files = null, System.Guid? characterId = null, System.Guid? folderId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -6732,7 +6734,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response36>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 400)
@@ -6783,7 +6785,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>File uploaded.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response37>> SingleAsync(FileParameter file = null, System.Guid? characterId = null, System.Guid? folderId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response37> SingleAsync(FileParameter file = null, System.Guid? characterId = null, System.Guid? folderId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -6858,7 +6860,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response37>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -6900,7 +6902,7 @@ namespace YourSdk
         /// <param name="folderId">Filter by knowledge folder.</param>
         /// <returns>Files list with storage metadata.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response38>> FilesGET2Async(SortBy? sortBy = null, SortOrder? sortOrder = null, System.Guid? folderId = null, string search = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response38> FilesGET2Async(SortBy? sortBy = null, SortOrder? sortOrder = null, System.Guid? folderId = null, string search = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -6964,7 +6966,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response38>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -7005,7 +7007,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Presigned URL.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response39>> PresignedUrlAsync(System.Guid fileId, int? expiresIn = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response39> PresignedUrlAsync(System.Guid fileId, int? expiresIn = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (fileId == null)
                 throw new System.ArgumentNullException("fileId");
@@ -7061,7 +7063,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response39>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -7112,7 +7114,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Files deleted.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response40>> BulkDeleteAsync(Body19 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response40> BulkDeleteAsync(Body19 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -7165,7 +7167,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response40>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -7203,7 +7205,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>File record.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response41>> FilesGET3Async(System.Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response41> FilesGET3Async(System.Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -7253,7 +7255,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response41>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -7304,7 +7306,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Usage type updated.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response42>> FilesPATCHAsync(System.Guid id, Body20 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response42> FilesPATCHAsync(System.Guid id, Body20 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -7361,7 +7363,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response42>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -7409,7 +7411,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>File deleted.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<BackendResponse>> FilesDELETEAsync(System.Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<BackendResponse> FilesDELETEAsync(System.Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (id == null)
                 throw new System.ArgumentNullException("id");
@@ -7459,7 +7461,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<BackendResponse>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -7507,7 +7509,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Handbooks list.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response43>> HandbooksGETAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response43> HandbooksGETAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -7553,7 +7555,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response43>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -7591,7 +7593,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Handbook created.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response44>> HandbooksPOSTAsync(Body21 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response44> HandbooksPOSTAsync(Body21 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -7644,7 +7646,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response44>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -7682,7 +7684,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Handbook updated.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response45>> HandbooksPATCHAsync(System.Guid handbookId, Body22 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response45> HandbooksPATCHAsync(System.Guid handbookId, Body22 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (handbookId == null)
                 throw new System.ArgumentNullException("handbookId");
@@ -7739,7 +7741,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response45>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -7787,7 +7789,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Handbook deleted.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<BackendResponse>> HandbooksDELETEAsync(System.Guid handbookId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<BackendResponse> HandbooksDELETEAsync(System.Guid handbookId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (handbookId == null)
                 throw new System.ArgumentNullException("handbookId");
@@ -7837,7 +7839,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<BackendResponse>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -7885,7 +7887,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Handbook items.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response46>> HandbookGETAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response46> HandbookGETAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -7931,7 +7933,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response46>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -7969,7 +7971,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Handbook item created.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response47>> HandbookPOSTAsync(Body23 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response47> HandbookPOSTAsync(Body23 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -8022,7 +8024,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response47>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -8070,7 +8072,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Item updated.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response48>> HandbookPATCHAsync(System.Guid itemId, Body24 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response48> HandbookPATCHAsync(System.Guid itemId, Body24 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (itemId == null)
                 throw new System.ArgumentNullException("itemId");
@@ -8127,7 +8129,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response48>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -8175,7 +8177,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Item deleted.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<BackendResponse>> HandbookDELETEAsync(System.Guid itemId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<BackendResponse> HandbookDELETEAsync(System.Guid itemId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (itemId == null)
                 throw new System.ArgumentNullException("itemId");
@@ -8225,7 +8227,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<BackendResponse>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -8273,7 +8275,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Items attached.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<BackendResponse>> Attach2Async(System.Guid characterId, Body25 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<BackendResponse> Attach2Async(System.Guid characterId, Body25 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (characterId == null)
                 throw new System.ArgumentNullException("characterId");
@@ -8330,7 +8332,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<BackendResponse>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -8368,7 +8370,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Items detached.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<BackendResponse>> Detach2Async(System.Guid characterId, Body26 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<BackendResponse> Detach2Async(System.Guid characterId, Body26 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (characterId == null)
                 throw new System.ArgumentNullException("characterId");
@@ -8425,7 +8427,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<BackendResponse>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -8463,7 +8465,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Attached handbook items.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response49>> AttachedAsync(System.Guid characterId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response49> AttachedAsync(System.Guid characterId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (characterId == null)
                 throw new System.ArgumentNullException("characterId");
@@ -8513,7 +8515,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response49>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -8554,7 +8556,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>List of knowledge folders.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response50>> KnowledgeFoldersGETAsync(Mode? mode = null, SortOrder2? sortOrder = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response50> KnowledgeFoldersGETAsync(Mode? mode = null, SortOrder2? sortOrder = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -8610,7 +8612,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response50>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -8651,7 +8653,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Folder created.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response51>> KnowledgeFoldersPOSTAsync(Body27 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response51> KnowledgeFoldersPOSTAsync(Body27 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -8704,7 +8706,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response51>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -8755,7 +8757,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Folder updated.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response52>> KnowledgeFoldersPATCHAsync(System.Guid folderId, Body28 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response52> KnowledgeFoldersPATCHAsync(System.Guid folderId, Body28 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (folderId == null)
                 throw new System.ArgumentNullException("folderId");
@@ -8812,7 +8814,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response52>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -8873,7 +8875,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Folder deleted.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<BackendResponse>> KnowledgeFoldersDELETEAsync(System.Guid folderId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<BackendResponse> KnowledgeFoldersDELETEAsync(System.Guid folderId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (folderId == null)
                 throw new System.ArgumentNullException("folderId");
@@ -8923,7 +8925,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<BackendResponse>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -8984,7 +8986,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Files moved.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<BackendResponse>> MoveFilesAsync(System.Guid folderId, Body29 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<BackendResponse> MoveFilesAsync(System.Guid folderId, Body29 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (folderId == null)
                 throw new System.ArgumentNullException("folderId");
@@ -9042,7 +9044,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<BackendResponse>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -9093,7 +9095,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Files copied.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<BackendResponse>> CopyFilesAsync(System.Guid folderId, Body30 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<BackendResponse> CopyFilesAsync(System.Guid folderId, Body30 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (folderId == null)
                 throw new System.ArgumentNullException("folderId");
@@ -9151,7 +9153,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<BackendResponse>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -9202,7 +9204,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>List of available voices.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response53>> VoicesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response53> VoicesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -9248,7 +9250,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response53>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -9391,7 +9393,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Supported STT languages.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response54>> LanguagesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response54> LanguagesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -9437,7 +9439,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response54>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -9482,7 +9484,7 @@ namespace YourSdk
         /// <param name="sampleRateHertz">Sample rate hint in Hz.</param>
         /// <returns>Transcript.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response55>> TranscribeAsync(FileParameter audio = null, string languageCode = null, string encoding = null, int? sampleRateHertz = null, bool? enableAutomaticPunctuation = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response55> TranscribeAsync(FileParameter audio = null, string languageCode = null, string encoding = null, int? sampleRateHertz = null, bool? enableAutomaticPunctuation = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -9571,7 +9573,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response55>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 400)
@@ -9622,7 +9624,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Paginated moderation logs.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response56>> LogsPOSTAsync(Body32 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response56> LogsPOSTAsync(Body32 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -9675,7 +9677,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response56>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -9726,7 +9728,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Logs deleted.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response57>> LogsDELETEAsync(Body33 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response57> LogsDELETEAsync(Body33 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -9779,7 +9781,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response57>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -9830,7 +9832,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Moderation statistics.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response58>> StatsAsync(Body34 body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response58> StatsAsync(Body34 body = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -9880,7 +9882,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response58>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -9931,7 +9933,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Moderation context.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response59>> ContextAsync(Body35 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response59> ContextAsync(Body35 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -9984,7 +9986,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response59>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -10035,7 +10037,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Chat analytics data</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response60>> GetAnalyticsChatsAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response60> GetAnalyticsChatsAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -10088,7 +10090,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response60>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -10145,7 +10147,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Citation analytics</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response61>> GetAnalyticsCitationsAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response61> GetAnalyticsCitationsAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -10198,7 +10200,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response61>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -10255,7 +10257,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Current and previous period citation data</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response62>> GetAnalyticsCitationsCompareAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response62> GetAnalyticsCitationsCompareAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -10308,7 +10310,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response62>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -10365,7 +10367,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>File usage extremes</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response63>> GetAnalyticsFileUsageExtremesAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response63> GetAnalyticsFileUsageExtremesAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -10418,7 +10420,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response63>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -10475,7 +10477,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Uncited files summary</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response64>> GetAnalyticsUncitedFilesAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response64> GetAnalyticsUncitedFilesAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -10528,7 +10530,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response64>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -10585,7 +10587,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Usage metrics</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response65>> GetAnalyticsUsageAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response65> GetAnalyticsUsageAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -10638,7 +10640,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response65>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -10695,7 +10697,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Current and previous usage metrics</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response66>> GetAnalyticsUsageCompareAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response66> GetAnalyticsUsageCompareAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -10748,7 +10750,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response66>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -10805,7 +10807,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Active users series</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response67>> GetAnalyticsActiveUsersSeriesAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response67> GetAnalyticsActiveUsersSeriesAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -10858,7 +10860,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response67>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -10915,7 +10917,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Agent usage summary</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response68>> GetAnalyticsAgentUsageAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response68> GetAnalyticsAgentUsageAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -10968,7 +10970,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response68>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -11025,7 +11027,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Per-user chat summaries</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response69>> GetAnalyticsUserChatsAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response69> GetAnalyticsUserChatsAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -11078,7 +11080,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response69>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -11135,7 +11137,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Inactive users list</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response70>> GetAnalyticsInactiveUsersAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response70> GetAnalyticsInactiveUsersAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -11188,7 +11190,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response70>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -11245,7 +11247,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Latency statistics</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response71>> GetAnalyticsLatencyAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response71> GetAnalyticsLatencyAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -11298,7 +11300,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response71>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -11355,7 +11357,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Overview trend series</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response72>> GetAnalyticsOverviewTrendsAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response72> GetAnalyticsOverviewTrendsAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -11408,7 +11410,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response72>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -11465,7 +11467,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Key topics</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response73>> GetAnalyticsTopicsAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response73> GetAnalyticsTopicsAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -11518,7 +11520,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response73>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -11575,7 +11577,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Question topics summary</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response74>> GetAnalyticsQuestionTopicsAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response74> GetAnalyticsQuestionTopicsAsync(AnalyticsOrgRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -11628,7 +11630,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response74>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -11685,7 +11687,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Feedback items</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response75>> GetAnalyticsFeedbackAsync(Body36 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response75> GetAnalyticsFeedbackAsync(Body36 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -11738,7 +11740,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response75>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -11795,7 +11797,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Feedback recorded</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse> SubmitSessionFeedbackAsync(AnalyticsSessionFeedbackRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task SubmitSessionFeedbackAsync(AnalyticsSessionFeedbackRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -11843,7 +11845,7 @@ namespace YourSdk
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            return new SwaggerResponse(status_, headers_);
+                            return;
                         }
                         else
                         if (status_ == 401)
@@ -11915,7 +11917,7 @@ namespace YourSdk
         /// </remarks>
         /// <param name="sec_WebSocket_Protocol">WebSocket sub-protocol carrying the Cognito ID token. Value must be `auth.&lt;idToken&gt;`.  The authenticated user must have role `admin` or `superadmin`.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse> WsAnalyticsAsync(string sec_WebSocket_Protocol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task WsAnalyticsAsync(string sec_WebSocket_Protocol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -11986,7 +11988,8 @@ namespace YourSdk
 
                         if (status_ == 200 || status_ == 204)
                         {
-                            return new SwaggerResponse(status_, headers_);
+
+                            return;
                         }
                         else
                         {
@@ -12020,7 +12023,7 @@ namespace YourSdk
         /// <param name="filterssearchcontainsi">Case-insensitive name search</param>
         /// <returns>Paginated list of topics</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response76>> ListTopicsAsync(System.Guid? filtersorganizationIdeq = null, bool? filtersisActiveeq = null, string filterssearchcontainsi = null, int? paginationoffset = null, int? paginationlimit = null, string sort0field = null, SortOf_0OfDirection? sort0direction = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response76> ListTopicsAsync(System.Guid? filtersorganizationIdeq = null, bool? filtersisActiveeq = null, string filterssearchcontainsi = null, int? paginationoffset = null, int? paginationlimit = null, string sort0field = null, SortOf_0OfDirection? sort0direction = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -12096,7 +12099,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response76>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 400)
@@ -12153,7 +12156,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Topic created</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response77>> CreateTopicAsync(CreateTopicRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response77> CreateTopicAsync(CreateTopicRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (body == null)
                 throw new System.ArgumentNullException("body");
@@ -12206,7 +12209,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response77>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 400)
@@ -12263,7 +12266,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Updated topic</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response78>> UpdateTopicAsync(System.Guid topicId, UpdateTopicRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response78> UpdateTopicAsync(System.Guid topicId, UpdateTopicRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (topicId == null)
                 throw new System.ArgumentNullException("topicId");
@@ -12320,7 +12323,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response78>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 400)
@@ -12387,7 +12390,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Topic deleted</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse> DeleteTopicAsync(System.Guid topicId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task DeleteTopicAsync(System.Guid topicId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (topicId == null)
                 throw new System.ArgumentNullException("topicId");
@@ -12432,7 +12435,7 @@ namespace YourSdk
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            return new SwaggerResponse(status_, headers_);
+                            return;
                         }
                         else
                         if (status_ == 401)
@@ -12493,7 +12496,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Organisation assignment updated</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse> AssignTopicOrganizationsAsync(System.Guid topicId, Body37 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task AssignTopicOrganizationsAsync(System.Guid topicId, Body37 body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (topicId == null)
                 throw new System.ArgumentNullException("topicId");
@@ -12546,7 +12549,7 @@ namespace YourSdk
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            return new SwaggerResponse(status_, headers_);
+                            return;
                         }
                         else
                         if (status_ == 400)
@@ -12617,7 +12620,7 @@ namespace YourSdk
         /// <param name="filterssearchcontainsi">Case-insensitive search</param>
         /// <returns>Paginated list of courses</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response79>> ListCoursesAsync(System.Guid? filtersorganizationIdeq = null, System.Guid? filterstopicIdeq = null, string filtersstatuseq = null, string filterssearchcontainsi = null, int? paginationoffset = null, int? paginationlimit = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response79> ListCoursesAsync(System.Guid? filtersorganizationIdeq = null, System.Guid? filterstopicIdeq = null, string filtersstatuseq = null, string filterssearchcontainsi = null, int? paginationoffset = null, int? paginationlimit = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -12689,7 +12692,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response79>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -12742,7 +12745,7 @@ namespace YourSdk
         /// <param name="thumbnail">Optional course thumbnail image</param>
         /// <returns>Course created</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response80>> CreateCourseAsync(System.Guid? topicId = null, string name = null, string code = null, string description = null, int? sortOrder = null, System.Guid? organizationId = null, FileParameter thumbnail = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response80> CreateCourseAsync(System.Guid? topicId = null, string name = null, string code = null, string description = null, int? sortOrder = null, System.Guid? organizationId = null, FileParameter thumbnail = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -12845,7 +12848,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response80>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 400)
@@ -12905,7 +12908,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Course record</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response81>> GetCourseAsync(System.Guid courseId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response81> GetCourseAsync(System.Guid courseId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (courseId == null)
                 throw new System.ArgumentNullException("courseId");
@@ -12955,7 +12958,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response81>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -13016,7 +13019,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Updated course</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response82>> UpdateCourseAsync(System.Guid courseId, System.Guid? topicId = null, string name = null, string code = null, string description = null, int? sortOrder = null, string status = null, bool? isActive = null, FileParameter thumbnail = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response82> UpdateCourseAsync(System.Guid courseId, System.Guid? topicId = null, string name = null, string code = null, string description = null, int? sortOrder = null, string status = null, bool? isActive = null, FileParameter thumbnail = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (courseId == null)
                 throw new System.ArgumentNullException("courseId");
@@ -13128,7 +13131,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response82>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 400)
@@ -13195,7 +13198,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Course deleted</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse> DeleteCourseAsync(System.Guid courseId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task DeleteCourseAsync(System.Guid courseId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (courseId == null)
                 throw new System.ArgumentNullException("courseId");
@@ -13240,7 +13243,7 @@ namespace YourSdk
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            return new SwaggerResponse(status_, headers_);
+                            return;
                         }
                         else
                         if (status_ == 401)
@@ -13302,7 +13305,7 @@ namespace YourSdk
         /// <param name="organizationId">Viewing org context (superadmin only)</param>
         /// <returns>Users assigned</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse> AssignUsersToCourseAsync(System.Guid courseId, Body38 body, System.Guid? organizationId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task AssignUsersToCourseAsync(System.Guid courseId, Body38 body, System.Guid? organizationId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (courseId == null)
                 throw new System.ArgumentNullException("courseId");
@@ -13361,7 +13364,7 @@ namespace YourSdk
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            return new SwaggerResponse(status_, headers_);
+                            return;
                         }
                         else
                         if (status_ == 400)
@@ -13419,7 +13422,7 @@ namespace YourSdk
         /// <param name="organizationId">Viewing org context (superadmin only)</param>
         /// <returns>Enrolled users</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse> ListCourseUsersAsync(System.Guid courseId, System.Guid? organizationId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task ListCourseUsersAsync(System.Guid courseId, System.Guid? organizationId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (courseId == null)
                 throw new System.ArgumentNullException("courseId");
@@ -13471,7 +13474,7 @@ namespace YourSdk
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            return new SwaggerResponse(status_, headers_);
+                            return;
                         }
                         else
                         if (status_ == 401)
@@ -13523,7 +13526,7 @@ namespace YourSdk
         /// <param name="organizationId">Viewing org context (superadmin only)</param>
         /// <returns>Course analytics overview</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response83>> GetCourseAnalyticsAsync(System.Guid courseId, System.Guid? organizationId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response83> GetCourseAnalyticsAsync(System.Guid courseId, System.Guid? organizationId = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (courseId == null)
                 throw new System.ArgumentNullException("courseId");
@@ -13580,7 +13583,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response83>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -13628,7 +13631,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Module created</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response84>> CreateModuleAsync(System.Guid courseId, CreateModuleRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response84> CreateModuleAsync(System.Guid courseId, CreateModuleRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (courseId == null)
                 throw new System.ArgumentNullException("courseId");
@@ -13686,7 +13689,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response84>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 400)
@@ -13743,7 +13746,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Paginated module list</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response85>> ListModulesForCourseAsync(System.Guid courseId, string filterssearchcontainsi = null, int? paginationoffset = null, int? paginationlimit = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response85> ListModulesForCourseAsync(System.Guid courseId, string filterssearchcontainsi = null, int? paginationoffset = null, int? paginationlimit = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (courseId == null)
                 throw new System.ArgumentNullException("courseId");
@@ -13808,7 +13811,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response85>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -13859,7 +13862,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Paginated list of modules</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response86>> ListModulesAsync(System.Guid? filterscourseIdeq = null, System.Guid? filtersorganizationIdeq = null, string filterssearchcontainsi = null, int? paginationoffset = null, int? paginationlimit = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response86> ListModulesAsync(System.Guid? filterscourseIdeq = null, System.Guid? filtersorganizationIdeq = null, string filterssearchcontainsi = null, int? paginationoffset = null, int? paginationlimit = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -13927,7 +13930,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response86>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -13975,7 +13978,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Module record</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response87>> GetModuleAsync(System.Guid moduleId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response87> GetModuleAsync(System.Guid moduleId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (moduleId == null)
                 throw new System.ArgumentNullException("moduleId");
@@ -14025,7 +14028,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response87>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -14083,7 +14086,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Updated module</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response88>> UpdateModuleAsync(System.Guid moduleId, UpdateModuleRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response88> UpdateModuleAsync(System.Guid moduleId, UpdateModuleRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (moduleId == null)
                 throw new System.ArgumentNullException("moduleId");
@@ -14140,7 +14143,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response88>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 400)
@@ -14204,7 +14207,7 @@ namespace YourSdk
         /// </summary>
         /// <returns>Module deleted</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse> DeleteModuleAsync(System.Guid moduleId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task DeleteModuleAsync(System.Guid moduleId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (moduleId == null)
                 throw new System.ArgumentNullException("moduleId");
@@ -14249,7 +14252,7 @@ namespace YourSdk
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            return new SwaggerResponse(status_, headers_);
+                            return;
                         }
                         else
                         if (status_ == 401)
@@ -14311,7 +14314,7 @@ namespace YourSdk
         /// <param name="file">SCORM (.zip) or xAPI (.zip) package</param>
         /// <returns>Package uploaded and module updated</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse> UploadModulePackageAsync(System.Guid moduleId, FileParameter file = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task UploadModulePackageAsync(System.Guid moduleId, FileParameter file = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (moduleId == null)
                 throw new System.ArgumentNullException("moduleId");
@@ -14372,7 +14375,7 @@ namespace YourSdk
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 201)
                         {
-                            return new SwaggerResponse(status_, headers_);
+                            return;
                         }
                         else
                         if (status_ == 400)
@@ -14429,7 +14432,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Module content removed</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse> RemoveModuleContentAsync(System.Guid moduleId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task RemoveModuleContentAsync(System.Guid moduleId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (moduleId == null)
                 throw new System.ArgumentNullException("moduleId");
@@ -14475,7 +14478,7 @@ namespace YourSdk
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            return new SwaggerResponse(status_, headers_);
+                            return;
                         }
                         else
                         if (status_ == 401)
@@ -14537,7 +14540,7 @@ namespace YourSdk
         /// <param name="token">JWT bearer token (alternative to Authorization header for iframe contexts)</param>
         /// <returns>Asset bytes with appropriate Content-Type</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse> ServeModuleContentAsync(System.Guid moduleId, string token = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task ServeModuleContentAsync(System.Guid moduleId, string token = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (moduleId == null)
                 throw new System.ArgumentNullException("moduleId");
@@ -14588,7 +14591,7 @@ namespace YourSdk
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            return new SwaggerResponse(status_, headers_);
+                            return;
                         }
                         else
                         if (status_ == 403)
@@ -14639,7 +14642,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Module analytics summary</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response89>> GetModuleAnalyticsAsync(System.Guid moduleId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response89> GetModuleAnalyticsAsync(System.Guid moduleId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (moduleId == null)
                 throw new System.ArgumentNullException("moduleId");
@@ -14690,7 +14693,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response89>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 401)
@@ -14741,7 +14744,7 @@ namespace YourSdk
         /// </remarks>
         /// <returns>Module launch info</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response90>> GetModuleLaunchInfoAsync(System.Guid moduleId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response90> GetModuleLaunchInfoAsync(System.Guid moduleId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (moduleId == null)
                 throw new System.ArgumentNullException("moduleId");
@@ -14792,7 +14795,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response90>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 403)
@@ -14845,7 +14848,7 @@ namespace YourSdk
         /// <param name="token">JWT bearer token (alternative to Authorization header)</param>
         /// <returns>HTML player page</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<string>> ServeModulePlayerAsync(System.Guid moduleId, bool? preview = null, string token = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<string> ServeModulePlayerAsync(System.Guid moduleId, bool? preview = null, string token = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (moduleId == null)
                 throw new System.ArgumentNullException("moduleId");
@@ -14906,7 +14909,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<string>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 302)
@@ -14965,7 +14968,7 @@ namespace YourSdk
         /// <param name="fileId">UUID of the file to attach.</param>
         /// <returns>File successfully attached to the vector store.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response91>> AttachFileToVectorStoreAsync(System.Guid characterId, System.Guid fileId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response91> AttachFileToVectorStoreAsync(System.Guid characterId, System.Guid fileId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (characterId == null)
                 throw new System.ArgumentNullException("characterId");
@@ -15021,7 +15024,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response91>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 400)
@@ -15094,7 +15097,7 @@ namespace YourSdk
         /// <param name="fileId">UUID of the file to detach.</param>
         /// <returns>File successfully detached from the vector store.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<SwaggerResponse<Response92>> DetachFileFromVectorStoreAsync(System.Guid characterId, System.Guid fileId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Response92> DetachFileFromVectorStoreAsync(System.Guid characterId, System.Guid fileId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             if (characterId == null)
                 throw new System.ArgumentNullException("characterId");
@@ -15149,7 +15152,7 @@ namespace YourSdk
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
                             }
-                            return new SwaggerResponse<Response92>(status_, headers_, objectResponse_.Object);
+                            return objectResponse_.Object;
                         }
                         else
                         if (status_ == 400)
@@ -21574,32 +21577,6 @@ namespace YourSdk
                 _response.Dispose();
             if (_client != null)
                 _client.Dispose();
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.6.3.0 (NJsonSchema v11.5.2.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class SwaggerResponse
-    {
-        public int StatusCode { get; private set; }
-
-        public System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> Headers { get; private set; }
-
-        public SwaggerResponse(int statusCode, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers)
-        {
-            StatusCode = statusCode;
-            Headers = headers;
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.6.3.0 (NJsonSchema v11.5.2.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class SwaggerResponse<TResult> : SwaggerResponse
-    {
-        public TResult Result { get; private set; }
-
-        public SwaggerResponse(int statusCode, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, TResult result)
-            : base(statusCode, headers)
-        {
-            Result = result;
         }
     }
 

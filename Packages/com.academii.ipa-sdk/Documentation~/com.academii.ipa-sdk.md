@@ -57,15 +57,15 @@ var login = await client.LoginAsync(new LoginPayload
 });
 
 httpClient.DefaultRequestHeaders.Authorization =
-    new AuthenticationHeaderValue("Bearer", login.Result.Token);
+    new AuthenticationHeaderValue("Bearer", login.Data.Token);
 ```
 
 ## Success Responses
 
-- Endpoints with JSON response bodies return `SwaggerResponse<T>`.
-- Endpoints with no typed body return `SwaggerResponse`.
-- `204 No Content` is a valid success case and still returns a non-null
-  `SwaggerResponse`.
+- Most JSON endpoints return generated response models derived from
+  `BackendResponse`.
+- Binary endpoints return `FileResponse`.
+- Some no-content endpoints return `Task` only.
 
 ## Error Responses
 

@@ -94,7 +94,7 @@ namespace HttpApiClient.Tests
     internal static class ClientSourceParser
     {
         private static readonly Regex MethodRegex = new Regex(
-            @"public\s+virtual\s+async\s+System\.Threading\.Tasks\.Task<.+?>\s+(?<name>\w+)\((?<params>[^)]*)\)",
+            @"public\s+virtual\s+async\s+System\.Threading\.Tasks\.Task(?:<.+?>)?\s+(?<name>\w+)\((?<params>[^)]*)\)",
             RegexOptions.Compiled);
 
         private static readonly Regex StatusRegex = new Regex(@"if\s*\((?<condition>[^)]*status_[^)]*)\)", RegexOptions.Compiled);
@@ -102,6 +102,8 @@ namespace HttpApiClient.Tests
         private static readonly Regex StatusCodeRegex = new Regex(@"status_\s*==\s*(?<status>\d+)", RegexOptions.Compiled);
 
         private static readonly Regex ReadObjectRegex = new Regex(@"ReadObjectResponseAsync<(?<type>.+?)>\(", RegexOptions.Compiled);
+
+        private static readonly Regex ReturnRegex = new Regex(@"\breturn\b", RegexOptions.Compiled);
 
         public static IReadOnlyList<ApiMethodCase> GetCases(string sourceText)
         {
@@ -130,11 +132,7 @@ namespace HttpApiClient.Tests
                     var branch = GetConditionBranch(body, statusMatch.Index);
                     var readMatch = ReadObjectRegex.Match(branch);
                     var responseTypeName = readMatch.Success ? readMatch.Groups["type"].Value : null;
-                    var isSuccess =
-                        (branch.Contains("return ", StringComparison.Ordinal) &&
-                         !branch.Contains("throw new ApiException", StringComparison.Ordinal)) ||
-                        branch.Contains("return new SwaggerResponse", StringComparison.Ordinal) ||
-                        branch.Contains("return new FileResponse", StringComparison.Ordinal);
+                    var isSuccess = ReturnRegex.IsMatch(branch);
 
                     foreach (Match codeMatch in StatusCodeRegex.Matches(condition))
                     {
@@ -653,6 +651,11 @@ namespace HttpApiClient.Tests
             if (result is Task task)
             {
                 await task.ConfigureAwait(false);
+                if (method.ReturnType == typeof(Task))
+                {
+                    return null;
+                }
+
                 var resultProperty = task.GetType().GetProperty("Result");
                 return resultProperty?.GetValue(task);
             }
@@ -799,15 +802,14 @@ namespace HttpApiClient.Tests
         }
 
         [Test]
-        public void SwaggerResponse_StoresValues()
+        public void FileResponse_StoresValues()
         {
             var headers = new Dictionary<string, IEnumerable<string>>();
-            var response = new SwaggerResponse(200, headers);
-            Assert.That(response.StatusCode, Is.EqualTo(200));
+            using var stream = new MemoryStream(new byte[] { 1, 2, 3 });
+            using var response = new FileResponse(206, headers, stream, null, null);
+            Assert.That(response.StatusCode, Is.EqualTo(206));
             Assert.That(response.Headers, Is.SameAs(headers));
-
-            var typed = new SwaggerResponse<string>(201, headers, "ok");
-            Assert.That(typed.Result, Is.EqualTo("ok"));
+            Assert.That(response.IsPartial, Is.True);
         }
 
         [Test]
@@ -845,17 +847,28 @@ namespace HttpApiClient.Tests
             if (apiCase.IsSuccess)
             {
                 var result = await ClientMethodInvoker.InvokeAsync(method, client, args);
+                if (method.ReturnType == typeof(Task))
+                {
+                    Assert.That(result, Is.Null, $"Expected no result object from {apiCase}.");
+                    return;
+                }
+
+                var expectedResultType = method.ReturnType.IsGenericType
+                    ? method.ReturnType.GetGenericArguments().SingleOrDefault()
+                    : null;
+
                 switch (result)
                 {
-                    case SwaggerResponse swaggerResponse:
-                        Assert.That(swaggerResponse.StatusCode, Is.EqualTo(apiCase.StatusCode), $"Expected status code {apiCase.StatusCode} from {apiCase}.");
-                        break;
                     case FileResponse fileResponse:
                         Assert.That(fileResponse.StatusCode, Is.EqualTo(apiCase.StatusCode), $"Expected status code {apiCase.StatusCode} from {apiCase}.");
                         fileResponse.Dispose();
                         break;
                     default:
-                        Assert.Fail($"Expected a SwaggerResponse or FileResponse from {apiCase}, but received {result?.GetType().FullName ?? "null"}.");
+                        Assert.That(result, Is.Not.Null, $"Expected a non-null result from {apiCase}.");
+                        if (expectedResultType != null)
+                        {
+                            Assert.That(expectedResultType.IsInstanceOfType(result), Is.True, $"Expected {expectedResultType.FullName} from {apiCase}, but received {result?.GetType().FullName ?? "null"}.");
+                        }
                         break;
                 }
             }
