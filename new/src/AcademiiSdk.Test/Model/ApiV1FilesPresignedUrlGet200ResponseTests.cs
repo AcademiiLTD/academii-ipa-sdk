@@ -8,15 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
+using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -46,7 +47,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of ApiV1FilesPresignedUrlGet200Response
         /// </summary>
-        [Fact]
+        [Test]
         public void ApiV1FilesPresignedUrlGet200ResponseInstanceTest()
         {
             // TODO uncomment below to test "IsType" ApiV1FilesPresignedUrlGet200Response
@@ -56,16 +57,15 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Status'
         /// </summary>
-        [Fact]
+        [Test]
         public void StatusTest()
         {
             // TODO unit test for the property 'Status'
         }
-
         /// <summary>
         /// Test the property 'Data'
         /// </summary>
-        [Fact]
+        [Test]
         public void DataTest()
         {
             // TODO unit test for the property 'Data'

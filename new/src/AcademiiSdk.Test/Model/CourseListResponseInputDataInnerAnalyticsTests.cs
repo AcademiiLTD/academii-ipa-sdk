@@ -8,15 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
+using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -46,7 +47,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of CourseListResponseInputDataInnerAnalytics
         /// </summary>
-        [Fact]
+        [Test]
         public void CourseListResponseInputDataInnerAnalyticsInstanceTest()
         {
             // TODO uncomment below to test "IsType" CourseListResponseInputDataInnerAnalytics
@@ -56,43 +57,39 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'EnrolledCount'
         /// </summary>
-        [Fact]
+        [Test]
         public void EnrolledCountTest()
         {
             // TODO unit test for the property 'EnrolledCount'
         }
-
         /// <summary>
         /// Test the property 'CompletedCount'
         /// </summary>
-        [Fact]
+        [Test]
         public void CompletedCountTest()
         {
             // TODO unit test for the property 'CompletedCount'
         }
-
         /// <summary>
         /// Test the property 'NotCompletedCount'
         /// </summary>
-        [Fact]
+        [Test]
         public void NotCompletedCountTest()
         {
             // TODO unit test for the property 'NotCompletedCount'
         }
-
         /// <summary>
         /// Test the property 'StartedCount'
         /// </summary>
-        [Fact]
+        [Test]
         public void StartedCountTest()
         {
             // TODO unit test for the property 'StartedCount'
         }
-
         /// <summary>
         /// Test the property 'CompletionRate'
         /// </summary>
-        [Fact]
+        [Test]
         public void CompletionRateTest()
         {
             // TODO unit test for the property 'CompletionRate'

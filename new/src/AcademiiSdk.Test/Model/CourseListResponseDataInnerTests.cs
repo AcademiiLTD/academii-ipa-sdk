@@ -8,15 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
+using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -46,7 +47,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of CourseListResponseDataInner
         /// </summary>
-        [Fact]
+        [Test]
         public void CourseListResponseDataInnerInstanceTest()
         {
             // TODO uncomment below to test "IsType" CourseListResponseDataInner
@@ -56,151 +57,135 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Id'
         /// </summary>
-        [Fact]
+        [Test]
         public void IdTest()
         {
             // TODO unit test for the property 'Id'
         }
-
         /// <summary>
         /// Test the property 'OrganizationId'
         /// </summary>
-        [Fact]
+        [Test]
         public void OrganizationIdTest()
         {
             // TODO unit test for the property 'OrganizationId'
         }
-
         /// <summary>
         /// Test the property 'TopicId'
         /// </summary>
-        [Fact]
+        [Test]
         public void TopicIdTest()
         {
             // TODO unit test for the property 'TopicId'
         }
-
         /// <summary>
         /// Test the property 'Name'
         /// </summary>
-        [Fact]
+        [Test]
         public void NameTest()
         {
             // TODO unit test for the property 'Name'
         }
-
         /// <summary>
         /// Test the property 'Code'
         /// </summary>
-        [Fact]
+        [Test]
         public void CodeTest()
         {
             // TODO unit test for the property 'Code'
         }
-
-        /// <summary>
-        /// Test the property 'SortOrder'
-        /// </summary>
-        [Fact]
-        public void SortOrderTest()
-        {
-            // TODO unit test for the property 'SortOrder'
-        }
-
-        /// <summary>
-        /// Test the property 'Status'
-        /// </summary>
-        [Fact]
-        public void StatusTest()
-        {
-            // TODO unit test for the property 'Status'
-        }
-
-        /// <summary>
-        /// Test the property 'IsActive'
-        /// </summary>
-        [Fact]
-        public void IsActiveTest()
-        {
-            // TODO unit test for the property 'IsActive'
-        }
-
         /// <summary>
         /// Test the property 'Description'
         /// </summary>
-        [Fact]
+        [Test]
         public void DescriptionTest()
         {
             // TODO unit test for the property 'Description'
         }
-
         /// <summary>
         /// Test the property 'ThumbnailUrl'
         /// </summary>
-        [Fact]
+        [Test]
         public void ThumbnailUrlTest()
         {
             // TODO unit test for the property 'ThumbnailUrl'
         }
-
+        /// <summary>
+        /// Test the property 'SortOrder'
+        /// </summary>
+        [Test]
+        public void SortOrderTest()
+        {
+            // TODO unit test for the property 'SortOrder'
+        }
         /// <summary>
         /// Test the property 'EnforceModuleOrder'
         /// </summary>
-        [Fact]
+        [Test]
         public void EnforceModuleOrderTest()
         {
             // TODO unit test for the property 'EnforceModuleOrder'
         }
-
+        /// <summary>
+        /// Test the property 'Status'
+        /// </summary>
+        [Test]
+        public void StatusTest()
+        {
+            // TODO unit test for the property 'Status'
+        }
+        /// <summary>
+        /// Test the property 'IsActive'
+        /// </summary>
+        [Test]
+        public void IsActiveTest()
+        {
+            // TODO unit test for the property 'IsActive'
+        }
         /// <summary>
         /// Test the property 'ModuleCount'
         /// </summary>
-        [Fact]
+        [Test]
         public void ModuleCountTest()
         {
             // TODO unit test for the property 'ModuleCount'
         }
-
         /// <summary>
         /// Test the property 'Modules'
         /// </summary>
-        [Fact]
+        [Test]
         public void ModulesTest()
         {
             // TODO unit test for the property 'Modules'
         }
-
         /// <summary>
         /// Test the property 'CreatedBy'
         /// </summary>
-        [Fact]
+        [Test]
         public void CreatedByTest()
         {
             // TODO unit test for the property 'CreatedBy'
         }
-
         /// <summary>
         /// Test the property 'CreatedAt'
         /// </summary>
-        [Fact]
+        [Test]
         public void CreatedAtTest()
         {
             // TODO unit test for the property 'CreatedAt'
         }
-
         /// <summary>
         /// Test the property 'UpdatedAt'
         /// </summary>
-        [Fact]
+        [Test]
         public void UpdatedAtTest()
         {
             // TODO unit test for the property 'UpdatedAt'
         }
-
         /// <summary>
         /// Test the property 'Analytics'
         /// </summary>
-        [Fact]
+        [Test]
         public void AnalyticsTest()
         {
             // TODO unit test for the property 'Analytics'

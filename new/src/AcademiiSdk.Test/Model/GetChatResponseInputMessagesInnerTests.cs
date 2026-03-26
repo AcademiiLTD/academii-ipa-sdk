@@ -8,15 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
+using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -46,7 +47,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of GetChatResponseInputMessagesInner
         /// </summary>
-        [Fact]
+        [Test]
         public void GetChatResponseInputMessagesInnerInstanceTest()
         {
             // TODO uncomment below to test "IsType" GetChatResponseInputMessagesInner
@@ -56,88 +57,79 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Id'
         /// </summary>
-        [Fact]
+        [Test]
         public void IdTest()
         {
             // TODO unit test for the property 'Id'
         }
-
         /// <summary>
         /// Test the property 'ChatId'
         /// </summary>
-        [Fact]
+        [Test]
         public void ChatIdTest()
         {
             // TODO unit test for the property 'ChatId'
         }
-
         /// <summary>
         /// Test the property 'Role'
         /// </summary>
-        [Fact]
+        [Test]
         public void RoleTest()
         {
             // TODO unit test for the property 'Role'
         }
-
         /// <summary>
         /// Test the property 'Content'
         /// </summary>
-        [Fact]
+        [Test]
         public void ContentTest()
         {
             // TODO unit test for the property 'Content'
         }
-
         /// <summary>
         /// Test the property 'CreatedAt'
         /// </summary>
-        [Fact]
+        [Test]
         public void CreatedAtTest()
         {
             // TODO unit test for the property 'CreatedAt'
         }
-
         /// <summary>
         /// Test the property 'Timestamp'
         /// </summary>
-        [Fact]
+        [Test]
         public void TimestampTest()
         {
             // TODO unit test for the property 'Timestamp'
         }
-
         /// <summary>
         /// Test the property 'TokenCount'
         /// </summary>
-        [Fact]
+        [Test]
         public void TokenCountTest()
         {
             // TODO unit test for the property 'TokenCount'
         }
-
         /// <summary>
         /// Test the property 'Metadata'
         /// </summary>
-        [Fact]
+        [Test]
         public void MetadataTest()
         {
             // TODO unit test for the property 'Metadata'
         }
-
         /// <summary>
         /// Test the property 'Citations'
         /// </summary>
-        [Fact]
+        [Test]
         public void CitationsTest()
         {
             // TODO unit test for the property 'Citations'
         }
-
         /// <summary>
         /// Test the property 'CitationsLoading'
         /// </summary>
-        [Fact]
+        [Test]
         public void CitationsLoadingTest()
         {
             // TODO unit test for the property 'CitationsLoading'

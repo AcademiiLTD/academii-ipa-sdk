@@ -8,15 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
+using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -46,7 +47,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of CharacterResponseInputAvatarSettings
         /// </summary>
-        [Fact]
+        [Test]
         public void CharacterResponseInputAvatarSettingsInstanceTest()
         {
             // TODO uncomment below to test "IsType" CharacterResponseInputAvatarSettings
@@ -56,43 +57,39 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'AvatarUrl'
         /// </summary>
-        [Fact]
+        [Test]
         public void AvatarUrlTest()
         {
             // TODO unit test for the property 'AvatarUrl'
         }
-
         /// <summary>
         /// Test the property 'ModelUrl'
         /// </summary>
-        [Fact]
+        [Test]
         public void ModelUrlTest()
         {
             // TODO unit test for the property 'ModelUrl'
         }
-
         /// <summary>
         /// Test the property 'ThumbnailUrl'
         /// </summary>
-        [Fact]
+        [Test]
         public void ThumbnailUrlTest()
         {
             // TODO unit test for the property 'ThumbnailUrl'
         }
-
         /// <summary>
         /// Test the property 'IdleAnimation'
         /// </summary>
-        [Fact]
+        [Test]
         public void IdleAnimationTest()
         {
             // TODO unit test for the property 'IdleAnimation'
         }
-
         /// <summary>
         /// Test the property 'TalkingAnimation'
         /// </summary>
-        [Fact]
+        [Test]
         public void TalkingAnimationTest()
         {
             // TODO unit test for the property 'TalkingAnimation'

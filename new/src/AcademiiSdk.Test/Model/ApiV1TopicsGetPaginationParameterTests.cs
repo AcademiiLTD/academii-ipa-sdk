@@ -8,15 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
+using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -46,7 +47,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of ApiV1TopicsGetPaginationParameter
         /// </summary>
-        [Fact]
+        [Test]
         public void ApiV1TopicsGetPaginationParameterInstanceTest()
         {
             // TODO uncomment below to test "IsType" ApiV1TopicsGetPaginationParameter
@@ -56,25 +57,23 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Offset'
         /// </summary>
-        [Fact]
+        [Test]
         public void OffsetTest()
         {
             // TODO unit test for the property 'Offset'
         }
-
         /// <summary>
         /// Test the property 'Limit'
         /// </summary>
-        [Fact]
+        [Test]
         public void LimitTest()
         {
             // TODO unit test for the property 'Limit'
         }
-
         /// <summary>
         /// Test the property 'Cursor'
         /// </summary>
-        [Fact]
+        [Test]
         public void CursorTest()
         {
             // TODO unit test for the property 'Cursor'

@@ -8,15 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
+using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -46,7 +47,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of NotFoundErrorInput
         /// </summary>
-        [Fact]
+        [Test]
         public void NotFoundErrorInputInstanceTest()
         {
             // TODO uncomment below to test "IsType" NotFoundErrorInput
@@ -56,16 +57,15 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Status'
         /// </summary>
-        [Fact]
+        [Test]
         public void StatusTest()
         {
             // TODO unit test for the property 'Status'
         }
-
         /// <summary>
         /// Test the property 'Message'
         /// </summary>
-        [Fact]
+        [Test]
         public void MessageTest()
         {
             // TODO unit test for the property 'Message'

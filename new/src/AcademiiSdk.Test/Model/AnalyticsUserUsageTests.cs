@@ -8,15 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
+using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -46,7 +47,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of AnalyticsUserUsage
         /// </summary>
-        [Fact]
+        [Test]
         public void AnalyticsUserUsageInstanceTest()
         {
             // TODO uncomment below to test "IsType" AnalyticsUserUsage
@@ -56,70 +57,63 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'SessionCount'
         /// </summary>
-        [Fact]
+        [Test]
         public void SessionCountTest()
         {
             // TODO unit test for the property 'SessionCount'
         }
-
         /// <summary>
         /// Test the property 'ChatCount'
         /// </summary>
-        [Fact]
+        [Test]
         public void ChatCountTest()
         {
             // TODO unit test for the property 'ChatCount'
         }
-
         /// <summary>
         /// Test the property 'AvgResponseLatencyMs'
         /// </summary>
-        [Fact]
+        [Test]
         public void AvgResponseLatencyMsTest()
         {
             // TODO unit test for the property 'AvgResponseLatencyMs'
         }
-
         /// <summary>
         /// Test the property 'NumberOfActiveChats'
         /// </summary>
-        [Fact]
+        [Test]
         public void NumberOfActiveChatsTest()
         {
             // TODO unit test for the property 'NumberOfActiveChats'
         }
-
         /// <summary>
         /// Test the property 'ActiveUserCount'
         /// </summary>
-        [Fact]
+        [Test]
         public void ActiveUserCountTest()
         {
             // TODO unit test for the property 'ActiveUserCount'
         }
-
         /// <summary>
         /// Test the property 'TotalUserCount'
         /// </summary>
-        [Fact]
+        [Test]
         public void TotalUserCountTest()
         {
             // TODO unit test for the property 'TotalUserCount'
         }
-
         /// <summary>
         /// Test the property 'TotalEngagements'
         /// </summary>
-        [Fact]
+        [Test]
         public void TotalEngagementsTest()
         {
             // TODO unit test for the property 'TotalEngagements'
         }
-
         /// <summary>
         /// Test the property 'ActiveInteractions'
         /// </summary>
-        [Fact]
+        [Test]
         public void ActiveInteractionsTest()
         {
             // TODO unit test for the property 'ActiveInteractions'

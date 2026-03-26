@@ -8,15 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
+using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -46,7 +47,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of UpsertCharacterMeshLinkRequest
         /// </summary>
-        [Fact]
+        [Test]
         public void UpsertCharacterMeshLinkRequestInstanceTest()
         {
             // TODO uncomment below to test "IsType" UpsertCharacterMeshLinkRequest
@@ -56,25 +57,23 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'MeshName'
         /// </summary>
-        [Fact]
+        [Test]
         public void MeshNameTest()
         {
             // TODO unit test for the property 'MeshName'
         }
-
         /// <summary>
         /// Test the property 'Url'
         /// </summary>
-        [Fact]
+        [Test]
         public void UrlTest()
         {
             // TODO unit test for the property 'Url'
         }
-
         /// <summary>
         /// Test the property 'Description'
         /// </summary>
-        [Fact]
+        [Test]
         public void DescriptionTest()
         {
             // TODO unit test for the property 'Description'

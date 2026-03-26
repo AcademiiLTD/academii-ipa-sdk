@@ -8,15 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
+using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -46,7 +47,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of ListMyTrainingResponseTopicsInnerCoursesInnerModulesInner
         /// </summary>
-        [Fact]
+        [Test]
         public void ListMyTrainingResponseTopicsInnerCoursesInnerModulesInnerInstanceTest()
         {
             // TODO uncomment below to test "IsType" ListMyTrainingResponseTopicsInnerCoursesInnerModulesInner
@@ -56,124 +57,111 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Id'
         /// </summary>
-        [Fact]
+        [Test]
         public void IdTest()
         {
             // TODO unit test for the property 'Id'
         }
-
         /// <summary>
         /// Test the property 'CourseId'
         /// </summary>
-        [Fact]
+        [Test]
         public void CourseIdTest()
         {
             // TODO unit test for the property 'CourseId'
         }
-
         /// <summary>
         /// Test the property 'Name'
         /// </summary>
-        [Fact]
+        [Test]
         public void NameTest()
         {
             // TODO unit test for the property 'Name'
         }
-
-        /// <summary>
-        /// Test the property 'SortOrder'
-        /// </summary>
-        [Fact]
-        public void SortOrderTest()
-        {
-            // TODO unit test for the property 'SortOrder'
-        }
-
-        /// <summary>
-        /// Test the property 'IsActive'
-        /// </summary>
-        [Fact]
-        public void IsActiveTest()
-        {
-            // TODO unit test for the property 'IsActive'
-        }
-
-        /// <summary>
-        /// Test the property 'PackageType'
-        /// </summary>
-        [Fact]
-        public void PackageTypeTest()
-        {
-            // TODO unit test for the property 'PackageType'
-        }
-
-        /// <summary>
-        /// Test the property 'ProgressPercent'
-        /// </summary>
-        [Fact]
-        public void ProgressPercentTest()
-        {
-            // TODO unit test for the property 'ProgressPercent'
-        }
-
-        /// <summary>
-        /// Test the property 'CompletionStatus'
-        /// </summary>
-        [Fact]
-        public void CompletionStatusTest()
-        {
-            // TODO unit test for the property 'CompletionStatus'
-        }
-
-        /// <summary>
-        /// Test the property 'ProgressState'
-        /// </summary>
-        [Fact]
-        public void ProgressStateTest()
-        {
-            // TODO unit test for the property 'ProgressState'
-        }
-
         /// <summary>
         /// Test the property 'Description'
         /// </summary>
-        [Fact]
+        [Test]
         public void DescriptionTest()
         {
             // TODO unit test for the property 'Description'
         }
-
+        /// <summary>
+        /// Test the property 'SortOrder'
+        /// </summary>
+        [Test]
+        public void SortOrderTest()
+        {
+            // TODO unit test for the property 'SortOrder'
+        }
         /// <summary>
         /// Test the property 'ThumbnailUrl'
         /// </summary>
-        [Fact]
+        [Test]
         public void ThumbnailUrlTest()
         {
             // TODO unit test for the property 'ThumbnailUrl'
         }
-
+        /// <summary>
+        /// Test the property 'IsActive'
+        /// </summary>
+        [Test]
+        public void IsActiveTest()
+        {
+            // TODO unit test for the property 'IsActive'
+        }
+        /// <summary>
+        /// Test the property 'PackageType'
+        /// </summary>
+        [Test]
+        public void PackageTypeTest()
+        {
+            // TODO unit test for the property 'PackageType'
+        }
+        /// <summary>
+        /// Test the property 'ProgressPercent'
+        /// </summary>
+        [Test]
+        public void ProgressPercentTest()
+        {
+            // TODO unit test for the property 'ProgressPercent'
+        }
+        /// <summary>
+        /// Test the property 'CompletionStatus'
+        /// </summary>
+        [Test]
+        public void CompletionStatusTest()
+        {
+            // TODO unit test for the property 'CompletionStatus'
+        }
+        /// <summary>
+        /// Test the property 'ProgressState'
+        /// </summary>
+        [Test]
+        public void ProgressStateTest()
+        {
+            // TODO unit test for the property 'ProgressState'
+        }
         /// <summary>
         /// Test the property 'StartedAt'
         /// </summary>
-        [Fact]
+        [Test]
         public void StartedAtTest()
         {
             // TODO unit test for the property 'StartedAt'
         }
-
         /// <summary>
         /// Test the property 'LastActivityAt'
         /// </summary>
-        [Fact]
+        [Test]
         public void LastActivityAtTest()
         {
             // TODO unit test for the property 'LastActivityAt'
         }
-
         /// <summary>
         /// Test the property 'CompletedAt'
         /// </summary>
-        [Fact]
+        [Test]
         public void CompletedAtTest()
         {
             // TODO unit test for the property 'CompletedAt'

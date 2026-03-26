@@ -8,15 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
+using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -46,7 +47,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of ApiV1ModulesModuleIdPatchRequest
         /// </summary>
-        [Fact]
+        [Test]
         public void ApiV1ModulesModuleIdPatchRequestInstanceTest()
         {
             // TODO uncomment below to test "IsType" ApiV1ModulesModuleIdPatchRequest
@@ -56,43 +57,39 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Name'
         /// </summary>
-        [Fact]
+        [Test]
         public void NameTest()
         {
             // TODO unit test for the property 'Name'
         }
-
         /// <summary>
         /// Test the property 'Description'
         /// </summary>
-        [Fact]
+        [Test]
         public void DescriptionTest()
         {
             // TODO unit test for the property 'Description'
         }
-
         /// <summary>
         /// Test the property 'SortOrder'
         /// </summary>
-        [Fact]
+        [Test]
         public void SortOrderTest()
         {
             // TODO unit test for the property 'SortOrder'
         }
-
         /// <summary>
         /// Test the property 'IsActive'
         /// </summary>
-        [Fact]
+        [Test]
         public void IsActiveTest()
         {
             // TODO unit test for the property 'IsActive'
         }
-
         /// <summary>
         /// Test the property 'ThumbnailUrl'
         /// </summary>
-        [Fact]
+        [Test]
         public void ThumbnailUrlTest()
         {
             // TODO unit test for the property 'ThumbnailUrl'

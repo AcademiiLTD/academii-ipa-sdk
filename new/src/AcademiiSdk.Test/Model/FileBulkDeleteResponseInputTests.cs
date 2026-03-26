@@ -8,15 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
+using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -46,7 +47,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of FileBulkDeleteResponseInput
         /// </summary>
-        [Fact]
+        [Test]
         public void FileBulkDeleteResponseInputInstanceTest()
         {
             // TODO uncomment below to test "IsType" FileBulkDeleteResponseInput
@@ -56,25 +57,23 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'DeletedFileIds'
         /// </summary>
-        [Fact]
+        [Test]
         public void DeletedFileIdsTest()
         {
             // TODO unit test for the property 'DeletedFileIds'
         }
-
         /// <summary>
         /// Test the property 'Failures'
         /// </summary>
-        [Fact]
+        [Test]
         public void FailuresTest()
         {
             // TODO unit test for the property 'Failures'
         }
-
         /// <summary>
         /// Test the property 'StorageInfo'
         /// </summary>
-        [Fact]
+        [Test]
         public void StorageInfoTest()
         {
             // TODO unit test for the property 'StorageInfo'

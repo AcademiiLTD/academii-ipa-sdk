@@ -8,15 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
+using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -46,7 +47,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of HandbookItemMutationResponseInput
         /// </summary>
-        [Fact]
+        [Test]
         public void HandbookItemMutationResponseInputInstanceTest()
         {
             // TODO uncomment below to test "IsType" HandbookItemMutationResponseInput
@@ -56,127 +57,114 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Id'
         /// </summary>
-        [Fact]
+        [Test]
         public void IdTest()
         {
             // TODO unit test for the property 'Id'
         }
-
         /// <summary>
         /// Test the property 'OrganizationId'
         /// </summary>
-        [Fact]
+        [Test]
         public void OrganizationIdTest()
         {
             // TODO unit test for the property 'OrganizationId'
         }
-
         /// <summary>
         /// Test the property 'OrganizationName'
         /// </summary>
-        [Fact]
+        [Test]
         public void OrganizationNameTest()
         {
             // TODO unit test for the property 'OrganizationName'
         }
-
         /// <summary>
         /// Test the property 'HandbookId'
         /// </summary>
-        [Fact]
+        [Test]
         public void HandbookIdTest()
         {
             // TODO unit test for the property 'HandbookId'
         }
-
         /// <summary>
         /// Test the property 'HandbookName'
         /// </summary>
-        [Fact]
+        [Test]
         public void HandbookNameTest()
         {
             // TODO unit test for the property 'HandbookName'
         }
-
         /// <summary>
         /// Test the property 'Title'
         /// </summary>
-        [Fact]
+        [Test]
         public void TitleTest()
         {
             // TODO unit test for the property 'Title'
         }
-
-        /// <summary>
-        /// Test the property 'Url'
-        /// </summary>
-        [Fact]
-        public void UrlTest()
-        {
-            // TODO unit test for the property 'Url'
-        }
-
-        /// <summary>
-        /// Test the property 'SyncStatus'
-        /// </summary>
-        [Fact]
-        public void SyncStatusTest()
-        {
-            // TODO unit test for the property 'SyncStatus'
-        }
-
-        /// <summary>
-        /// Test the property 'IsDeleted'
-        /// </summary>
-        [Fact]
-        public void IsDeletedTest()
-        {
-            // TODO unit test for the property 'IsDeleted'
-        }
-
-        /// <summary>
-        /// Test the property 'CreatedAt'
-        /// </summary>
-        [Fact]
-        public void CreatedAtTest()
-        {
-            // TODO unit test for the property 'CreatedAt'
-        }
-
-        /// <summary>
-        /// Test the property 'UpdatedAt'
-        /// </summary>
-        [Fact]
-        public void UpdatedAtTest()
-        {
-            // TODO unit test for the property 'UpdatedAt'
-        }
-
         /// <summary>
         /// Test the property 'Description'
         /// </summary>
-        [Fact]
+        [Test]
         public void DescriptionTest()
         {
             // TODO unit test for the property 'Description'
         }
-
+        /// <summary>
+        /// Test the property 'Url'
+        /// </summary>
+        [Test]
+        public void UrlTest()
+        {
+            // TODO unit test for the property 'Url'
+        }
         /// <summary>
         /// Test the property 'BackingFileId'
         /// </summary>
-        [Fact]
+        [Test]
         public void BackingFileIdTest()
         {
             // TODO unit test for the property 'BackingFileId'
         }
-
         /// <summary>
         /// Test the property 'ContentHash'
         /// </summary>
-        [Fact]
+        [Test]
         public void ContentHashTest()
         {
             // TODO unit test for the property 'ContentHash'
+        }
+        /// <summary>
+        /// Test the property 'SyncStatus'
+        /// </summary>
+        [Test]
+        public void SyncStatusTest()
+        {
+            // TODO unit test for the property 'SyncStatus'
+        }
+        /// <summary>
+        /// Test the property 'IsDeleted'
+        /// </summary>
+        [Test]
+        public void IsDeletedTest()
+        {
+            // TODO unit test for the property 'IsDeleted'
+        }
+        /// <summary>
+        /// Test the property 'CreatedAt'
+        /// </summary>
+        [Test]
+        public void CreatedAtTest()
+        {
+            // TODO unit test for the property 'CreatedAt'
+        }
+        /// <summary>
+        /// Test the property 'UpdatedAt'
+        /// </summary>
+        [Test]
+        public void UpdatedAtTest()
+        {
+            // TODO unit test for the property 'UpdatedAt'
         }
     }
 }

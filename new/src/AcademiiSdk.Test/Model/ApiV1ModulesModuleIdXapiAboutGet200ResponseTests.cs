@@ -8,15 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
+using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -46,7 +47,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of ApiV1ModulesModuleIdXapiAboutGet200Response
         /// </summary>
-        [Fact]
+        [Test]
         public void ApiV1ModulesModuleIdXapiAboutGet200ResponseInstanceTest()
         {
             // TODO uncomment below to test "IsType" ApiV1ModulesModuleIdXapiAboutGet200Response
@@ -56,16 +57,15 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'VarVersion'
         /// </summary>
-        [Fact]
+        [Test]
         public void VarVersionTest()
         {
             // TODO unit test for the property 'VarVersion'
         }
-
         /// <summary>
         /// Test the property 'Extensions'
         /// </summary>
-        [Fact]
+        [Test]
         public void ExtensionsTest()
         {
             // TODO unit test for the property 'Extensions'

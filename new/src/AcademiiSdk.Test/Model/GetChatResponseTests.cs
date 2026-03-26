@@ -8,15 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
+using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -46,7 +47,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of GetChatResponse
         /// </summary>
-        [Fact]
+        [Test]
         public void GetChatResponseInstanceTest()
         {
             // TODO uncomment below to test "IsType" GetChatResponse
@@ -56,70 +57,63 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Id'
         /// </summary>
-        [Fact]
+        [Test]
         public void IdTest()
         {
             // TODO unit test for the property 'Id'
         }
-
-        /// <summary>
-        /// Test the property 'CharacterId'
-        /// </summary>
-        [Fact]
-        public void CharacterIdTest()
-        {
-            // TODO unit test for the property 'CharacterId'
-        }
-
-        /// <summary>
-        /// Test the property 'UserId'
-        /// </summary>
-        [Fact]
-        public void UserIdTest()
-        {
-            // TODO unit test for the property 'UserId'
-        }
-
         /// <summary>
         /// Test the property 'Title'
         /// </summary>
-        [Fact]
+        [Test]
         public void TitleTest()
         {
             // TODO unit test for the property 'Title'
         }
-
+        /// <summary>
+        /// Test the property 'CharacterId'
+        /// </summary>
+        [Test]
+        public void CharacterIdTest()
+        {
+            // TODO unit test for the property 'CharacterId'
+        }
+        /// <summary>
+        /// Test the property 'UserId'
+        /// </summary>
+        [Test]
+        public void UserIdTest()
+        {
+            // TODO unit test for the property 'UserId'
+        }
         /// <summary>
         /// Test the property 'OpenaiThreadId'
         /// </summary>
-        [Fact]
+        [Test]
         public void OpenaiThreadIdTest()
         {
             // TODO unit test for the property 'OpenaiThreadId'
         }
-
         /// <summary>
         /// Test the property 'Messages'
         /// </summary>
-        [Fact]
+        [Test]
         public void MessagesTest()
         {
             // TODO unit test for the property 'Messages'
         }
-
         /// <summary>
         /// Test the property 'CreatedAt'
         /// </summary>
-        [Fact]
+        [Test]
         public void CreatedAtTest()
         {
             // TODO unit test for the property 'CreatedAt'
         }
-
         /// <summary>
         /// Test the property 'UpdatedAt'
         /// </summary>
-        [Fact]
+        [Test]
         public void UpdatedAtTest()
         {
             // TODO unit test for the property 'UpdatedAt'

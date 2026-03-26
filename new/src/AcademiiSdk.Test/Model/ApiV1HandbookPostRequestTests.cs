@@ -8,15 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
+using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -46,7 +47,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of ApiV1HandbookPostRequest
         /// </summary>
-        [Fact]
+        [Test]
         public void ApiV1HandbookPostRequestInstanceTest()
         {
             // TODO uncomment below to test "IsType" ApiV1HandbookPostRequest
@@ -56,43 +57,39 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Title'
         /// </summary>
-        [Fact]
+        [Test]
         public void TitleTest()
         {
             // TODO unit test for the property 'Title'
         }
-
-        /// <summary>
-        /// Test the property 'Url'
-        /// </summary>
-        [Fact]
-        public void UrlTest()
-        {
-            // TODO unit test for the property 'Url'
-        }
-
         /// <summary>
         /// Test the property 'Description'
         /// </summary>
-        [Fact]
+        [Test]
         public void DescriptionTest()
         {
             // TODO unit test for the property 'Description'
         }
-
+        /// <summary>
+        /// Test the property 'Url'
+        /// </summary>
+        [Test]
+        public void UrlTest()
+        {
+            // TODO unit test for the property 'Url'
+        }
         /// <summary>
         /// Test the property 'OrganizationId'
         /// </summary>
-        [Fact]
+        [Test]
         public void OrganizationIdTest()
         {
             // TODO unit test for the property 'OrganizationId'
         }
-
         /// <summary>
         /// Test the property 'HandbookId'
         /// </summary>
-        [Fact]
+        [Test]
         public void HandbookIdTest()
         {
             // TODO unit test for the property 'HandbookId'

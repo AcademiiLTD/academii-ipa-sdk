@@ -8,15 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
+using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -46,7 +47,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of GetModerationStatsResponse
         /// </summary>
-        [Fact]
+        [Test]
         public void GetModerationStatsResponseInstanceTest()
         {
             // TODO uncomment below to test "IsType" GetModerationStatsResponse
@@ -56,37 +57,34 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'TotalFlags'
         /// </summary>
-        [Fact]
+        [Test]
         public void TotalFlagsTest()
         {
             // TODO unit test for the property 'TotalFlags'
         }
-
         /// <summary>
         /// Test the property 'FlagsByCategory'
         /// </summary>
-        [Fact]
+        [Test]
         public void FlagsByCategoryTest()
         {
             // TODO unit test for the property 'FlagsByCategory'
         }
-
-        /// <summary>
-        /// Test the property 'RecentFlags'
-        /// </summary>
-        [Fact]
-        public void RecentFlagsTest()
-        {
-            // TODO unit test for the property 'RecentFlags'
-        }
-
         /// <summary>
         /// Test the property 'ReasonBreakdown'
         /// </summary>
-        [Fact]
+        [Test]
         public void ReasonBreakdownTest()
         {
             // TODO unit test for the property 'ReasonBreakdown'
+        }
+        /// <summary>
+        /// Test the property 'RecentFlags'
+        /// </summary>
+        [Test]
+        public void RecentFlagsTest()
+        {
+            // TODO unit test for the property 'RecentFlags'
         }
     }
 }
