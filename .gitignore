@@ -39,6 +39,10 @@ ScaffoldingReadMe.txt
 # Others
 ~$*
 *~
+!Packages/**/Documentation~/
+!Packages/**/Documentation~/**
+!Packages/**/Samples~/
+!Packages/**/Samples~/**
 CodeCoverage/
 
 # MSBuild Binary and Structured Log
