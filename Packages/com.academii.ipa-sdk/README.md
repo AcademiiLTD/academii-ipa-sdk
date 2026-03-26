@@ -14,24 +14,23 @@ Add the package to your Unity project's `Packages/manifest.json`:
 ```json
 {
   "dependencies": {
-    "com.academii.ipa-sdk": "ssh://git@github.com/AcademiiLTD/academii-ipa-sdk.git?path=/Packages/com.academii.ipa-sdk#main"
+    "com.academii.ipa-sdk": "https://github.com/AcademiiLTD/academii-ipa-sdk.git?path=/Packages/com.academii.ipa-sdk#main"
   }
 }
 ```
 
 For production use, replace `#main` with a release tag or pinned commit.
 
-For private repositories, Unity needs working Git credentials on the machine that
-opens the project. SSH is usually the simplest option:
-
-```json
-"com.academii.ipa-sdk": "ssh://git@github.com/AcademiiLTD/academii-ipa-sdk.git?path=/Packages/com.academii.ipa-sdk#v0.1.0"
-```
-
-If your team uses HTTPS plus a credential manager, that works too:
+Recommended pinned form:
 
 ```json
 "com.academii.ipa-sdk": "https://github.com/AcademiiLTD/academii-ipa-sdk.git?path=/Packages/com.academii.ipa-sdk#v0.1.0"
+```
+
+SSH also works if your team prefers it:
+
+```json
+"com.academii.ipa-sdk": "ssh://git@github.com/AcademiiLTD/academii-ipa-sdk.git?path=/Packages/com.academii.ipa-sdk#v0.1.0"
 ```
 
 ## Namespace And Assembly
@@ -128,6 +127,42 @@ public sealed class AcademiiSdkExample : MonoBehaviour
 ```
 
 ## Request Examples
+
+### Login (`POST /api/v1/auth/login`)
+
+The generated `LoginAsync` call sends a JSON body with `email` and `password`
+to the `/api/v1/auth/login` endpoint.
+
+```csharp
+var login = await client.LoginAsync(new LoginPayload
+{
+    Email = "user@example.com",
+    Password = "correct horse battery staple"
+});
+
+Debug.Log(login.StatusCode);
+Debug.Log(login.Result.Token);
+Debug.Log(login.Result.User.Email);
+```
+
+This is the JSON shape the SDK sends:
+
+```json
+{
+  "email": "user@example.com",
+  "password": "correct horse battery staple"
+}
+```
+
+If login succeeds, store the returned token and attach it to the shared
+`HttpClient` for later authenticated calls:
+
+```csharp
+var accessToken = login.Result.Token;
+
+httpClient.DefaultRequestHeaders.Authorization =
+    new AuthenticationHeaderValue("Bearer", accessToken);
+```
 
 ### Verify Token
 

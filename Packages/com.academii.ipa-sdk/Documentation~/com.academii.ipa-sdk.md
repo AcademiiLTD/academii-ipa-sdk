@@ -13,7 +13,7 @@ Academii IPA HTTP API client.
 Add this repository as a Git dependency with a package path:
 
 ```json
-"com.academii.ipa-sdk": "ssh://git@github.com/AcademiiLTD/academii-ipa-sdk.git?path=/Packages/com.academii.ipa-sdk#main"
+"com.academii.ipa-sdk": "https://github.com/AcademiiLTD/academii-ipa-sdk.git?path=/Packages/com.academii.ipa-sdk#main"
 ```
 
 For stable integrations, pin to a release tag or commit instead of a branch.
@@ -37,6 +37,21 @@ var client = new Client(httpClient)
 
 `Client.BaseUrl` defaults to `https://dev.academii.com`, so production code
 should always override it.
+
+## Login Example
+
+`LoginAsync` sends `email` and `password` to `POST /api/v1/auth/login`:
+
+```csharp
+var login = await client.LoginAsync(new LoginPayload
+{
+    Email = "user@example.com",
+    Password = "correct horse battery staple"
+});
+
+httpClient.DefaultRequestHeaders.Authorization =
+    new AuthenticationHeaderValue("Bearer", login.Result.Token);
+```
 
 ## Success Responses
 
