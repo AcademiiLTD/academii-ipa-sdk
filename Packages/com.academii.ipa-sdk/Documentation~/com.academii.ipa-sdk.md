@@ -16,6 +16,13 @@ Add this repository as a Git dependency with a package path:
 "com.academii.ipa-sdk": "https://github.com/AcademiiLTD/academii-ipa-sdk.git?path=/Packages/com.academii.ipa-sdk#main"
 ```
 
+Do not add the repository root URL on its own. The package manifest is not at
+the repo root. Unity must be given the package subfolder:
+
+```text
+https://github.com/AcademiiLTD/academii-ipa-sdk.git?path=/Packages/com.academii.ipa-sdk#main
+```
+
 For stable integrations, pin to a release tag or commit instead of a branch.
 
 ## Basic Usage

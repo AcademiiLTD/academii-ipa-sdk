@@ -7,3 +7,4 @@ All notable changes to this package are documented in this file.
 - Initial Unity Package Manager package structure for private Git distribution.
 - Added package metadata and runtime assembly definition.
 - Added generated Academii IPA HTTP API client runtime source.
+- Added Unity compatibility shims for generated `System.ComponentModel.DataAnnotations` attributes.
