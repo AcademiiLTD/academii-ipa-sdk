@@ -130,7 +130,11 @@ namespace HttpApiClient.Tests
                     var branch = GetConditionBranch(body, statusMatch.Index);
                     var readMatch = ReadObjectRegex.Match(branch);
                     var responseTypeName = readMatch.Success ? readMatch.Groups["type"].Value : null;
-                    var isSuccess = branch.Contains("return new SwaggerResponse", StringComparison.Ordinal);
+                    var isSuccess =
+                        (branch.Contains("return ", StringComparison.Ordinal) &&
+                         !branch.Contains("throw new ApiException", StringComparison.Ordinal)) ||
+                        branch.Contains("return new SwaggerResponse", StringComparison.Ordinal) ||
+                        branch.Contains("return new FileResponse", StringComparison.Ordinal);
 
                     foreach (Match codeMatch in StatusCodeRegex.Matches(condition))
                     {
@@ -202,6 +206,11 @@ namespace HttpApiClient.Tests
             if (underlyingNullable != null)
             {
                 return CreateValue(underlyingNullable, visiting);
+            }
+
+            if (type == typeof(FileParameter))
+            {
+                return new FileParameter(new MemoryStream(new byte[] { 1, 2, 3 }), "sample.bin", "application/octet-stream");
             }
 
             if (TryCreateScalar(type, out var scalarValue))
@@ -400,7 +409,7 @@ namespace HttpApiClient.Tests
 
             visiting.Add(type);
 
-            foreach (var property in type.GetProperties(BindingFlags.Public | BindingFlags.Instance))
+            foreach (var property in GetSerializableProperties(type))
             {
                 if (!property.CanWrite)
                 {
@@ -528,7 +537,7 @@ namespace HttpApiClient.Tests
             visiting.Add(type);
 
             var obj = new JObject();
-            foreach (var property in type.GetProperties(BindingFlags.Public | BindingFlags.Instance))
+            foreach (var property in GetSerializableProperties(type))
             {
                 if (!IsRequiredProperty(property))
                 {
@@ -574,6 +583,31 @@ namespace HttpApiClient.Tests
             }
 
             return BuildRequiredObjectToken(underlyingNullable, visiting);
+        }
+
+        private static IEnumerable<PropertyInfo> GetSerializableProperties(Type type)
+        {
+            return type.GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                .OrderByDescending(property => GetTypeDepth(property.DeclaringType))
+                .ThenBy(property => property.MetadataToken)
+                .GroupBy(property =>
+                {
+                    var jsonProperty = property.GetCustomAttribute<JsonPropertyAttribute>();
+                    return jsonProperty?.PropertyName ?? property.Name;
+                }, StringComparer.Ordinal)
+                .Select(group => group.First());
+        }
+
+        private static int GetTypeDepth(Type? type)
+        {
+            var depth = 0;
+            while (type != null)
+            {
+                depth++;
+                type = type.BaseType;
+            }
+
+            return depth;
         }
 
         private static Uri BuildExampleUri()
@@ -738,14 +772,14 @@ namespace HttpApiClient.Tests
             var headers = new Dictionary<string, IEnumerable<string>>();
 
             client.ReadResponseAsString = true;
-            var stringResponse = CreateJsonResponse(200, "{\"message\":\"ok\"}");
-            var stringResult = await client.ReadObjectResponseAsyncPublic<MessageResponse>(stringResponse, headers, CancellationToken.None);
+            var stringResponse = CreateJsonResponse(200, SampleValueFactory.CreateSampleJson(typeof(BackendResponse), false));
+            var stringResult = await client.ReadObjectResponseAsyncPublic<BackendResponse>(stringResponse, headers, CancellationToken.None);
             Assert.That(stringResult.Result, Is.Not.Null);
             Assert.That(stringResult.Text, Does.Contain("message"));
 
             client.ReadResponseAsString = false;
-            var streamResponse = CreateJsonResponse(200, "{\"message\":\"ok\"}");
-            var streamResult = await client.ReadObjectResponseAsyncPublic<MessageResponse>(streamResponse, headers, CancellationToken.None);
+            var streamResponse = CreateJsonResponse(200, SampleValueFactory.CreateSampleJson(typeof(BackendResponse), false));
+            var streamResult = await client.ReadObjectResponseAsyncPublic<BackendResponse>(streamResponse, headers, CancellationToken.None);
             Assert.That(streamResult.Result, Is.Not.Null);
         }
 
@@ -758,10 +792,10 @@ namespace HttpApiClient.Tests
             var headers = new Dictionary<string, IEnumerable<string>>();
 
             client.ReadResponseAsString = true;
-            Assert.ThrowsAsync<ApiException>(async () => await client.ReadObjectResponseAsyncPublic<MessageResponse>(response, headers, CancellationToken.None));
+            Assert.ThrowsAsync<ApiException>(async () => await client.ReadObjectResponseAsyncPublic<BackendResponse>(response, headers, CancellationToken.None));
 
             client.ReadResponseAsString = false;
-            Assert.ThrowsAsync<ApiException>(async () => await client.ReadObjectResponseAsyncPublic<MessageResponse>(response, headers, CancellationToken.None));
+            Assert.ThrowsAsync<ApiException>(async () => await client.ReadObjectResponseAsyncPublic<BackendResponse>(response, headers, CancellationToken.None));
         }
 
         [Test]
@@ -811,9 +845,19 @@ namespace HttpApiClient.Tests
             if (apiCase.IsSuccess)
             {
                 var result = await ClientMethodInvoker.InvokeAsync(method, client, args);
-                Assert.That(result, Is.InstanceOf<SwaggerResponse>(), $"Expected a SwaggerResponse from {apiCase}.");
-                var swaggerResponse = (SwaggerResponse)result!;
-                Assert.That(swaggerResponse.StatusCode, Is.EqualTo(apiCase.StatusCode), $"Expected status code {apiCase.StatusCode} from {apiCase}.");
+                switch (result)
+                {
+                    case SwaggerResponse swaggerResponse:
+                        Assert.That(swaggerResponse.StatusCode, Is.EqualTo(apiCase.StatusCode), $"Expected status code {apiCase.StatusCode} from {apiCase}.");
+                        break;
+                    case FileResponse fileResponse:
+                        Assert.That(fileResponse.StatusCode, Is.EqualTo(apiCase.StatusCode), $"Expected status code {apiCase.StatusCode} from {apiCase}.");
+                        fileResponse.Dispose();
+                        break;
+                    default:
+                        Assert.Fail($"Expected a SwaggerResponse or FileResponse from {apiCase}, but received {result?.GetType().FullName ?? "null"}.");
+                        break;
+                }
             }
             else
             {
