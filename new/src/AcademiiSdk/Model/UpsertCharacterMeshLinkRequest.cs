@@ -100,6 +100,33 @@ namespace AcademiiSdk.Model
             return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
+        /// <summary>
+        /// Validates the model properties and returns a list of validation errors.
+        /// </summary>
+        /// <returns>A list of validation error messages. Empty list if valid.</returns>
+        public List<string> ValidateModel()
+        {
+            var errors = new List<string>();
+            // MeshName (string) minLength
+            if (this.MeshName != null && this.MeshName.Length < 1)
+            {
+                errors.Add("Invalid value for MeshName, length must be greater than 1.");
+            }
+
+            // Url (string) minLength
+            if (this.Url != null && this.Url.Length < 1)
+            {
+                errors.Add("Invalid value for Url, length must be greater than 1.");
+            }
+
+            // Description (string) maxLength
+            if (this.Description != null && this.Description.Length > 2000)
+            {
+                errors.Add("Invalid value for Description, length must be less than 2000.");
+            }
+
+            return errors;
+        }
     }
 
 }

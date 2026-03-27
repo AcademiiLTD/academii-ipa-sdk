@@ -91,6 +91,21 @@ namespace AcademiiSdk.Model
             return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
+        /// <summary>
+        /// Validates the model properties and returns a list of validation errors.
+        /// </summary>
+        /// <returns>A list of validation error messages. Empty list if valid.</returns>
+        public List<string> ValidateModel()
+        {
+            var errors = new List<string>();
+            // NewPassword (string) minLength
+            if (this.NewPassword != null && this.NewPassword.Length < 8)
+            {
+                errors.Add("Invalid value for NewPassword, length must be greater than 8.");
+            }
+
+            return errors;
+        }
     }
 
 }

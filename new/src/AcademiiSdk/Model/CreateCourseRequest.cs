@@ -136,6 +136,59 @@ namespace AcademiiSdk.Model
             return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
+        /// <summary>
+        /// Validates the model properties and returns a list of validation errors.
+        /// </summary>
+        /// <returns>A list of validation error messages. Empty list if valid.</returns>
+        public List<string> ValidateModel()
+        {
+            var errors = new List<string>();
+                // TopicId (Guid) pattern
+                Regex regexTopicId = new Regex(@"^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$", RegexOptions.CultureInvariant);
+                if (!regexTopicId.Match(this.TopicId.ToString()).Success)
+                {
+                    errors.Add("Invalid value for TopicId, must match a pattern of " + regexTopicId);
+                }
+
+            // Name (string) minLength
+            if (this.Name != null && this.Name.Length < 1)
+            {
+                errors.Add("Invalid value for Name, length must be greater than 1.");
+            }
+
+            // Code (string) minLength
+            if (this.Code != null && this.Code.Length < 1)
+            {
+                errors.Add("Invalid value for Code, length must be greater than 1.");
+            }
+
+            // Description (string) minLength
+            if (this.Description != null && this.Description.Length < 1)
+            {
+                errors.Add("Invalid value for Description, length must be greater than 1.");
+            }
+
+            // SortOrder (long) maximum
+            if (this.SortOrder > (long)9007199254740991)
+            {
+                errors.Add("Invalid value for SortOrder, must be a value less than or equal to 9007199254740991.");
+            }
+
+            // SortOrder (long) minimum
+            if (this.SortOrder < (long)0)
+            {
+                errors.Add("Invalid value for SortOrder, must be a value greater than or equal to 0.");
+            }
+
+                // OrganizationId (Guid) pattern
+                Regex regexOrganizationId = new Regex(@"^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$", RegexOptions.CultureInvariant);
+                if (!regexOrganizationId.Match(this.OrganizationId.ToString()).Success)
+                {
+                    errors.Add("Invalid value for OrganizationId, must match a pattern of " + regexOrganizationId);
+                }
+
+            return errors;
+        }
     }
 
 }

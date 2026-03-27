@@ -94,6 +94,51 @@ namespace AcademiiSdk.Model
             return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
+        /// <summary>
+        /// Validates the model properties and returns a list of validation errors.
+        /// </summary>
+        /// <returns>A list of validation error messages. Empty list if valid.</returns>
+        public List<string> ValidateModel()
+        {
+            var errors = new List<string>();
+            // Stability (decimal) maximum
+            if (this.Stability > (decimal)1)
+            {
+                errors.Add("Invalid value for Stability, must be a value less than or equal to 1.");
+            }
+
+            // Stability (decimal) minimum
+            if (this.Stability < (decimal)0)
+            {
+                errors.Add("Invalid value for Stability, must be a value greater than or equal to 0.");
+            }
+
+            // SimilarityBoost (decimal) maximum
+            if (this.SimilarityBoost > (decimal)1)
+            {
+                errors.Add("Invalid value for SimilarityBoost, must be a value less than or equal to 1.");
+            }
+
+            // SimilarityBoost (decimal) minimum
+            if (this.SimilarityBoost < (decimal)0)
+            {
+                errors.Add("Invalid value for SimilarityBoost, must be a value greater than or equal to 0.");
+            }
+
+            // Style (decimal) maximum
+            if (this.Style > (decimal)1)
+            {
+                errors.Add("Invalid value for Style, must be a value less than or equal to 1.");
+            }
+
+            // Style (decimal) minimum
+            if (this.Style < (decimal)0)
+            {
+                errors.Add("Invalid value for Style, must be a value greater than or equal to 0.");
+            }
+
+            return errors;
+        }
     }
 
 }

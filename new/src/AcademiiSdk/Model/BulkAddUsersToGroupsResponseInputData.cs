@@ -95,6 +95,39 @@ namespace AcademiiSdk.Model
             return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
+        /// <summary>
+        /// Validates the model properties and returns a list of validation errors.
+        /// </summary>
+        /// <returns>A list of validation error messages. Empty list if valid.</returns>
+        public List<string> ValidateModel()
+        {
+            var errors = new List<string>();
+            // UserCount (long) maximum
+            if (this.UserCount > (long)9007199254740991)
+            {
+                errors.Add("Invalid value for UserCount, must be a value less than or equal to 9007199254740991.");
+            }
+
+            // UserCount (long) minimum
+            if (this.UserCount < (long)0)
+            {
+                errors.Add("Invalid value for UserCount, must be a value greater than or equal to 0.");
+            }
+
+            // AddedMembershipCount (long) maximum
+            if (this.AddedMembershipCount > (long)9007199254740991)
+            {
+                errors.Add("Invalid value for AddedMembershipCount, must be a value less than or equal to 9007199254740991.");
+            }
+
+            // AddedMembershipCount (long) minimum
+            if (this.AddedMembershipCount < (long)0)
+            {
+                errors.Add("Invalid value for AddedMembershipCount, must be a value greater than or equal to 0.");
+            }
+
+            return errors;
+        }
     }
 
 }

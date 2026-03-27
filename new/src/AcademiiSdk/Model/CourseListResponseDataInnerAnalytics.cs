@@ -108,6 +108,69 @@ namespace AcademiiSdk.Model
             return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
+        /// <summary>
+        /// Validates the model properties and returns a list of validation errors.
+        /// </summary>
+        /// <returns>A list of validation error messages. Empty list if valid.</returns>
+        public List<string> ValidateModel()
+        {
+            var errors = new List<string>();
+            // EnrolledCount (long) maximum
+            if (this.EnrolledCount > (long)9007199254740991)
+            {
+                errors.Add("Invalid value for EnrolledCount, must be a value less than or equal to 9007199254740991.");
+            }
+
+            // EnrolledCount (long) minimum
+            if (this.EnrolledCount < (long)0)
+            {
+                errors.Add("Invalid value for EnrolledCount, must be a value greater than or equal to 0.");
+            }
+
+            // CompletedCount (long) maximum
+            if (this.CompletedCount > (long)9007199254740991)
+            {
+                errors.Add("Invalid value for CompletedCount, must be a value less than or equal to 9007199254740991.");
+            }
+
+            // CompletedCount (long) minimum
+            if (this.CompletedCount < (long)0)
+            {
+                errors.Add("Invalid value for CompletedCount, must be a value greater than or equal to 0.");
+            }
+
+            // NotCompletedCount (long) maximum
+            if (this.NotCompletedCount > (long)9007199254740991)
+            {
+                errors.Add("Invalid value for NotCompletedCount, must be a value less than or equal to 9007199254740991.");
+            }
+
+            // NotCompletedCount (long) minimum
+            if (this.NotCompletedCount < (long)0)
+            {
+                errors.Add("Invalid value for NotCompletedCount, must be a value greater than or equal to 0.");
+            }
+
+            // StartedCount (long) maximum
+            if (this.StartedCount > (long)9007199254740991)
+            {
+                errors.Add("Invalid value for StartedCount, must be a value less than or equal to 9007199254740991.");
+            }
+
+            // StartedCount (long) minimum
+            if (this.StartedCount < (long)0)
+            {
+                errors.Add("Invalid value for StartedCount, must be a value greater than or equal to 0.");
+            }
+
+            // CompletionRate (decimal) minimum
+            if (this.CompletionRate < (decimal)0)
+            {
+                errors.Add("Invalid value for CompletionRate, must be a value greater than or equal to 0.");
+            }
+
+            return errors;
+        }
     }
 
 }

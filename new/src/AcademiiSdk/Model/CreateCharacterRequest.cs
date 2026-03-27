@@ -154,6 +154,27 @@ namespace AcademiiSdk.Model
             return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
+        /// <summary>
+        /// Validates the model properties and returns a list of validation errors.
+        /// </summary>
+        /// <returns>A list of validation error messages. Empty list if valid.</returns>
+        public List<string> ValidateModel()
+        {
+            var errors = new List<string>();
+            // Name (string) minLength
+            if (this.Name != null && this.Name.Length < 1)
+            {
+                errors.Add("Invalid value for Name, length must be greater than 1.");
+            }
+
+            // Backstory (string) minLength
+            if (this.Backstory != null && this.Backstory.Length < 1)
+            {
+                errors.Add("Invalid value for Backstory, length must be greater than 1.");
+            }
+
+            return errors;
+        }
     }
 
 }

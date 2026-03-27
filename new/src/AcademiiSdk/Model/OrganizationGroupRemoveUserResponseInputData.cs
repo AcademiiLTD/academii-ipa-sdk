@@ -81,6 +81,29 @@ namespace AcademiiSdk.Model
             return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
+        /// <summary>
+        /// Validates the model properties and returns a list of validation errors.
+        /// </summary>
+        /// <returns>A list of validation error messages. Empty list if valid.</returns>
+        public List<string> ValidateModel()
+        {
+            var errors = new List<string>();
+                // GroupId (Guid) pattern
+                Regex regexGroupId = new Regex(@"^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$", RegexOptions.CultureInvariant);
+                if (!regexGroupId.Match(this.GroupId.ToString()).Success)
+                {
+                    errors.Add("Invalid value for GroupId, must match a pattern of " + regexGroupId);
+                }
+
+                // RemovedUserId (Guid) pattern
+                Regex regexRemovedUserId = new Regex(@"^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$", RegexOptions.CultureInvariant);
+                if (!regexRemovedUserId.Match(this.RemovedUserId.ToString()).Success)
+                {
+                    errors.Add("Invalid value for RemovedUserId, must match a pattern of " + regexRemovedUserId);
+                }
+
+            return errors;
+        }
     }
 
 }

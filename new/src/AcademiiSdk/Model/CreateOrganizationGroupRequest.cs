@@ -95,6 +95,40 @@ namespace AcademiiSdk.Model
             return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
+        /// <summary>
+        /// Validates the model properties and returns a list of validation errors.
+        /// </summary>
+        /// <returns>A list of validation error messages. Empty list if valid.</returns>
+        public List<string> ValidateModel()
+        {
+            var errors = new List<string>();
+                // OrganizationId (Guid) pattern
+                Regex regexOrganizationId = new Regex(@"^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$", RegexOptions.CultureInvariant);
+                if (!regexOrganizationId.Match(this.OrganizationId.ToString()).Success)
+                {
+                    errors.Add("Invalid value for OrganizationId, must match a pattern of " + regexOrganizationId);
+                }
+
+            // Name (string) maxLength
+            if (this.Name != null && this.Name.Length > 255)
+            {
+                errors.Add("Invalid value for Name, length must be less than 255.");
+            }
+
+            // Name (string) minLength
+            if (this.Name != null && this.Name.Length < 1)
+            {
+                errors.Add("Invalid value for Name, length must be greater than 1.");
+            }
+
+            // Description (string) maxLength
+            if (this.Description != null && this.Description.Length > 2000)
+            {
+                errors.Add("Invalid value for Description, length must be less than 2000.");
+            }
+
+            return errors;
+        }
     }
 
 }

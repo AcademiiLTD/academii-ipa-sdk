@@ -249,6 +249,76 @@ namespace AcademiiSdk.Model
             return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
+        /// <summary>
+        /// Validates the model properties and returns a list of validation errors.
+        /// </summary>
+        /// <returns>A list of validation error messages. Empty list if valid.</returns>
+        public List<string> ValidateModel()
+        {
+            var errors = new List<string>();
+                // Id (Guid) pattern
+                Regex regexId = new Regex(@"^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$", RegexOptions.CultureInvariant);
+                if (!regexId.Match(this.Id.ToString()).Success)
+                {
+                    errors.Add("Invalid value for Id, must match a pattern of " + regexId);
+                }
+
+                // CourseId (Guid) pattern
+                Regex regexCourseId = new Regex(@"^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$", RegexOptions.CultureInvariant);
+                if (!regexCourseId.Match(this.CourseId.ToString()).Success)
+                {
+                    errors.Add("Invalid value for CourseId, must match a pattern of " + regexCourseId);
+                }
+
+            // SortOrder (long) maximum
+            if (this.SortOrder > (long)9007199254740991)
+            {
+                errors.Add("Invalid value for SortOrder, must be a value less than or equal to 9007199254740991.");
+            }
+
+            // SortOrder (long) minimum
+            if (this.SortOrder < (long)0)
+            {
+                errors.Add("Invalid value for SortOrder, must be a value greater than or equal to 0.");
+            }
+
+            // XapiActivityTotal (int?) maximum
+            if (this.XapiActivityTotal != null && this.XapiActivityTotal.Value > (int?)9007199254740991)
+            {
+                errors.Add("Invalid value for XapiActivityTotal, must be a value less than or equal to 9007199254740991.");
+            }
+
+            // XapiActivityTotal (int?) minimum
+            if (this.XapiActivityTotal != null && this.XapiActivityTotal.Value < (int?)0)
+            {
+                errors.Add("Invalid value for XapiActivityTotal, must be a value greater than or equal to 0.");
+            }
+
+            if (this.CreatedBy != null) {
+                // CreatedBy (Guid?) pattern
+                Regex regexCreatedBy = new Regex(@"^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$", RegexOptions.CultureInvariant);
+                if (!regexCreatedBy.Match(this.CreatedBy.ToString()).Success)
+                {
+                    errors.Add("Invalid value for CreatedBy, must match a pattern of " + regexCreatedBy);
+                }
+            }
+
+                // CreatedAt (DateTime) pattern
+                Regex regexCreatedAt = new Regex(@"^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z))$", RegexOptions.CultureInvariant);
+                if (!regexCreatedAt.Match(this.CreatedAt.ToString()).Success)
+                {
+                    errors.Add("Invalid value for CreatedAt, must match a pattern of " + regexCreatedAt);
+                }
+
+                // UpdatedAt (DateTime) pattern
+                Regex regexUpdatedAt = new Regex(@"^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z))$", RegexOptions.CultureInvariant);
+                if (!regexUpdatedAt.Match(this.UpdatedAt.ToString()).Success)
+                {
+                    errors.Add("Invalid value for UpdatedAt, must match a pattern of " + regexUpdatedAt);
+                }
+
+            return errors;
+        }
     }
 
 }

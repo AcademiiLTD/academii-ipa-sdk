@@ -91,6 +91,28 @@ namespace AcademiiSdk.Model
             return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
+        /// <summary>
+        /// Validates the model properties and returns a list of validation errors.
+        /// </summary>
+        /// <returns>A list of validation error messages. Empty list if valid.</returns>
+        public List<string> ValidateModel()
+        {
+            var errors = new List<string>();
+                // Email (string) pattern
+                Regex regexEmail = new Regex(@"^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$", RegexOptions.CultureInvariant);
+                if (!regexEmail.Match(this.Email).Success)
+                {
+                    errors.Add("Invalid value for Email, must match a pattern of " + regexEmail);
+                }
+
+            // Password (string) minLength
+            if (this.Password != null && this.Password.Length < 1)
+            {
+                errors.Add("Invalid value for Password, length must be greater than 1.");
+            }
+
+            return errors;
+        }
     }
 
 }
