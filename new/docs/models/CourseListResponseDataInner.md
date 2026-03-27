@@ -16,11 +16,11 @@ Name | Type | Description | Notes
 **ThumbnailUrl** | **string** |  | [optional] 
 **EnforceModuleOrder** | **bool** |  | [default to true]
 **ModuleCount** | **long** |  | [default to 0]
-**Modules** | [**List&lt;ApiV1CoursesCourseIdModulesGet200ResponseDataInner&gt;**](ApiV1CoursesCourseIdModulesGet200ResponseDataInner.md) |  | [optional] 
+**Modules** | [**List&lt;CourseListResponseDataInnerModulesInner&gt;**](CourseListResponseDataInnerModulesInner.md) |  | [optional] 
 **CreatedBy** | **Guid** |  | [optional] 
 **CreatedAt** | **DateTime** |  | [optional] 
 **UpdatedAt** | **DateTime** |  | [optional] 
-**Analytics** | [**ApiV1ModulesModuleIdAnalyticsGet200ResponseData**](ApiV1ModulesModuleIdAnalyticsGet200ResponseData.md) |  | [optional] 
+**Analytics** | [**CourseListResponseDataInnerAnalytics**](CourseListResponseDataInnerAnalytics.md) |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

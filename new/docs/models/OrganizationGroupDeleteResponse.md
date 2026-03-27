@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Status** | **string** |  | 
-**Data** | [**ApiV1TopicsTopicIdDelete200ResponseDataAnyOf**](ApiV1TopicsTopicIdDelete200ResponseDataAnyOf.md) |  | [optional] 
+**Data** | [**OrganizationGroupDeleteResponseData**](OrganizationGroupDeleteResponseData.md) |  | [optional] 
 **Message** | **string** |  | [optional] 
 **Error** | **string** |  | [optional] 
 

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Success** | **bool** |  | 
-**File** | [**ApiV1FilesIdGet200ResponseData**](ApiV1FilesIdGet200ResponseData.md) |  | 
+**File** | [**GetUserFilesResponseFilesInner**](GetUserFilesResponseFilesInner.md) |  | 
 **UploadedFileIds** | **List&lt;string&gt;** |  | [optional] 
 **Data** | [**UploadSingleFileResponseData**](UploadSingleFileResponseData.md) |  | [optional] 
 

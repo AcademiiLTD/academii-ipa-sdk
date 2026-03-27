@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Files** | [**List&lt;ApiV1FilesIdGet200ResponseData&gt;**](ApiV1FilesIdGet200ResponseData.md) |  | 
+**Files** | [**List&lt;GetUserFilesResponseFilesInner&gt;**](GetUserFilesResponseFilesInner.md) |  | 
 **StorageInfo** | [**GetUserFilesResponseStorageInfo**](GetUserFilesResponseStorageInfo.md) |  | 
 **Meta** | [**GetUserFilesResponseMeta**](GetUserFilesResponseMeta.md) |  | [optional] 
 
