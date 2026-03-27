@@ -8,15 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
+using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -46,7 +47,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of GetUserFilesResponseInputStorageInfo
         /// </summary>
-        [Fact]
+        [Test]
         public void GetUserFilesResponseInputStorageInfoInstanceTest()
         {
             // TODO uncomment below to test "IsType" GetUserFilesResponseInputStorageInfo
@@ -56,34 +57,31 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Used'
         /// </summary>
-        [Fact]
+        [Test]
         public void UsedTest()
         {
             // TODO unit test for the property 'Used'
         }
-
         /// <summary>
         /// Test the property 'Total'
         /// </summary>
-        [Fact]
+        [Test]
         public void TotalTest()
         {
             // TODO unit test for the property 'Total'
         }
-
         /// <summary>
         /// Test the property 'Available'
         /// </summary>
-        [Fact]
+        [Test]
         public void AvailableTest()
         {
             // TODO unit test for the property 'Available'
         }
-
         /// <summary>
         /// Test the property 'Limits'
         /// </summary>
-        [Fact]
+        [Test]
         public void LimitsTest()
         {
             // TODO unit test for the property 'Limits'

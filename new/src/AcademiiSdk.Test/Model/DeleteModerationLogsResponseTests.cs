@@ -8,15 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
+using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -46,7 +47,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of DeleteModerationLogsResponse
         /// </summary>
-        [Fact]
+        [Test]
         public void DeleteModerationLogsResponseInstanceTest()
         {
             // TODO uncomment below to test "IsType" DeleteModerationLogsResponse
@@ -56,7 +57,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Deleted'
         /// </summary>
-        [Fact]
+        [Test]
         public void DeletedTest()
         {
             // TODO unit test for the property 'Deleted'

@@ -8,15 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
+using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -46,7 +47,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of AdminListUsersResponseInputUsersInner
         /// </summary>
-        [Fact]
+        [Test]
         public void AdminListUsersResponseInputUsersInnerInstanceTest()
         {
             // TODO uncomment below to test "IsType" AdminListUsersResponseInputUsersInner
@@ -56,88 +57,79 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Id'
         /// </summary>
-        [Fact]
+        [Test]
         public void IdTest()
         {
             // TODO unit test for the property 'Id'
         }
-
         /// <summary>
         /// Test the property 'Email'
         /// </summary>
-        [Fact]
+        [Test]
         public void EmailTest()
         {
             // TODO unit test for the property 'Email'
         }
-
         /// <summary>
         /// Test the property 'Role'
         /// </summary>
-        [Fact]
+        [Test]
         public void RoleTest()
         {
             // TODO unit test for the property 'Role'
         }
-
         /// <summary>
         /// Test the property 'Name'
         /// </summary>
-        [Fact]
+        [Test]
         public void NameTest()
         {
             // TODO unit test for the property 'Name'
         }
-
         /// <summary>
         /// Test the property 'DisplayName'
         /// </summary>
-        [Fact]
+        [Test]
         public void DisplayNameTest()
         {
             // TODO unit test for the property 'DisplayName'
         }
-
         /// <summary>
         /// Test the property 'OrganizationId'
         /// </summary>
-        [Fact]
+        [Test]
         public void OrganizationIdTest()
         {
             // TODO unit test for the property 'OrganizationId'
         }
-
         /// <summary>
         /// Test the property 'Groups'
         /// </summary>
-        [Fact]
+        [Test]
         public void GroupsTest()
         {
             // TODO unit test for the property 'Groups'
         }
-
         /// <summary>
         /// Test the property 'CreatedAt2'
         /// </summary>
-        [Fact]
+        [Test]
         public void CreatedAt2Test()
         {
             // TODO unit test for the property 'CreatedAt2'
         }
-
         /// <summary>
         /// Test the property 'CreatedAt'
         /// </summary>
-        [Fact]
+        [Test]
         public void CreatedAtTest()
         {
             // TODO unit test for the property 'CreatedAt'
         }
-
         /// <summary>
         /// Test the property 'UpdatedAt'
         /// </summary>
-        [Fact]
+        [Test]
         public void UpdatedAtTest()
         {
             // TODO unit test for the property 'UpdatedAt'

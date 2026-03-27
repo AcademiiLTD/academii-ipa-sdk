@@ -8,15 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
+using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -46,7 +47,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of BulkAddUsersToGroupsResponse
         /// </summary>
-        [Fact]
+        [Test]
         public void BulkAddUsersToGroupsResponseInstanceTest()
         {
             // TODO uncomment below to test "IsType" BulkAddUsersToGroupsResponse
@@ -56,34 +57,31 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Status'
         /// </summary>
-        [Fact]
+        [Test]
         public void StatusTest()
         {
             // TODO unit test for the property 'Status'
         }
-
         /// <summary>
         /// Test the property 'Data'
         /// </summary>
-        [Fact]
+        [Test]
         public void DataTest()
         {
             // TODO unit test for the property 'Data'
         }
-
         /// <summary>
         /// Test the property 'Message'
         /// </summary>
-        [Fact]
+        [Test]
         public void MessageTest()
         {
             // TODO unit test for the property 'Message'
         }
-
         /// <summary>
         /// Test the property 'Error'
         /// </summary>
-        [Fact]
+        [Test]
         public void ErrorTest()
         {
             // TODO unit test for the property 'Error'

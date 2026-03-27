@@ -8,15 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
+using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -46,7 +47,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of VerifyTokenResponse
         /// </summary>
-        [Fact]
+        [Test]
         public void VerifyTokenResponseInstanceTest()
         {
             // TODO uncomment below to test "IsType" VerifyTokenResponse
@@ -56,7 +57,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'User'
         /// </summary>
-        [Fact]
+        [Test]
         public void UserTest()
         {
             // TODO unit test for the property 'User'

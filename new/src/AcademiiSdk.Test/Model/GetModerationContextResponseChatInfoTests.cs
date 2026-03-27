@@ -8,15 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
+using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -46,7 +47,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of GetModerationContextResponseChatInfo
         /// </summary>
-        [Fact]
+        [Test]
         public void GetModerationContextResponseChatInfoInstanceTest()
         {
             // TODO uncomment below to test "IsType" GetModerationContextResponseChatInfo
@@ -56,46 +57,42 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Id'
         /// </summary>
-        [Fact]
+        [Test]
         public void IdTest()
         {
             // TODO unit test for the property 'Id'
         }
-
-        /// <summary>
-        /// Test the property 'User'
-        /// </summary>
-        [Fact]
-        public void UserTest()
-        {
-            // TODO unit test for the property 'User'
-        }
-
-        /// <summary>
-        /// Test the property 'Character'
-        /// </summary>
-        [Fact]
-        public void CharacterTest()
-        {
-            // TODO unit test for the property 'Character'
-        }
-
         /// <summary>
         /// Test the property 'Title'
         /// </summary>
-        [Fact]
+        [Test]
         public void TitleTest()
         {
             // TODO unit test for the property 'Title'
         }
-
         /// <summary>
         /// Test the property 'CreatedAt'
         /// </summary>
-        [Fact]
+        [Test]
         public void CreatedAtTest()
         {
             // TODO unit test for the property 'CreatedAt'
+        }
+        /// <summary>
+        /// Test the property 'User'
+        /// </summary>
+        [Test]
+        public void UserTest()
+        {
+            // TODO unit test for the property 'User'
+        }
+        /// <summary>
+        /// Test the property 'Character'
+        /// </summary>
+        [Test]
+        public void CharacterTest()
+        {
+            // TODO unit test for the property 'Character'
         }
     }
 }

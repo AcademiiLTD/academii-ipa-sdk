@@ -8,15 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
+using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -46,7 +47,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of GetVoicesResponseVoicesInnerSettings
         /// </summary>
-        [Fact]
+        [Test]
         public void GetVoicesResponseVoicesInnerSettingsInstanceTest()
         {
             // TODO uncomment below to test "IsType" GetVoicesResponseVoicesInnerSettings
@@ -56,34 +57,31 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Stability'
         /// </summary>
-        [Fact]
+        [Test]
         public void StabilityTest()
         {
             // TODO unit test for the property 'Stability'
         }
-
         /// <summary>
         /// Test the property 'SimilarityBoost'
         /// </summary>
-        [Fact]
+        [Test]
         public void SimilarityBoostTest()
         {
             // TODO unit test for the property 'SimilarityBoost'
         }
-
         /// <summary>
         /// Test the property 'Style'
         /// </summary>
-        [Fact]
+        [Test]
         public void StyleTest()
         {
             // TODO unit test for the property 'Style'
         }
-
         /// <summary>
         /// Test the property 'SpeakerBoost'
         /// </summary>
-        [Fact]
+        [Test]
         public void SpeakerBoostTest()
         {
             // TODO unit test for the property 'SpeakerBoost'

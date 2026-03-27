@@ -8,15 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
+using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -46,7 +47,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of LoginResponseInputUser
         /// </summary>
-        [Fact]
+        [Test]
         public void LoginResponseInputUserInstanceTest()
         {
             // TODO uncomment below to test "IsType" LoginResponseInputUser
@@ -56,52 +57,47 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Id'
         /// </summary>
-        [Fact]
+        [Test]
         public void IdTest()
         {
             // TODO unit test for the property 'Id'
         }
-
         /// <summary>
         /// Test the property 'Email'
         /// </summary>
-        [Fact]
+        [Test]
         public void EmailTest()
         {
             // TODO unit test for the property 'Email'
         }
-
         /// <summary>
         /// Test the property 'DisplayName'
         /// </summary>
-        [Fact]
+        [Test]
         public void DisplayNameTest()
         {
             // TODO unit test for the property 'DisplayName'
         }
-
         /// <summary>
         /// Test the property 'Role'
         /// </summary>
-        [Fact]
+        [Test]
         public void RoleTest()
         {
             // TODO unit test for the property 'Role'
         }
-
         /// <summary>
         /// Test the property 'OrganizationId'
         /// </summary>
-        [Fact]
+        [Test]
         public void OrganizationIdTest()
         {
             // TODO unit test for the property 'OrganizationId'
         }
-
         /// <summary>
         /// Test the property 'PhotoURL'
         /// </summary>
-        [Fact]
+        [Test]
         public void PhotoURLTest()
         {
             // TODO unit test for the property 'PhotoURL'

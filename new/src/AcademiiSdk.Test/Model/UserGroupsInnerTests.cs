@@ -8,15 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
+using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -46,7 +47,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of UserGroupsInner
         /// </summary>
-        [Fact]
+        [Test]
         public void UserGroupsInnerInstanceTest()
         {
             // TODO uncomment below to test "IsType" UserGroupsInner
@@ -56,61 +57,55 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Id'
         /// </summary>
-        [Fact]
+        [Test]
         public void IdTest()
         {
             // TODO unit test for the property 'Id'
         }
-
         /// <summary>
         /// Test the property 'OrganizationId'
         /// </summary>
-        [Fact]
+        [Test]
         public void OrganizationIdTest()
         {
             // TODO unit test for the property 'OrganizationId'
         }
-
         /// <summary>
         /// Test the property 'Name'
         /// </summary>
-        [Fact]
+        [Test]
         public void NameTest()
         {
             // TODO unit test for the property 'Name'
         }
-
         /// <summary>
         /// Test the property 'Description'
         /// </summary>
-        [Fact]
+        [Test]
         public void DescriptionTest()
         {
             // TODO unit test for the property 'Description'
         }
-
         /// <summary>
         /// Test the property 'UserCount'
         /// </summary>
-        [Fact]
+        [Test]
         public void UserCountTest()
         {
             // TODO unit test for the property 'UserCount'
         }
-
         /// <summary>
         /// Test the property 'CreatedAt'
         /// </summary>
-        [Fact]
+        [Test]
         public void CreatedAtTest()
         {
             // TODO unit test for the property 'CreatedAt'
         }
-
         /// <summary>
         /// Test the property 'UpdatedAt'
         /// </summary>
-        [Fact]
+        [Test]
         public void UpdatedAtTest()
         {
             // TODO unit test for the property 'UpdatedAt'

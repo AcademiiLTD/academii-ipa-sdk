@@ -8,15 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
+using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -46,7 +47,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of UpdateCharacterRequestInput
         /// </summary>
-        [Fact]
+        [Test]
         public void UpdateCharacterRequestInputInstanceTest()
         {
             // TODO uncomment below to test "IsType" UpdateCharacterRequestInput
@@ -56,79 +57,71 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Name'
         /// </summary>
-        [Fact]
+        [Test]
         public void NameTest()
         {
             // TODO unit test for the property 'Name'
         }
-
         /// <summary>
         /// Test the property 'Backstory'
         /// </summary>
-        [Fact]
+        [Test]
         public void BackstoryTest()
         {
             // TODO unit test for the property 'Backstory'
         }
-
         /// <summary>
         /// Test the property 'VoiceId'
         /// </summary>
-        [Fact]
+        [Test]
         public void VoiceIdTest()
         {
             // TODO unit test for the property 'VoiceId'
         }
-
         /// <summary>
         /// Test the property 'OrganizationId'
         /// </summary>
-        [Fact]
+        [Test]
         public void OrganizationIdTest()
         {
             // TODO unit test for the property 'OrganizationId'
         }
-
         /// <summary>
         /// Test the property 'CameraPosition'
         /// </summary>
-        [Fact]
+        [Test]
         public void CameraPositionTest()
         {
             // TODO unit test for the property 'CameraPosition'
         }
-
         /// <summary>
         /// Test the property 'CameraRotation'
         /// </summary>
-        [Fact]
+        [Test]
         public void CameraRotationTest()
         {
             // TODO unit test for the property 'CameraRotation'
         }
-
         /// <summary>
         /// Test the property 'CameraFov'
         /// </summary>
-        [Fact]
+        [Test]
         public void CameraFovTest()
         {
             // TODO unit test for the property 'CameraFov'
         }
-
         /// <summary>
         /// Test the property 'AvatarRotation'
         /// </summary>
-        [Fact]
+        [Test]
         public void AvatarRotationTest()
         {
             // TODO unit test for the property 'AvatarRotation'
         }
-
         /// <summary>
         /// Test the property 'EnvironmentPreset'
         /// </summary>
-        [Fact]
+        [Test]
         public void EnvironmentPresetTest()
         {
             // TODO unit test for the property 'EnvironmentPreset'

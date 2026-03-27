@@ -8,15 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
+using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -46,7 +47,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of GetAllHandbooksWithItemsResponseInner
         /// </summary>
-        [Fact]
+        [Test]
         public void GetAllHandbooksWithItemsResponseInnerInstanceTest()
         {
             // TODO uncomment below to test "IsType" GetAllHandbooksWithItemsResponseInner
@@ -56,55 +57,50 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Id'
         /// </summary>
-        [Fact]
+        [Test]
         public void IdTest()
         {
             // TODO unit test for the property 'Id'
         }
-
         /// <summary>
         /// Test the property 'Name'
         /// </summary>
-        [Fact]
+        [Test]
         public void NameTest()
         {
             // TODO unit test for the property 'Name'
         }
-
+        /// <summary>
+        /// Test the property 'Description'
+        /// </summary>
+        [Test]
+        public void DescriptionTest()
+        {
+            // TODO unit test for the property 'Description'
+        }
         /// <summary>
         /// Test the property 'OrganizationId'
         /// </summary>
-        [Fact]
+        [Test]
         public void OrganizationIdTest()
         {
             // TODO unit test for the property 'OrganizationId'
         }
-
         /// <summary>
         /// Test the property 'OrganizationName'
         /// </summary>
-        [Fact]
+        [Test]
         public void OrganizationNameTest()
         {
             // TODO unit test for the property 'OrganizationName'
         }
-
         /// <summary>
         /// Test the property 'Items'
         /// </summary>
-        [Fact]
+        [Test]
         public void ItemsTest()
         {
             // TODO unit test for the property 'Items'
-        }
-
-        /// <summary>
-        /// Test the property 'Description'
-        /// </summary>
-        [Fact]
-        public void DescriptionTest()
-        {
-            // TODO unit test for the property 'Description'
         }
     }
 }

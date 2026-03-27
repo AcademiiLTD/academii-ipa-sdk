@@ -8,15 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
+using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -46,7 +47,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of KnowledgeFolderListResponseInputDataInnerCounts
         /// </summary>
-        [Fact]
+        [Test]
         public void KnowledgeFolderListResponseInputDataInnerCountsInstanceTest()
         {
             // TODO uncomment below to test "IsType" KnowledgeFolderListResponseInputDataInnerCounts
@@ -56,25 +57,23 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Files'
         /// </summary>
-        [Fact]
+        [Test]
         public void FilesTest()
         {
             // TODO unit test for the property 'Files'
         }
-
         /// <summary>
         /// Test the property 'Handbooks'
         /// </summary>
-        [Fact]
+        [Test]
         public void HandbooksTest()
         {
             // TODO unit test for the property 'Handbooks'
         }
-
         /// <summary>
         /// Test the property 'Characters'
         /// </summary>
-        [Fact]
+        [Test]
         public void CharactersTest()
         {
             // TODO unit test for the property 'Characters'

@@ -8,15 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
+using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -46,7 +47,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of AnalyticsUserChatsResponseUsersInnerChatsInner
         /// </summary>
-        [Fact]
+        [Test]
         public void AnalyticsUserChatsResponseUsersInnerChatsInnerInstanceTest()
         {
             // TODO uncomment below to test "IsType" AnalyticsUserChatsResponseUsersInnerChatsInner
@@ -56,55 +57,50 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Id'
         /// </summary>
-        [Fact]
+        [Test]
         public void IdTest()
         {
             // TODO unit test for the property 'Id'
         }
-
-        /// <summary>
-        /// Test the property 'CitationCount'
-        /// </summary>
-        [Fact]
-        public void CitationCountTest()
-        {
-            // TODO unit test for the property 'CitationCount'
-        }
-
         /// <summary>
         /// Test the property 'Title'
         /// </summary>
-        [Fact]
+        [Test]
         public void TitleTest()
         {
             // TODO unit test for the property 'Title'
         }
-
         /// <summary>
         /// Test the property 'CharacterId'
         /// </summary>
-        [Fact]
+        [Test]
         public void CharacterIdTest()
         {
             // TODO unit test for the property 'CharacterId'
         }
-
         /// <summary>
         /// Test the property 'CharacterName'
         /// </summary>
-        [Fact]
+        [Test]
         public void CharacterNameTest()
         {
             // TODO unit test for the property 'CharacterName'
         }
-
         /// <summary>
         /// Test the property 'LastMessageAt'
         /// </summary>
-        [Fact]
+        [Test]
         public void LastMessageAtTest()
         {
             // TODO unit test for the property 'LastMessageAt'
+        }
+        /// <summary>
+        /// Test the property 'CitationCount'
+        /// </summary>
+        [Test]
+        public void CitationCountTest()
+        {
+            // TODO unit test for the property 'CitationCount'
         }
     }
 }

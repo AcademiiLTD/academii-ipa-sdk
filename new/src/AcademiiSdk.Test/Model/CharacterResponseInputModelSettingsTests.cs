@@ -8,15 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
+using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -46,7 +47,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of CharacterResponseInputModelSettings
         /// </summary>
-        [Fact]
+        [Test]
         public void CharacterResponseInputModelSettingsInstanceTest()
         {
             // TODO uncomment below to test "IsType" CharacterResponseInputModelSettings
@@ -56,52 +57,47 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Model'
         /// </summary>
-        [Fact]
+        [Test]
         public void ModelTest()
         {
             // TODO unit test for the property 'Model'
         }
-
         /// <summary>
         /// Test the property 'Temperature'
         /// </summary>
-        [Fact]
+        [Test]
         public void TemperatureTest()
         {
             // TODO unit test for the property 'Temperature'
         }
-
         /// <summary>
         /// Test the property 'MaxTokens'
         /// </summary>
-        [Fact]
+        [Test]
         public void MaxTokensTest()
         {
             // TODO unit test for the property 'MaxTokens'
         }
-
         /// <summary>
         /// Test the property 'TopP'
         /// </summary>
-        [Fact]
+        [Test]
         public void TopPTest()
         {
             // TODO unit test for the property 'TopP'
         }
-
         /// <summary>
         /// Test the property 'FrequencyPenalty'
         /// </summary>
-        [Fact]
+        [Test]
         public void FrequencyPenaltyTest()
         {
             // TODO unit test for the property 'FrequencyPenalty'
         }
-
         /// <summary>
         /// Test the property 'PresencePenalty'
         /// </summary>
-        [Fact]
+        [Test]
         public void PresencePenaltyTest()
         {
             // TODO unit test for the property 'PresencePenalty'

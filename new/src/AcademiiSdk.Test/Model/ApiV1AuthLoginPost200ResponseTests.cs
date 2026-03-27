@@ -8,15 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
+using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -46,7 +47,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of ApiV1AuthLoginPost200Response
         /// </summary>
-        [Fact]
+        [Test]
         public void ApiV1AuthLoginPost200ResponseInstanceTest()
         {
             // TODO uncomment below to test "IsType" ApiV1AuthLoginPost200Response
@@ -54,21 +55,52 @@ namespace AcademiiSdk.Test.Model
         }
 
         /// <summary>
-        /// Test the property 'Status'
+        /// Test the property 'User'
         /// </summary>
-        [Fact]
-        public void StatusTest()
+        [Test]
+        public void UserTest()
         {
-            // TODO unit test for the property 'Status'
+            // TODO unit test for the property 'User'
         }
-
         /// <summary>
-        /// Test the property 'Data'
+        /// Test the property 'Token'
         /// </summary>
-        [Fact]
-        public void DataTest()
+        [Test]
+        public void TokenTest()
         {
-            // TODO unit test for the property 'Data'
+            // TODO unit test for the property 'Token'
+        }
+        /// <summary>
+        /// Test the property 'Session'
+        /// </summary>
+        [Test]
+        public void SessionTest()
+        {
+            // TODO unit test for the property 'Session'
+        }
+        /// <summary>
+        /// Test the property 'Email'
+        /// </summary>
+        [Test]
+        public void EmailTest()
+        {
+            // TODO unit test for the property 'Email'
+        }
+        /// <summary>
+        /// Test the property 'ChallengeName'
+        /// </summary>
+        [Test]
+        public void ChallengeNameTest()
+        {
+            // TODO unit test for the property 'ChallengeName'
+        }
+        /// <summary>
+        /// Test the property 'ChallengeParameters'
+        /// </summary>
+        [Test]
+        public void ChallengeParametersTest()
+        {
+            // TODO unit test for the property 'ChallengeParameters'
         }
     }
 }

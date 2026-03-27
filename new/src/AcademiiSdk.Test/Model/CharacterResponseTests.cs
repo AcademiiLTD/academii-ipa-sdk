@@ -8,15 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
+using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -46,7 +47,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of CharacterResponse
         /// </summary>
-        [Fact]
+        [Test]
         public void CharacterResponseInstanceTest()
         {
             // TODO uncomment below to test "IsType" CharacterResponse
@@ -56,259 +57,231 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Id'
         /// </summary>
-        [Fact]
+        [Test]
         public void IdTest()
         {
             // TODO unit test for the property 'Id'
         }
-
         /// <summary>
         /// Test the property 'Name'
         /// </summary>
-        [Fact]
+        [Test]
         public void NameTest()
         {
             // TODO unit test for the property 'Name'
         }
-
-        /// <summary>
-        /// Test the property 'UserId'
-        /// </summary>
-        [Fact]
-        public void UserIdTest()
-        {
-            // TODO unit test for the property 'UserId'
-        }
-
         /// <summary>
         /// Test the property 'Description'
         /// </summary>
-        [Fact]
+        [Test]
         public void DescriptionTest()
         {
             // TODO unit test for the property 'Description'
         }
-
         /// <summary>
         /// Test the property 'SystemPrompt'
         /// </summary>
-        [Fact]
+        [Test]
         public void SystemPromptTest()
         {
             // TODO unit test for the property 'SystemPrompt'
         }
-
         /// <summary>
         /// Test the property 'Greeting'
         /// </summary>
-        [Fact]
+        [Test]
         public void GreetingTest()
         {
             // TODO unit test for the property 'Greeting'
         }
-
+        /// <summary>
+        /// Test the property 'UserId'
+        /// </summary>
+        [Test]
+        public void UserIdTest()
+        {
+            // TODO unit test for the property 'UserId'
+        }
         /// <summary>
         /// Test the property 'OrganizationId'
         /// </summary>
-        [Fact]
+        [Test]
         public void OrganizationIdTest()
         {
             // TODO unit test for the property 'OrganizationId'
         }
-
         /// <summary>
         /// Test the property 'Organization'
         /// </summary>
-        [Fact]
+        [Test]
         public void OrganizationTest()
         {
             // TODO unit test for the property 'Organization'
         }
-
         /// <summary>
         /// Test the property 'Backstory'
         /// </summary>
-        [Fact]
+        [Test]
         public void BackstoryTest()
         {
             // TODO unit test for the property 'Backstory'
         }
-
         /// <summary>
         /// Test the property 'VoiceId'
         /// </summary>
-        [Fact]
+        [Test]
         public void VoiceIdTest()
         {
             // TODO unit test for the property 'VoiceId'
         }
-
         /// <summary>
         /// Test the property 'Persona'
         /// </summary>
-        [Fact]
+        [Test]
         public void PersonaTest()
         {
             // TODO unit test for the property 'Persona'
         }
-
         /// <summary>
         /// Test the property 'ModelSettings'
         /// </summary>
-        [Fact]
+        [Test]
         public void ModelSettingsTest()
         {
             // TODO unit test for the property 'ModelSettings'
         }
-
         /// <summary>
         /// Test the property 'VoiceSettings'
         /// </summary>
-        [Fact]
+        [Test]
         public void VoiceSettingsTest()
         {
             // TODO unit test for the property 'VoiceSettings'
         }
-
         /// <summary>
         /// Test the property 'AvatarSettings'
         /// </summary>
-        [Fact]
+        [Test]
         public void AvatarSettingsTest()
         {
             // TODO unit test for the property 'AvatarSettings'
         }
-
         /// <summary>
         /// Test the property 'ModerationSettings'
         /// </summary>
-        [Fact]
+        [Test]
         public void ModerationSettingsTest()
         {
             // TODO unit test for the property 'ModerationSettings'
         }
-
         /// <summary>
         /// Test the property 'OpenaiAssistantId'
         /// </summary>
-        [Fact]
+        [Test]
         public void OpenaiAssistantIdTest()
         {
             // TODO unit test for the property 'OpenaiAssistantId'
         }
-
         /// <summary>
         /// Test the property 'OpenaiVectorStoreId'
         /// </summary>
-        [Fact]
+        [Test]
         public void OpenaiVectorStoreIdTest()
         {
             // TODO unit test for the property 'OpenaiVectorStoreId'
         }
-
         /// <summary>
         /// Test the property 'Files'
         /// </summary>
-        [Fact]
+        [Test]
         public void FilesTest()
         {
             // TODO unit test for the property 'Files'
         }
-
         /// <summary>
         /// Test the property 'AssetsVersion'
         /// </summary>
-        [Fact]
+        [Test]
         public void AssetsVersionTest()
         {
             // TODO unit test for the property 'AssetsVersion'
         }
-
         /// <summary>
         /// Test the property 'CameraPosition'
         /// </summary>
-        [Fact]
+        [Test]
         public void CameraPositionTest()
         {
             // TODO unit test for the property 'CameraPosition'
         }
-
         /// <summary>
         /// Test the property 'CameraRotation'
         /// </summary>
-        [Fact]
+        [Test]
         public void CameraRotationTest()
         {
             // TODO unit test for the property 'CameraRotation'
         }
-
         /// <summary>
         /// Test the property 'CameraFov'
         /// </summary>
-        [Fact]
+        [Test]
         public void CameraFovTest()
         {
             // TODO unit test for the property 'CameraFov'
         }
-
         /// <summary>
         /// Test the property 'AvatarRotation'
         /// </summary>
-        [Fact]
+        [Test]
         public void AvatarRotationTest()
         {
             // TODO unit test for the property 'AvatarRotation'
         }
-
         /// <summary>
         /// Test the property 'EnvironmentPreset'
         /// </summary>
-        [Fact]
+        [Test]
         public void EnvironmentPresetTest()
         {
             // TODO unit test for the property 'EnvironmentPreset'
         }
-
         /// <summary>
         /// Test the property 'PreviewVideoUrl'
         /// </summary>
-        [Fact]
+        [Test]
         public void PreviewVideoUrlTest()
         {
             // TODO unit test for the property 'PreviewVideoUrl'
         }
-
         /// <summary>
         /// Test the property 'PreviewTallVideoUrl'
         /// </summary>
-        [Fact]
+        [Test]
         public void PreviewTallVideoUrlTest()
         {
             // TODO unit test for the property 'PreviewTallVideoUrl'
         }
-
         /// <summary>
         /// Test the property 'PreviewImageUrl'
         /// </summary>
-        [Fact]
+        [Test]
         public void PreviewImageUrlTest()
         {
             // TODO unit test for the property 'PreviewImageUrl'
         }
-
         /// <summary>
         /// Test the property 'CreatedAt'
         /// </summary>
-        [Fact]
+        [Test]
         public void CreatedAtTest()
         {
             // TODO unit test for the property 'CreatedAt'
         }
-
         /// <summary>
         /// Test the property 'UpdatedAt'
         /// </summary>
-        [Fact]
+        [Test]
         public void UpdatedAtTest()
         {
             // TODO unit test for the property 'UpdatedAt'

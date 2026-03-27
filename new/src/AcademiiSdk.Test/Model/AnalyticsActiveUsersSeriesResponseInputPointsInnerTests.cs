@@ -8,15 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
+using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -46,7 +47,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of AnalyticsActiveUsersSeriesResponseInputPointsInner
         /// </summary>
-        [Fact]
+        [Test]
         public void AnalyticsActiveUsersSeriesResponseInputPointsInnerInstanceTest()
         {
             // TODO uncomment below to test "IsType" AnalyticsActiveUsersSeriesResponseInputPointsInner
@@ -56,16 +57,15 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Date'
         /// </summary>
-        [Fact]
+        [Test]
         public void DateTest()
         {
             // TODO unit test for the property 'Date'
         }
-
         /// <summary>
         /// Test the property 'ActiveUsers'
         /// </summary>
-        [Fact]
+        [Test]
         public void ActiveUsersTest()
         {
             // TODO unit test for the property 'ActiveUsers'

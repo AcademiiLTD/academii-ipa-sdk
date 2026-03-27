@@ -8,15 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
+using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -46,7 +47,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of TTSSynthesizeRequest
         /// </summary>
-        [Fact]
+        [Test]
         public void TTSSynthesizeRequestInstanceTest()
         {
             // TODO uncomment below to test "IsType" TTSSynthesizeRequest
@@ -56,25 +57,23 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Text'
         /// </summary>
-        [Fact]
+        [Test]
         public void TextTest()
         {
             // TODO unit test for the property 'Text'
         }
-
         /// <summary>
         /// Test the property 'Voice'
         /// </summary>
-        [Fact]
+        [Test]
         public void VoiceTest()
         {
             // TODO unit test for the property 'Voice'
         }
-
         /// <summary>
         /// Test the property 'Service'
         /// </summary>
-        [Fact]
+        [Test]
         public void ServiceTest()
         {
             // TODO unit test for the property 'Service'

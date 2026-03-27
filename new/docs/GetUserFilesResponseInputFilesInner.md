@@ -1,0 +1,25 @@
+# AcademiiSdk.Model.GetUserFilesResponseInputFilesInner
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Id** | **Guid** |  | 
+**Filename** | **string** |  | 
+**OriginalName** | **string** |  | [optional] 
+**MimeType** | **string** |  | [optional] 
+**FileSize** | **decimal** |  | [optional] 
+**FileType** | **string** |  | [optional] 
+**Status** | **string** |  | [optional] 
+**S3Key** | **string** |  | [optional] 
+**Url** | **string** |  | [optional] 
+**OpenaiFileId** | **string** |  | [optional] 
+**UsageType** | **string** |  | [optional] 
+**UserId** | **string** |  | 
+**CharacterId** | **Guid?** |  | [optional] 
+**OrganizationId** | **Guid?** |  | [optional] 
+**FolderId** | **Guid?** |  | [optional] 
+**CreatedAt** | **Object** |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+

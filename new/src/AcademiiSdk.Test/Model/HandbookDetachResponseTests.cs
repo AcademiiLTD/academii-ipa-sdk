@@ -8,15 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
+using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -46,7 +47,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of HandbookDetachResponse
         /// </summary>
-        [Fact]
+        [Test]
         public void HandbookDetachResponseInstanceTest()
         {
             // TODO uncomment below to test "IsType" HandbookDetachResponse
@@ -56,16 +57,15 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'Detached'
         /// </summary>
-        [Fact]
+        [Test]
         public void DetachedTest()
         {
             // TODO unit test for the property 'Detached'
         }
-
         /// <summary>
         /// Test the property 'Total'
         /// </summary>
-        [Fact]
+        [Test]
         public void TotalTest()
         {
             // TODO unit test for the property 'Total'

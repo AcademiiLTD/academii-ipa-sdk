@@ -8,15 +8,16 @@
  */
 
 
-using Xunit;
-
 using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using AcademiiSdk.Api;
 using AcademiiSdk.Model;
 using AcademiiSdk.Client;
 using System.Reflection;
+using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace AcademiiSdk.Test.Model
 {
@@ -46,7 +47,7 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test an instance of GetUserFilesResponseInputStorageInfoLimits
         /// </summary>
-        [Fact]
+        [Test]
         public void GetUserFilesResponseInputStorageInfoLimitsInstanceTest()
         {
             // TODO uncomment below to test "IsType" GetUserFilesResponseInputStorageInfoLimits
@@ -56,25 +57,23 @@ namespace AcademiiSdk.Test.Model
         /// <summary>
         /// Test the property 'MaxFileSize'
         /// </summary>
-        [Fact]
+        [Test]
         public void MaxFileSizeTest()
         {
             // TODO unit test for the property 'MaxFileSize'
         }
-
         /// <summary>
         /// Test the property 'MaxBatchSize'
         /// </summary>
-        [Fact]
+        [Test]
         public void MaxBatchSizeTest()
         {
             // TODO unit test for the property 'MaxBatchSize'
         }
-
         /// <summary>
         /// Test the property 'UserLimit'
         /// </summary>
-        [Fact]
+        [Test]
         public void UserLimitTest()
         {
             // TODO unit test for the property 'UserLimit'
