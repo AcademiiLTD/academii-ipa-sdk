@@ -116,55 +116,55 @@ namespace AcademiiSdk.Model
         {
             var errors = new List<string>();
             // EnrolledCount (long) maximum
-            if (this.EnrolledCount > (long)9007199254740991)
+            if (this.EnrolledCount > 9007199254740991)
             {
                 errors.Add("Invalid value for EnrolledCount, must be a value less than or equal to 9007199254740991.");
             }
 
             // EnrolledCount (long) minimum
-            if (this.EnrolledCount < (long)0)
+            if (this.EnrolledCount < 0)
             {
                 errors.Add("Invalid value for EnrolledCount, must be a value greater than or equal to 0.");
             }
 
             // CompletedCount (long) maximum
-            if (this.CompletedCount > (long)9007199254740991)
+            if (this.CompletedCount > 9007199254740991)
             {
                 errors.Add("Invalid value for CompletedCount, must be a value less than or equal to 9007199254740991.");
             }
 
             // CompletedCount (long) minimum
-            if (this.CompletedCount < (long)0)
+            if (this.CompletedCount < 0)
             {
                 errors.Add("Invalid value for CompletedCount, must be a value greater than or equal to 0.");
             }
 
             // NotCompletedCount (long) maximum
-            if (this.NotCompletedCount > (long)9007199254740991)
+            if (this.NotCompletedCount > 9007199254740991)
             {
                 errors.Add("Invalid value for NotCompletedCount, must be a value less than or equal to 9007199254740991.");
             }
 
             // NotCompletedCount (long) minimum
-            if (this.NotCompletedCount < (long)0)
+            if (this.NotCompletedCount < 0)
             {
                 errors.Add("Invalid value for NotCompletedCount, must be a value greater than or equal to 0.");
             }
 
             // StartedCount (long) maximum
-            if (this.StartedCount > (long)9007199254740991)
+            if (this.StartedCount > 9007199254740991)
             {
                 errors.Add("Invalid value for StartedCount, must be a value less than or equal to 9007199254740991.");
             }
 
             // StartedCount (long) minimum
-            if (this.StartedCount < (long)0)
+            if (this.StartedCount < 0)
             {
                 errors.Add("Invalid value for StartedCount, must be a value greater than or equal to 0.");
             }
 
             // CompletionRate (decimal) minimum
-            if (this.CompletionRate < (decimal)0)
+            if (this.CompletionRate < 0)
             {
                 errors.Add("Invalid value for CompletionRate, must be a value greater than or equal to 0.");
             }

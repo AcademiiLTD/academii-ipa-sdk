@@ -130,61 +130,61 @@ namespace AcademiiSdk.Model
         {
             var errors = new List<string>();
             // Temperature (decimal) maximum
-            if (this.Temperature > (decimal)2)
+            if (this.Temperature > 2)
             {
                 errors.Add("Invalid value for Temperature, must be a value less than or equal to 2.");
             }
 
             // Temperature (decimal) minimum
-            if (this.Temperature < (decimal)0)
+            if (this.Temperature < 0)
             {
                 errors.Add("Invalid value for Temperature, must be a value greater than or equal to 0.");
             }
 
             // MaxTokens (decimal) maximum
-            if (this.MaxTokens > (decimal)128000)
+            if (this.MaxTokens > 128000)
             {
                 errors.Add("Invalid value for MaxTokens, must be a value less than or equal to 128000.");
             }
 
             // MaxTokens (decimal) minimum
-            if (this.MaxTokens < (decimal)1)
+            if (this.MaxTokens < 1)
             {
                 errors.Add("Invalid value for MaxTokens, must be a value greater than or equal to 1.");
             }
 
             // TopP (decimal) maximum
-            if (this.TopP > (decimal)1)
+            if (this.TopP > 1)
             {
                 errors.Add("Invalid value for TopP, must be a value less than or equal to 1.");
             }
 
             // TopP (decimal) minimum
-            if (this.TopP < (decimal)0)
+            if (this.TopP < 0)
             {
                 errors.Add("Invalid value for TopP, must be a value greater than or equal to 0.");
             }
 
             // FrequencyPenalty (decimal) maximum
-            if (this.FrequencyPenalty > (decimal)2)
+            if (this.FrequencyPenalty > 2)
             {
                 errors.Add("Invalid value for FrequencyPenalty, must be a value less than or equal to 2.");
             }
 
             // FrequencyPenalty (decimal) minimum
-            if (this.FrequencyPenalty < (decimal)-2)
+            if (this.FrequencyPenalty < -2)
             {
                 errors.Add("Invalid value for FrequencyPenalty, must be a value greater than or equal to -2.");
             }
 
             // PresencePenalty (decimal) maximum
-            if (this.PresencePenalty > (decimal)2)
+            if (this.PresencePenalty > 2)
             {
                 errors.Add("Invalid value for PresencePenalty, must be a value less than or equal to 2.");
             }
 
             // PresencePenalty (decimal) minimum
-            if (this.PresencePenalty < (decimal)-2)
+            if (this.PresencePenalty < -2)
             {
                 errors.Add("Invalid value for PresencePenalty, must be a value greater than or equal to -2.");
             }

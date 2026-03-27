@@ -132,13 +132,13 @@ namespace AcademiiSdk.Model
                 }
 
             // Limit (decimal) maximum
-            if (this.Limit > (decimal)100)
+            if (this.Limit > 100)
             {
                 errors.Add("Invalid value for Limit, must be a value less than or equal to 100.");
             }
 
             // Limit (decimal) minimum
-            if (this.Limit < (decimal)1)
+            if (this.Limit < 1)
             {
                 errors.Add("Invalid value for Limit, must be a value greater than or equal to 1.");
             }

@@ -153,13 +153,13 @@ namespace AcademiiSdk.Model
                 }
 
             // UserCount (long) maximum
-            if (this.UserCount > (long)9007199254740991)
+            if (this.UserCount > 9007199254740991)
             {
                 errors.Add("Invalid value for UserCount, must be a value less than or equal to 9007199254740991.");
             }
 
             // UserCount (long) minimum
-            if (this.UserCount < (long)0)
+            if (this.UserCount < 0)
             {
                 errors.Add("Invalid value for UserCount, must be a value greater than or equal to 0.");
             }

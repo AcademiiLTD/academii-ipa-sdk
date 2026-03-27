@@ -130,37 +130,37 @@ namespace AcademiiSdk.Model
         {
             var errors = new List<string>();
             // Total (long) maximum
-            if (this.Total > (long)9007199254740991)
+            if (this.Total > 9007199254740991)
             {
                 errors.Add("Invalid value for Total, must be a value less than or equal to 9007199254740991.");
             }
 
             // Total (long) minimum
-            if (this.Total < (long)0)
+            if (this.Total < 0)
             {
                 errors.Add("Invalid value for Total, must be a value greater than or equal to 0.");
             }
 
             // Limit (long) maximum
-            if (this.Limit > (long)9007199254740991)
+            if (this.Limit > 9007199254740991)
             {
                 errors.Add("Invalid value for Limit, must be a value less than or equal to 9007199254740991.");
             }
 
             // Limit (long) minimum
-            if (this.Limit < (long)0)
+            if (this.Limit < 0)
             {
                 errors.Add("Invalid value for Limit, must be a value greater than or equal to 0.");
             }
 
             // Offset (long) maximum
-            if (this.Offset > (long)9007199254740991)
+            if (this.Offset > 9007199254740991)
             {
                 errors.Add("Invalid value for Offset, must be a value less than or equal to 9007199254740991.");
             }
 
             // Offset (long) minimum
-            if (this.Offset < (long)0)
+            if (this.Offset < 0)
             {
                 errors.Add("Invalid value for Offset, must be a value greater than or equal to 0.");
             }

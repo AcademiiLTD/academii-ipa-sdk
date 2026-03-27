@@ -80,13 +80,13 @@ namespace AcademiiSdk.Model
         {
             var errors = new List<string>();
             // Removed (long) maximum
-            if (this.Removed > (long)9007199254740991)
+            if (this.Removed > 9007199254740991)
             {
                 errors.Add("Invalid value for Removed, must be a value less than or equal to 9007199254740991.");
             }
 
             // Removed (long) minimum
-            if (this.Removed < (long)0)
+            if (this.Removed < 0)
             {
                 errors.Add("Invalid value for Removed, must be a value greater than or equal to 0.");
             }

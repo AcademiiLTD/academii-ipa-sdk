@@ -102,19 +102,19 @@ namespace AcademiiSdk.Model
         {
             var errors = new List<string>();
             // Limit (decimal) maximum
-            if (this.Limit > (decimal)100)
+            if (this.Limit > 100)
             {
                 errors.Add("Invalid value for Limit, must be a value less than or equal to 100.");
             }
 
             // Limit (decimal) minimum
-            if (this.Limit < (decimal)1)
+            if (this.Limit < 1)
             {
                 errors.Add("Invalid value for Limit, must be a value greater than or equal to 1.");
             }
 
             // Offset (decimal) minimum
-            if (this.Offset < (decimal)0)
+            if (this.Offset < 0)
             {
                 errors.Add("Invalid value for Offset, must be a value greater than or equal to 0.");
             }

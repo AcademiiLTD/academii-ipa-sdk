@@ -347,13 +347,13 @@ namespace AcademiiSdk.Model
         {
             var errors = new List<string>();
             // AssetsVersion (long) maximum
-            if (this.AssetsVersion > (long)9007199254740991)
+            if (this.AssetsVersion > 9007199254740991)
             {
                 errors.Add("Invalid value for AssetsVersion, must be a value less than or equal to 9007199254740991.");
             }
 
             // AssetsVersion (long) minimum
-            if (this.AssetsVersion <= (long)0)
+            if (this.AssetsVersion <= 0)
             {
                 errors.Add("Invalid value for AssetsVersion, must be a value greater than 0.");
             }

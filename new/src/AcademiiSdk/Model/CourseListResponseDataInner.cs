@@ -260,13 +260,13 @@ namespace AcademiiSdk.Model
                 }
 
             // SortOrder (long) maximum
-            if (this.SortOrder > (long)9007199254740991)
+            if (this.SortOrder > 9007199254740991)
             {
                 errors.Add("Invalid value for SortOrder, must be a value less than or equal to 9007199254740991.");
             }
 
             // SortOrder (long) minimum
-            if (this.SortOrder < (long)0)
+            if (this.SortOrder < 0)
             {
                 errors.Add("Invalid value for SortOrder, must be a value greater than or equal to 0.");
             }
@@ -278,13 +278,13 @@ namespace AcademiiSdk.Model
             }
 
             // ModuleCount (long) maximum
-            if (this.ModuleCount > (long)9007199254740991)
+            if (this.ModuleCount > 9007199254740991)
             {
                 errors.Add("Invalid value for ModuleCount, must be a value less than or equal to 9007199254740991.");
             }
 
             // ModuleCount (long) minimum
-            if (this.ModuleCount < (long)0)
+            if (this.ModuleCount < 0)
             {
                 errors.Add("Invalid value for ModuleCount, must be a value greater than or equal to 0.");
             }
