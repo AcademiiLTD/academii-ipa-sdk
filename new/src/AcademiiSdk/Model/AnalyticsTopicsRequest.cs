@@ -134,14 +134,14 @@ namespace AcademiiSdk.Model
             // StartDate (DateTime) pattern
             Regex regexStartDate = new Regex(@"^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z))$", RegexOptions.CultureInvariant);
 
-            if (this.StartDateOption.Value != null &&!regexStartDate.Match(this.StartDateOption.Value).Success)
+            if (this.StartDateOption.Value != null &&!regexStartDate.Match(this.StartDateOption.Value.ToString()!).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for StartDate, must match a pattern of " + regexStartDate, new [] { "StartDate" });
             }
             // EndDate (DateTime) pattern
             Regex regexEndDate = new Regex(@"^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z))$", RegexOptions.CultureInvariant);
 
-            if (this.EndDateOption.Value != null &&!regexEndDate.Match(this.EndDateOption.Value).Success)
+            if (this.EndDateOption.Value != null &&!regexEndDate.Match(this.EndDateOption.Value.ToString()!).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for EndDate, must match a pattern of " + regexEndDate, new [] { "EndDate" });
             }

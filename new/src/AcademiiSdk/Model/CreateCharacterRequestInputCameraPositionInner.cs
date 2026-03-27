@@ -34,7 +34,7 @@ namespace AcademiiSdk.Model
         /// Initializes a new instance of the <see cref="CreateCharacterRequestInputCameraPositionInner" /> class.
         /// </summary>
         /// <param name="decimal"></param>
-        internal CreateCharacterRequestInputCameraPositionInner(decimal @decimal)
+        internal CreateCharacterRequestInputCameraPositionInner(decimal? @decimal)
         {
             Decimal = @decimal;
             OnCreated();
@@ -85,56 +85,37 @@ namespace AcademiiSdk.Model
         /// <exception cref="JsonException"></exception>
         public override CreateCharacterRequestInputCameraPositionInner Read(ref Utf8JsonReader utf8JsonReader, Type typeToConvert, JsonSerializerOptions jsonSerializerOptions)
         {
-            int currentDepth = utf8JsonReader.CurrentDepth;
-
-            if (utf8JsonReader.TokenType != JsonTokenType.StartObject && utf8JsonReader.TokenType != JsonTokenType.StartArray)
-                throw new JsonException();
-
-            JsonTokenType startingTokenType = utf8JsonReader.TokenType;
-
-            decimal? varDecimal = default;
-
-            Utf8JsonReader utf8JsonReaderOneOf = utf8JsonReader;
-            while (utf8JsonReaderOneOf.Read())
+            switch (utf8JsonReader.TokenType)
             {
-                if (startingTokenType == JsonTokenType.StartObject && utf8JsonReaderOneOf.TokenType == JsonTokenType.EndObject && currentDepth == utf8JsonReaderOneOf.CurrentDepth)
-                    break;
+                case JsonTokenType.Number:
+                    if (utf8JsonReader.TryGetDecimal(out decimal decimalValue))
+                        return new CreateCharacterRequestInputCameraPositionInner(decimalValue);
 
-                if (startingTokenType == JsonTokenType.StartArray && utf8JsonReaderOneOf.TokenType == JsonTokenType.EndArray && currentDepth == utf8JsonReaderOneOf.CurrentDepth)
-                    break;
+                    return new CreateCharacterRequestInputCameraPositionInner((decimal)utf8JsonReader.GetDouble());
 
-                if (utf8JsonReaderOneOf.TokenType == JsonTokenType.PropertyName && currentDepth == utf8JsonReaderOneOf.CurrentDepth - 1)
-                {
-                    Utf8JsonReader utf8JsonReaderDecimal = utf8JsonReader;
-                    ClientUtils.TryDeserialize<decimal?>(ref utf8JsonReaderDecimal, jsonSerializerOptions, out varDecimal);
-                }
-            }
+                case JsonTokenType.Null:
+                    return new CreateCharacterRequestInputCameraPositionInner(null);
 
-            while (utf8JsonReader.Read())
-            {
-                if (startingTokenType == JsonTokenType.StartObject && utf8JsonReader.TokenType == JsonTokenType.EndObject && currentDepth == utf8JsonReader.CurrentDepth)
-                    break;
-
-                if (startingTokenType == JsonTokenType.StartArray && utf8JsonReader.TokenType == JsonTokenType.EndArray && currentDepth == utf8JsonReader.CurrentDepth)
-                    break;
-
-                if (utf8JsonReader.TokenType == JsonTokenType.PropertyName && currentDepth == utf8JsonReader.CurrentDepth - 1)
-                {
-                    string? localVarJsonPropertyName = utf8JsonReader.GetString();
-                    utf8JsonReader.Read();
-
-                    switch (localVarJsonPropertyName)
+                case JsonTokenType.StartObject:
+                    using (JsonDocument document = JsonDocument.ParseValue(ref utf8JsonReader))
                     {
-                        default:
-                            break;
+                        JsonElement root = document.RootElement;
+
+                        if (root.TryGetProperty("decimal", out JsonElement decimalElement))
+                        {
+                            if (decimalElement.ValueKind == JsonValueKind.Null)
+                                return new CreateCharacterRequestInputCameraPositionInner(null);
+
+                            if (decimalElement.ValueKind == JsonValueKind.Number)
+                                return new CreateCharacterRequestInputCameraPositionInner(decimalElement.GetDecimal());
+                        }
                     }
-                }
+
+                    break;
             }
 
-            if (varDecimal != null)
-                return new CreateCharacterRequestInputCameraPositionInner(varDecimal.Value);
-
-            throw new JsonException();
+            throw new JsonException(
+                $"Could not deserialize {nameof(CreateCharacterRequestInputCameraPositionInner)} from token {utf8JsonReader.TokenType}.");
         }
 
         /// <summary>
@@ -146,10 +127,13 @@ namespace AcademiiSdk.Model
         /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, CreateCharacterRequestInputCameraPositionInner createCharacterRequestInputCameraPositionInner, JsonSerializerOptions jsonSerializerOptions)
         {
-            writer.WriteStartObject();
+            if (createCharacterRequestInputCameraPositionInner.Decimal.HasValue)
+            {
+                writer.WriteNumberValue(createCharacterRequestInputCameraPositionInner.Decimal.Value);
+                return;
+            }
 
-            WriteProperties(writer, createCharacterRequestInputCameraPositionInner, jsonSerializerOptions);
-            writer.WriteEndObject();
+            writer.WriteNullValue();
         }
 
         /// <summary>
@@ -161,7 +145,8 @@ namespace AcademiiSdk.Model
         /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, CreateCharacterRequestInputCameraPositionInner createCharacterRequestInputCameraPositionInner, JsonSerializerOptions jsonSerializerOptions)
         {
-
+            if (createCharacterRequestInputCameraPositionInner.Decimal.HasValue)
+                writer.WriteNumber("decimal", createCharacterRequestInputCameraPositionInner.Decimal.Value);
         }
     }
 }

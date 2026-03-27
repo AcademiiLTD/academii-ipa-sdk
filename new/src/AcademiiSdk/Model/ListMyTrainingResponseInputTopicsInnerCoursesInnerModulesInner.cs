@@ -323,7 +323,7 @@ namespace AcademiiSdk.Model
                 // StartedAt (DateTime) pattern
                 Regex regexStartedAt = new Regex(@"^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z))$", RegexOptions.CultureInvariant);
 
-                if (this.StartedAtOption.Value != null &&!regexStartedAt.Match(this.StartedAtOption.Value).Success)
+                if (this.StartedAtOption.Value != null &&!regexStartedAt.Match(this.StartedAtOption.Value.ToString()!).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for StartedAt, must match a pattern of " + regexStartedAt, new [] { "StartedAt" });
                 }
@@ -333,7 +333,7 @@ namespace AcademiiSdk.Model
                 // LastActivityAt (DateTime) pattern
                 Regex regexLastActivityAt = new Regex(@"^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z))$", RegexOptions.CultureInvariant);
 
-                if (this.LastActivityAtOption.Value != null &&!regexLastActivityAt.Match(this.LastActivityAtOption.Value).Success)
+                if (this.LastActivityAtOption.Value != null &&!regexLastActivityAt.Match(this.LastActivityAtOption.Value.ToString()!).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for LastActivityAt, must match a pattern of " + regexLastActivityAt, new [] { "LastActivityAt" });
                 }
@@ -343,7 +343,7 @@ namespace AcademiiSdk.Model
                 // CompletedAt (DateTime) pattern
                 Regex regexCompletedAt = new Regex(@"^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z))$", RegexOptions.CultureInvariant);
 
-                if (this.CompletedAtOption.Value != null &&!regexCompletedAt.Match(this.CompletedAtOption.Value).Success)
+                if (this.CompletedAtOption.Value != null &&!regexCompletedAt.Match(this.CompletedAtOption.Value.ToString()!).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for CompletedAt, must match a pattern of " + regexCompletedAt, new [] { "CompletedAt" });
                 }

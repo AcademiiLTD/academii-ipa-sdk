@@ -423,14 +423,14 @@ namespace AcademiiSdk.Model
             // CreatedAt (DateTime) pattern
             Regex regexCreatedAt = new Regex(@"^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z))$", RegexOptions.CultureInvariant);
 
-            if (this.CreatedAtOption.Value != null &&!regexCreatedAt.Match(this.CreatedAtOption.Value).Success)
+            if (this.CreatedAtOption.Value != null &&!regexCreatedAt.Match(this.CreatedAtOption.Value.ToString()!).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for CreatedAt, must match a pattern of " + regexCreatedAt, new [] { "CreatedAt" });
             }
             // UpdatedAt (DateTime) pattern
             Regex regexUpdatedAt = new Regex(@"^(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|(?:02)-(?:0[1-9]|1\d|2[0-8])))T(?:(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(?:Z))$", RegexOptions.CultureInvariant);
 
-            if (this.UpdatedAtOption.Value != null &&!regexUpdatedAt.Match(this.UpdatedAtOption.Value).Success)
+            if (this.UpdatedAtOption.Value != null &&!regexUpdatedAt.Match(this.UpdatedAtOption.Value.ToString()!).Success)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for UpdatedAt, must match a pattern of " + regexUpdatedAt, new [] { "UpdatedAt" });
             }

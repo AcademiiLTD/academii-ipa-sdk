@@ -196,26 +196,26 @@ namespace AcademiiSdk.Model
         /// <exception cref="NotImplementedException"></exception>
         public override void Write(Utf8JsonWriter writer, QueryOperatorValueInput queryOperatorValueInput, JsonSerializerOptions jsonSerializerOptions)
         {
-            writer.WriteStartObject();
-
             if (queryOperatorValueInput.QueryOperatorValueInputAnyOfOption.IsSet && queryOperatorValueInput.QueryOperatorValueInputAnyOfOption.Value != null)
             {
                 QueryOperatorValueInputAnyOfJsonConverter queryOperatorValueInputAnyOfJsonConverter = (QueryOperatorValueInputAnyOfJsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(queryOperatorValueInput.QueryOperatorValueInputAnyOfOption.Value.GetType()));
-                queryOperatorValueInputAnyOfJsonConverter.WriteProperties(writer, queryOperatorValueInput.QueryOperatorValueInputAnyOfOption.Value, jsonSerializerOptions);
+                queryOperatorValueInputAnyOfJsonConverter.Write(writer, queryOperatorValueInput.QueryOperatorValueInputAnyOfOption.Value, jsonSerializerOptions);
+                return;
             }
 
             if (queryOperatorValueInput.ListOption.IsSet && queryOperatorValueInput.ListOption.Value != null)
             {
-                List&lt;QueryOperatorValueInputAnyOf&gt;JsonConverter listltQueryOperatorValueInputAnyOfgtJsonConverter = (List&lt;QueryOperatorValueInputAnyOf&gt;JsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(queryOperatorValueInput.ListOption.Value.GetType()));
-                listltQueryOperatorValueInputAnyOfgtJsonConverter.WriteProperties(writer, queryOperatorValueInput.ListOption.Value, jsonSerializerOptions);
+                JsonSerializer.Serialize(writer, queryOperatorValueInput.ListOption.Value, jsonSerializerOptions);
+                return;
             }
 
             if (queryOperatorValueInput.DictionaryOption.IsSet && queryOperatorValueInput.DictionaryOption.Value != null)
             {
-                Dictionary&lt;string, QueryOperatorValueInput&gt;JsonConverter dictionaryltstringQueryOperatorValueInputgtJsonConverter = (Dictionary&lt;string, QueryOperatorValueInput&gt;JsonConverter) jsonSerializerOptions.Converters.First(c => c.CanConvert(queryOperatorValueInput.DictionaryOption.Value.GetType()));
-                dictionaryltstringQueryOperatorValueInputgtJsonConverter.WriteProperties(writer, queryOperatorValueInput.DictionaryOption.Value, jsonSerializerOptions);
+                JsonSerializer.Serialize(writer, queryOperatorValueInput.DictionaryOption.Value, jsonSerializerOptions);
+                return;
             }
 
+            writer.WriteStartObject();
             WriteProperties(writer, queryOperatorValueInput, jsonSerializerOptions);
             writer.WriteEndObject();
         }

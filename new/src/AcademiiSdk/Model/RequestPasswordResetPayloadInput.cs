@@ -73,7 +73,7 @@ namespace AcademiiSdk.Model
                 // Email (string) pattern
                 Regex regexEmail = new Regex(@"^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$", RegexOptions.CultureInvariant);
 
-                if (!regexEmail.Match(this.Email).Success)
+                if (!regexEmail.Match(this.Email.ToString()!).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Email, must match a pattern of " + regexEmail, new [] { "Email" });
                 }

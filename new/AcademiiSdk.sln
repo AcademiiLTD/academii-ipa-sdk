@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcademiiSdk", "src\Academii
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcademiiSdk.Test", "src\AcademiiSdk.Test\AcademiiSdk.Test.csproj", "{19F1DEBC-DE5E-4517-8062-F000CD499087}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcademiiSdk.Example", "src\AcademiiSdk.Example\AcademiiSdk.Example.csproj", "{5F2A63D1-C8D2-4A79-A33C-062F2469FE3B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F2A63D1-C8D2-4A79-A33C-062F2469FE3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F2A63D1-C8D2-4A79-A33C-062F2469FE3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F2A63D1-C8D2-4A79-A33C-062F2469FE3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F2A63D1-C8D2-4A79-A33C-062F2469FE3B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
