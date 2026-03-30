@@ -262,7 +262,7 @@ namespace Academii.WebSocket.Client
     var settings = new JsonSerializerSettings
     {
      ContractResolver = new Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver()
-    }
+    };
 
     var payload = JsonConvert.DeserializeObject<T>(jsonMessage, settings);
     if (payload != null)
