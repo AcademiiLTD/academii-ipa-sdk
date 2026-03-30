@@ -63,8 +63,6 @@ SSH also works if your team prefers it:
 
 ## Quick Start
 
-The HTTP API client uses OpenAPI Generator configuration pattern. You configure a base path and access token, then use the UnitySdkApi class for all API calls.
-
 ```csharp
 using AcademiiSdk.Api;
 using AcademiiSdk.Client;
@@ -77,6 +75,21 @@ config.AccessToken = "your-jwt-token";
 
 var apiClient = new UnitySdkApi(config);
 ```
+
+### Setting Custom HTTP Headers (e.g., Authorization or Custom)
+
+In some scenarios, you may need to add custom HTTP headers to every request (e.g., custom auth, API keys, or additional metadata).
+Use the `DefaultHeaders` property:
+
+```csharp
+config.DefaultHeaders.Add("Authorization", "Bearer YOUR_TOKEN"); // for custom or advanced auth
+config.DefaultHeaders.Add("X-Custom-Header", "CustomValue"); // for any other header
+// Then instantiate as usual:
+var apiClient = new UnitySdkApi(config);
+```
+
+- Use `AccessToken` for typical JWT bearer authentication (it will auto-set the standard header).
+- Use `DefaultHeaders` for any other special headers you need to add globally.
 
 Important:
 

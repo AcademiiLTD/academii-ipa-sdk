@@ -259,7 +259,12 @@ namespace AcademiiSdk.Model
         /// <returns>True if the object can be converted</returns>
         public override bool CanConvert(Type objectType)
         {
-            return false;
+            if (objectType == null)
+            {
+                return false;
+            }
+
+            return typeof(QueryOperatorValueInputAnyOf).IsAssignableFrom(objectType);
         }
     }
 
