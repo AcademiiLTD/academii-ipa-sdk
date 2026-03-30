@@ -10,14 +10,25 @@ generate_guid() {
 
 generate_meta() {
   local path="$1"
+  local is_dir="$2"
   local meta_path="${path}.meta"
+  local guid
+  local content
 
   if [ -f "$meta_path" ]; then return; fi
 
-  local guid=$(generate_guid)
+  guid=$(generate_guid)
 
-  cat > "$meta_path" <<EOF
-fileFormatVersion: 2
+  if [ "$is_dir" = true ]; then
+    content="fileFormatVersion: 2
+guid: ${guid}
+folderAsset: yes
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  licenseType: Free"
+  elif [[ "$path" == *.cs ]]; then
+    content="fileFormatVersion: 2
 guid: ${guid}
 MonoImporter:
   externalObjects: {}
@@ -26,9 +37,17 @@ MonoImporter:
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
-  licenseType: Free
-EOF
+  licenseType: Free"
+  else
+    content="fileFormatVersion: 2
+guid: ${guid}
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  licenseType: Free"
+  fi
 
+  echo "$content" > "$meta_path"
   echo "Created: $meta_path"
 }
 
@@ -37,12 +56,14 @@ process_dir() {
 
   for entry in "$dir"/*; do
     if [ -d "$entry" ]; then
+      generate_meta "$entry" true
       process_dir "$entry"
-      generate_meta "$entry"
-    elif [[ "$entry" == *.cs ]]; then
-      generate_meta "$entry"
+    elif [ -f "$entry" ] && [[ "$entry" != *.meta ]]; then
+      generate_meta "$entry" false
     fi
   done
 }
 
-process_dir "${1:-.}"
+TARGET="${1:-.}"
+generate_meta "$TARGET" true
+process_dir "$TARGET"
