@@ -26,7 +26,7 @@ namespace Academii.WebSocket.Client
  public class AcademiiWebSocketAPIClient : IDisposable
  {
   private readonly string _authToken;
-  private readonly Dictionary<string, WebSocket> _connections = new Dictionary<string, WebSocket>();
+  private readonly Dictionary<string, NativeWebSocket.WebSocket> _connections = new Dictionary<string, NativeWebSocket.WebSocket>();
   private readonly Dictionary<string, CancellationTokenSource> _cancellationTokens = new Dictionary<string, CancellationTokenSource>();
   private bool _disposed;
 
@@ -74,7 +74,7 @@ namespace Academii.WebSocket.Client
    if (_connections.ContainsKey(endpointKey))
     throw new InvalidOperationException($"Already connected to {endpointKey} endpoint");
 
-   var webSocket = new WebSocket(fullUrl, $"auth.{_authToken}");
+   var webSocket = new NativeWebSocket.WebSocket(fullUrl, $"auth.{_authToken}");
    webSocket.OnOpen += () => OnConnectionStateChanged?.Invoke(this, $"{endpointKey}: Connected");
    webSocket.OnMessage += (bytes) =>
    {
@@ -134,7 +134,7 @@ namespace Academii.WebSocket.Client
   /// </summary>
   public async Task SendAudioDataAsync(byte[] audioData, string endpointKey = "microphone", CancellationToken cancellationToken = default)
   {
-   if (!_connections.TryGetValue(endpointKey, out var webSocket) || webSocket.State != WebSocketState.Open)
+   if (!_connections.TryGetValue(endpointKey, out var webSocket) || webSocket.State != NativeWebSocket.WebSocketState.Open)
     throw new InvalidOperationException($"Not connected to {endpointKey} endpoint");
 
    if (audioData?.Length > 0)
@@ -145,7 +145,7 @@ namespace Academii.WebSocket.Client
 
   private async Task SendMessageAsync<T>(string endpointKey, T payload, CancellationToken cancellationToken)
   {
-   if (!_connections.TryGetValue(endpointKey, out var webSocket) || webSocket.State != WebSocketState.Open)
+   if (!_connections.TryGetValue(endpointKey, out var webSocket) || webSocket.State != NativeWebSocket.WebSocketState.Open)
     throw new InvalidOperationException($"Not connected to {endpointKey} endpoint");
 
    var json = JsonConvert.SerializeObject(payload, new JsonSerializerSettings
@@ -379,9 +379,9 @@ namespace Academii.WebSocket.Client
   /// <summary>
   /// Get connection state for a specific endpoint
   /// </summary>
-  public WebSocketState GetConnectionState(string endpointKey)
+  public NativeWebSocket.WebSocketState GetConnectionState(string endpointKey)
   {
-   return _connections.TryGetValue(endpointKey, out var webSocket) ? webSocket.State : WebSocketState.Closed;
+   return _connections.TryGetValue(endpointKey, out var webSocket) ? webSocket.State : NativeWebSocket.WebSocketState.Closed;
   }
 
   /// <summary>
@@ -397,7 +397,7 @@ namespace Academii.WebSocket.Client
   /// </summary>
   public bool IsConnected(string endpointKey)
   {
-   return _connections.TryGetValue(endpointKey, out var webSocket) && webSocket.State == WebSocketState.Open;
+   return _connections.TryGetValue(endpointKey, out var webSocket) && webSocket.State == NativeWebSocket.WebSocketState.Open;
   }
 
   public void Dispose()
