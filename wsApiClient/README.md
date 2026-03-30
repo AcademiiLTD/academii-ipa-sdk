@@ -51,17 +51,20 @@ The WebSocket client requires a valid JWT token obtained through the HTTP API:
 
 ```csharp
 // 1. Get token via HTTP API
-var httpClient = new HttpClient();
-var apiClient = new Client(httpClient) { BaseUrl = "https://dev.academii.com/" };
+var config = new Configuration();
+config.BasePath = "https://dev.academii.com";
+var apiClient = new UnitySdkApi(config);
 
-var login = await apiClient.LoginAsync(new LoginPayload 
+var loginPayload = new LoginPayloadInput 
 {
     Email = "user@example.com", 
     Password = "password"
-});
+};
+
+var loginResponse = await apiClient.ApiV1AuthLoginPostAsync(loginPayload);
 
 // 2. Use token for WebSocket connection
-var wsClient = new AcademiiWebSocketAPIClient(login.Data.Token);
+var wsClient = new AcademiiWebSocketAPIClient(loginResponse.Data.Token);
 ```
 
 ## Available Connections
@@ -177,46 +180,53 @@ await wsClient.SendAnalyticsQueryAsync("What are the most popular chat topics?")
 
 ```csharp
 using System;
-using System.Net.Http;
 using System.Threading.Tasks;
 using Academii.WebSocket.Client;
-using YourSdk;
+using AcademiiSdk.Api;
+using AcademiiSdk.Client;
+using AcademiiSdk.Model;
 
 public class VoiceChatBot
 {
-    private HttpClient _httpClient;
-    private Client _apiClient;
+    private Configuration _config;
+    private UnitySdkApi _apiClient;
     private AcademiiWebSocketAPIClient _wsClient;
     private string _currentChatId;
 
     public async Task StartAsync()
     {
         // Setup HTTP client
-        _httpClient = new HttpClient();
-        _apiClient = new Client(_httpClient) 
-        { 
-            BaseUrl = "https://dev.academii.com/" 
-        };
+        _config = new Configuration();
+        _config.BasePath = "https://dev.academii.com";
+        _apiClient = new UnitySdkApi(_config);
 
         // Login
-        var login = await _apiClient.LoginAsync(new LoginPayload 
+        var loginPayload = new LoginPayloadInput 
         {
             Email = "user@example.com",
             Password = "password"
-        });
+        };
+
+        var loginResponse = await _apiClient.ApiV1AuthLoginPostAsync(loginPayload);
+        _config.AccessToken = loginResponse.Data.Token;
 
         // Setup WebSocket client
-        _wsClient = new AcademiiWebSocketAPIClient(login.Data.Token);
+        _wsClient = new AcademiiWebSocketAPIClient(loginResponse.Data.Token);
         SetupEventHandlers();
 
         // Create new chat
-        var character = await _apiClient.CharactersIdGetAsync("character-id");
-        var chat = await _apiClient.ChatsCharactersCharacterIdChatsPostAsync(
-            character.Data.Id,
-            new CreateChatRequest { Title = "Voice Chat" }
+        var characterId = Guid.Parse("character-id"); // Replace with actual character ID
+        var character = await _apiClient.ApiV1CharactersIdGetAsync(characterId);
+        var createChatRequest = new CreateChatTitleRequestInput 
+        { 
+            Title = "Voice Chat" 
+        };
+        var chat = await _apiClient.ApiV1ChatsCharactersCharacterIdChatsPostAsync(
+            characterId,
+            createChatRequest
         );
         
-        _currentChatId = chat.Data.Id;
+        _currentChatId = chat.Data.Id.ToString();
 
         // Connect to both chat and microphone streams
         await _wsClient.ConnectToResponseAsync(_currentChatId);
@@ -292,7 +302,6 @@ public class VoiceChatBot
     public void Dispose()
     {
         _wsClient?.Dispose();
-        _httpClient?.Dispose();
     }
 }
 

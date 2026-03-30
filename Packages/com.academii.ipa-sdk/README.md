@@ -53,71 +53,58 @@ SSH also works if your team prefers it:
 
 ## Namespace And Assembly
 
-- Namespace: `YourSdk`
+- HTTP API Namespace: `AcademiiSdk.Api`
+- Model Namespace: `AcademiiSdk.Model`
+- Client Namespace: `AcademiiSdk.Client`
+- WebSocket Namespace: `Academii.WebSocket.Client`
 - Runtime assembly: `Academii.IpaSdk`
-- Main client type: `YourSdk.Client`
+- Main HTTP API class: `UnitySdkApi`
+- WebSocket client class: `AcademiiWebSocketAPIClient`
 
 ## Quick Start
 
-The generated client requires an externally managed `HttpClient`. Reuse that
-`HttpClient` instance for the lifetime of the SDK rather than creating a new one
-for each request.
+The HTTP API client uses OpenAPI Generator configuration pattern. You configure a base path and access token, then use the UnitySdkApi class for all API calls.
 
 ```csharp
-using System.Net.Http;
-using System.Net.Http.Headers;
-using YourSdk;
+using AcademiiSdk.Api;
+using AcademiiSdk.Client;
+using AcademiiSdk.Model;
 
-var httpClient = new HttpClient
-{
-    Timeout = System.TimeSpan.FromSeconds(30)
-};
+var config = new Configuration();
+config.BasePath = "https://dev.academii.com";
+// Set access token after authentication
+config.AccessToken = "your-jwt-token";
 
-httpClient.DefaultRequestHeaders.Accept.Add(
-    new MediaTypeWithQualityHeaderValue("application/json"));
-
-var client = new Client(httpClient)
-{
-    BaseUrl = "https://your-api-host/"
-};
+var apiClient = new UnitySdkApi(config);
 ```
 
 Important:
 
-- `Client.BaseUrl` defaults to `https://dev.academii.com`, so set it explicitly for
-  staging or production.
-- `BaseUrl` is normalized to include a trailing slash.
-- Most methods are `async` and return direct generated response models such as
-  `Task<Response2>` or `Task<BackendResponse>`.
-- File download endpoints return `Task<FileResponse>`.
-- Some no-content endpoints return `Task` only.
-- The package also includes a generated WebSocket client in
-  `Academii.WebSocket.Client`.
+- `Configuration.BasePath` defaults to the OpenAPI spec base URL, set it explicitly for different environments
+- Set `Configuration.AccessToken` after successful login for authenticated requests  
+- Most methods are `async` and return generated response models such as `Task<ApiV1AuthLoginPost200Response>`
+- Methods follow the pattern `ApiV1{Resource}{Action}{Method}Async()` (e.g., `ApiV1AuthLoginPostAsync`)
+- The package also includes a WebSocket client in `Academii.WebSocket.Client`
 
 ## Unity MonoBehaviour Example
 
 ```csharp
-using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using UnityEngine;
-using YourSdk;
+using AcademiiSdk.Api;
+using AcademiiSdk.Client;
+using AcademiiSdk.Model;
 
 public sealed class AcademiiSdkExample : MonoBehaviour
 {
-    private HttpClient _httpClient;
-    private Client _client;
+    private Configuration _config;
+    private UnitySdkApi _apiClient;
 
     private void Awake()
     {
-        _httpClient = new HttpClient();
-        _httpClient.DefaultRequestHeaders.Accept.Add(
-            new MediaTypeWithQualityHeaderValue("application/json"));
-
-        _client = new Client(_httpClient)
-        {
-            BaseUrl = "https://your-api-host/"
-        };
+        _config = new Configuration();
+        _config.BasePath = "https://dev.academii.com";
+        _apiClient = new UnitySdkApi(_config);
     }
 
     private async void Start()
@@ -127,23 +114,27 @@ public sealed class AcademiiSdkExample : MonoBehaviour
 
     private async Task LoginAndLoadProfileAsync()
     {
-        var login = await _client.LoginAsync(new LoginPayload
+        var loginPayload = new LoginPayloadInput
         {
             Email = "user@example.com",
             Password = "correct horse battery staple"
-        });
+        };
 
-        var bearerToken = login.Data.Token;
-        _httpClient.DefaultRequestHeaders.Authorization =
-            new AuthenticationHeaderValue("Bearer", bearerToken);
+        try
+        {
+            var loginResponse = await _apiClient.ApiV1AuthLoginPostAsync(loginPayload);
+            var bearerToken = loginResponse.Data.Token;
+            
+            // Set token for subsequent API calls
+            _config.AccessToken = bearerToken;
 
-        var me = await _client.MeAsync();
-        Debug.Log($"Logged in as {me.Data.User.Email}");
-    }
-
-    private void OnDestroy()
-    {
-        _httpClient?.Dispose();
+            var userInfo = await _apiClient.ApiV1AuthMeGetAsync();
+            Debug.Log($"Logged in as {userInfo.Data.User.Email}");
+        }
+        catch (ApiException ex)
+        {
+            Debug.LogError($"API Error: {ex.Message}");
+        }
     }
 }
 ```
@@ -152,19 +143,21 @@ public sealed class AcademiiSdkExample : MonoBehaviour
 
 ### Login (`POST /api/v1/auth/login`)
 
-The generated `LoginAsync` call sends a JSON body with `email` and `password`
+The generated `ApiV1AuthLoginPostAsync` method sends a JSON body with `email` and `password`
 to the `/api/v1/auth/login` endpoint.
 
 ```csharp
-var login = await client.LoginAsync(new LoginPayload
+var loginPayload = new LoginPayloadInput
 {
     Email = "user@example.com",
     Password = "correct horse battery staple"
-});
+};
 
-Debug.Log(login.Status);
-Debug.Log(login.Data.Token);
-Debug.Log(login.Data.User.Email);
+var loginResponse = await apiClient.ApiV1AuthLoginPostAsync(loginPayload);
+
+Debug.Log(loginResponse.Status);
+Debug.Log(loginResponse.Data.Token);
+Debug.Log(loginResponse.Data.User.Email);
 ```
 
 This is the JSON shape the SDK sends:
@@ -176,23 +169,24 @@ This is the JSON shape the SDK sends:
 }
 ```
 
-If login succeeds, store the returned token and attach it to the shared
-`HttpClient` for later authenticated calls:
+If login succeeds, store the returned token and set it on the configuration for
+later authenticated calls:
 
 ```csharp
-var accessToken = login.Data.Token;
+var accessToken = loginResponse.Data.Token;
 
-httpClient.DefaultRequestHeaders.Authorization =
-    new AuthenticationHeaderValue("Bearer", accessToken);
+config.AccessToken = accessToken;
 ```
 
 ### Verify Token
 
 ```csharp
-var response = await client.VerifyTokenAsync(new VerifyTokenPayload
+var verifyPayload = new VerifyTokenPayloadInput
 {
     IdToken = idToken
-});
+};
+
+var response = await apiClient.ApiV1AuthVerifyTokenPostAsync(verifyPayload);
 
 Debug.Log(response.Data.User.Email);
 ```
@@ -200,11 +194,10 @@ Debug.Log(response.Data.User.Email);
 ### Authenticated GET
 
 ```csharp
-httpClient.DefaultRequestHeaders.Authorization =
-    new AuthenticationHeaderValue("Bearer", accessToken);
+// Token should already be set on config.AccessToken
 
-var me = await client.MeAsync();
-Debug.Log(me.Data.User.DisplayName);
+var userInfo = await apiClient.ApiV1AuthMeGetAsync();
+Debug.Log(userInfo.Data.User.DisplayName);
 ```
 
 ## Response Shapes
@@ -217,9 +210,9 @@ Most JSON endpoints return a generated response model that derives from
 `BackendResponse`:
 
 ```csharp
-var login = await client.LoginAsync(payload);
-var token = login.Data.Token;
-var apiStatus = login.Status;
+var loginResponse = await apiClient.ApiV1AuthLoginPostAsync(payload);
+var token = loginResponse.Data.Token;
+var apiStatus = loginResponse.Status;
 ```
 
 These models usually expose:
@@ -251,16 +244,17 @@ Non-success responses throw `ApiException` or `ApiException<TError>`.
 ```csharp
 try
 {
-    await client.LoginAsync(new LoginPayload
+    var loginPayload = new LoginPayloadInput
     {
         Email = "user@example.com",
         Password = "wrong-password"
-    });
+    };
+    await apiClient.ApiV1AuthLoginPostAsync(loginPayload);
 }
 catch (ApiException ex)
 {
-    Debug.LogError($"HTTP {ex.StatusCode}");
-    Debug.LogError(ex.Response);
+    Debug.LogError($"HTTP {ex.ErrorCode}");
+    Debug.LogError(ex.Message);
 }
 ```
 
@@ -289,27 +283,26 @@ Authentication flow:
 End-to-end example:
 
 ```csharp
-using System.Net.Http;
-using System.Net.Http.Headers;
-using Academii.WebSocket.Client;
 using UnityEngine;
+using AcademiiSdk.Api;
+using AcademiiSdk.Client;
+using AcademiiSdk.Model;
+using Academii.WebSocket.Client;
 
-var httpClient = new HttpClient();
-var client = new Client(httpClient)
-{
-    BaseUrl = "https://dev.academii.com/"
-};
+var config = new Configuration();
+config.BasePath = "https://dev.academii.com";
+var apiClient = new UnitySdkApi(config);
 
-var login = await client.LoginAsync(new LoginPayload
+var loginPayload = new LoginPayloadInput
 {
     Email = "user@example.com",
     Password = "correct horse battery staple"
-});
+};
 
-var token = login.Data.Token;
+var loginResponse = await apiClient.ApiV1AuthLoginPostAsync(loginPayload);
+var token = loginResponse.Data.Token;
 
-httpClient.DefaultRequestHeaders.Authorization =
-    new AuthenticationHeaderValue("Bearer", token);
+config.AccessToken = token;
 
 var wsClient = new AcademiiWebSocketAPIClient(token);
 
@@ -318,6 +311,7 @@ wsClient.ContentDelta += (_, payload) =>
     Debug.Log(payload.Delta);
 };
 
+// You need to have an existing chat ID to connect to
 await wsClient.ConnectToResponseAsync(chatId);
 await wsClient.SendChatMessageAsync("Hello there", generateAudio: false);
 ```
@@ -432,15 +426,14 @@ public class VoiceChatManager : MonoBehaviour
         try
         {
             // For demo purposes - in production, get credentials securely
-            var login = await _apiClient.LoginAsync(new LoginPayload
+            var login = await _apiClient.ApiV1AuthLoginPostAsync(new LoginPayloadInput
             {
                 Email = "user@example.com",
                 Password = "your-password"
             });
 
             var token = login.Data.Token;
-            _httpClient.DefaultRequestHeaders.Authorization = 
-                new AuthenticationHeaderValue("Bearer", token);
+            _config.AccessToken = token;
 
             // Initialize WebSocket client
             _wsClient = new AcademiiWebSocketAPIClient(token);
@@ -465,13 +458,18 @@ public class VoiceChatManager : MonoBehaviour
     {
         try
         {
-            var character = await _apiClient.CharactersIdGetAsync(characterId);
-            var chat = await _apiClient.ChatsCharactersCharacterIdChatsPostAsync(
-                character.Data.Id,
-                new CreateChatRequest { Title = "Unity Voice Chat Session" }
+            var characterId = Guid.Parse(this.characterId);
+            var character = await _apiClient.ApiV1CharactersIdGetAsync(characterId);
+            var createChatRequest = new CreateChatTitleRequestInput 
+            { 
+                Title = "Unity Voice Chat Session" 
+            };
+            var chat = await _apiClient.ApiV1ChatsCharactersCharacterIdChatsPostAsync(
+                characterId,
+                createChatRequest
             );
             
-            _currentChatId = chat.Data.Id;
+            _currentChatId = chat.Data.Id.ToString();
             Debug.Log($"Created chat session: {_currentChatId}");
         }
         catch (Exception ex)
@@ -1481,11 +1479,17 @@ If the endpoint has a typed error contract, you can catch the generic version:
 ```csharp
 try
 {
-    await client.RegisterAsync(payload);
+    var registerPayload = new RegisterPayloadInput
+    {
+        Email = "newuser@example.com",
+        Password = "password"
+        // Add other required fields
+    };
+    await apiClient.ApiV1AuthRegisterPostAsync(registerPayload);
 }
-catch (ApiException<BadRequestError> ex)
+catch (ApiException ex)
 {
-    Debug.LogError(ex.Result.Message);
+    Debug.LogError($"Registration failed: {ex.Message}");
 }
 ```
 
@@ -1495,7 +1499,7 @@ Every generated method accepts an optional `CancellationToken`.
 
 ```csharp
 using var cancellation = new System.Threading.CancellationTokenSource(5000);
-var me = await client.MeAsync(cancellation.Token);
+var userInfo = await apiClient.ApiV1AuthMeGetAsync(cancellation.Token);
 ```
 
 ## Notes
