@@ -226,6 +226,14 @@ namespace AcademiiSdk.Example
             request.SetRequestHeader("Pragma", "no-cache");
             request.SetRequestHeader("User-Agent", userAgent);
 
+            var headerSnapshot = request.GetRequestHeaders();
+            var authPreview = string.IsNullOrWhiteSpace(token)
+                ? "<missing>"
+                : token.Length <= 12
+                    ? token
+                    : string.Concat(token.AsSpan(0, 8), "...", token.AsSpan(token.Length - 4));
+            Debug.Log($"Characters request: {url}\nAuthorization: Bearer {authPreview}\nHeaders: {FormatHeaders(headerSnapshot)}");
+
             await request.SendWebRequest();
 
 #if UNITY_2020_2_OR_NEWER
@@ -238,6 +246,23 @@ namespace AcademiiSdk.Example
             }
 
             return ParseCharacters(request.downloadHandler?.text ?? "");
+        }
+
+        private static string FormatHeaders(Dictionary<string, string> headers)
+        {
+            if (headers == null || headers.Count == 0)
+                return "<none>";
+
+            var builder = new StringBuilder();
+            foreach (var header in headers)
+            {
+                if (builder.Length > 0)
+                    builder.Append("; ");
+
+                builder.Append(header.Key).Append("=").Append(header.Value);
+            }
+
+            return builder.ToString();
         }
 
         private static List<CharacterSummary> ParseCharacters(string json)
