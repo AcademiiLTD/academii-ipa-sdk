@@ -6,5 +6,12 @@
   "unity": "2021.3",
   "dependencies": {
     "com.unity.nuget.newtonsoft-json": "3.2.1"
-  }
+  },
+  "samples": [
+    {
+      "displayName": "Academii SDK Example",
+      "description": "End-to-end login, character list, chat create, and WebSocket message sample.",
+      "path": "Samples~/AcademiiSdkExample"
+    }
+  ]
 }
