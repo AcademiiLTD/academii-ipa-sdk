@@ -69,6 +69,8 @@ namespace AcademiiSdk.Example
                         throw new InvalidOperationException("Login succeeded but no bearer token was returned.");
 
                     config.AccessToken = login.Data.Token;
+                    config.DefaultHeaders["Cookie"] = $"auth-token={login.Data.Token}";
+                    config.DefaultHeaders["Pragma"] = "no-cache";
                     var user = login.Data.User;
                     var displayName = user?.DisplayName ?? "<unknown>";
                     var emailValue = user?.Email ?? email;
