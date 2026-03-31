@@ -68,9 +68,12 @@ namespace AcademiiSdk.Example
                     if (string.IsNullOrWhiteSpace(login?.Data?.Token))
                         throw new InvalidOperationException("Login succeeded but no bearer token was returned.");
 
-                    api.Configuration.AccessToken = login.Data.Token;
-                    api.Configuration.DefaultHeaders["Cookie"] = $"auth-token={login.Data.Token}";
-                    api.Configuration.DefaultHeaders["Pragma"] = "no-cache";
+                    config.AccessToken = login.Data.Token;
+                    config.DefaultHeaders["Cookie"] = $"auth-token={login.Data.Token}";
+                    config.DefaultHeaders["Pragma"] = "no-cache";
+                    api.Configuration = config;
+                    Debug.Log($"Token length: {login.Data.Token.Length}");
+                    Debug.Log($"HTTP headers after login: {FormatHeaders(config.DefaultHeaders)}");
                     var user = login.Data.User;
                     var displayName = user?.DisplayName ?? "<unknown>";
                     var emailValue = user?.Email ?? email;
