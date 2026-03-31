@@ -30,6 +30,8 @@ namespace Academii.WebSocket.Client
   private readonly Dictionary<string, CancellationTokenSource> _cancellationTokens = new Dictionary<string, CancellationTokenSource>();
   private bool _disposed;
 
+    public IDictionary<string, string> DefaultHeaders { get; } = new Dictionary<string, string>();
+
   // Server URLs
   public const string PRODUCTION_URL = "wss://dev.academii.com";
   public const string DEVELOPMENT_URL = "ws://localhost:3000";
@@ -74,7 +76,12 @@ namespace Academii.WebSocket.Client
    if (_connections.ContainsKey(endpointKey))
     throw new InvalidOperationException($"Already connected to {endpointKey} endpoint");
 
-   var webSocket = new NativeWebSocket.WebSocket(fullUrl, $"auth.{_authToken}");
+  var headers = new Dictionary<string, string>(DefaultHeaders)
+  {
+   ["Authorization"] = $"Bearer {_authToken}",
+   ["Cookie"] = $"auth-token={_authToken}"
+  };
+  var webSocket = new NativeWebSocket.WebSocket(fullUrl, $"auth.{_authToken}", headers);
    webSocket.OnOpen += () => OnConnectionStateChanged?.Invoke(this, $"{endpointKey}: Connected");
    webSocket.OnMessage += (bytes) =>
    {

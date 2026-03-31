@@ -48,10 +48,11 @@ namespace AcademiiSdk.Example
         {
             ValidateSettings();
 
+            var userAgent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36";
             var config = new Configuration
             {
                 BasePath = baseUrl,
-                UserAgent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+                UserAgent = userAgent
             };
             config.DefaultHeaders["Accept"] = "application/json";
             config.DefaultHeaders["Accept-Language"] = "en-US,en;q=0.9";
@@ -80,7 +81,7 @@ namespace AcademiiSdk.Example
                 async () =>
                 {
                     var token = loginResponse.Data.Token;
-                    var characters = await GetCharactersAsync(baseUrl, token);
+                    var characters = await GetCharactersAsync(baseUrl, token, userAgent);
                     if (characters.Count == 0)
                         throw new InvalidOperationException("Character list response did not include any characters.");
 
@@ -140,6 +141,10 @@ namespace AcademiiSdk.Example
                 {
                     var token = loginResponse.Data.Token;
                     var wsClient = new AcademiiWebSocketAPIClient(token);
+                    wsClient.DefaultHeaders["User-Agent"] = userAgent;
+                    wsClient.DefaultHeaders["Accept"] = "application/json";
+                    wsClient.DefaultHeaders["Accept-Language"] = "en-US,en;q=0.9";
+                    wsClient.DefaultHeaders["Cache-Control"] = "no-cache";
                     var completionSource = new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
                     var responseBuffer = new StringBuilder();
 
@@ -209,7 +214,7 @@ namespace AcademiiSdk.Example
             }
         }
 
-        private static async Task<List<CharacterSummary>> GetCharactersAsync(string baseUrl, string token)
+        private static async Task<List<CharacterSummary>> GetCharactersAsync(string baseUrl, string token, string userAgent)
         {
             var url = new Uri(new Uri(baseUrl), "/api/v1/characters").ToString();
             using var request = UnityWebRequest.Get(url);
@@ -217,6 +222,7 @@ namespace AcademiiSdk.Example
             request.SetRequestHeader("Accept", "application/json");
             request.SetRequestHeader("Accept-Language", "en-US,en;q=0.9");
             request.SetRequestHeader("Cache-Control", "no-cache");
+            request.SetRequestHeader("User-Agent", userAgent);
 
             await request.SendWebRequest();
 

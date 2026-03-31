@@ -39,12 +39,22 @@ namespace NativeWebSocket
         private readonly Uri _uri;
         private Task? _receiveLoop;
 
-        public WebSocket(string url, string subProtocol = null)
+        public WebSocket(string url, string subProtocol = null, IDictionary<string, string> headers = null)
         {
             _uri = new Uri(url, UriKind.Absolute);
             if (!string.IsNullOrWhiteSpace(subProtocol))
             {
                 _client.Options.AddSubProtocol(subProtocol);
+            }
+            if (headers != null)
+            {
+                foreach (var header in headers)
+                {
+                    if (!string.IsNullOrWhiteSpace(header.Key) && !string.IsNullOrWhiteSpace(header.Value))
+                    {
+                        _client.Options.SetRequestHeader(header.Key, header.Value);
+                    }
+                }
             }
         }
 
