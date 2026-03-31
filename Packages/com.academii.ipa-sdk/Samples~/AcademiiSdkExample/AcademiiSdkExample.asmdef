@@ -1,8 +1,6 @@
 {
   "name": "Academii.IpaSdk.Example",
   "references": [
-    "Academii.IpaSdk",
-    "AcademiiSdk",
     "Newtonsoft.Json"
   ],
   "includePlatforms": [],
