@@ -219,9 +219,11 @@ namespace AcademiiSdk.Example
             var url = new Uri(new Uri(baseUrl), "/api/v1/characters").ToString();
             using var request = UnityWebRequest.Get(url);
             request.SetRequestHeader("Authorization", $"Bearer {token}");
+            request.SetRequestHeader("Cookie", $"auth-token={token}");
             request.SetRequestHeader("Accept", "application/json");
             request.SetRequestHeader("Accept-Language", "en-US,en;q=0.9");
             request.SetRequestHeader("Cache-Control", "no-cache");
+            request.SetRequestHeader("Pragma", "no-cache");
             request.SetRequestHeader("User-Agent", userAgent);
 
             await request.SendWebRequest();
