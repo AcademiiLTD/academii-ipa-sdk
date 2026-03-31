@@ -533,7 +533,7 @@ namespace AcademiiSdk.Example
 
         private static Uri BuildHttpUri(Uri baseUri, string endpoint)
         {
-            if (Uri.TryCreate(endpoint, UriKind.Absolute, out var absolute))
+            if (TryCreateAbsoluteUri(endpoint, out var absolute, "http", "https"))
                 return absolute;
 
             return new Uri(baseUri, endpoint);
@@ -541,10 +541,25 @@ namespace AcademiiSdk.Example
 
         private static Uri BuildWebSocketUri(Uri baseUri, string endpoint)
         {
-            if (Uri.TryCreate(endpoint, UriKind.Absolute, out var absolute))
+            if (TryCreateAbsoluteUri(endpoint, out var absolute, "ws", "wss"))
                 return absolute;
 
             return new Uri(baseUri, endpoint);
+        }
+
+        private static bool TryCreateAbsoluteUri(string value, out Uri absoluteUri, params string[] allowedSchemes)
+        {
+            if (Uri.TryCreate(value, UriKind.Absolute, out absoluteUri))
+            {
+                foreach (var allowedScheme in allowedSchemes)
+                {
+                    if (absoluteUri.Scheme.Equals(allowedScheme, StringComparison.OrdinalIgnoreCase))
+                        return true;
+                }
+            }
+
+            absoluteUri = null;
+            return false;
         }
 
         private static string ReplaceRouteParameter(string template, string parameterName, string value)
