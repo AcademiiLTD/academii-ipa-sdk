@@ -226,13 +226,12 @@ namespace AcademiiSdk.Example
             request.SetRequestHeader("Pragma", "no-cache");
             request.SetRequestHeader("User-Agent", userAgent);
 
-            var headerSnapshot = request.GetRequestHeaders();
             var authPreview = string.IsNullOrWhiteSpace(token)
                 ? "<missing>"
                 : token.Length <= 12
                     ? token
-                    : string.Concat(token.AsSpan(0, 8), "...", token.AsSpan(token.Length - 4));
-            Debug.Log($"Characters request: {url}\nAuthorization: Bearer {authPreview}\nHeaders: {FormatHeaders(headerSnapshot)}");
+                    : token.Substring(0, 8) + "..." + token.Substring(token.Length - 4);
+            Debug.Log($"Characters request: {url}\nAuthorization: Bearer {authPreview}\nHeaders: {FormatHeaders(BuildCharacterHeaders(token, userAgent))}");
 
             await request.SendWebRequest();
 
@@ -246,6 +245,20 @@ namespace AcademiiSdk.Example
             }
 
             return ParseCharacters(request.downloadHandler?.text ?? "");
+        }
+
+        private static Dictionary<string, string> BuildCharacterHeaders(string token, string userAgent)
+        {
+            return new Dictionary<string, string>
+            {
+                ["Authorization"] = $"Bearer {token}",
+                ["Cookie"] = $"auth-token={token}",
+                ["Accept"] = "application/json",
+                ["Accept-Language"] = "en-US,en;q=0.9",
+                ["Cache-Control"] = "no-cache",
+                ["Pragma"] = "no-cache",
+                ["User-Agent"] = userAgent
+            };
         }
 
         private static string FormatHeaders(Dictionary<string, string> headers)
